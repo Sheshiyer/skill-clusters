@@ -19,10 +19,10 @@ Status: ✅ live · ⏳ planned · 🔴 gap (needs authoring).
 
 ---
 
-## 2. tauri ⏳ — cross-platform desktop/mobile (flagship)
+## 2. tauri ✅ — cross-platform desktop/mobile (flagship)
 
-**40 existing skills** — the showcase for "organize a huge stack." The work is almost entirely
-the orchestrator's routing taxonomy + a core of cross-cutting Tauri rules.
+**Built 2026-06-05.** 40 existing skills — the showcase for "organize a huge stack." The work was
+almost entirely the orchestrator's routing taxonomy + a core of cross-cutting Tauri rules.
 
 - **New:** `tauri-orchestrator`, `tauri-core` (capability/permission model, IPC contract, security posture, version/v2 notes)
 - **Routing sub-domains → spokes:**
@@ -109,7 +109,7 @@ Only `rust-coding-skill` exists (+ Tauri's Rust-bridge spokes to cross-reference
 ## Build order (suggested)
 
 1. ✅ **creative-frontend** (template)
-2. **tauri** — flagship; proves "organize at scale," highest install appeal
+2. ✅ **tauri** — flagship; proves "organize at scale," highest install appeal
 3. **expo** + **react-native** — together (settle the boundary once)
 4. **astro** + **raycast** — light organize + small authoring
 5. **rust** — author; unblocks/extends tauri + electron cores

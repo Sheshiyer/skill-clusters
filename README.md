@@ -7,7 +7,7 @@
 <div align="center">
 
 [![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](LICENSE)
-[![Clusters](https://img.shields.io/badge/clusters-1%20live%20·%208%20planned-8b5cf6?style=flat)](#cluster-index)
+[![Clusters](https://img.shields.io/badge/clusters-2%20live%20·%207%20planned-8b5cf6?style=flat)](#cluster-index)
 [![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
 [![Stars](https://img.shields.io/github/stars/Sheshiyer/skill-clusters?style=flat&logo=github)](https://github.com/Sheshiyer/skill-clusters/stargazers)
 
@@ -33,7 +33,7 @@ duplicate or contradict each other. Pattern proven by
 | Cluster | Domain | Spokes | Strategy | Status |
 |---|---|---|---|---|
 | [**creative-frontend**](clusters/creative-frontend) | Astro · GSAP · Remotion — web motion + programmatic video | 7 + 2 | organize | ✅ **live (pilot)** |
-| **tauri** | Cross-platform desktop/mobile (Rust + web) | 40 + 2 | organize (flagship) | ⏳ planned |
+| [**tauri**](clusters/tauri) | Cross-platform desktop/mobile (Rust + web) | 40 + 2 | organize (flagship) | ✅ **live** |
 | **expo** | Expo / React Native toolchain | 7 + 2 | organize | ⏳ planned |
 | **react-native** | RN UI, native modules, mobile design | 7 + 2 | organize | ⏳ planned |
 | **astro** | Pure Astro: SSG, content, SSR, docs/wiki publishing | 2 + 2 | organize + author | ⏳ planned |
