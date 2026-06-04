@@ -93,6 +93,28 @@
         "sleek-design-mobile-apps",
         "native-data-fetching"
       ]
+    },
+    {
+      "title": "Astro — static-first sites (islands, content, SSR)",
+      "description": "Hub-and-spoke cluster for the Astro framework (not the animation layer). The orchestrator picks the rendering strategy — static (SSG) / on-demand SSR / hybrid + server islands — and routes; astro-core holds that decision plus the Content Layer & collections model, hydration directives, astro:env/sessions/actions conventions, and SSR adapter selection. astro-framework (shared with creative-frontend) is the deep implementation; astro-wiki-publisher ships docs/wiki/press-kit sites. For motion on an Astro page, see the creative-frontend cluster.",
+      "skills": [
+        "astro-orchestrator",
+        "astro-core",
+        "astro-framework",
+        "astro-wiki-publisher"
+      ]
+    },
+    {
+      "title": "Raycast — extensions, AI tools, Store publishing",
+      "description": "Hub-and-spoke cluster for Raycast. The orchestrator separates the four jobs people mean by 'Raycast' — build an extension/command, make it AI-callable (tools the Raycast AI calls), publish to the Store, or design a Raycast-aesthetic app — and routes; raycast-core holds the extension model (command types, package.json manifest, @raycast/api UI/navigation, data hooks, build/publish). Includes two authored spokes (raycast-ai-extensions, raycast-store-publishing) that fill the AI and publishing gaps.",
+      "skills": [
+        "raycast-orchestrator",
+        "raycast-core",
+        "raycast-extension",
+        "raycast-ui-skills",
+        "raycast-ai-extensions",
+        "raycast-store-publishing"
+      ]
     }
   ]
 }

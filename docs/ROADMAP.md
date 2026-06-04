@@ -58,21 +58,26 @@ almost entirely the orchestrator's routing taxonomy + a core of cross-cutting Ta
 
 ---
 
-## 5. astro ⏳ — pure Astro (SSG/content/SSR/publishing)
+## 5. astro ✅ — static-first sites (islands/content/SSR/publishing)
 
-Reserved out of the pilot so creative-frontend stays about *motion*.
+**Built 2026-06-05.** Reserved out of the pilot so creative-frontend stays about *motion*. Audit
+result: `astro-framework` already covers SSR adapters, Content Layer, actions, `astro:env`,
+sessions, i18n, view transitions — **no authoring needed**, pure organize.
 
-- **New:** `astro-orchestrator`, `astro-core`
-- **Spokes:** `astro-framework` *(shared with creative-frontend)*, `astro-wiki-publisher` *(drop the 1-file `astro` stub — superseded)*
-- **Author (if gaps after auditing `astro-framework`'s 27 files):** `astro-ssr-adapters`, `astro-content-collections`, `astro-actions-and-env`
+- **New:** `astro-orchestrator`, `astro-core` (the static/SSR/hybrid decision + content/hydration model)
+- **Spokes:** `astro-framework` *(shared with creative-frontend)*, `astro-wiki-publisher`. The 1-file `astro` stub stays dropped (superseded).
+- **Cross-ref:** animation on Astro pages → creative-frontend (`astro-gsap-scrolltrigger`).
 
 ---
 
-## 6. raycast ⏳ — extensions + UI
+## 6. raycast ✅ — extensions, AI tools, Store publishing
 
-- **New:** `raycast-orchestrator`, `raycast-core`
+**Built 2026-06-05.** Existing spokes were thin (both 1-file; `raycast-ui-skills` is actually the
+Raycast *aesthetic* for your own app, not the extension API) → authored a real core + 2 spokes.
+
+- **New:** `raycast-orchestrator`, `raycast-core` (command types, manifest, @raycast/api, data hooks, build/publish)
 - **Spokes:** `raycast-extension`, `raycast-ui-skills`
-- **Author:** `raycast-ai-extensions`, `raycast-script-commands`, `raycast-store-publishing`
+- **Authored:** `raycast-ai-extensions` (tools[] for Raycast AI), `raycast-store-publishing` (submit + review). `raycast-script-commands` folded into core.
 
 ---
 
@@ -113,7 +118,7 @@ Only `rust-coding-skill` exists (+ Tauri's Rust-bridge spokes to cross-reference
 1. ✅ **creative-frontend** (template)
 2. ✅ **tauri** — flagship; proves "organize at scale," highest install appeal
 3. ✅ **expo** + **react-native** — boundary settled (Expo toolchain+Router UI / RN craft)
-4. **astro** + **raycast** — light organize + small authoring
+4. ✅ **astro** + **raycast** — organize + Raycast authoring (AI + Store)
 5. **rust** — author; unblocks/extends tauri + electron cores
 6. **native-ios**, **electron** — heaviest authoring last
 
