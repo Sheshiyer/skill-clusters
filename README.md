@@ -7,7 +7,8 @@
 <div align="center">
 
 [![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](LICENSE)
-[![Clusters](https://img.shields.io/badge/clusters-6%20live%20·%203%20planned-8b5cf6?style=flat)](#cluster-index)
+[![Clusters](https://img.shields.io/badge/clusters-27%20live-8b5cf6?style=flat)](#cluster-index)
+[![Skills](https://img.shields.io/badge/skills-311-22c55e?style=flat)](skills.sh.json)
 [![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
 [![Stars](https://img.shields.io/github/stars/Sheshiyer/skill-clusters?style=flat&logo=github)](https://github.com/Sheshiyer/skill-clusters/stargazers)
 
@@ -38,13 +39,19 @@ duplicate or contradict each other. Pattern proven by
 | [**react-native**](clusters/react-native) | RN UI, animation, touch, data (toolchain-agnostic) | 4 + 2 | organize | ✅ **live** |
 | [**astro**](clusters/astro) | Static-first sites: islands, content, SSR, publishing | 2 + 2 | organize | ✅ **live** |
 | [**raycast**](clusters/raycast) | Extensions, AI tools, Store publishing | 2 + 4 | organize + author | ✅ **live** |
-| **native-ios** | Swift / SwiftUI / Xcode / App Store | 1 + ~6 | **author** | 🔴 gap |
+| [**native-ios**](clusters/native-ios) | Swift / SwiftUI / concurrency / on-device AI | ECC | extract | ✅ **live** |
+| [**rust**](clusters/rust) | Idiomatic patterns + testing | ECC | extract | ✅ **live** |
 | **electron** | Electron main/renderer, IPC, packaging | 1 + ~5 | **author** | 🔴 gap |
-| **rust** | Cargo, async, CLI, WASM, testing | 1 + ~6 | **author** | 🔴 gap |
 
-*"+N" = new orchestrator + core (and authored spokes for the gap clusters). Full per-cluster
-breakdown in [`docs/ROADMAP.md`](docs/ROADMAP.md). The taxonomy is open — "and things like this"
-(Flutter, Next.js, three.js/WebGL, CLI/TUI…) can each become a cluster.*
+*"+N" = new orchestrator + core. Full per-cluster breakdown in [`docs/ROADMAP.md`](docs/ROADMAP.md).*
+
+### Extracted from ECC (21 clusters · MIT — see [NOTICE](NOTICE))
+
+Re-clustered from [affaan-m/ECC](https://github.com/affaan-m/ECC)'s 251 flat skills into hub-and-spoke
+form (a `<cluster>-orchestrator` + `<cluster>-core` + spokes each), every skill validated through the
+[Skills-Health gate](#single-source-of-truth):
+
+[`ai-agents-meta`](clusters/ai-agents-meta) · [`quality-eval`](clusters/quality-eval) · [`frontend-web`](clusters/frontend-web) · [`python-backend`](clusters/python-backend) · [`jvm`](clusters/jvm) · [`php-laravel`](clusters/php-laravel) · [`systems-languages`](clusters/systems-languages) · [`mobile-flutter`](clusters/mobile-flutter) · [`backend-architecture`](clusters/backend-architecture) · [`databases-data`](clusters/databases-data) · [`devops-infra`](clusters/devops-infra) · [`security`](clusters/security) · [`healthcare`](clusters/healthcare) · [`blockchain-web3`](clusters/blockchain-web3) · [`research-knowledge`](clusters/research-knowledge) · [`business-content`](clusters/business-content) · [`social-media`](clusters/social-media) · [`agentic-ops`](clusters/agentic-ops) · [`supply-chain`](clusters/supply-chain) — plus `rust` + `native-ios` above. See [`docs/ECC-EXTRACTION-PLAN.md`](docs/ECC-EXTRACTION-PLAN.md).
 
 ## Repository layout
 

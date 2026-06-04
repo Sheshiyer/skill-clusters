@@ -115,6 +115,367 @@
         "raycast-ai-extensions",
         "raycast-store-publishing"
       ]
+    },
+    {
+      "title": "Rust (from ECC)",
+      "description": "Route a Rust task to the right skill — idiomatic patterns (ownership, errors, traits, concurrency, crate layout) versus testing (unit, integration, async, property-based, mocking, coverage, TDD). USE WHEN a user is writing, reviewing, refactoring, or testing Rust but hasn't named the specific concern.",
+      "skills": [
+        "rust-orchestrator",
+        "rust-core",
+        "rust-patterns",
+        "rust-testing"
+      ]
+    },
+    {
+      "title": "Native Ios (from ECC)",
+      "description": "Route a native Apple-platform task to the right skill among the iOS specialists — Swift 6.2 concurrency, SwiftUI architecture, actor persistence, protocol-based DI/testing, on-device FoundationModels, Liquid Glass design, and icon assets. USE WHEN a user is building, modernizing, or shipping a native iOS/macOS app in Swift but hasn't named the specific concern.",
+      "skills": [
+        "native-ios-orchestrator",
+        "native-ios-core",
+        "swiftui-patterns",
+        "swift-concurrency-6-2",
+        "swift-actor-persistence",
+        "swift-protocol-di-testing",
+        "foundation-models-on-device",
+        "ios-icon-gen",
+        "liquid-glass-design"
+      ]
+    },
+    {
+      "title": "Ai Agents Meta (from ECC)",
+      "description": "Route an AI-agent engineering task to the right skill among 14 meta specialists — planning a multi-session build, decomposing a plan into an agent chain, orchestrating a squad, running an autonomous loop, auditing/debugging the agent stack, optimizing prompts, and controlling token/cost budget. USE WHEN a user is designing, building, operating, or hardening an LLM-agent system but hasn't named the specific concern.",
+      "skills": [
+        "ai-agents-meta-orchestrator",
+        "ai-agents-meta-core",
+        "agentic-engineering",
+        "agentic-os",
+        "agent-architecture-audit",
+        "agent-introspection-debugging",
+        "prompt-optimizer",
+        "token-budget-advisor",
+        "cost-aware-llm-pipeline",
+        "team-agent-orchestration",
+        "continuous-agent-loop",
+        "dynamic-workflow-mode",
+        "blueprint",
+        "search-first",
+        "plan-orchestrate",
+        "continuous-learning-v2"
+      ]
+    },
+    {
+      "title": "Quality Eval (from ECC)",
+      "description": "Route a quality/testing/evaluation task to the right skill among 12 specialists — eval-driven development, head-to-head agent benchmarking, TDD, the verification gate, E2E (web + Windows desktop), AI-regression and browser QA, error-handling design, performance baselines, write-time linting, and production-readiness audits. USE WHEN a user wants to test, verify, evaluate, benchmark, or harden code or an agent but hasn't named the specific gate.",
+      "skills": [
+        "quality-eval-orchestrator",
+        "quality-eval-core",
+        "eval-harness",
+        "agent-eval",
+        "tdd-workflow",
+        "verification-loop",
+        "e2e-testing",
+        "windows-desktop-e2e",
+        "ai-regression-testing",
+        "error-handling",
+        "production-audit",
+        "plankton-code-quality",
+        "browser-qa",
+        "benchmark"
+      ]
+    },
+    {
+      "title": "Frontend Web (from ECC)",
+      "description": "Route a web-UI task to the right skill among 18 frontend specialists — framework choice (React/Next, Vue/Nuxt, Angular), build tooling (Vite, Turbopack, Bun), motion, accessibility, design direction, and component conversion. USE WHEN building, reviewing, or shipping a web interface but the specific framework or concern hasn't been named yet.",
+      "skills": [
+        "frontend-web-orchestrator",
+        "frontend-web-core",
+        "react-patterns",
+        "react-performance",
+        "react-testing",
+        "frontend-design-direction",
+        "frontend-a11y",
+        "accessibility",
+        "design-system",
+        "make-interfaces-feel-better",
+        "ui-to-vue",
+        "angular-developer",
+        "nextjs-turbopack",
+        "nuxt4-patterns",
+        "vite-patterns",
+        "bun-runtime",
+        "frontend-slides",
+        "motion-foundations",
+        "motion-patterns",
+        "motion-advanced"
+      ]
+    },
+    {
+      "title": "Python Backend (from ECC)",
+      "description": "Route a Python backend task to the right specialist — idiomatic Python, pytest/TDD, the Django stack (patterns, TDD, security, Celery, verification), FastAPI services, and the ML lane (PyTorch, recsys pipelines, MLE workflow). USE WHEN building, testing, securing, or shipping a Python web/ML backend but the specific framework or concern hasn't been named yet.",
+      "skills": [
+        "python-backend-orchestrator",
+        "python-backend-core",
+        "python-patterns",
+        "python-testing",
+        "django-patterns",
+        "django-tdd",
+        "django-verification",
+        "django-security",
+        "django-celery",
+        "fastapi-patterns",
+        "pytorch-patterns",
+        "recsys-pipeline-architect",
+        "mle-workflow"
+      ]
+    },
+    {
+      "title": "Jvm (from ECC)",
+      "description": "Route a JVM task to the right skill among 16 specialists — Kotlin language/coroutines/Exposed/Ktor, Java coding standards, the Spring Boot stack (patterns, TDD, security, verification), the Quarkus stack (patterns, TDD, security, verification), JPA/Hibernate, and Compose Multiplatform UI. USE WHEN a user is building, testing, securing, or shipping a Kotlin or Java service but hasn't named the framework or the specific concern.",
+      "skills": [
+        "jvm-orchestrator",
+        "jvm-core",
+        "kotlin-patterns",
+        "kotlin-coroutines-flows",
+        "kotlin-exposed-patterns",
+        "kotlin-ktor-patterns",
+        "kotlin-testing",
+        "java-coding-standards",
+        "springboot-patterns",
+        "springboot-tdd",
+        "springboot-verification",
+        "springboot-security",
+        "quarkus-patterns",
+        "quarkus-tdd",
+        "quarkus-verification",
+        "quarkus-security",
+        "jpa-patterns",
+        "compose-multiplatform-patterns"
+      ]
+    },
+    {
+      "title": "Php Laravel (from ECC)",
+      "description": "Route a PHP/Laravel task to the right specialist — architecture patterns (controllers → services → actions, Eloquent, queues), test-driven development with Pest/PHPUnit, the pre-PR/pre-deploy verification loop, security hardening (authz, validation, CSRF, uploads), and package discovery. USE WHEN a user is building, testing, hardening, or shipping a Laravel app but hasn't named the specific concern.",
+      "skills": [
+        "php-laravel-orchestrator",
+        "php-laravel-core",
+        "laravel-patterns",
+        "laravel-tdd",
+        "laravel-verification",
+        "laravel-security",
+        "laravel-plugin-discovery"
+      ]
+    },
+    {
+      "title": "Systems Languages (from ECC)",
+      "description": "Route a systems-language task to the right skill among 7 specialists — Go (patterns, testing), C++ (Core Guidelines coding standards, GoogleTest/CTest testing), and Perl (modern 5.36+ patterns, Test2 testing, taint/injection security). USE WHEN a user is writing, reviewing, testing, or hardening Go, C++, or Perl code but hasn't named the language axis or the specific concern.",
+      "skills": [
+        "systems-languages-orchestrator",
+        "systems-languages-core",
+        "golang-patterns",
+        "golang-testing",
+        "cpp-coding-standards",
+        "cpp-testing",
+        "perl-patterns",
+        "perl-testing",
+        "perl-security"
+      ]
+    },
+    {
+      "title": "Mobile Flutter (from ECC)",
+      "description": "Route a Flutter/Dart (and Android/KMP) task to the right specialist — idiomatic patterns, the state-management decision, navigation/networking/codegen wiring, clean-architecture module boundaries, and the review/ship checklist. USE WHEN building, structuring, reviewing, or hardening a Flutter or Kotlin-Multiplatform mobile app but the specific concern hasn't been named.",
+      "skills": [
+        "mobile-flutter-orchestrator",
+        "mobile-flutter-core",
+        "dart-flutter-patterns",
+        "flutter-dart-code-review",
+        "android-clean-architecture"
+      ]
+    },
+    {
+      "title": "Backend Architecture (from ECC)",
+      "description": "Route a backend task to the right skill among 8 server-side specialists — architecture boundaries (hexagonal/ports-and-adapters), REST API design, HTTP connector building, NestJS structure, MCP servers, deployment/CI-CD, and decision records. USE WHEN a user is designing, building, integrating, or shipping a backend service but hasn't named the specific concern.",
+      "skills": [
+        "backend-architecture-orchestrator",
+        "backend-architecture-core",
+        "backend-patterns",
+        "api-design",
+        "api-connector-builder",
+        "mcp-server-patterns",
+        "nestjs-patterns",
+        "hexagonal-architecture",
+        "architecture-decision-records",
+        "deployment-patterns"
+      ]
+    },
+    {
+      "title": "Databases Data (from ECC)",
+      "description": "Route a database/data task to the right skill among the data-layer specialists — PostgreSQL, MySQL/MariaDB, the Prisma ORM, Redis, ClickHouse analytics, cross-engine migrations, and high-throughput ingestion/ETL. USE WHEN a user is designing, querying, optimizing, migrating, or moving data but hasn't named the specific engine or concern.",
+      "skills": [
+        "databases-data-orchestrator",
+        "databases-data-core",
+        "postgres-patterns",
+        "mysql-patterns",
+        "prisma-patterns",
+        "clickhouse-io",
+        "redis-patterns",
+        "database-migrations",
+        "data-throughput-accelerator"
+      ]
+    },
+    {
+      "title": "Devops Infra (from ECC)",
+      "description": "Route a DevOps / infrastructure task to the right specialist among 13 — container & compose patterns, self-hosting clusters, post-deploy canary checks, reproducible dev environments, enterprise network-device diagnostics (Cisco IOS, BGP, interfaces, config validation, Netmiko SSH), and homelab networking (setup, VLANs, Pi-hole DNS, WireGuard VPN). USE WHEN a user is provisioning, diagnosing, segmenting, or shipping infrastructure but hasn't named the specific layer or tool.",
+      "skills": [
+        "devops-infra-orchestrator",
+        "devops-infra-core",
+        "docker-patterns",
+        "cisco-ios-patterns",
+        "netmiko-ssh-automation",
+        "network-bgp-diagnostics",
+        "network-config-validation",
+        "network-interface-health",
+        "homelab-network-setup",
+        "homelab-pihole-dns",
+        "homelab-vlan-segmentation",
+        "homelab-wireguard-vpn",
+        "flox-environments",
+        "uncloud",
+        "canary-watch"
+      ]
+    },
+    {
+      "title": "Security (from ECC)",
+      "description": "Route a security task to the right skill among six specialists — defensive code review, offensive/bounty vulnerability hunting, agent-config (.claude) auditing, source-asset & embedded-dependency scanning, a pre-action fact-forcing gate, and destructive-operation safety locks. USE WHEN a user wants to secure, audit, harden, or attack a codebase or an agent setup but hasn't named the specific concern.",
+      "skills": [
+        "security-orchestrator",
+        "security-core",
+        "security-review",
+        "security-scan",
+        "security-bounty-hunter",
+        "repo-scan",
+        "gateguard",
+        "safety-guard"
+      ]
+    },
+    {
+      "title": "Healthcare (from ECC)",
+      "description": "Route a healthcare-software task to the right skill among four clinical specialists — PHI/PII privacy & access control, EMR/EHR encounter workflows, the CDSS safety engine (drug interactions, dose, NEWS2), and the patient-safety eval harness that gates deploys. USE WHEN building, reviewing, or shipping a clinical/health app but the specific concern (privacy vs. workflow vs. decision-support vs. release gate) hasn't been named.",
+      "skills": [
+        "healthcare-orchestrator",
+        "healthcare-core",
+        "healthcare-phi-compliance",
+        "healthcare-cdss-patterns",
+        "healthcare-emr-patterns",
+        "healthcare-eval-harness"
+      ]
+    },
+    {
+      "title": "Research Knowledge (from ECC)",
+      "description": "Route a research or knowledge task to the right skill among 12 specialists — current-web research, neural discovery, multi-source cited synthesis, systematic literature review, scholarly evaluation, biomedical/patent/genomic databases, codebase onboarding, guided code tours, live docs lookup, and persistent project memory. USE WHEN a user wants to research, investigate, review the literature, look something up, or understand a codebase but hasn't named the specific tool.",
+      "skills": [
+        "research-knowledge-orchestrator",
+        "research-knowledge-core",
+        "deep-research",
+        "exa-search",
+        "research-ops",
+        "scientific-db-pubmed-database",
+        "scientific-db-uspto-database",
+        "scientific-pkg-gget",
+        "scientific-thinking-literature-review",
+        "scientific-thinking-scholar-evaluation",
+        "codebase-onboarding",
+        "code-tour",
+        "documentation-lookup",
+        "ck"
+      ]
+    },
+    {
+      "title": "Business Content (from ECC)",
+      "description": "Route a business-content task to the right skill among 10 specialists — voice profiling, long-form articles, multi-platform content systems, SEO, market/competitor research, launch campaigns, investor decks/memos, investor outreach, lead intelligence, and social-graph ranking. USE WHEN a user is writing, marketing, fundraising, or doing outbound for a product or company but hasn't named the specific concern.",
+      "skills": [
+        "business-content-orchestrator",
+        "business-content-core",
+        "article-writing",
+        "brand-voice",
+        "content-engine",
+        "seo",
+        "market-research",
+        "marketing-campaign",
+        "investor-materials",
+        "investor-outreach",
+        "lead-intelligence",
+        "social-graph-ranker"
+      ]
+    },
+    {
+      "title": "Social Media (from ECC)",
+      "description": "Route a social-media task to the right skill among 8 specialists — making the asset (image/video/audio via fal.ai, explainer animation via Manim, demo capture, video editing, video understanding), adapting copy per platform, and publishing/scheduling to X and 13 networks. USE WHEN a user wants to create, adapt, schedule, or publish social content but hasn't named the specific tool or platform.",
+      "skills": [
+        "social-media-orchestrator",
+        "social-media-core",
+        "x-api",
+        "social-publisher",
+        "crosspost",
+        "fal-ai-media",
+        "videodb",
+        "video-editing",
+        "manim-video",
+        "ui-demo"
+      ]
+    },
+    {
+      "title": "Agentic Ops (from ECC)",
+      "description": "Route a real-world operations task to the right skill among 16 agentic-ops specialists — email, messages, GitHub, Jira, Google Workspace, project flow, unified notifications, terminal/CI, knowledge base, customer + finance billing, automation audit, workspace-surface audit, social connections, and dashboards. USE WHEN an agent must operate, triage, or prove work on a live external surface (inbox, repo, tracker, billing, docs) but the user hasn't named the specific skill.",
+      "skills": [
+        "agentic-ops-orchestrator",
+        "agentic-ops-core",
+        "email-ops",
+        "messages-ops",
+        "github-ops",
+        "jira-integration",
+        "google-workspace-ops",
+        "project-flow-ops",
+        "unified-notifications-ops",
+        "terminal-ops",
+        "knowledge-ops",
+        "customer-billing-ops",
+        "finance-billing-ops",
+        "automation-audit-ops",
+        "workspace-surface-audit",
+        "connections-optimizer",
+        "dashboard-builder",
+        "git-workflow"
+      ]
+    },
+    {
+      "title": "Supply Chain (from ECC)",
+      "description": "Route a supply-chain task to the right specialist among 8 — demand & inventory planning, production scheduling, quality/non-conformance, carrier relationships, logistics exceptions, customs & trade compliance, returns/reverse logistics, and energy procurement. USE WHEN a user is planning, sourcing, making, moving, clearing, or returning goods but hasn't named the specific function.",
+      "skills": [
+        "supply-chain-orchestrator",
+        "supply-chain-core",
+        "carrier-relationship-management",
+        "customs-trade-compliance",
+        "energy-procurement",
+        "inventory-demand-planning",
+        "logistics-exception-management",
+        "production-scheduling",
+        "quality-nonconformance",
+        "returns-reverse-logistics"
+      ]
+    },
+    {
+      "title": "Blockchain Web3 (from ECC)",
+      "description": "Route a blockchain/web3 task to the right specialist among six — Solidity AMM security, autonomous trading-agent security, EVM token-decimal correctness, Node Keccak-256 hashing, prediction-market oracle research, and the cross-cutting market/agent risk review. USE WHEN a user is building, auditing, or wiring an EVM contract, a crypto trading agent, or a prediction-market workflow but hasn't named the specific concern.",
+      "skills": [
+        "blockchain-web3-orchestrator",
+        "blockchain-web3-core",
+        "defi-amm-security",
+        "evm-token-decimals",
+        "llm-trading-agent-security",
+        "prediction-market-oracle-research",
+        "prediction-market-risk-review",
+        "nodejs-keccak256"
+      ]
     }
   ]
 }

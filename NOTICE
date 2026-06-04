@@ -1,0 +1,29 @@
+NOTICE
+======
+
+skill-clusters is MIT-licensed (see LICENSE).
+
+A substantial set of the skills under `skills/` were EXTRACTED and ADAPTED from
+the open-source project ECC ("everything-claude-code" / ecc-universal):
+
+    affaan-m/ECC  —  https://github.com/affaan-m/ECC  —  MIT License
+
+Those skills were re-organized into this repo's hub-and-spoke structure
+(a `<cluster>-orchestrator` + `<cluster>-core` + spokes per cluster) and, where
+noted, lightly edited to read as standalone skills. Where present, each skill's
+`origin:` frontmatter records its provenance.
+
+All credit for the original spoke content belongs to the ECC authors. This
+project's added contribution is the clustering, the authored orchestrator/core
+skills, and the Skills-Health pipeline.
+
+Clusters wholly or substantially extracted from ECC:
+
+    rust · native-ios · ai-agents-meta · quality-eval · frontend-web ·
+    python-backend · jvm · php-laravel · systems-languages · mobile-flutter ·
+    backend-architecture · databases-data · devops-infra · security ·
+    healthcare · blockchain-web3 · research-knowledge · business-content ·
+    social-media · agentic-ops · supply-chain
+
+ECC is distributed under the MIT License; retaining this NOTICE alongside the
+project LICENSE satisfies the attribution requirement.

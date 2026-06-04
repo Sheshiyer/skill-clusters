@@ -46,14 +46,26 @@ function parseFrontmatter(text) {
   if (!text.startsWith('---')) return null;
   const end = text.indexOf('\n---', 3);
   if (end === -1) return null;
-  const block = text.slice(3, end);
+  const block = text.slice(3, end).replace(/\r/g, ''); // tolerate CRLF line endings
+  const lines = block.split('\n');
   const fm = {};
-  for (const line of block.split('\n')) {
-    const m = line.match(/^([A-Za-z_][\w-]*):\s?(.*)$/);
+  for (let i = 0; i < lines.length; i += 1) {
+    const m = lines[i].match(/^([A-Za-z_][\w-]*):\s?(.*)$/);
     if (!m) continue;
     const k = m[1];
     let v = m[2].trim();
-    if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) {
+    // YAML block/folded scalar (> | >- |- >+ |+ with optional indent indicator): collect indented lines
+    if (/^[|>][+-]?\d*$/.test(v)) {
+      const collected = [];
+      let j = i + 1;
+      for (; j < lines.length; j += 1) {
+        if (lines[j].trim() === '') { collected.push(''); continue; }
+        if (/^\s+/.test(lines[j])) collected.push(lines[j].trim());
+        else break;
+      }
+      i = j - 1;
+      v = collected.join(' ').replace(/\s+/g, ' ').trim();
+    } else if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) {
       v = v.slice(1, -1);
     }
     if (!(k in fm)) fm[k] = v;
