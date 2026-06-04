@@ -3,6 +3,8 @@ name: remotion-best-practices
 description: Best practices for Remotion - Video creation in React
 metadata:
   tags: remotion, video, react, animation, composition
+cluster: creative-frontend
+version: 1.0.0
 ---
 
 ## When to use

@@ -1,6 +1,8 @@
 ---
 name: tauri-orchestrator
 description: "Route a Tauri task to the right skill among 40 Tauri specialists — scaffolding, the security/capability model, IPC and the Rust↔frontend bridge, windows/UI chrome, sidecars, plugins, building, signing, per-platform distribution, debugging, and migration. USE WHEN a user is building, configuring, securing, or shipping a Tauri v2 desktop/mobile app but hasn't named the specific concern."
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Orchestrator

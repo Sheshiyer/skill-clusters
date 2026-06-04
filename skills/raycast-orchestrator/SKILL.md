@@ -1,6 +1,8 @@
 ---
 name: raycast-orchestrator
 description: "Route a Raycast task to the right spoke — build an extension/command, build an AI extension (tools the Raycast AI calls), publish to the Store, or design a Raycast-aesthetic UI in your own app. USE WHEN a user wants to work with Raycast but the specific concern isn't named."
+cluster: raycast
+version: 1.0.0
 ---
 
 # Raycast Orchestrator

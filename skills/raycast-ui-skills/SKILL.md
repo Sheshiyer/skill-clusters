@@ -6,6 +6,8 @@ metadata:
   author: design-skills
   version: "1.0.0"
   source: https://raycast.com
+cluster: raycast
+version: 1.0.0
 ---
 
 # Raycast UI Skills

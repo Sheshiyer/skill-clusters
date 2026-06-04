@@ -1,6 +1,8 @@
 ---
 name: creative-frontend-orchestrator
 description: "Route a creative-frontend task to the correct spoke — in-browser animation (GSAP ScrollTrigger, Anime.js, web-motion-library) over an Astro substrate, or render-time programmatic video (Remotion). USE WHEN a user wants motion, animation, scroll effects, or video on the web but hasn't named the specific tool, or needs to decide between a live interactive effect and a rendered video file."
+cluster: creative-frontend
+version: 1.0.0
 ---
 
 # Creative Frontend Orchestrator

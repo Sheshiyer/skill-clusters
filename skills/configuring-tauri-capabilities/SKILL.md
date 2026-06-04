@@ -1,6 +1,8 @@
 ---
 name: configuring-tauri-capabilities
 description: Guides users through configuring Tauri capabilities for security and access control, covering capability files, permissions, per-window security boundaries, and platform-specific configurations.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Capabilities Configuration

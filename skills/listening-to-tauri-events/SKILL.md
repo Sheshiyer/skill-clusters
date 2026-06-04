@@ -1,6 +1,8 @@
 ---
 name: listening-to-tauri-events
 description: Teaches how to subscribe to and listen for Tauri events in the frontend using the events API, including typed event handlers and cleanup patterns.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Listening to Tauri Events in the Frontend

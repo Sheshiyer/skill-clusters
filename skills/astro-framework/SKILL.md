@@ -7,6 +7,8 @@ metadata:
   version: "2.0.0"
   category: framework
   tags: astro, islands, ssr, ssg, content-collections, content-layer, view-transitions, server-islands, sessions, i18n, actions, astro-env
+cluster: astro
+version: 1.0.0
 ---
 
 # Astro Framework Specialist

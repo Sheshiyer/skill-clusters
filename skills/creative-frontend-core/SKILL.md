@@ -1,6 +1,8 @@
 ---
 name: creative-frontend-core
 description: "Shared reference for the creative-frontend cluster: the in-browser-vs-video decision matrix, in-browser tool selection, prefers-reduced-motion baseline, GPU/performance budget, Astro hydration boundaries for animation, and version matrix. USE WHEN deciding how to implement web motion/animation/video, or for the cross-cutting rules every spoke (GSAP, Anime.js, web-motion-library, Remotion) shares."
+cluster: creative-frontend
+version: 1.0.0
 ---
 
 # Creative Frontend Core

@@ -1,6 +1,8 @@
 ---
 name: astro-gsap-scrolltrigger
 description: Use when adding, fixing, or reviewing GSAP ScrollTrigger behavior in Astro pages, especially with view transitions, static routes, client scripts, reduced motion, cleanup, or browser-only lifecycle constraints.
+cluster: creative-frontend
+version: 1.0.0
 ---
 
 # Astro GSAP ScrollTrigger

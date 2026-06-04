@@ -5,6 +5,8 @@ compatibility: Requires SLEEK_API_KEY environment variable. Network access limit
 metadata:
   requires-env: SLEEK_API_KEY
   allowed-hosts: https://sleek.design
+cluster: react-native
+version: 1.0.0
 ---
 
 # Designing with Sleek

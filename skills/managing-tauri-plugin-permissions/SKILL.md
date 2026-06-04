@@ -1,6 +1,8 @@
 ---
 name: managing-tauri-plugin-permissions
 description: Guides users through configuring Tauri plugin permissions, capabilities, and security. Covers platform-specific capabilities, window-targeted permissions, using official and community plugin permissions, and writing custom plugin permissions with scopes.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Managing Tauri Plugin Permissions

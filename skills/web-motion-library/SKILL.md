@@ -1,6 +1,8 @@
 ---
 name: web-motion-library
 description: Select and implement interactive web animations, 3D elements, and pre-built React/Tailwind/Framer Motion components for landing pages and hero sections. Use when adding hover effects, morphing shapes, hero sections with background video, or choosing from Magic UI's 50+ animated component library.
+cluster: creative-frontend
+version: 1.0.0
 ---
 
 # Web Motion Library

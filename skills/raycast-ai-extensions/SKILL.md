@@ -1,6 +1,8 @@
 ---
 name: raycast-ai-extensions
 description: "Build Raycast AI extensions — expose tools that Raycast AI can call to read and act on behalf of the user. Covers the tools[] manifest, tool function shape, AI instructions, confirmations for side-effecting tools, and evals. USE WHEN making an extension AI-callable or building tools for Raycast AI. Defer exact API to developers.raycast.com/ai."
+cluster: raycast
+version: 1.0.0
 ---
 
 # Raycast AI Extensions

@@ -1,6 +1,8 @@
 ---
 name: raycast-extension
 description: Build Raycast extensions with React and TypeScript. Use when the user asks to create a Raycast extension, command, or tool.
+cluster: raycast
+version: 1.0.0
 ---
 
 # Raycast Extension Development

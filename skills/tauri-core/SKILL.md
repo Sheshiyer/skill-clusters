@@ -1,6 +1,8 @@
 ---
 name: tauri-core
 description: "Shared reference for the Tauri cluster: the v2 security model (capabilities → permissions → scopes), the IPC trust boundary and command contract, the process/runtime model, CSP, and the per-platform distribution matrix. USE WHEN configuring Tauri permissions/scopes/CSP, wiring IPC commands, or planning a release — the interlocking rules every Tauri spoke shares."
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Core

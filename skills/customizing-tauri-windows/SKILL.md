@@ -1,6 +1,8 @@
 ---
 name: customizing-tauri-windows
 description: Guides users through Tauri window customization including custom titlebar implementation, transparent windows, window decorations, drag regions, window menus, submenus, and menu keyboard shortcuts for desktop applications.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Window Customization

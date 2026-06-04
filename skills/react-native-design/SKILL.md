@@ -1,6 +1,8 @@
 ---
 name: react-native-design
 description: Master React Native styling, navigation, and Reanimated animations for cross-platform mobile development. Use when building React Native apps, implementing navigation patterns, or creating performant animations.
+cluster: react-native
+version: 1.0.0
 ---
 
 # React Native Design

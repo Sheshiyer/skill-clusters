@@ -1,6 +1,8 @@
 ---
 name: migrating-tauri-apps
 description: Assists users with migrating Tauri applications from v1 to v2 stable, and from v2 beta to v2 stable, covering breaking changes, configuration updates, API migrations, and plugin system changes.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Migration Guide

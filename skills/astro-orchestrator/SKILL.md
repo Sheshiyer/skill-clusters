@@ -1,6 +1,8 @@
 ---
 name: astro-orchestrator
 description: "Route an Astro task to the right spoke — building the site (components, islands/hydration, content, SSR, actions, i18n) or publishing a docs/wiki/press-kit site. USE WHEN working on an Astro project but the specific concern isn't named, or when deciding the rendering mode (static vs on-demand vs hybrid). For scroll/animation/video on an Astro page, hand off to the creative-frontend cluster."
+cluster: astro
+version: 1.0.0
 ---
 
 # Astro Orchestrator

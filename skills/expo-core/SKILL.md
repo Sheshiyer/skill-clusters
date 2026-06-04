@@ -1,6 +1,8 @@
 ---
 name: expo-core
 description: "Shared reference for the Expo cluster: EAS (Build/Submit/Update/Hosting), app config + config plugins, the Expo Go vs dev-client vs prebuild/CNG spectrum, SDK version policy, and Expo Router structure. USE WHEN configuring an Expo app, planning an EAS release, or upgrading the SDK — the platform model every Expo spoke shares. Pairs with react-native-core for the underlying RN runtime."
+cluster: expo
+version: 1.0.0
 ---
 
 # Expo Core

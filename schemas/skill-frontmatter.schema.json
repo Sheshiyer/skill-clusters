@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Sheshiyer/skill-clusters/schemas/skill-frontmatter.schema.json",
+  "title": "Skill Frontmatter",
+  "description": "The contract every SKILL.md frontmatter must satisfy. Enforced by scripts/skills-health.mjs before link-agents.sh deploys. This is the drift firewall: a skill that fails the schema never reaches the harness.",
+  "type": "object",
+  "required": ["name", "description"],
+  "additionalProperties": true,
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "kebab-case; MUST equal the skill's directory name (the skills.sh @handle)."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 40,
+      "description": "What it does + a 'USE WHEN ...' trigger. The trigger is the routing key the orchestrator matches intent against."
+    },
+    "cluster": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "The cluster this skill belongs to (matches a skills.sh.json grouping). Recommended."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(-[0-9A-Za-z.]+)?$",
+      "description": "semver. Recommended; prevents the version-drift ECC suffered (only 25/251 had it)."
+    },
+    "origin": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Attribution for extracted/imported skills, e.g. 'affaan-m/ECC (MIT)'. Required by convention for anything not authored here."
+    },
+    "supersedes": {
+      "type": "string",
+      "description": "If set, names a skill this replaces. The health gate ERRORS if that skill still exists live (no superseded-but-not-removed, ECC's churn bug)."
+    }
+  }
+}

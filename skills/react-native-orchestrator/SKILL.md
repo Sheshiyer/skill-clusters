@@ -1,6 +1,8 @@
 ---
 name: react-native-orchestrator
 description: "Route a React Native craft task to the right spoke — styling/navigation/Reanimated animation, touch/gesture/haptics, data fetching, or full screen/app visual design. USE WHEN building React Native UI and interaction (toolchain-agnostic). For the Expo toolchain (EAS, dev client, Expo Router, native modules) hand off to the expo cluster; for native SwiftUI/iOS, the native-ios cluster."
+cluster: react-native
+version: 1.0.0
 ---
 
 # React Native Orchestrator

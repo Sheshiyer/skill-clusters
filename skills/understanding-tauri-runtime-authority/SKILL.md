@@ -1,6 +1,8 @@
 ---
 name: understanding-tauri-runtime-authority
 description: Explains how the Tauri runtime authority enforces security policies during application execution, covering ACL-based access control, capability resolution at runtime, scope injection, and command validation for secure IPC.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Runtime Authority

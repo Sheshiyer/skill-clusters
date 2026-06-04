@@ -1,6 +1,8 @@
 ---
 name: calling-rust-from-tauri-frontend
 description: Guides the user through calling Rust backend functions from the Tauri frontend using the invoke function, defining commands with the #[tauri::command] attribute, passing arguments, returning values, handling errors, and implementing async IPC communication.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Calling Rust from Tauri Frontend

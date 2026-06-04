@@ -1,6 +1,8 @@
 ---
 name: mobile-touch
 description: Use when designing iOS/Android gestures, haptic feedback, touch interactions, or native mobile animations.
+cluster: react-native
+version: 1.0.0
 ---
 
 # Mobile Touch Animation

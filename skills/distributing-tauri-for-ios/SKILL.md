@@ -1,6 +1,8 @@
 ---
 name: distributing-tauri-for-ios
 description: Guides users through distributing Tauri applications to the iOS App Store, including Apple Developer enrollment, Xcode configuration, provisioning profiles, code signing, TestFlight beta testing, and App Store submission processes.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Distributing Tauri Apps for iOS

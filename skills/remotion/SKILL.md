@@ -1,6 +1,8 @@
 ---
 name: remotion
 description: Programmatic video creation with React. USE WHEN video, animation, motion graphics, video rendering, React video, intro video, YouTube video, TikTok video, video production, render video.
+cluster: creative-frontend
+version: 1.0.0
 ---
 
 ## 🚨 MANDATORY: Voice Notification (REQUIRED BEFORE ANY ACTION)

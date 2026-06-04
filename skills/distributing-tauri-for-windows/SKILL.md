@@ -1,6 +1,8 @@
 ---
 name: distributing-tauri-for-windows
 description: Guides users through distributing Tauri applications on Windows, including creating MSI and NSIS installers, customizing installer behavior, configuring WebView2 installation modes, and submitting apps to the Microsoft Store.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Distributing Tauri Applications for Windows

@@ -1,6 +1,8 @@
 ---
 name: configuring-tauri-csp
 description: Guides users through configuring Content Security Policy (CSP) in Tauri v2 applications to prevent XSS attacks and enhance security by restricting resource loading.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Content Security Policy (CSP) Configuration

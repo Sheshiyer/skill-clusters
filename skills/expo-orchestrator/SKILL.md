@@ -1,6 +1,8 @@
 ---
 name: expo-orchestrator
 description: "Route an Expo task to the right spoke across the app lifecycle — dev environment (dev client, NativeWind), Expo Router app-building, in-app API routes, native modules, EAS build/submit/update, and SDK upgrades. USE WHEN building or shipping an Expo / React Native app with the Expo toolchain but the specific step isn't named. For RN UI/animation/gesture craft that isn't Expo-specific, hand off to the react-native cluster."
+cluster: expo
+version: 1.0.0
 ---
 
 # Expo Orchestrator

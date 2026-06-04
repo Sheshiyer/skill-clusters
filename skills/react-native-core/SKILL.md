@@ -1,6 +1,8 @@
 ---
 name: react-native-core
 description: "Shared reference for the React Native cluster: the New Architecture (Fabric/TurboModules/JSI/bridgeless), styling approaches, navigation options, the Reanimated + Gesture Handler animation stack, platform differences, and performance rules. USE WHEN making RN UI/interaction decisions — the runtime model every RN spoke shares. Pairs with expo-core for the toolchain."
+cluster: react-native
+version: 1.0.0
 ---
 
 # React Native Core

@@ -1,6 +1,8 @@
 ---
 name: understanding-tauri-ecosystem-security
 description: Guides developers through Tauri ecosystem security practices including security auditing, dependency management, vulnerability reporting, and organizational security measures for building secure desktop applications.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Understanding Tauri Ecosystem Security

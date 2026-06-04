@@ -1,6 +1,8 @@
 ---
 name: calling-frontend-from-tauri-rust
 description: Guides developers through Tauri v2 event system for calling frontend from Rust, covering emit functions, event payloads, IPC channels, and JavaScript evaluation for bi-directional Rust-frontend communication.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Calling Frontend from Tauri Rust

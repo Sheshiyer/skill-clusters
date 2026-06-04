@@ -1,6 +1,8 @@
 ---
 name: astro-wiki-publisher
 description: Use when publishing or hardening an Astro docs/wiki/press-kit site with Markdown or MDX content, generated routes, artifact data, public copy QA, browser verification, Vercel or Cloudflare deploy checks, or README/docs media outputs.
+cluster: astro
+version: 1.0.0
 ---
 
 # Astro Wiki Publisher

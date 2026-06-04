@@ -1,6 +1,8 @@
 ---
 name: raycast-store-publishing
 description: "Package and submit a Raycast extension to the Raycast Store — manifest metadata, icon and screenshots, changelog/versioning, the publish flow (PR to the extensions repo), and review-guideline readiness. USE WHEN preparing to publish, updating, or passing review for a Raycast extension. Defer exact requirements to developers.raycast.com."
+cluster: raycast
+version: 1.0.0
 ---
 
 # Raycast Store Publishing

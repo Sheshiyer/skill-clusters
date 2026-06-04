@@ -1,0 +1,17 @@
+{
+  "name": "skill-clusters",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hub-and-spoke agent-skill clusters, one per stack — with a structural Skills-Health drift gate.",
+  "license": "MIT",
+  "scripts": {
+    "health": "node scripts/skills-health.mjs",
+    "health:json": "node scripts/skills-health.mjs --json",
+    "normalize": "node scripts/skills-normalize.mjs",
+    "link": "bash scripts/link-agents.sh",
+    "link:apply": "bash scripts/link-agents.sh --apply"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

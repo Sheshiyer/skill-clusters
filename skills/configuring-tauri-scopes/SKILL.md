@@ -1,6 +1,8 @@
 ---
 name: configuring-tauri-scopes
 description: Guides users through configuring Tauri command scopes for security, including filesystem restrictions, URL patterns, dynamic scope management, and capability-based access control.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Command Scopes

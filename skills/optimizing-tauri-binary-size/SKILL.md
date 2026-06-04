@@ -1,6 +1,8 @@
 ---
 name: optimizing-tauri-binary-size
 description: Guides users through Tauri binary size optimization techniques to produce small, efficient desktop application bundles using Cargo profile settings and build configurations.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Binary Size Optimization

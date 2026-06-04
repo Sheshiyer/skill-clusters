@@ -1,6 +1,8 @@
 ---
 name: embedding-tauri-sidecars
 description: Teaches the assistant how to embed and execute external binaries (sidecars) in Tauri applications, including configuration, cross-platform executable naming, and Rust/JavaScript APIs for spawning sidecar processes.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Sidecars: Embedding External Binaries

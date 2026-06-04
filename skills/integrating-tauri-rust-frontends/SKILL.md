@@ -1,6 +1,8 @@
 ---
 name: integrating-tauri-rust-frontends
 description: Guides the user through integrating Rust-based WASM frontend frameworks with Tauri v2, covering Leptos and Trunk setup, WASM compilation configuration, Cargo.toml dependencies, Trunk.toml bundler settings, and withGlobalTauri API access.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Rust/WASM Frontend Integration

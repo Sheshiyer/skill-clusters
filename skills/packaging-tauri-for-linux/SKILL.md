@@ -1,6 +1,8 @@
 ---
 name: packaging-tauri-for-linux
 description: Guides users through packaging Tauri v2 applications for Linux distributions including AppImage, Debian (.deb), RPM, Flatpak, Snap, and AUR submission.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Packaging Tauri Applications for Linux

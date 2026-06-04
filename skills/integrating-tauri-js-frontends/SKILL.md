@@ -1,6 +1,8 @@
 ---
 name: integrating-tauri-js-frontends
 description: Guides Claude through configuring JavaScript frontend frameworks for Tauri v2 desktop applications, including Next.js, Nuxt, Qwik, SvelteKit, and Vite with proper SSG setup, tauri.conf.json settings, and framework-specific configurations.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri v2 JavaScript Frontend Integration

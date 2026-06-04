@@ -1,6 +1,8 @@
 ---
 name: adding-tauri-splashscreen
 description: Guides the user through adding a Tauri splashscreen, splash screen, loading screen, or startup screen to their application. Covers configuration, custom splash HTML, closing the splash when ready, and styling.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Splashscreen Implementation

@@ -1,6 +1,8 @@
 ---
 name: testing-tauri-apps
 description: Guides developers through testing Tauri applications including unit testing with mock runtime, mocking Tauri APIs, WebDriver end-to-end testing with Selenium and WebdriverIO, and CI integration with GitHub Actions.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Testing Tauri Applications

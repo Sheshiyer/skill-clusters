@@ -1,6 +1,8 @@
 ---
 name: astro-core
 description: "Shared reference for the Astro cluster: the rendering-mode decision (static / on-demand SSR / hybrid + server islands), hydration directives, the Content Layer & collections model, astro:env / sessions / actions conventions, and SSR adapter selection. USE WHEN deciding how an Astro page renders or where data comes from — the cross-cutting model the Astro spokes share. Implementation depth lives in astro-framework."
+cluster: astro
+version: 1.0.0
 ---
 
 # Astro Core

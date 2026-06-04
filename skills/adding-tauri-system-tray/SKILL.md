@@ -1,6 +1,8 @@
 ---
 name: adding-tauri-system-tray
 description: Guides the user through implementing Tauri system tray functionality, including tray icon setup, tray menu creation, handling tray events, and updating the tray at runtime in the notification area.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri System Tray Implementation

@@ -1,6 +1,8 @@
 ---
 name: raycast-core
 description: "Shared reference for the Raycast cluster: command types (view / no-view / menu-bar), the @raycast/api component & navigation model, the package.json manifest, preferences, data/storage hooks, and the build/develop/publish flow. USE WHEN building a Raycast extension and you need the cross-cutting model the spokes share. Exact API signatures: defer to developers.raycast.com."
+cluster: raycast
+version: 1.0.0
 ---
 
 # Raycast Core

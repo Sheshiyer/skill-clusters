@@ -1,6 +1,8 @@
 ---
 name: signing-tauri-apps
 description: Guides the user through Tauri application code signing and notarization for Android, iOS, Linux, macOS, and Windows platforms including certificate setup and configuration.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Tauri Code Signing Skill

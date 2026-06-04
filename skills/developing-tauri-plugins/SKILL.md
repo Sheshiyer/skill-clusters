@@ -1,6 +1,8 @@
 ---
 name: developing-tauri-plugins
 description: Guides the user through Tauri plugin development, including creating plugin extensions, configuring permissions, and building mobile plugins for iOS and Android platforms.
+cluster: tauri
+version: 1.0.0
 ---
 
 # Developing Tauri Plugins
