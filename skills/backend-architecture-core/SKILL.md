@@ -43,6 +43,9 @@ the wrong way — put a port between them.
 Validate at the transport boundary; never trust an inbound request. Keep controllers thin —
 they translate transport ⇄ use case, nothing more.
 
+This cluster owns the app-layer view of data — the repository adapter, transactions via ports, the
+API over it. A pure DB query, indexing, migration, or engine-tuning ask belongs to `databases-data`.
+
 ## 3. API & transport conventions
 
 - **REST**: nouns + plurals for resources, correct status codes, cursor/offset pagination,

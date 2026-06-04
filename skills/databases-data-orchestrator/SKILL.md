@@ -49,6 +49,14 @@ read it before picking a store or planning a schema change.
 3. Delegate to the spoke(s). Multi-step asks fan out in lifecycle order (e.g. "ship a new column" → `database-migrations` plan → engine spoke DDL → backfill via `data-throughput-accelerator`).
 4. Return: chosen spoke(s), the store/schema decision implied, the migration or correctness gate required, and the next action.
 
+## Sibling clusters (hand off, don't absorb)
+
+This cluster owns engine/query/migration **internals**. Hand off when the task is about
+the layer above the database:
+
+- **App-layer repository pattern, transaction/unit-of-work boundaries, service-layer data access** → `backend-architecture`.
+- **ORM work lives with its framework:** Eloquent → `php-laravel`; JPA/Hibernate → `jvm`. Prisma stays here (`prisma-patterns`) as the data-layer ORM this cluster owns.
+
 ## Guardrails
 
 See `databases-data-core`. In short: **match the store to the access pattern** — don't

@@ -51,3 +51,15 @@ question from stale memory when a fresh search is cheap; never mix inference int
 without labeling it; never spin up a heavyweight research pass when local code, docs, or `ck`
 memory already hold the answer; always date freshness-sensitive claims and name your sources.
 The cluster's value is *trustworthy, traceable* answers — don't trade that for speed.
+
+## Boundaries
+
+- **"Research this" — which spoke?** Default a bare, lane-unclear "research this" to
+  `research-ops`, which picks the rung. Skip it and go direct when the lane is already obvious:
+  `deep-research` for a thorough multi-source cited report on a *general/web* topic; the
+  `scientific-*` spokes (`scientific-thinking-literature-review`, `-scholar-evaluation`,
+  `scientific-db-pubmed-database`, `-uspto-database`, `scientific-pkg-gget`) when the subject is
+  *academic / biomedical / IP / genomic* and needs scholarly rigor or a citable database.
+- **Codebase, not the web.** `codebase-onboarding` and `code-tour` operate on *this* repo's own
+  source — mapping it and authoring `.tour` walkthroughs. They are not web research; for external
+  topics use `deep-research` / `exa-search` instead.

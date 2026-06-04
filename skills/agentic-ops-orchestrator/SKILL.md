@@ -62,6 +62,16 @@ the secrets/PII guardrails — lives in `agentic-ops-core`; read it before any l
 3. **Delegate to the spoke(s).** Multi-surface asks fan out in evidence order, not parallel-blind — e.g. "fix the CI failure and tell the team" → `terminal-ops` (prove the fix) → `unified-notifications-ops` (route the result). "Audit first" asks (`automation-audit-ops`, `workspace-surface-audit`) run **before** any remediation spoke.
 4. **Return:** chosen spoke(s), the surface(s) touched, the live-state evidence captured, and the exact status word + next action.
 
+## Sibling clusters (when the task outgrows operations)
+
+This cluster *operates* live surfaces; hand off when the task becomes *engineering*, not ops:
+
+- **Deep git/CI internals** — beyond `github-ops`/`terminal-ops` live operation (pipeline design, build/release architecture, runner/infra config) → `devops-infra-orchestrator`; service/API/data-layer design behind the repo → `backend-architecture-orchestrator`.
+- **Billing/revenue beyond ops truth** — `finance-billing-ops` owns the operator revenue snapshot; the *system* that produces it (schema, pricing service, data pipelines) belongs to `backend-architecture-orchestrator` and `databases-data-orchestrator`.
+- **Hardening a surface** — auth, secrets management, or vulnerability review of the repo/billing/notification stack → `security-orchestrator`.
+
+Stay in agentic-ops for *operating and proving* the surface; route out once the work is *building* it.
+
 ## Guardrails
 
 See `agentic-ops-core`. In short: **read before you write** — resolve the exact surface and inspect

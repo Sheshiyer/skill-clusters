@@ -43,6 +43,19 @@ before triaging a finding or deciding whether something is exploitable.
 If the ask is broad ("make this secure"), default to `security-review` for the code path and
 offer `security-scan` for the agent config — they cover the two most common surfaces.
 
+## Sibling clusters (framework-native security)
+
+This cluster owns **cross-cutting** security — review, scan, bounty — across any stack. When the
+concern is bound to a specific framework or domain, hand off to that cluster's own security spoke:
+
+- Python/Django → `django-security` (cluster `python-backend`)
+- PHP/Laravel → `laravel-security` (cluster `php-laravel`)
+- JVM (Spring Boot / Quarkus) → `springboot-security` / `quarkus-security` (cluster `jvm`)
+- On-chain / smart contracts → cluster `blockchain-web3` (e.g. `defi-amm-security`)
+- Desktop (Electron) → `electron-security` (cluster `electron`)
+
+Use those for in-framework hardening; route back here for stack-agnostic code review, config/asset scanning, or exploitability triage.
+
 ## Standard flow
 
 1. Place the task on **posture × surface**: are we *defending or attacking*, and is the surface *code, agent-config, or runtime*?

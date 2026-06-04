@@ -29,6 +29,10 @@ read it before drawing a module boundary, designing an endpoint, or wiring an in
 - Deploy, containerize, CI/CD, health checks, rollback, production readiness → `deployment-patterns`
 - Record an architectural decision (context, alternatives, rationale) → `architecture-decision-records`
 
+## Sibling clusters
+
+- A pure DB query, indexing, migration, or engine-tuning ask → `databases-data`. This cluster owns app-layer data patterns (repository, transactions via ports, API design over the data), not DB engine internals.
+
 ## Standard Operating Flow
 
 1. Locate the task: which layer (domain → application → adapter → transport → deploy) and which concern.

@@ -97,5 +97,8 @@ Prompt caching, retry-with-backoff, and budget tracking are baseline, not option
 - **Route by complexity**: cheapest model/tier that passes the gate; caching + retries baseline.
 - **Human at the handoff**: every orchestration boundary keeps a decision point.
 - **Generative advisors stay advisory**: prompt/plan emitters never self-execute.
+- **Sibling cluster**: this cluster owns eval-first *discipline*; for the eval harness / agent
+  benchmarking *tooling* itself → `quality-eval` cluster (`agent-eval`, `eval-harness`,
+  `verification-loop`, `benchmark`, `production-audit`).
 - This cluster is the **meta** layer — for a concrete domain agent (scraping, trading, a product
   feature), build it *with* these patterns rather than reaching for a one-off domain skill.

@@ -43,11 +43,10 @@ transactions. That single fact drives every rule below.
 | LLM/agent that touches a wallet or trades | `llm-trading-agent-security` |
 | Hashing / keccak256 utility | `nodejs-keccak256` |
 | Prediction-market oracle / risk research | `prediction-market-oracle-research`, `prediction-market-risk-review` |
-| Itô-basket / market-intelligence research | `ito-basket-compare`, `ito-data-atlas-agent`, `ito-market-intelligence`, `ito-trade-planner` |
 
 ## 4. Non-advisory stance (hard guardrail)
 
-The prediction-market and `ito-*` / trading spokes produce **research and risk analysis, not
+The prediction-market and trading spokes produce **research and risk analysis, not
 financial advice**. Never present an output as a recommendation to buy/sell, never auto-execute a
 trade or move funds, and always surface assumptions + downside/risk. An agent with wallet access
 (`llm-trading-agent-security`) must gate every value-moving action behind explicit human confirmation.

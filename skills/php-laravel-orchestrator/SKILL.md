@@ -53,6 +53,19 @@ pipeline so no two spokes contradict each other.
 - Find/evaluate a Composer package, check maintenance & version compatibility →
   `laravel-plugin-discovery`
 
+## Sibling clusters
+
+Laravel owns the **app layer** (request flow, Eloquent, queues, auth-in-app). Defer the edges:
+
+- **`frontend-web`** — Inertia/Vue (or Blade-coupled) UI components, client-side state, and asset
+  bundling once you cross from the controller response into the browser.
+- **`databases-data`** — DB engine internals, query-plan/index tuning, and migration mechanics
+  below Eloquent (Laravel models the schema; this cluster models the engine).
+- **`devops-infra`** — deploy, queue workers, and scheduler infrastructure (containers, supervisor,
+  cron/runtime hosting) — Laravel defines the jobs; this cluster runs them.
+- **`security`** — cross-framework / infrastructure hardening beyond the app's authz, validation,
+  and headers (network, secrets management, supply-chain) that `laravel-security` doesn't cover.
+
 ## Standard flow
 
 1. Locate the task on the lifecycle (build → test → verify → ship) and the concern.

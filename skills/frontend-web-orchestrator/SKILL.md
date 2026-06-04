@@ -48,7 +48,7 @@ picking a framework or wiring SSR-sensitive code.
 - **"Vue / Nuxt"** → `nuxt4-patterns`; converting designs to Vue components → `ui-to-vue`
 - **"Angular"** → `angular-developer` (everything Angular routes here; it carries its own reference set)
 - **"Add an animation / transition"** → `motion-foundations` FIRST, then `motion-patterns`; gestures/SVG/imperative → `motion-advanced`
-- **"Make it accessible"** → `accessibility` for the WCAG standard, `frontend-a11y` for the React implementation
+- **"Make it accessible"** → `accessibility` for the WCAG standard (browser DOM/ARIA), `frontend-a11y` for the React implementation
 - **"Make it look better / more polished / on-brand"** → `make-interfaces-feel-better` + `frontend-design-direction` + `design-system`
 - **"Bundler / dev server / monorepo tooling"** → `vite-patterns` or `nextjs-turbopack`; runtime/package-manager → `bun-runtime`
 - **"Build a deck / slides"** → `frontend-slides`
@@ -60,6 +60,16 @@ picking a framework or wiring SSR-sensitive code.
 3. **Layer cross-cutting concerns** in order: accessibility (`frontend-a11y` + `accessibility`) → motion (`motion-foundations` → `motion-patterns`/`motion-advanced`) → polish (`make-interfaces-feel-better`, `design-system`).
 4. **Tooling & verification** — wire the bundler/runtime (`vite-patterns` / `nextjs-turbopack` / `bun-runtime`); verify with `react-testing`.
 5. **Return**: chosen spoke(s), the rendering model implied (SSR/RSC sensitivity), the a11y + reduced-motion obligations, and the next action.
+
+## Sibling clusters
+
+This cluster is **browser UI only** (DOM, CSS, web frameworks). For **native mobile UI**, hand off — don't try to route React/Vue web idioms onto a device screen:
+
+- **React Native screens / components** → `react-native` cluster
+- **Expo / managed React Native apps** → `expo` cluster
+- **Flutter / Dart UI** → `mobile-flutter` cluster
+
+The `accessibility` spoke here is the WCAG **spec/audit** authority and states cross-platform principles, but implementation in this cluster is browser DOM/ARIA; native a11y belongs to the mobile clusters above.
 
 ## Guardrails
 

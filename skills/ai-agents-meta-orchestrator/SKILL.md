@@ -53,7 +53,8 @@ autonomous loop, granting tools, or routing by model cost.
 5. **"It's misbehaving / regressed / loops forever"** → `agent-architecture-audit` to localize the layer, then `agent-introspection-debugging` to recover.
 6. **"It's too expensive / too slow / too verbose"** → `cost-aware-llm-pipeline` (API spend), `token-budget-advisor` (per-answer depth), `prompt-optimizer` (wasteful prompts).
 7. **"Make it learn from itself"** → `continuous-learning-v2`.
-8. **Unsure / cross-cutting** → pull the model from `ai-agents-meta-core`, then route.
+8. **"Build/run the eval harness or benchmark the agent itself"** → that *tooling* lives in the `quality-eval` cluster (`agent-eval`, `eval-harness`, `verification-loop`, `benchmark`, `production-audit`); this cluster owns eval-first *discipline*, not the harness.
+9. **Unsure / cross-cutting** → pull the model from `ai-agents-meta-core`, then route.
 
 ## Standard flow
 

@@ -55,6 +55,10 @@ deciding what counts as "done" or wiring a measurement loop.
 - Format + lint on every edit → `plankton-code-quality`
 - "Is it ready to ship / what breaks in prod?" → `production-audit`
 
+## Sibling clusters
+
+- **Language/stack-native tests** — for a specific language or stack, defer to that cluster's `*-testing` spoke: `python-testing` (`python-backend`), `rust-testing` (`rust`), `react-testing` (`frontend-web`), `golang-testing` / `cpp-testing` / `perl-testing` (`systems-languages`), `kotlin-testing` (`jvm`), `swift-protocol-di-testing` (`native-ios`), `testing-tauri-apps` (`tauri`). This cluster owns the language-agnostic discipline (TDD, the eval harness, the four gates) — not per-stack test syntax or framework idioms.
+
 ## Standard flow
 
 1. Locate the task: which **gate stage** (write-time → test → verify → benchmark → ship) and which **subject** (code, a web/desktop UI, or an agent).

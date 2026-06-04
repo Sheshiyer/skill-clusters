@@ -59,7 +59,7 @@ CREATE the asset ──> ADAPT the copy ──> PUBLISH
 |---|---|---|---|
 | X / Twitter | `x-api` (direct) or `social-publisher` | compressed; thread only if one post would collapse it; no filler hashtags | image/video via v1.1 media upload |
 | LinkedIn (profile / page) | `social-publisher` | add only outside-niche context; no forced founder-reflection | image/video, doc carousels |
-| Threads | `social-publisher` | readable, direct; no fake hyper-casual creator copy | image/video |
+| Threads | `crosspost` adapt + client | readable, direct; no fake hyper-casual creator copy | image/video |
 | Bluesky | `crosspost` adapt + client | concise, preserve cadence; no feed-gaming | image |
 | Instagram / TikTok / YouTube / Reddit / Facebook / WordPress / Discord / Telegram / Pinterest | `social-publisher` | platform-native, per its norms | media uploaded as assets first |
 

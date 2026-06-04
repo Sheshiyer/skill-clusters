@@ -63,7 +63,7 @@ motion-foundations (tokens · springs · perf rules · reduced-motion · SSR saf
 
 Two altitudes, both required:
 
-- **Standard** → `accessibility`: WCAG 2.2 AA — POUR principles, ≥24×24px target size (SC 2.5.8), visible focus (SC 2.4.11), 4.5:1 text contrast, 400% reflow. Cross-platform (Web + iOS/Android).
+- **Standard** → `accessibility`: WCAG 2.2 AA — POUR principles, ≥24×24px target size (SC 2.5.8), visible focus (SC 2.4.11), 4.5:1 text contrast, 400% reflow. The spec states cross-platform principles; in this cluster apply them to **browser UI (DOM/ARIA)** only — for native mobile a11y use the `react-native` / `expo` / `mobile-flutter` clusters.
 - **Implementation** → `frontend-a11y`: semantic HTML before ARIA, `htmlFor`/`id` label pairing, `aria-*` only when native semantics fall short, keyboard navigation, focus management/restore.
 
 Rule: semantic element first; every interactive control keyboard-reachable; every state change announced.
