@@ -1,0 +1,21 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Creative Frontend — Astro · GSAP · Remotion",
+      "description": "Hub-and-spoke cluster for animated, content-driven Astro sites and programmatic video. The orchestrator routes between in-browser animation (GSAP ScrollTrigger, Anime.js, web-motion-library) over an Astro substrate and render-time video (Remotion), with a shared core holding the in-browser-vs-video decision matrix, reduced-motion baseline, performance budget, and Astro hydration boundaries.",
+      "skills": [
+        "creative-frontend-orchestrator",
+        "creative-frontend-core",
+        "astro-framework",
+        "astro-gsap-scrolltrigger",
+        "animejs",
+        "web-motion-library",
+        "remotion",
+        "remotion-best-practices",
+        "remotion-video-toolkit"
+      ]
+    }
+  ]
+}

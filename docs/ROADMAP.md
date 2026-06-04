@@ -1,0 +1,131 @@
+# Skill-Clusters Roadmap
+
+Build plan for all clusters. Each follows the **anatomy**: `*-orchestrator` (router) +
+`*-core` (shared reference) + spokes (existing, referenced canonically; authored to fill gaps)
++ `clusters/<name>/README.md` + a `groupings` entry in `skills.sh.json`.
+
+**Legend** — Strategy: `organize` (wrap existing skills) · `author` (write new spokes).
+Status: ✅ live · ⏳ planned · 🔴 gap (needs authoring).
+
+---
+
+## 1. creative-frontend ✅ — Astro · GSAP · Remotion
+
+**Pilot / template.** Routes on *in-browser vs. render-time video*.
+
+- **New:** `creative-frontend-orchestrator`, `creative-frontend-core`
+- **Spokes:** `astro-framework`, `astro-gsap-scrolltrigger`, `animejs`, `web-motion-library`, `remotion`, `remotion-best-practices`, `remotion-video-toolkit`
+- **Status:** done — use as the reference for everything below.
+
+---
+
+## 2. tauri ⏳ — cross-platform desktop/mobile (flagship)
+
+**40 existing skills** — the showcase for "organize a huge stack." The work is almost entirely
+the orchestrator's routing taxonomy + a core of cross-cutting Tauri rules.
+
+- **New:** `tauri-orchestrator`, `tauri-core` (capability/permission model, IPC contract, security posture, version/v2 notes)
+- **Routing sub-domains → spokes:**
+  - *Setup/architecture:* `setting-up-tauri-projects`, `tauri-v2`, `understanding-tauri-architecture`, `understanding-tauri-process-model`, `understanding-tauri-lifecycle-security`, `understanding-tauri-runtime-authority`, `migrating-tauri-apps`, `updating-tauri-dependencies`
+  - *Config:* `configuring-tauri-apps`, `configuring-tauri-capabilities`, `configuring-tauri-permissions`, `configuring-tauri-scopes`, `configuring-tauri-csp`, `configuring-tauri-http-headers`, `customizing-tauri-windows`
+  - *IPC / frontend bridge:* `understanding-tauri-ipc`, `calling-frontend-from-tauri-rust`, `calling-rust-from-tauri-frontend`, `listening-to-tauri-events`, `integrating-tauri-js-frontends`, `integrating-tauri-rust-frontends`
+  - *Sidecars / resources:* `embedding-tauri-sidecars`, `running-nodejs-sidecar-in-tauri`, `managing-tauri-app-resources`
+  - *UI extras:* `adding-tauri-splashscreen`, `adding-tauri-system-tray`
+  - *Plugins:* `developing-tauri-plugins`, `managing-tauri-plugin-permissions`
+  - *Security:* `understanding-tauri-ecosystem-security` (+ the config/permission spokes)
+  - *Distribution/signing:* `distributing-tauri-for-{macos,windows,ios,android}`, `packaging-tauri-for-linux`, `signing-tauri-apps`, `optimizing-tauri-binary-size`, `building-tauri-with-github-actions`, `using-crabnebula-cloud-with-tauri`
+  - *Debug/test:* `debugging-tauri-apps`, `testing-tauri-apps`
+- **Cross-cluster:** the Rust-bridge spokes are shared with the `rust` cluster (fine — a skill can sit in two `groupings`).
+
+---
+
+## 3. expo ⏳ — Expo toolchain
+
+- **New:** `expo-orchestrator`, `expo-core` (EAS config, app config, SDK version policy)
+- **Spokes:** `expo-dev-client`, `expo-tailwind-setup`, `expo-api-routes`, `expo-module`, `expo-cicd-workflows`, `expo-deployment`, `upgrading-expo`
+- **Routing:** dev setup → ship (EAS/cicd/deployment) → native (module/api-routes) → maintain (upgrade)
+- **Decision:** define the boundary with `react-native` — **Expo = toolchain/build/ship; RN = UI/native/design.** Orchestrators cross-reference.
+
+---
+
+## 4. react-native ⏳ — RN UI, native modules, design
+
+- **New:** `react-native-orchestrator`, `react-native-core`
+- **Spokes:** `react-native-design` *(dedupe the duplicate copy)*, `building-native-ui`, `sleek-design-mobile-apps`, `mobile-touch`, `native-data-fetching`, `frontend-mobile-development`, `frontend-mobile-security`
+- **Cross-cluster:** `app-store-optimization`, `app-store-screenshots`, `aso-appstore-screenshots` shared with `native-ios` for shipping.
+
+---
+
+## 5. astro ⏳ — pure Astro (SSG/content/SSR/publishing)
+
+Reserved out of the pilot so creative-frontend stays about *motion*.
+
+- **New:** `astro-orchestrator`, `astro-core`
+- **Spokes:** `astro-framework` *(shared with creative-frontend)*, `astro-wiki-publisher` *(drop the 1-file `astro` stub — superseded)*
+- **Author (if gaps after auditing `astro-framework`'s 27 files):** `astro-ssr-adapters`, `astro-content-collections`, `astro-actions-and-env`
+
+---
+
+## 6. raycast ⏳ — extensions + UI
+
+- **New:** `raycast-orchestrator`, `raycast-core`
+- **Spokes:** `raycast-extension`, `raycast-ui-skills`
+- **Author:** `raycast-ai-extensions`, `raycast-script-commands`, `raycast-store-publishing`
+
+---
+
+## 7. native-ios 🔴 — Swift / SwiftUI / Xcode / App Store
+
+Biggest authoring job; only `mobile-ios-design` exists today.
+
+- **New:** `native-ios-orchestrator`, `native-ios-core`
+- **Existing spoke:** `mobile-ios-design`
+- **Cross-cluster (shipping):** `app-store-optimization`, `app-store-screenshots`, `aso-appstore-screenshots`
+- **Author:** `swiftui-views-and-layout`, `swift-concurrency-async-await`, `xcode-project-and-targets`, `swiftdata-and-persistence`, `ios-app-distribution`, `ios-testing-xctest`
+
+---
+
+## 8. electron 🔴 — desktop (main/renderer/IPC/packaging)
+
+Only `electron` exists.
+
+- **New:** `electron-orchestrator`, `electron-core` (process model, context isolation, security checklist)
+- **Existing spoke:** `electron`
+- **Author:** `electron-main-renderer-ipc`, `electron-security-hardening`, `electron-builder-packaging`, `electron-auto-update`, `electron-native-modules`
+- **Note:** core should explicitly contrast with Tauri (when to pick which) — useful cross-link.
+
+---
+
+## 9. rust 🔴 — Cargo / async / CLI / WASM / testing
+
+Only `rust-coding-skill` exists (+ Tauri's Rust-bridge spokes to cross-reference).
+
+- **New:** `rust-orchestrator`, `rust-core` (ownership/borrow mental model, error strategy, crate-selection)
+- **Existing spoke:** `rust-coding-skill`
+- **Author:** `rust-cargo-and-workspaces`, `rust-async-tokio`, `rust-error-handling`, `rust-cli-with-clap`, `rust-and-wasm`, `rust-testing-and-benches`
+
+---
+
+## Build order (suggested)
+
+1. ✅ **creative-frontend** (template)
+2. **tauri** — flagship; proves "organize at scale," highest install appeal
+3. **expo** + **react-native** — together (settle the boundary once)
+4. **astro** + **raycast** — light organize + small authoring
+5. **rust** — author; unblocks/extends tauri + electron cores
+6. **native-ios**, **electron** — heaviest authoring last
+
+## Cross-cutting conventions
+
+- **Naming:** new skills `<cluster>-orchestrator` / `<cluster>-core`; spokes keep their canonical names.
+- **Shared spokes** may appear in multiple `groupings` (astro-framework, app-store-*, Tauri↔Rust bridges) — one canonical copy, many references.
+- **Dedupe on intake:** resolve known duplicates (`react-native-design` ×2; the `astro` stub vs `astro-framework`) as each cluster is built.
+- **Source of truth = this repo;** `~/.agents/skills` symlinks back via `scripts/link-agents.sh`.
+- **Every cluster ships the full treatment:** banner, badges, mermaid, skills table, install, local-dev section.
+
+## Open decisions (carry into each build)
+
+- **RN ⇆ Expo boundary** — toolchain vs UI/native (proposed above; confirm when building).
+- **`astro-framework` audit** — how much of SSR/content/islands it already covers before authoring astro spokes.
+- **skills.sh "install the whole cluster"** — confirm at publish time whether `groupings` install as a bundle or whether the orchestrator is the documented entry point that pulls spokes.
+- **Polish automation** — a generator that scaffolds `orchestrator`+`core`+README+manifest entry from a cluster spec, so clusters 2–9 are consistent.
