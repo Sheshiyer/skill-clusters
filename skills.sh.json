@@ -476,6 +476,18 @@
         "prediction-market-risk-review",
         "nodejs-keccak256"
       ]
+    },
+    {
+      "title": "Electron — desktop apps (Chromium + Node)",
+      "description": "Hub-and-spoke cluster for Electron desktop apps. The orchestrator routes by process × concern (main/renderer IPC, the security checklist, packaging/signing/notarization, auto-update); electron-core holds the defining model — the main/renderer/preload split and the context-isolation security boundary (renderer untrusted, main holds Node/OS power).",
+      "skills": [
+        "electron-orchestrator",
+        "electron-core",
+        "electron-main-renderer-ipc",
+        "electron-security",
+        "electron-builder-packaging",
+        "electron-auto-update"
+      ]
     }
   ]
 }

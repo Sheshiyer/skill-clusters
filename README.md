@@ -7,8 +7,8 @@
 <div align="center">
 
 [![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](LICENSE)
-[![Clusters](https://img.shields.io/badge/clusters-27%20live-8b5cf6?style=flat)](#cluster-index)
-[![Skills](https://img.shields.io/badge/skills-311-22c55e?style=flat)](skills.sh.json)
+[![Clusters](https://img.shields.io/badge/clusters-28%20live-8b5cf6?style=flat)](#cluster-index)
+[![Skills](https://img.shields.io/badge/skills-317-22c55e?style=flat)](skills.sh.json)
 [![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
 [![Stars](https://img.shields.io/github/stars/Sheshiyer/skill-clusters?style=flat&logo=github)](https://github.com/Sheshiyer/skill-clusters/stargazers)
 
@@ -41,7 +41,7 @@ duplicate or contradict each other. Pattern proven by
 | [**raycast**](clusters/raycast) | Extensions, AI tools, Store publishing | 2 + 4 | organize + author | ✅ **live** |
 | [**native-ios**](clusters/native-ios) | Swift / SwiftUI / concurrency / on-device AI | ECC | extract | ✅ **live** |
 | [**rust**](clusters/rust) | Idiomatic patterns + testing | ECC | extract | ✅ **live** |
-| **electron** | Electron main/renderer, IPC, packaging | 1 + ~5 | **author** | 🔴 gap |
+| [**electron**](clusters/electron) | Main/renderer, IPC, security, packaging, updates | 0 + 6 | author | ✅ **live** |
 
 *"+N" = new orchestrator + core. Full per-cluster breakdown in [`docs/ROADMAP.md`](docs/ROADMAP.md).*
 
