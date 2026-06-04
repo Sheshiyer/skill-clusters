@@ -39,20 +39,22 @@ almost entirely the orchestrator's routing taxonomy + a core of cross-cutting Ta
 
 ---
 
-## 3. expo ⏳ — Expo toolchain
+## 3. expo ✅ — Expo toolchain
 
-- **New:** `expo-orchestrator`, `expo-core` (EAS config, app config, SDK version policy)
-- **Spokes:** `expo-dev-client`, `expo-tailwind-setup`, `expo-api-routes`, `expo-module`, `expo-cicd-workflows`, `expo-deployment`, `upgrading-expo`
-- **Routing:** dev setup → ship (EAS/cicd/deployment) → native (module/api-routes) → maintain (upgrade)
-- **Decision:** define the boundary with `react-native` — **Expo = toolchain/build/ship; RN = UI/native/design.** Orchestrators cross-reference.
+**Built 2026-06-05.** Boundary settled (below).
+
+- **New:** `expo-orchestrator`, `expo-core` (EAS, app config + plugins, managed↔bare/CNG, SDK policy)
+- **Spokes:** `expo-dev-client`, `expo-tailwind-setup`, `building-native-ui` *(Expo Router UI)*, `expo-api-routes`, `expo-module`, `expo-cicd-workflows`, `expo-deployment`, `upgrading-expo`, `native-data-fetching` *(shared with react-native)*
+- **Boundary (settled):** **Expo = toolchain/build/ship + Expo-Router UI; react-native = toolchain-agnostic UI/interaction craft.** Orchestrators cross-reference.
 
 ---
 
-## 4. react-native ⏳ — RN UI, native modules, design
+## 4. react-native ✅ — RN UI & interaction craft
 
-- **New:** `react-native-orchestrator`, `react-native-core`
-- **Spokes:** `react-native-design` *(dedupe the duplicate copy)*, `building-native-ui`, `sleek-design-mobile-apps`, `mobile-touch`, `native-data-fetching`, `frontend-mobile-development`, `frontend-mobile-security`
-- **Cross-cluster:** `app-store-optimization`, `app-store-screenshots`, `aso-appstore-screenshots` shared with `native-ios` for shipping.
+**Built 2026-06-05.** Corrections applied: `react-native-design` was **not** duplicated (grep artifact); `building-native-ui` went to **expo** (it's Expo Router); `mobile-ios-design` is SwiftUI → reserved for **native-ios**; `frontend-mobile-development` / `frontend-mobile-security` are agent+command bundles (no SKILL.md) → **excluded**.
+
+- **New:** `react-native-orchestrator`, `react-native-core` (New Arch, Reanimated, perf)
+- **Spokes:** `react-native-design`, `mobile-touch`, `sleek-design-mobile-apps`, `native-data-fetching` *(shared with expo)*
 
 ---
 
@@ -110,7 +112,7 @@ Only `rust-coding-skill` exists (+ Tauri's Rust-bridge spokes to cross-reference
 
 1. ✅ **creative-frontend** (template)
 2. ✅ **tauri** — flagship; proves "organize at scale," highest install appeal
-3. **expo** + **react-native** — together (settle the boundary once)
+3. ✅ **expo** + **react-native** — boundary settled (Expo toolchain+Router UI / RN craft)
 4. **astro** + **raycast** — light organize + small authoring
 5. **rust** — author; unblocks/extends tauri + electron cores
 6. **native-ios**, **electron** — heaviest authoring last

@@ -64,6 +64,35 @@
         "updating-tauri-dependencies",
         "migrating-tauri-apps"
       ]
+    },
+    {
+      "title": "Expo — React Native toolchain",
+      "description": "Hub-and-spoke cluster for the Expo toolchain. The orchestrator routes by app lifecycle (dev client + styling, Expo Router UI, in-app API routes, native modules, EAS build/submit/update, SDK upgrades); expo-core holds the platform model — EAS, app config + config plugins, the Expo Go ↔ dev-client ↔ prebuild/CNG ↔ bare spectrum, and SDK version policy. Pairs with the react-native cluster for UI/interaction craft.",
+      "skills": [
+        "expo-orchestrator",
+        "expo-core",
+        "expo-dev-client",
+        "expo-tailwind-setup",
+        "building-native-ui",
+        "expo-api-routes",
+        "expo-module",
+        "expo-cicd-workflows",
+        "expo-deployment",
+        "upgrading-expo",
+        "native-data-fetching"
+      ]
+    },
+    {
+      "title": "React Native — UI & interaction craft",
+      "description": "Hub-and-spoke cluster for toolchain-agnostic React Native UI and interaction: styling, navigation, Reanimated animation, gestures/haptics, screen design, and data fetching. The orchestrator routes by craft; react-native-core holds the runtime model — New Architecture (Fabric/TurboModules/JSI/bridgeless), the Reanimated + Gesture Handler stack, platform differences, and performance. Toolchain/build/ship lives in the expo cluster; native SwiftUI in native-ios.",
+      "skills": [
+        "react-native-orchestrator",
+        "react-native-core",
+        "react-native-design",
+        "mobile-touch",
+        "sleek-design-mobile-apps",
+        "native-data-fetching"
+      ]
     }
   ]
 }
