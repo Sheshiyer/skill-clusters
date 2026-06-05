@@ -10,6 +10,14 @@
 // The conductor (conducty Execute) calls this per wave; the resolved orchestrator skill is
 // loaded into the dispatched subagent. Deterministic + validated against skill-index.json
 // (real clusters only — phantom-proof, like PAI's Capability-Name audit).
+//
+// Scoring (v1.5 — 5/5 on the mixed RN/Rust/Flutter/Remotion/Supabase smoke): per-task UNIQUE
+// tokens, IDF-weighted (a distinctive token like "rust"/"flutter"/"remotion" beats a common one),
+// sqrt-damped cluster mass (a big cluster can't win on spoke-count alone), plus an explicit
+// handle-match bonus (a task that literally names a cluster prefers it). The plan.md stack is NOT
+// folded into scoring — it pollutes every task toward the project's dominant stack; it's reserved
+// as context for the Phase 3 classifier. Genuinely ambiguous stack-vs-domain tasks are where the
+// classifier proposes and this resolver validates.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -36,6 +44,13 @@ for (const [name, e] of Object.entries(index.skills)) {
   const w = e.role === 'hub' ? 1 : 2;                       // spoke names are the signal
   for (const t of [...tok(name), ...tok(e.cluster)]) m.set(t, (m.get(t) || 0) + w);
 }
+// IDF: a token in many clusters is a weak discriminator; a token in ONE cluster (e.g. "rust",
+// "flutter", "remotion", "axum") is a strong one. Without this, a big cluster (frontend-web has
+// the most spokes) wins on sheer keyword mass and every task collapses onto it.
+const numClusters = Object.keys(clusterKw).length || 1;
+const docFreq = new Map();
+for (const m of Object.values(clusterKw)) for (const t of m.keys()) docFreq.set(t, (docFreq.get(t) || 0) + 1);
+const idf = (t) => Math.log(1 + numClusters / (docFreq.get(t) || numClusters));
 const clusterMeta = index.clusters || {};
 
 // stack hint from plan.md
@@ -58,20 +73,50 @@ for (const ln of lines) {
   tasks.push({ id: m[2] || `L${tasks.length + 1}`, done: m[1] !== ' ', parallel: !!m[3], story: (m[4] || '').replace(/[\[\]]/g, ''), wave: phase || 1, desc, paths });
 }
 
+function scoreTokens(tokens, weight = 1) {
+  const s = {};
+  for (const tk of tokens) {
+    const w = idf(tk);
+    // sqrt-dampen the per-token cluster mass: a cluster with five `*-auth` spokes shouldn't get
+    // 5x credit for "auth" and swamp a cluster where the task's distinctive token (e.g. "rust")
+    // lives. Dampening keeps the signal, kills the mass.
+    for (const [cl, kw] of Object.entries(clusterKw)) if (kw.has(tk)) s[cl] = (s[cl] || 0) + Math.sqrt(kw.get(tk)) * w * weight;
+  }
+  return s;
+}
 function resolve(t) {
-  const toks = [...tok(t.desc), ...t.paths.flatMap((p) => tok(p)), ...stackTokens];
-  const scores = {};
-  for (const tk of toks) for (const [cl, kw] of Object.entries(clusterKw)) if (kw.has(tk)) scores[cl] = (scores[cl] || 0) + kw.get(tk);
-  const ranked = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  // UNIQUE tokens: for routing, presence is the signal, not frequency. A task that says "auth"
+  // three times (desc + path "src/auth/" + the re-tokenized path) is not 3x more that-domain than
+  // one that says it once — counting it 3x lets a domain word swamp the task's actual stack ("rust").
+  const ownToks = [...new Set([...tok(t.desc), ...t.paths.flatMap((p) => tok(p))])];  // the task's OWN signal
+  const ownSet = new Set(ownToks);
+  const scores = scoreTokens(ownToks);
+  // Explicit handle match: when a task literally names a cluster (all of the handle's tokens are
+  // present — "rust", "supabase", "expo", or "mobile"+"flutter"), that is the strongest signal a
+  // keyword scorer gets. Prefer it over a domain token (e.g. "auth") that a big cluster has mass on.
+  for (const cl of Object.keys(clusterKw)) {
+    const handleToks = tok(cl);
+    if (handleToks.length && handleToks.every((h) => ownSet.has(h))) scores[cl] = (scores[cl] || 0) + handleToks.reduce((a, h) => a + 2 * idf(h), 0);
+  }
+  // The plan.md global stack is NOT folded into scoring: this project's stack is frontend-heavy,
+  // and injecting it (even as a "tiebreaker") re-inflates the big frontend cluster onto every task
+  // and overrides a task that explicitly names its own tech (e.g. "rust"). A task's own tokens win.
+  // stackTokens are parsed and exposed for the Phase 3 classifier to use as context, not here.
+  // Fallback ONLY: a task with NO own signal at all may borrow the stack to avoid being unresolved.
+  let ranked = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  if (!ranked.length && stackTokens.length) {
+    const boost = scoreTokens(stackTokens, 0.5);
+    ranked = Object.entries(boost).sort((a, b) => b[1] - a[1]);
+  }
   if (!ranked.length) return { cluster: null, confidence: 0 };
   const [cl, top] = ranked[0];
   const second = ranked[1]?.[1] || 0;
   const tier = clusterMeta[cl]?.tier || (index.skills[`${cl}-orchestrator`]?.tier || 'active');
-  // candidate spokes: cluster skills whose name shares a token with the task
+  // candidate spokes: cluster skills whose name shares a token with the task's own tokens
   const spokes = Object.entries(index.skills).filter(([n, e]) => e.cluster === cl && e.role === 'spoke')
-    .map(([n]) => [n, tok(n).filter((x) => toks.includes(x)).length]).filter(([, s]) => s > 0)
+    .map(([n]) => [n, tok(n).filter((x) => ownToks.includes(x)).length]).filter(([, s]) => s > 0)
     .sort((a, b) => b[1] - a[1]).slice(0, 3).map(([n]) => n);
-  return { cluster: cl, dispatch: `${cl}-orchestrator`, tier, activate: tier === 'deferred', spokes, confidence: +(top / (top + second)).toFixed(2), score: top };
+  return { cluster: cl, dispatch: `${cl}-orchestrator`, tier, activate: tier === 'deferred', spokes, confidence: +(top / (top + second)).toFixed(2), score: +top.toFixed(2) };
 }
 
 const plan = tasks.map((t) => ({ ...t, ...resolve(t) }));

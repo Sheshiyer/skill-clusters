@@ -9,7 +9,7 @@ tags:
   - conducty/execute
 cluster: conductor
 version: 1.0.0
-origin: "robertbarclayy/conducty (MIT)"
+origin: "robertbarclayy/conducty (MIT), patched for the skill-clusters resolver"
 ---
 
 # Conducty Execute — Tracer-First Subagent Execution
@@ -66,9 +66,39 @@ After all prompts → run [[conducty-checkpoint]] for the group
 Gate: user confirms before next group
 ```
 
+### Resolve before dispatch (skill-clusters wiring)
+
+> **Integration patch** (skill-clusters — the rest of this skill is upstream conducty, MIT).
+> Stock conducty dispatches every prompt to a bare `general-purpose` subagent. Here each prompt
+> is first **resolved to a skill-cluster**, so the subagent runs loaded with the right capability
+> hub — the one organ conducty lacks. See `conductor-core` for the full contract.
+
+Once per group, resolve the plan's tasks to clusters:
+
+```bash
+node ~/.agents/skill-clusters/scripts/resolve-task.mjs <tasks.md> <plan.md> --json
+```
+
+Returns, per task: `{cluster, dispatch: <cluster>-orchestrator, tier, activate?, spokes[], confidence}`.
+Apply per prompt:
+
+1. **Classifier proposes, resolver validates.** Propose a cluster from the prompt's intent; trust
+   the resolver's validation against `skill-index.json` (real clusters only — phantom-proof).
+   `confidence < 0.34` or `cluster: null` → **escalate to the human**, do not guess-dispatch.
+2. **Activate deferred clusters** the wave touches, once:
+   `node ~/.agents/skill-clusters/scripts/tier.mjs --activate <cluster> --apply`.
+3. **Load the resolved hub into the subagent** — add `~/.agents/skill-clusters/skills/<cluster>-orchestrator/SKILL.md`
+   to the curated context (checklist item 1.5 below). The hub routes to its spoke on demand; you
+   never enumerate spokes — the subagent pulls the one it needs from the pointer.
+4. **Gate.** The PAI `SkillClusterResolver` hook denies any non-enumerated skill with resolution
+   guidance, so a mis-resolved dispatch fails closed rather than running the wrong capability.
+
+`subagent_type` stays `general-purpose` (or `Explore` for read-only review) — the *capability*
+comes from the loaded `<cluster>-orchestrator`, not the subagent type.
+
 ### Dispatching Subagents
 
-Use Claude Code's Task tool. The default `subagent_type` is `general-purpose` (always available). If the harness exposes specialized subagents (e.g. `Explore` for read-only codebase analysis, `Plan` for architecture work), use them where their description fits — they don't replace the implementer model selection below.
+Use Claude Code's Task tool. The default `subagent_type` is `general-purpose` (always available) — but in this repo the subagent runs **loaded with the resolved `<cluster>-orchestrator`** (see **Resolve before dispatch** above): the subagent type stays `general-purpose`, the capability comes from the loaded hub. If the harness exposes specialized subagents (e.g. `Explore` for read-only codebase analysis, `Plan` for architecture work), use them where their description fits — they don't replace the implementer model selection below.
 
 Choose **model** by the prompt's complexity:
 
@@ -82,6 +112,7 @@ For **read-only review subagents** (spec reviewer, quality reviewer, code-review
 
 **Context curation checklist** — provide exactly:
 1. The full prompt text (pasted, not a file reference — subagents don't read plan files)
+1.5. The resolved `<cluster>-orchestrator` SKILL.md — the capability hub for this task (see **Resolve before dispatch**); the subagent runs loaded with it and pulls spokes on demand
 2. Scene-setting: which project, where this fits in the broader plan, what came before
 3. Relevant architecture from the project context file
 4. Dependencies on prior prompt outputs (if any)
