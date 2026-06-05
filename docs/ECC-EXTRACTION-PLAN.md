@@ -3,6 +3,11 @@
 **Source analyzed:** `affaan-m/ECC` (`ecc-universal` v2.0.0-rc.1) — 251 skills, ~11 harness targets, MIT.
 **Purpose:** distill ECC's best practices, design a drift-proof author→deploy pipeline, and produce a concrete plan to extract clean hub-and-spoke clusters from ECC's 251 flat skills.
 
+> **Status: ✅ COMPLETE.** All 21 ECC clusters were extracted, normalized, and health-gated — see
+> [`ROADMAP.md`](ROADMAP.md) *Wave 2* and the live catalog in the [root README](../README.md). The
+> drift-proof pipeline designed here now lives in `scripts/` (`skills-health.mjs`, `skills-normalize.mjs`,
+> `gen-index.mjs`, `tier.mjs`, `integrate-ecc.mjs`). Kept as the historical methodology + best-practices record.
+
 > **Licensing guardrail (read first).** ECC is **MIT** — reuse is permitted, but **with attribution + the MIT notice**. Any skill we extract must carry upstream credit (`affaan-m/ECC`) and we keep our repo MIT. We extract *patterns and adapted content*, not silent copies. Skills that are ECC-internal or clearly one author's voice get **rewritten**, not lifted.
 
 ---

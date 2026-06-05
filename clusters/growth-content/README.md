@@ -1,86 +1,73 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=20,2,12&height=220&text=Growth%20Content&fontSize=52&fontAlignY=38&desc=13%20specialists%2C%20one%20router%20%E2%80%94%20plan%20%E2%86%92%20write%20%E2%86%92%20convert%20%E2%86%92%20launch&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=10,18,22&height=180&text=growth-content&fontSize=42&fontAlignY=38&desc=demand-generation%20content%20routing&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-15-f59e0b?style=flat)](../../skills.sh.json)
-[![Cluster](https://img.shields.io/badge/cluster-growth--content-db2777?style=flat)](./README.md)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Demand generation and content marketing — 13 specialists behind a single router.**
-Planning, writing, converting, or launching marketing content? The orchestrator places your task
-on the **funnel stage × asset type** map and routes; `growth-content-core` holds the
-searchable-vs-shareable decision and the one positioning doc they all share.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-15-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored%20%2B%20mixed-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=20,2,12&height=2" width="100%" />
+> The single entry skill for growth and content-marketing work: it locates a task on the funnel-stage × asset-type map and delegates to one of 15 demand-generation specialists. The cross-cutting decision every asset shares — searchable vs. shareable, the buyer stage it targets, and the one product-marketing-context positioning doc all spokes read first — lives in `growth-content-core`.
 
-## What it is
-
-15 skills: `growth-content-orchestrator` (router) + `growth-content-core` (shared model) + 13
-specialists. The cluster's job is to keep marketing output *navigable and on-strategy* — the
-orchestrator knows which spoke to reach for, and the core keeps the interlocking decisions (every
-asset is searchable/shareable/both, aimed at one buyer stage, written from one source-of-truth
-positioning doc) consistent so the work never drifts into generic AI copy.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["growth-content-orchestrator<br/>(hub · funnel × asset router)"]
-    O --> PLAN["Plan<br/>(strategy · ideas · psychology)"]
-    O --> WRITE["Write<br/>(articles · page copy · editing)"]
-    O --> CONV["Convert<br/>(magnets · tools · email · ads)"]
-    O --> LAUNCH["Launch<br/>(GTM · Product Hunt)"]
-    PLAN -. references .-> C["growth-content-core<br/>(searchable vs shareable · buyer stage<br/>· product-marketing-context · VOC)"]
-    WRITE -. references .-> C
-    CONV -. references .-> C
-    LAUNCH -. references .-> C
-
-    style O fill:#be185d,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([growth-content-orchestrator]):::hub --> c([growth-content-core]):::hub
+  o --> s1([content-strategy])
+  o --> s2([content-research-writer])
+  o --> s3([copywriting])
+  o --> s4([copy-editing])
+  o --> s5([cold-email])
+  o --> s6([email-sequence])
+  o --> s7([ad-creative])
+  o --> s8([marketing-ideas])
+  o --> s9([launch-strategy])
+  o --> s10([product-marketing-context])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by stage
+_…and 5 more in the table below._
 
-| Stage | Spokes |
-|---|---|
-| **Router / model** | `growth-content-orchestrator`, `growth-content-core` |
-| **Foundation (shared)** | `product-marketing-context` |
-| **Plan** | `content-strategy`, `marketing-ideas`, `marketing-psychology` |
-| **Write** | `content-research-writer`, `copywriting`, `copy-editing` |
-| **Convert** | `lead-magnets`, `free-tool-strategy`, `cold-email`, `email-sequence`, `ad-creative` |
-| **Launch** | `launch-strategy` |
+## Skills
 
-## The decision that ties it together
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `growth-content-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `growth-content-core` | 📐 hub · shared reference | ✅ enumerated |
+| `content-strategy` | spoke | ⤵ on-demand |
+| `content-research-writer` | spoke | ⤵ on-demand |
+| `copywriting` | spoke | ⤵ on-demand |
+| `copy-editing` | spoke | ⤵ on-demand |
+| `cold-email` | spoke | ⤵ on-demand |
+| `email-sequence` | spoke | ⤵ on-demand |
+| `ad-creative` | spoke | ⤵ on-demand |
+| `marketing-ideas` | spoke | ⤵ on-demand |
+| `marketing-psychology` | spoke | ⤵ on-demand |
+| `launch-strategy` | spoke | ⤵ on-demand |
+| `lead-magnets` | spoke | ⤵ on-demand |
+| `free-tool-strategy` | spoke | ⤵ on-demand |
+| `product-marketing-context` | spoke | ⤵ on-demand |
+| `avoid-ai-writing` | spoke | ⤵ on-demand |
+| `zapier-make-patterns` | spoke | ⤵ on-demand |
 
-Every asset is **searchable, shareable, or both** — named before it's written, aimed at **one
-buyer stage**, and drawn from one positioning doc:
+## Tier & loading
 
-```
-SEARCHABLE (captures demand) ──┬── BOTH (rank + spread) ──┬── SHAREABLE (creates demand)
-   keyword · intent · structure │                          │  insight · emotion · contrarian
-                                └──── one buyer stage ──────┘
-                          all sourced from .agents/product-marketing-context.md
-```
-
-Name the call before you write; serve one stage; pull voice and proof from the context doc — never
-invent them. Full model in [`growth-content-core`](../../skills/growth-content-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@growth-content-orchestrator -g -y   # entry point
-npx skills add Sheshiyer/skill-clusters@copywriting -g -y                   # any spoke
+npx skills add Sheshiyer/skill-clusters@growth-content-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Authored for skill-clusters (MIT) — the 13 demand-generation specialists are originals. Two picked-up spokes (`avoid-ai-writing`, `zapier-make-patterns`) come from antigravity-awesome-skills (MIT), so the cluster is **authored + mixed**. See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

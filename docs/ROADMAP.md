@@ -1,138 +1,78 @@
 # Skill-Clusters Roadmap
 
-Build plan for all clusters. Each follows the **anatomy**: `*-orchestrator` (router) +
-`*-core` (shared reference) + spokes (existing, referenced canonically; authored to fill gaps)
-+ `clusters/<name>/README.md` + a `groupings` entry in `skills.sh.json`.
+Where this project has been and where it's going. Every cluster follows the **anatomy**:
+`<name>-orchestrator` (router) + `<name>-core` (shared reference) + spokes (referenced canonically;
+authored to fill gaps) + `clusters/<name>/README.md` + a `groupings` entry in `skills.sh.json`.
 
-**Legend** — Strategy: `organize` (wrap existing skills) · `author` (write new spokes).
-Status: ✅ live · ⏳ planned · 🔴 gap (needs authoring).
-
----
-
-## 1. creative-frontend ✅ — Astro · GSAP · Remotion
-
-**Pilot / template.** Routes on *in-browser vs. render-time video*.
-
-- **New:** `creative-frontend-orchestrator`, `creative-frontend-core`
-- **Spokes:** `astro-framework`, `astro-gsap-scrolltrigger`, `animejs`, `web-motion-library`, `remotion`, `remotion-best-practices`, `remotion-video-toolkit`
-- **Status:** done — use as the reference for everything below.
+**Current state:** 40 clusters · 716 indexed skills · 54 enumerated hubs at startup · 27 active /
+13 deferred · the closed conductor loop (Phases 0–5) shipped. Health gate PASS 0/0.
 
 ---
 
-## 2. tauri ✅ — cross-platform desktop/mobile (flagship)
+## Shipped — the journey
 
-**Built 2026-06-05.** 40 existing skills — the showcase for "organize a huge stack." The work was
-almost entirely the orchestrator's routing taxonomy + a core of cross-cutting Tauri rules.
+### Wave 1 · The hub-and-spoke pilots (7, authored)
+Proved the pattern: a router + a shared core makes a fuzzy request resolvable.
+`tauri` (flagship, 40 spokes — "organize at scale") · `creative-frontend` (Astro·GSAP·Remotion) ·
+`expo` · `react-native` · `astro` · `raycast` · `electron`. Boundaries settled (Expo toolchain+Router
+UI vs RN craft; creative-frontend = motion vs astro = static/SSR).
 
-- **New:** `tauri-orchestrator`, `tauri-core` (capability/permission model, IPC contract, security posture, version/v2 notes)
-- **Routing sub-domains → spokes:**
-  - *Setup/architecture:* `setting-up-tauri-projects`, `tauri-v2`, `understanding-tauri-architecture`, `understanding-tauri-process-model`, `understanding-tauri-lifecycle-security`, `understanding-tauri-runtime-authority`, `migrating-tauri-apps`, `updating-tauri-dependencies`
-  - *Config:* `configuring-tauri-apps`, `configuring-tauri-capabilities`, `configuring-tauri-permissions`, `configuring-tauri-scopes`, `configuring-tauri-csp`, `configuring-tauri-http-headers`, `customizing-tauri-windows`
-  - *IPC / frontend bridge:* `understanding-tauri-ipc`, `calling-frontend-from-tauri-rust`, `calling-rust-from-tauri-frontend`, `listening-to-tauri-events`, `integrating-tauri-js-frontends`, `integrating-tauri-rust-frontends`
-  - *Sidecars / resources:* `embedding-tauri-sidecars`, `running-nodejs-sidecar-in-tauri`, `managing-tauri-app-resources`
-  - *UI extras:* `adding-tauri-splashscreen`, `adding-tauri-system-tray`
-  - *Plugins:* `developing-tauri-plugins`, `managing-tauri-plugin-permissions`
-  - *Security:* `understanding-tauri-ecosystem-security` (+ the config/permission spokes)
-  - *Distribution/signing:* `distributing-tauri-for-{macos,windows,ios,android}`, `packaging-tauri-for-linux`, `signing-tauri-apps`, `optimizing-tauri-binary-size`, `building-tauri-with-github-actions`, `using-crabnebula-cloud-with-tauri`
-  - *Debug/test:* `debugging-tauri-apps`, `testing-tauri-apps`
-- **Cross-cluster:** the Rust-bridge spokes are shared with the `rust` cluster (fine — a skill can sit in two `groupings`).
+### Wave 2 · ECC extraction (21 clusters, MIT)
+Re-clustered [affaan-m/ECC](https://github.com/affaan-m/ECC)'s 251 flat skills into hub-and-spoke form,
+each skill validated through the Skills-Health gate. Methodology in
+[`ECC-EXTRACTION-PLAN.md`](ECC-EXTRACTION-PLAN.md). Brought in `ai-agents-meta`, `frontend-web`,
+`python-backend`, `devops-infra`, `security`, `databases-data`, `rust`, `native-ios`, and 13 more.
 
----
+### Wave 3 · Curation + platform clusters
+Curated reputable community spokes (incl. [antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills))
+and authored platform clusters: `cloudflare`, `supabase`, `design`, `growth-seo`, `growth-content`,
+`git-pr-ops`, `browser-automation`, `media-gen`, `documents`, `growth-sales-cro`.
 
-## 3. expo ✅ — Expo toolchain
+### Wave 4 · The closed loop (Phases 0–5)
+Turned the catalog into an **engine**. See [`CONDUCTOR-INTEGRATION.md`](CONDUCTOR-INTEGRATION.md):
 
-**Built 2026-06-05.** Boundary settled (below).
-
-- **New:** `expo-orchestrator`, `expo-core` (EAS, app config + plugins, managed↔bare/CNG, SDK policy)
-- **Spokes:** `expo-dev-client`, `expo-tailwind-setup`, `building-native-ui` *(Expo Router UI)*, `expo-api-routes`, `expo-module`, `expo-cicd-workflows`, `expo-deployment`, `upgrading-expo`, `native-data-fetching` *(shared with react-native)*
-- **Boundary (settled):** **Expo = toolchain/build/ship + Expo-Router UI; react-native = toolchain-agnostic UI/interaction craft.** Orchestrators cross-reference.
-
----
-
-## 4. react-native ✅ — RN UI & interaction craft
-
-**Built 2026-06-05.** Corrections applied: `react-native-design` was **not** duplicated (grep artifact); `building-native-ui` went to **expo** (it's Expo Router); `mobile-ios-design` is SwiftUI → reserved for **native-ios**; `frontend-mobile-development` / `frontend-mobile-security` are agent+command bundles (no SKILL.md) → **excluded**.
-
-- **New:** `react-native-orchestrator`, `react-native-core` (New Arch, Reanimated, perf)
-- **Spokes:** `react-native-design`, `mobile-touch`, `sleek-design-mobile-apps`, `native-data-fetching` *(shared with expo)*
+- **P0** — `resolve-task.mjs`, the resolver (task → cluster, phantom-proof).
+- **P1** — vendored [conducty](https://github.com/robertbarclayy/conducty) (MIT) as the `conductor` cluster.
+- **P2** — wired conducty Execute → resolver; scoring hardened to v1.5 (5/5 on the mixed smoke).
+- **P3** — `--propose`: classifier proposes a cluster, resolver validates (Capability-Name audit).
+- **P4** — `ship-battery.mjs`, the fail-closed ship gate.
+- **P5** — `loop-feedback.mjs`, the close (record → rollup → next plan).
+- **+ Delivery modalities** — `swarm-architect` (plan) + `github-next-wave-orchestrator` (execute) wired
+  as the **github-delivery** modality alongside the local-subagent path.
 
 ---
 
-## 5. astro ✅ — static-first sites (islands/content/SSR/publishing)
+## Now — the 40-cluster catalog
 
-**Built 2026-06-05.** Reserved out of the pilot so creative-frontend stays about *motion*. Audit
-result: `astro-framework` already covers SSR adapters, Content Layer, actions, `astro:env`,
-sessions, i18n, view transitions — **no authoring needed**, pure organize.
+**Active (27)** — enumerated at startup: `agentic-ops · ai-agents-meta · astro · backend-architecture ·
+browser-automation · cloudflare · conductor · creative-frontend · databases-data · design · devops-infra ·
+electron · expo · frontend-web · git-pr-ops · growth-content · growth-seo · native-ios · python-backend ·
+quality-eval · raycast · react-native · research-knowledge · rust · security · supabase · tauri`.
 
-- **New:** `astro-orchestrator`, `astro-core` (the static/SSR/hybrid decision + content/hydration model)
-- **Spokes:** `astro-framework` *(shared with creative-frontend)*, `astro-wiki-publisher`. The 1-file `astro` stub stays dropped (superseded).
-- **Cross-ref:** animation on Astro pages → creative-frontend (`astro-gsap-scrolltrigger`).
-
----
-
-## 6. raycast ✅ — extensions, AI tools, Store publishing
-
-**Built 2026-06-05.** Existing spokes were thin (both 1-file; `raycast-ui-skills` is actually the
-Raycast *aesthetic* for your own app, not the extension API) → authored a real core + 2 spokes.
-
-- **New:** `raycast-orchestrator`, `raycast-core` (command types, manifest, @raycast/api, data hooks, build/publish)
-- **Spokes:** `raycast-extension`, `raycast-ui-skills`
-- **Authored:** `raycast-ai-extensions` (tools[] for Raycast AI), `raycast-store-publishing` (submit + review). `raycast-script-commands` folded into core.
+**Deferred (13)** — off until activated (`node scripts/tier.mjs --activate <c> --apply`): `php-laravel ·
+jvm · systems-languages · mobile-flutter · healthcare · supply-chain · blockchain-web3 · business-content ·
+social-media · extra-languages · media-gen · documents · growth-sales-cro`.
 
 ---
 
-## 7. native-ios 🔴 — Swift / SwiftUI / Xcode / App Store
+## Next — forward roadmap
 
-Biggest authoring job; only `mobile-ios-design` exists today.
-
-- **New:** `native-ios-orchestrator`, `native-ios-core`
-- **Existing spoke:** `mobile-ios-design`
-- **Cross-cluster (shipping):** `app-store-optimization`, `app-store-screenshots`, `aso-appstore-screenshots`
-- **Author:** `swiftui-views-and-layout`, `swift-concurrency-async-await`, `xcode-project-and-targets`, `swiftdata-and-persistence`, `ios-app-distribution`, `ios-testing-xctest`
-
----
-
-## 8. electron 🔴 — desktop (main/renderer/IPC/packaging)
-
-Only `electron` exists.
-
-- **New:** `electron-orchestrator`, `electron-core` (process model, context isolation, security checklist)
-- **Existing spoke:** `electron`
-- **Author:** `electron-main-renderer-ipc`, `electron-security-hardening`, `electron-builder-packaging`, `electron-auto-update`, `electron-native-modules`
-- **Note:** core should explicitly contrast with Tauri (when to pick which) — useful cross-link.
+| Priority | Item | Why |
+|---|---|---|
+| **1** | **Live-PAI opt-ins** — flip gate hooks `exit(0)→exit(2)`; `commit-on-criterion` PostToolUse hook | make the gates fail-closed in the daily driver (documented switches today) |
+| **2** | **Lightweight CI** — schema-validate manifest + frontmatter + dead-symlink + ship-battery on PR | catch drift before merge; the only health check today is local |
+| **3** | **Classifier-line maturation** — feed PAI's Algorithm OBSERVE phase into `resolve-task --propose` | replace keyword-floor noise on genuinely ambiguous stack-vs-domain tasks |
+| **4** | **Install profiles** — `frontend` / `mobile` / `backend` / `everything` over clusters | one-command working sets (ECC's profiles pattern) |
+| **5** | **Cluster scaffolder** — generate orchestrator+core+README+manifest from a cluster spec | keep new clusters consistent; lower authoring cost |
+| **6** | **Promote-on-signal** — `loop-feedback --rollup` auto-suggests deferred→active for hot clusters | close the tier loop with real usage data |
 
 ---
-
-## 9. rust 🔴 — Cargo / async / CLI / WASM / testing
-
-Only `rust-coding-skill` exists (+ Tauri's Rust-bridge spokes to cross-reference).
-
-- **New:** `rust-orchestrator`, `rust-core` (ownership/borrow mental model, error strategy, crate-selection)
-- **Existing spoke:** `rust-coding-skill`
-- **Author:** `rust-cargo-and-workspaces`, `rust-async-tokio`, `rust-error-handling`, `rust-cli-with-clap`, `rust-and-wasm`, `rust-testing-and-benches`
-
----
-
-## Build order (suggested)
-
-1. ✅ **creative-frontend** (template)
-2. ✅ **tauri** — flagship; proves "organize at scale," highest install appeal
-3. ✅ **expo** + **react-native** — boundary settled (Expo toolchain+Router UI / RN craft)
-4. ✅ **astro** + **raycast** — organize + Raycast authoring (AI + Store)
-5. **rust** — author; unblocks/extends tauri + electron cores
-6. **native-ios**, **electron** — heaviest authoring last
 
 ## Cross-cutting conventions
 
-- **Naming:** new skills `<cluster>-orchestrator` / `<cluster>-core`; spokes keep their canonical names.
-- **Shared spokes** may appear in multiple `groupings` (astro-framework, app-store-*, Tauri↔Rust bridges) — one canonical copy, many references.
-- **Dedupe on intake:** resolve known duplicates (`react-native-design` ×2; the `astro` stub vs `astro-framework`) as each cluster is built.
+- **Naming:** `<cluster>-orchestrator` / `<cluster>-core`; spokes keep their canonical names.
+- **Shared spokes** may appear in multiple `groupings` — one canonical copy, many references.
 - **Source of truth = this repo;** `~/.agents/skills` symlinks back via `scripts/link-agents.sh`.
-- **Every cluster ships the full treatment:** banner, badges, mermaid, skills table, install, local-dev section.
-
-## Open decisions (carry into each build)
-
-- **RN ⇆ Expo boundary** — toolchain vs UI/native (proposed above; confirm when building).
-- **`astro-framework` audit** — how much of SSR/content/islands it already covers before authoring astro spokes.
-- **skills.sh "install the whole cluster"** — confirm at publish time whether `groupings` install as a bundle or whether the orchestrator is the documented entry point that pulls spokes.
-- **Polish automation** — a generator that scaffolds `orchestrator`+`core`+README+manifest entry from a cluster spec, so clusters 2–9 are consistent.
+- **Every cluster ships the full treatment:** banner, plastic badges, mermaid, skills table, install, attribution.
+- **Debloat invariant:** only active orchestrators+cores enumerate; spokes load on demand; deferred = 0 cost.
+- **Fail-closed where it counts:** correctness/security/secrets gate via `ship-battery.mjs`; ship never auto-merges.

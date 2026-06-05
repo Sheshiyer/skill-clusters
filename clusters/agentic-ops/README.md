@@ -1,87 +1,84 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&text=Agentic%20Ops&fontSize=52&fontAlignY=38&desc=16%20operators%2C%20one%20router%20%E2%80%94%20resolve%20%E2%86%92%20read%20%E2%86%92%20act%20%E2%86%92%20prove&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,12,20&height=180&text=agentic-ops&fontSize=42&fontAlignY=38&desc=route%20real-world%20ops%20to%20the%20right%20operator&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-18-f59e0b?style=flat)](../../skills.sh.json)
-[![Surfaces](https://img.shields.io/badge/surfaces-6-10b981?style=flat)](../../skills/agentic-ops-core/SKILL.md)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Real-world operations for autonomous agents — 16 surface specialists behind a single router.**
-Operating an inbox, a repo, a tracker, a billing system, or a docs drive? The orchestrator places
-your task on the **surface × intent** map and routes; `agentic-ops-core` holds the evidence-first
-operator loop they all run.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-26-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-ECC-0ea5e9?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=2" width="100%" />
+> The single entry point for **operating real-world surfaces** as an autonomous agent — inbox, repo, issue tracker, billing system, docs drive, alert stream. It locates the task on the surface × intent map and delegates to one of 26 operator spokes, each running the shared **evidence-first operator loop** (resolve the surface → read live state → smallest reversible action → prove it → report exact status) with the secrets/PII guardrails defined in `agentic-ops-core`.
 
-## What it is
-
-18 skills: `agentic-ops-orchestrator` (router) + `agentic-ops-core` (shared model) + 16 operator
-specialists. The cluster's job is to make an agent's real-world actions **provable** — the
-orchestrator knows which surface to reach for, and the core keeps the one loop every spoke shares
-(resolve surface → read live state → smallest reversible action → prove it → report an exact status
-word) consistent, so nothing is claimed that wasn't verified.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["agentic-ops-orchestrator<br/>(hub · surface × intent router)"]
-    O --> COMMS["Communication<br/>(email · messages · alerts)"]
-    O --> CODE["Code-host & exec<br/>(github · git · terminal)"]
-    O --> FLOW["Project flow<br/>(project-flow · jira)"]
-    O --> KNOW["Knowledge & docs<br/>(knowledge · workspace)"]
-    O --> REV["Revenue<br/>(customer · finance billing)"]
-    O --> AUDIT["Audit & observe<br/>(automation · surface · social · dashboards)"]
-    COMMS -. references .-> C["agentic-ops-core<br/>(operator loop · surface taxonomy<br/>· status vocabulary · guardrails)"]
-    CODE -. references .-> C
-    REV -. references .-> C
-    AUDIT -. references .-> C
-
-    style O fill:#b45309,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([agentic-ops-orchestrator]):::hub --> c([agentic-ops-core]):::hub
+  o --> s1([email-ops])
+  o --> s2([messages-ops])
+  o --> s3([github-ops])
+  o --> s4([terminal-ops])
+  o --> s5([project-flow-ops])
+  o --> s6([jira-integration])
+  o --> s7([knowledge-ops])
+  o --> s8([customer-billing-ops])
+  o --> s9([automation-audit-ops])
+  o --> s10([dashboard-builder])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by surface
+_…and 16 more in the table below._
 
-| Surface | Spokes |
-|---|---|
-| **Router / model** | `agentic-ops-orchestrator`, `agentic-ops-core` |
-| **Communication** | `email-ops`, `messages-ops`, `unified-notifications-ops` |
-| **Code-host & execution** | `github-ops`, `git-workflow`, `terminal-ops` |
-| **Project flow & trackers** | `project-flow-ops`, `jira-integration` |
-| **Knowledge & documents** | `knowledge-ops`, `google-workspace-ops` |
-| **Revenue** | `customer-billing-ops`, `finance-billing-ops` |
-| **Audit & observability** | `automation-audit-ops`, `workspace-surface-audit`, `connections-optimizer`, `dashboard-builder` |
+## Skills
 
-## The model that ties it together
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `agentic-ops-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `agentic-ops-core` | 📐 hub · shared reference | ✅ enumerated |
+| `email-ops` | spoke | ⤵ on-demand |
+| `messages-ops` | spoke | ⤵ on-demand |
+| `github-ops` | spoke | ⤵ on-demand |
+| `jira-integration` | spoke | ⤵ on-demand |
+| `google-workspace-ops` | spoke | ⤵ on-demand |
+| `project-flow-ops` | spoke | ⤵ on-demand |
+| `unified-notifications-ops` | spoke | ⤵ on-demand |
+| `terminal-ops` | spoke | ⤵ on-demand |
+| `knowledge-ops` | spoke | ⤵ on-demand |
+| `customer-billing-ops` | spoke | ⤵ on-demand |
+| `finance-billing-ops` | spoke | ⤵ on-demand |
+| `automation-audit-ops` | spoke | ⤵ on-demand |
+| `workspace-surface-audit` | spoke | ⤵ on-demand |
+| `connections-optimizer` | spoke | ⤵ on-demand |
+| `dashboard-builder` | spoke | ⤵ on-demand |
+| `git-workflow` | spoke | ⤵ on-demand |
+| `connect` | spoke | ⤵ on-demand |
+| `connect-apps` | spoke | ⤵ on-demand |
+| `langsmith-fetch` | spoke | ⤵ on-demand |
+| `supacode-cli` | spoke | ⤵ on-demand |
+| `hyperframes-cli` | spoke | ⤵ on-demand |
+| `developer-growth-analysis` | spoke | ⤵ on-demand |
+| `ai-automation-workflows` | spoke | ⤵ on-demand |
+| `coding-agent` | spoke | ⤵ on-demand |
+| `model-usage` | spoke | ⤵ on-demand |
+| `gemini` | spoke | ⤵ on-demand |
 
-Every spoke runs the same **evidence-first operator loop**:
+## Tier & loading
 
-```
-Resolve surface ──> Read live state ──> Smallest reversible action ──> Prove it ──> Report exact status
-```
-
-Read before you write; default to draft / read-only / no-op unless a live action was explicitly
-requested; never claim *sent / pushed / fixed / refunded* without naming the proof. Full model —
-the surface taxonomy, the status-word contract, the freshness and no-duplicate rules, and the
-shared guardrails — in [`agentic-ops-core`](../../skills/agentic-ops-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@agentic-ops-orchestrator -g -y     # entry point
-npx skills add Sheshiyer/skill-clusters@terminal-ops -g -y                 # any spoke
+npx skills add Sheshiyer/skill-clusters@agentic-ops-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Primary source: **ECC** (`affaan-m/ECC`, MIT). See [../../NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

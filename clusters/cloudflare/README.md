@@ -1,85 +1,64 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&text=Cloudflare&fontSize=52&fontAlignY=38&desc=9%20edge%20specialists%2C%20one%20router%20%E2%80%94%20compute%20%E2%86%92%20bind%20%E2%86%92%20store%20%E2%86%92%20ship&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=15,16,30&height=180&text=cloudflare&fontSize=42&fontAlignY=38&desc=route%20a%20Cloudflare%20edge%20task&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-11-f59e0b?style=flat)](../../skills.sh.json)
-[![Cloudflare](https://img.shields.io/badge/Cloudflare-Workers-F38020?style=flat&logo=cloudflare&logoColor=white)](https://developers.cloudflare.com/workers/)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**The edge cluster — 9 Cloudflare specialists behind a single router.**
-Building, configuring, or shipping on Cloudflare's edge? The orchestrator places your task on the
-**compute × primitive** map and routes; `cloudflare-core` holds the binding + config model they all share.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-9-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=2" width="100%" />
+> The single entry point for Cloudflare edge work: it locates a task on the **compute × primitive** map — Workers/Pages compute, the wrangler CLI and binding/config model, storage (KV, R2, D1), Durable Objects, the Agents and Sandbox SDKs, transactional email, and deploy/auth debugging — and delegates to the right specialist spoke. The cross-cutting model every Cloudflare app shares — compute reaching primitives **only through bindings** declared in `wrangler.jsonc` under a pinned `compatibility_date` — lives in `cloudflare-core`.
 
-## What it is
-
-11 skills: `cloudflare-orchestrator` (router) + `cloudflare-core` (shared model) + 9 existing
-specialists. The cluster's job is to make a broad, fast-moving platform *navigable* — the
-orchestrator knows which spoke to reach for, and the core keeps the interlocking concepts
-(Workers/Pages compute, bindings, `compatibility_date`, the KV/R2/D1/DO storage choice) consistent.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["cloudflare-orchestrator<br/>(hub · compute × primitive router)"]
-    O --> DEP["Deploy &<br/>operate"]
-    O --> CLI["wrangler CLI<br/>& config"]
-    O --> CODE["Write & review<br/>Worker code"]
-    O --> STATE["Stateful<br/>(Durable Objects)"]
-    O --> SDK["AI agents &<br/>sandboxes"]
-    O --> EDGE["Email &<br/>R2 artifacts"]
-    CLI -. references .-> C["cloudflare-core<br/>(Worker + bindings · wrangler.jsonc<br/>· compatibility_date · KV/R2/D1/DO matrix)"]
-    STATE -. references .-> C
-    SDK -. references .-> C
-
-    style O fill:#c2410c,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([cloudflare-orchestrator]):::hub --> c([cloudflare-core]):::hub
+  o --> s1([cloudflare])
+  o --> s2([wrangler])
+  o --> s3([workers-best-practices])
+  o --> s4([durable-objects])
+  o --> s5([agents-sdk])
+  o --> s6([sandbox-sdk])
+  o --> s7([cloudflare-email-service])
+  o --> s8([cloudflare-manager])
+  o --> s9([r2-notebooklm-artifact-portal])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by concern
+## Skills
 
-| Concern | Spokes |
-|---|---|
-| **Router / model** | `cloudflare-orchestrator`, `cloudflare-core` |
-| **Deploy & operate** | `cloudflare`, `cloudflare-manager` |
-| **CLI & config** | `wrangler` |
-| **Write & review code** | `workers-best-practices` |
-| **Stateful coordination** | `durable-objects` |
-| **AI agents & sandboxes** | `agents-sdk`, `sandbox-sdk` |
-| **Email & R2 artifacts** | `cloudflare-email-service`, `r2-notebooklm-artifact-portal` |
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `cloudflare-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `cloudflare-core` | 📐 hub · shared reference | ✅ enumerated |
+| `cloudflare` | spoke | ⤵ on-demand |
+| `wrangler` | spoke | ⤵ on-demand |
+| `workers-best-practices` | spoke | ⤵ on-demand |
+| `durable-objects` | spoke | ⤵ on-demand |
+| `agents-sdk` | spoke | ⤵ on-demand |
+| `sandbox-sdk` | spoke | ⤵ on-demand |
+| `cloudflare-email-service` | spoke | ⤵ on-demand |
+| `cloudflare-manager` | spoke | ⤵ on-demand |
+| `r2-notebooklm-artifact-portal` | spoke | ⤵ on-demand |
 
-## The model that ties it together
+## Tier & loading
 
-Everything is **compute at the edge reaching primitives only through bindings**:
-
-```
-Request ──> Worker / Pages Function ──binding──> KV · R2 · D1 · Durable Object · Queue · AI · send_email
-                                       (declared in wrangler.jsonc, pinned by compatibility_date)
-```
-
-Declare every dependency as a binding; pick the right primitive (KV = read-heavy cache,
-R2 = objects, D1 = relational, Durable Object = strongly-consistent per-entity state); pin
-`compatibility_date` and `wrangler types` after changes. Full model in
-[`cloudflare-core`](../../skills/cloudflare-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@cloudflare-orchestrator -g -y   # entry point
-npx skills add Sheshiyer/skill-clusters@durable-objects -g -y           # any spoke
+npx skills add Sheshiyer/skill-clusters@cloudflare-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Authored for skill-clusters (MIT), curated from the community library against Cloudflare's official docs. See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

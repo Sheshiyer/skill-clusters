@@ -1,93 +1,66 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&text=Documents&fontSize=52&fontAlignY=38&desc=8%20specialists%2C%20one%20router%20%E2%80%94%20create%20%E2%86%92%20edit%20%E2%86%92%20extract%20%E2%86%92%20render&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,8&height=180&text=documents&fontSize=42&fontAlignY=38&desc=route%20document%20tasks%20to%20specialists&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-10-f59e0b?style=flat)](../../skills.sh.json)
-[![Tier](https://img.shields.io/badge/tier-deferred-64748b?style=flat)](../../README.md)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Office formats, extraction, publishing, and diagrams behind a single router.**
-Creating, editing, extracting from, or rendering a document? The orchestrator places your task on
-the **format × intent** map and routes; `documents-core` holds the editable-vs-rendered decision
-they all share.
+[![tier](https://img.shields.io/badge/tier-deferred-64748b?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-10-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=2" width="100%" />
+> Routes a document task to the right specialist — office formats (DOCX/PDF/PPTX/XLSX), docs sites, changelogs, OCR extraction, natural-language PDF edits, NotebookLM, and diagram authoring. Every task first turns on one decision held in `documents-core`: keep the **editable source** (round-trippable, structure preserved) or produce a **rendered artifact** (pixel-fidelity output you can't edit back) — and that call locks which spoke can touch the file next.
 
-## What it is
-
-10 skills: `documents-orchestrator` (router) + `documents-core` (shared model) + 8 specialists.
-The cluster's job is to make a sprawl of document tools *navigable* — the orchestrator knows
-which spoke to reach for, and the core keeps the one decision that governs every task
-(**editable source vs rendered artifact**) consistent so no spoke contradicts another.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["documents-orchestrator<br/>(hub · format × intent router)"]
-    O --> OFF["Office formats<br/>(DOCX · PDF · PPTX · XLSX)"]
-    O --> ING["Extract & ingest<br/>(OCR · NotebookLM)"]
-    O --> PUB["Publish docs<br/>(Mintlify · changelog)"]
-    O --> DIA["Diagrams<br/>(draw.io · Mermaid→GIF)"]
-
-    OFF --> D["documents<br/>(docx · pdf · pptx · xlsx)"]
-    OFF --> NP["nano-pdf"]
-    ING --> OCR["deepread-ocr"]
-    ING --> NB["notebooklm"]
-    PUB --> MIN["mintlify"]
-    PUB --> CL["changelog-generator"]
-    DIA --> DRW["drawio-diagrams-enhanced"]
-    DIA --> M2G["mermaid-to-gif"]
-
-    OFF -. references .-> C["documents-core<br/>(editable vs rendered · format→tool matrix<br/>· ingest/publish paths · fidelity rules)"]
-    ING -. references .-> C
-    DIA -. references .-> C
-
-    style O fill:#b45309,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([documents-orchestrator]):::hub --> c([documents-core]):::hub
+  o --> s1([documents])
+  o --> s2([mintlify])
+  o --> s3([changelog-generator])
+  o --> s4([deepread-ocr])
+  o --> s5([nano-pdf])
+  o --> s6([notebooklm])
+  o --> s7([drawio-diagrams-enhanced])
+  o --> s8([mermaid-to-gif])
+  o --> s9([readme])
+  o --> s10([screenshots])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by concern
+## Skills
 
-| Concern | Spokes |
-|---|---|
-| **Router / model** | `documents-orchestrator`, `documents-core` |
-| **Office formats** | `documents` (bundles `docx` · `pdf` · `pptx` · `xlsx` + Playwright HTML→PDF report pipeline), `nano-pdf` |
-| **Extract & ingest** | `deepread-ocr`, `notebooklm` |
-| **Publish docs** | `mintlify`, `changelog-generator` |
-| **Diagrams** | `drawio-diagrams-enhanced`, `mermaid-to-gif` |
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `documents-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `documents-core` | 📐 hub · shared reference | ✅ enumerated |
+| `documents` | spoke | ⤵ on-demand |
+| `mintlify` | spoke | ⤵ on-demand |
+| `changelog-generator` | spoke | ⤵ on-demand |
+| `deepread-ocr` | spoke | ⤵ on-demand |
+| `nano-pdf` | spoke | ⤵ on-demand |
+| `notebooklm` | spoke | ⤵ on-demand |
+| `drawio-diagrams-enhanced` | spoke | ⤵ on-demand |
+| `mermaid-to-gif` | spoke | ⤵ on-demand |
+| `readme` | spoke | ⤵ on-demand |
+| `screenshots` | spoke | ⤵ on-demand |
 
-## The decision that ties it together
+## Tier & loading
 
-Every document is in one of two modes, and the mode is a one-way door:
-
-```
-Editable source  ──(render)──>  Rendered artifact
-  (OOXML · openpyxl ·              (Playwright PDF · OCR text ·
-   .drawio XML · .md)               flattened PDF · GIF)
-  round-trippable                   pixel/print fidelity — can't edit back
-```
-
-Stay editable as long as the user might edit again; render only at the last step, and never
-overwrite the original with its render. Full model in
-[`documents-core`](../../skills/documents-core/SKILL.md).
+Off by default — 0 startup cost. Activate with `node scripts/tier.mjs --activate documents --apply`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@documents-orchestrator -g -y     # entry point
-npx skills add Sheshiyer/skill-clusters@deepread-ocr -g -y               # any spoke
+npx skills add Sheshiyer/skill-clusters@documents-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Authored for skill-clusters (MIT) — see [NOTICE](../../NOTICE). + mixed: the `readme` and `screenshots` spokes originate from antigravity-awesome-skills (MIT).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

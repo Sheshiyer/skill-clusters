@@ -1,86 +1,80 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,12,20&height=220&text=DevOps%20%26%20Infra&fontSize=50&fontAlignY=38&desc=13%20specialists%2C%20one%20router%20%E2%80%94%20diagnose%20%E2%86%92%20change%20%E2%86%92%20verify%20%E2%86%92%20rollback&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,13,14&height=180&text=devops-infra&fontSize=42&fontAlignY=38&desc=provision%20diagnose%20segment%20ship%20infra&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-15-f59e0b?style=flat)](../../skills.sh.json)
-[![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=flat&logo=docker&logoColor=white)](https://docs.docker.com/compose/)
-[![WireGuard](https://img.shields.io/badge/WireGuard-VPN-88171A?style=flat&logo=wireguard&logoColor=white)](https://www.wireguard.com)
-[![Cisco](https://img.shields.io/badge/Cisco-IOS%2FIOS--XE-1BA0D7?style=flat&logo=cisco&logoColor=white)](https://www.cisco.com)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**13 infrastructure specialists behind a single router.**
-Provisioning containers, diagnosing a flapping link, segmenting a home network, or verifying a
-deploy? The orchestrator places your task on the **layer × operation** map and routes;
-`devops-infra-core` holds the read-only-by-default safety boundary they all share.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-22-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=2,12,20&height=2" width="100%" />
+> The single entry skill for infrastructure work. It locates a task on the **layer × operation** map — containers & compose, self-hosting clusters, post-deploy canary checks, reproducible dev environments, enterprise network-device diagnostics, and homelab networking — and delegates to one specialist spoke, with the read-only-by-default / change-window-for-mutations safety boundary (defined in `devops-infra-core`) shared across all of them.
 
-## What it is
-
-15 skills: `devops-infra-orchestrator` (router) + `devops-infra-core` (shared model) + 13
-specialists spanning containers, self-hosting, dev environments, enterprise network devices, and
-homelab networking. The cluster makes a broad skill set *navigable* — the orchestrator knows
-which specialist to reach for, and the core keeps the one interlocking rule (diagnose read-only
-→ change in a window → verify → rollback) consistent across every spoke, from a Cisco router to a
-`docker compose up` to a WireGuard tunnel.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["devops-infra-orchestrator<br/>(hub · layer × operation router)"]
-    O --> CT["Containers & deploy<br/>(docker · uncloud · canary-watch)"]
-    O --> ENV["Dev environments<br/>(flox)"]
-    O --> NET["Enterprise network<br/>(cisco · netmiko · bgp · config · interface)"]
-    O --> HL["Homelab network<br/>(setup · vlan · pihole · wireguard)"]
-    CT -. references .-> C["devops-infra-core<br/>(read-only default · change-class taxonomy<br/>· change window · rollback · verify)"]
-    ENV -. references .-> C
-    NET -. references .-> C
-    HL -. references .-> C
-
-    style O fill:#1d4ed8,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([devops-infra-orchestrator]):::hub --> c([devops-infra-core]):::hub
+  o --> s1([docker-patterns])
+  o --> s2([uncloud])
+  o --> s3([canary-watch])
+  o --> s4([flox-environments])
+  o --> s5([cisco-ios-patterns])
+  o --> s6([netmiko-ssh-automation])
+  o --> s7([network-bgp-diagnostics])
+  o --> s8([homelab-vlan-segmentation])
+  o --> s9([homelab-pihole-dns])
+  o --> s10([homelab-wireguard-vpn])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by layer
+_…and 12 more in the table below._
 
-| Layer | Spokes |
-|---|---|
-| **Router / model** | `devops-infra-orchestrator`, `devops-infra-core` |
-| **Containers & deploy** | `docker-patterns`, `uncloud`, `canary-watch` |
-| **Dev environments** | `flox-environments` |
-| **Enterprise network devices** | `cisco-ios-patterns`, `netmiko-ssh-automation`, `network-bgp-diagnostics`, `network-config-validation`, `network-interface-health` |
-| **Homelab networking** | `homelab-network-setup`, `homelab-vlan-segmentation`, `homelab-pihole-dns`, `homelab-wireguard-vpn` |
+## Skills
 
-## The model that ties it together
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `devops-infra-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `devops-infra-core` | 📐 hub · shared reference | ✅ enumerated |
+| `aws-serverless` | spoke | ⤵ on-demand |
+| `azure-functions` | spoke | ⤵ on-demand |
+| `canary-watch` | spoke | ⤵ on-demand |
+| `cisco-ios-patterns` | spoke | ⤵ on-demand |
+| `devcontainer-setup` | spoke | ⤵ on-demand |
+| `docker-patterns` | spoke | ⤵ on-demand |
+| `flox-environments` | spoke | ⤵ on-demand |
+| `gcp-cloud-run` | spoke | ⤵ on-demand |
+| `healthcheck` | spoke | ⤵ on-demand |
+| `homelab-network-setup` | spoke | ⤵ on-demand |
+| `homelab-pihole-dns` | spoke | ⤵ on-demand |
+| `homelab-vlan-segmentation` | spoke | ⤵ on-demand |
+| `homelab-wireguard-vpn` | spoke | ⤵ on-demand |
+| `inngest` | spoke | ⤵ on-demand |
+| `netmiko-ssh-automation` | spoke | ⤵ on-demand |
+| `network-bgp-diagnostics` | spoke | ⤵ on-demand |
+| `network-config-validation` | spoke | ⤵ on-demand |
+| `network-interface-health` | spoke | ⤵ on-demand |
+| `terraform-skill` | spoke | ⤵ on-demand |
+| `uncloud` | spoke | ⤵ on-demand |
+| `upstash-qstash` | spoke | ⤵ on-demand |
+| `voice-ai-development` | spoke | ⤵ on-demand |
 
-Every spoke turns on **one decision** — is this action read-only, or does it change state?
+## Tier & loading
 
-```
-DIAGNOSE (read-only) ──> PLAN change + rollback ──> CHANGE WINDOW ──> VERIFY ──> rollback if regressed
-```
-
-The default path on any device, cluster, or deploy is read-only evidence collection; a mutation
-— a config line, a firewall/VLAN rule, a `uc` deploy, a port opened — is gated behind a window
-with a rollback and out-of-band access secured first. Full model and the change-class taxonomy in
-[`devops-infra-core`](../../skills/devops-infra-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@devops-infra-orchestrator -g -y   # entry point
-npx skills add Sheshiyer/skill-clusters@homelab-vlan-segmentation -g -y   # any spoke
+npx skills add Sheshiyer/skill-clusters@devops-infra-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Primarily authored for skill-clusters (MIT) + mixed — includes spokes from antigravity-awesome-skills (MIT) and affaan-m/ECC (MIT). See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

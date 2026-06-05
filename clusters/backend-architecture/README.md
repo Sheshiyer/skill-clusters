@@ -1,94 +1,62 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,30&height=220&text=Backend%20Architecture&fontSize=48&fontAlignY=38&desc=8%20specialists%2C%20one%20router%20%E2%80%94%20shape%20%E2%86%92%20design%20%E2%86%92%20integrate%20%E2%86%92%20ship&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,2,7&height=180&text=backend-architecture&fontSize=42&fontAlignY=38&desc=route%20to%208%20server-side%20specialists&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-10-f59e0b?style=flat)](../../skills.sh.json)
-[![Cluster](https://img.shields.io/badge/cluster-backend--architecture-3178C6?style=flat&logo=node.js&logoColor=white)](../../skills/backend-architecture-orchestrator/SKILL.md)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**8 server-side specialists behind a single router.**
-Designing, building, integrating, or shipping a backend? The orchestrator places your task on the
-**layer × concern** map and routes; `backend-architecture-core` holds the dependency-inversion
-boundary they all share.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-8-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-ECC-0ea5e9?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,30&height=2" width="100%" />
+> The single entry skill for server-side work: it locates a task on the **layer × concern** map and delegates to one of 8 specialist spokes — architecture boundaries (hexagonal/ports-and-adapters), REST API design, HTTP connector building, NestJS structure, MCP servers, deployment/CI-CD, and decision records. The cross-cutting model every backend shares — the dependency-inversion boundary (domain → ports → adapters), the layering contract, transport conventions, and the runtime matrix — lives in `backend-architecture-core`.
 
-## What it is
-
-10 skills: `backend-architecture-orchestrator` (router) + `backend-architecture-core`
-(shared model) + 8 specialists. The cluster's job is to keep a backend's business logic
-independent of frameworks and I/O — the orchestrator knows which specialist to reach for, and
-the core keeps the interlocking layering rules (domain → ports → adapters, transport conventions,
-runtime matrix) consistent.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["backend-architecture-orchestrator<br/>(hub · layer × concern router)"]
-    O --> SHAPE["Shape architecture<br/>(hexagonal · patterns · nestjs)"]
-    O --> API["Design API surface<br/>(rest · connectors · mcp)"]
-    O --> SHIP["Ship & record<br/>(deploy · ADRs)"]
-
-    SHAPE --> HEX["hexagonal-architecture"]
-    SHAPE --> BP["backend-patterns"]
-    SHAPE --> NEST["nestjs-patterns"]
-    API --> AD["api-design"]
-    API --> ACB["api-connector-builder"]
-    API --> MCP["mcp-server-patterns"]
-    SHIP --> DEP["deployment-patterns"]
-    SHIP --> ADR["architecture-decision-records"]
-
-    HEX -. references .-> C["backend-architecture-core<br/>(domain → ports → adapters<br/>· layering contract · transport · runtime matrix)"]
-    BP -. references .-> C
-    NEST -. references .-> C
-    AD -. references .-> C
-    ACB -. references .-> C
-    MCP -. references .-> C
-    DEP -. references .-> C
-
-    style O fill:#b45309,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([backend-architecture-orchestrator]):::hub --> c([backend-architecture-core]):::hub
+  o --> s1([hexagonal-architecture])
+  o --> s2([backend-patterns])
+  o --> s3([nestjs-patterns])
+  o --> s4([api-design])
+  o --> s5([api-connector-builder])
+  o --> s6([mcp-server-patterns])
+  o --> s7([deployment-patterns])
+  o --> s8([architecture-decision-records])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by concern
+## Skills
 
-| Concern | Spokes |
-|---|---|
-| **Router / model** | `backend-architecture-orchestrator`, `backend-architecture-core` |
-| **Shape architecture** | `hexagonal-architecture`, `backend-patterns`, `nestjs-patterns` |
-| **Design API surface** | `api-design`, `api-connector-builder`, `mcp-server-patterns` |
-| **Ship & record** | `deployment-patterns`, `architecture-decision-records` |
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `backend-architecture-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `backend-architecture-core` | 📐 hub · shared reference | ✅ enumerated |
+| `hexagonal-architecture` | spoke | ⤵ on-demand |
+| `backend-patterns` | spoke | ⤵ on-demand |
+| `nestjs-patterns` | spoke | ⤵ on-demand |
+| `api-design` | spoke | ⤵ on-demand |
+| `api-connector-builder` | spoke | ⤵ on-demand |
+| `mcp-server-patterns` | spoke | ⤵ on-demand |
+| `deployment-patterns` | spoke | ⤵ on-demand |
+| `architecture-decision-records` | spoke | ⤵ on-demand |
 
-## The model that ties it together
+## Tier & loading
 
-**Dependencies point inward** — the domain never imports a framework, driver, or HTTP client:
-
-```
-HTTP · CLI · queue ──> [Port] ──> Domain + Use cases ──> [Port] ──> DB · API · bus · cache
-   inbound adapters                (no framework imports)            outbound adapters
-```
-
-Put a port between business logic and anything swappable; validate at the transport boundary;
-match the repo's existing pattern instead of inventing a second architecture. Full model in
-[`backend-architecture-core`](../../skills/backend-architecture-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@backend-architecture-orchestrator -g -y   # entry point
-npx skills add Sheshiyer/skill-clusters@hexagonal-architecture -g -y              # any spoke
+npx skills add Sheshiyer/skill-clusters@backend-architecture-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Spokes adapted from [affaan-m/ECC](../../NOTICE) (MIT). See [NOTICE](../../NOTICE) for full provenance.
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

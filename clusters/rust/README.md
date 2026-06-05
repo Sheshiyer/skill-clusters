@@ -1,77 +1,52 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&text=Rust&fontSize=56&fontAlignY=38&desc=Write%20idiomatic%2C%20prove%20it%20%E2%80%94%20one%20router%2C%20patterns%20%2B%20testing&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=10,18,22&height=180&text=rust&fontSize=42&fontAlignY=38&desc=route%20Rust%20work%20to%20the%20right%20skill&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-4-f59e0b?style=flat)](../../skills.sh.json)
-[![Rust](https://img.shields.io/badge/Rust-2024-000000?style=flat&logo=rust&logoColor=white)](https://www.rust-lang.org)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Idiomatic Rust, behind a single router.**
-Writing, reviewing, refactoring, or testing Rust? The orchestrator places your task on the
-**write ↔ verify** axis and routes; `rust-core` holds the error strategy both spokes share.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-3-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=2" width="100%" />
+> The single entry skill for Rust work: it locates the task on the **write ↔ verify** axis and delegates to one of two specialists — idiomatic patterns (ownership, errors, traits, concurrency, crate layout) versus testing (unit, integration, async, property-based, mocking, coverage, TDD). The cross-cutting model both spokes share — the library-vs-application error strategy (`thiserror` vs `anyhow`), type-driven design, and the standard cargo toolchain — lives in `rust-core`.
 
-## What it is
-
-4 skills: `rust-orchestrator` (router) + `rust-core` (shared model) + 2 specialists
-(`rust-patterns`, `rust-testing`). The cluster's job is to make Rust work *navigable* — the
-orchestrator knows whether you're shaping code or proving it, and the core keeps the one decision
-everything hinges on (library `thiserror` vs application `anyhow`) consistent across both spokes.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["rust-orchestrator<br/>(hub · write ↔ verify router)"]
-    O --> P["rust-patterns<br/>(ownership · errors · traits<br/>· concurrency · crate layout)"]
-    O --> T["rust-testing<br/>(TDD · unit/integration/async<br/>· proptest · mockall · coverage)"]
-    P -. references .-> C["rust-core<br/>(thiserror vs anyhow · type-driven design<br/>· cargo/CI matrix · guardrails)"]
-    T -. references .-> C
-
-    style O fill:#b45309,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([rust-orchestrator]):::hub --> c([rust-core]):::hub
+  o --> s1([rust-patterns])
+  o --> s2([rust-testing])
+  o --> s3([rust-coding-skill])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
 ## Skills
 
-| Concern | Skill | Role |
+| Skill | Role | Loaded at startup |
 |---|---|---|
-| **Router** | `rust-orchestrator` | Places the task on the write ↔ verify axis and delegates |
-| **Shared model** | `rust-core` | The error strategy, type-driven conventions, cargo/CI matrix, guardrails |
-| **Write** | `rust-patterns` | Idiomatic ownership, error handling, traits, concurrency, crate structure |
-| **Verify** | `rust-testing` | Unit, integration, async, property-based tests, mocking, coverage, TDD |
+| `rust-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `rust-core` | 📐 hub · shared reference | ✅ enumerated |
+| `rust-patterns` | spoke | ⤵ on-demand |
+| `rust-testing` | spoke | ⤵ on-demand |
+| `rust-coding-skill` | spoke | ⤵ on-demand |
 
-## The model that ties it together
+## Tier & loading
 
-The cluster turns on **who consumes the error**:
-
-```
-Library / reusable crate ──> thiserror  (typed enum — callers & tests MATCH on variants)
-Application / binary ───────> anyhow     (dynamic Result + .context() — callers REPORT it)
-```
-
-Decide library-vs-application first; it fixes the public API and whether tests assert on typed
-variants (`matches!`) or just propagate context. `?` over `unwrap()`, illegal states
-unrepresentable, `unsafe` minimal and documented. Full model in
-[`rust-core`](../../skills/rust-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@rust-orchestrator -g -y    # entry point
-npx skills add Sheshiyer/skill-clusters@rust-testing -g -y         # any spoke
+npx skills add Sheshiyer/skill-clusters@rust-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Authored for skill-clusters (MIT). See [../../NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

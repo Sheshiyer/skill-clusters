@@ -1,83 +1,98 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,30&height=220&text=Tauri&fontSize=56&fontAlignY=38&desc=40%20specialists%2C%20one%20router%20%E2%80%94%20scaffold%20%E2%86%92%20secure%20%E2%86%92%20bridge%20%E2%86%92%20ship&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,13,14&height=180&text=tauri&fontSize=42&fontAlignY=38&desc=route%20a%20Tauri%20task%20to%20the%20right%20specialist&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-42-f59e0b?style=flat)](../../skills.sh.json)
-[![Tauri](https://img.shields.io/badge/Tauri-v2-24C8DB?style=flat&logo=tauri&logoColor=white)](https://tauri.app)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**The flagship cluster — 40 Tauri v2 specialists behind a single router.**
-Building, securing, bridging, or shipping a Tauri app? The orchestrator places your task on
-the **lifecycle × concern** map and routes; `tauri-core` holds the security model they all share.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-40-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,30&height=2" width="100%" />
+> Routes any Tauri v2 desktop/mobile task across 40 specialists on the **lifecycle × concern** map — scaffolding, the capability/permission/scope security model, the IPC trust boundary and Rust↔frontend bridge, windows, sidecars, plugins, building, signing, and per-platform distribution. The interlocking model every Tauri app shares lives in `tauri-core`: read it before configuring permissions, wiring IPC, or planning a release.
 
-## What it is
-
-42 skills: `tauri-orchestrator` (router) + `tauri-core` (shared model) + 40 existing
-specialists. The cluster's job is to make a huge, deep skill set *navigable* — the
-orchestrator knows which of the 40 to reach for, and the core keeps the interlocking
-security concepts (capabilities → permissions → scopes, IPC, CSP, process model) consistent.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["tauri-orchestrator<br/>(hub · lifecycle × concern router)"]
-    O --> S["Scaffold &<br/>understand"]
-    O --> CFG["Configure<br/>(+ security surface)"]
-    O --> IPC["IPC & Rust↔JS<br/>bridge"]
-    O --> EXT["Extend<br/>(sidecars · plugins)"]
-    O --> SHIP["Build · sign ·<br/>distribute"]
-    O --> OPS["Debug · test ·<br/>migrate"]
-    CFG -. references .-> C["tauri-core<br/>(capabilities → permissions → scopes<br/>· IPC boundary · CSP · process model)"]
-    IPC -. references .-> C
-    SHIP -. references .-> C
-
-    style O fill:#b45309,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([tauri-orchestrator]):::hub --> c([tauri-core]):::hub
+  o --> s1([setting-up-tauri-projects])
+  o --> s2([configuring-tauri-capabilities])
+  o --> s3([configuring-tauri-permissions])
+  o --> s4([configuring-tauri-scopes])
+  o --> s5([understanding-tauri-ipc])
+  o --> s6([calling-rust-from-tauri-frontend])
+  o --> s7([embedding-tauri-sidecars])
+  o --> s8([developing-tauri-plugins])
+  o --> s9([signing-tauri-apps])
+  o --> s10([distributing-tauri-for-macos])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by concern
+_…and 30 more in the table below._
 
-| Concern | Spokes |
-|---|---|
-| **Router / model** | `tauri-orchestrator`, `tauri-core` |
-| **Scaffold & understand** | `setting-up-tauri-projects`, `tauri-v2`, `understanding-tauri-architecture`, `understanding-tauri-process-model`, `understanding-tauri-runtime-authority`, `understanding-tauri-lifecycle-security`, `understanding-tauri-ecosystem-security` |
-| **Configure** | `configuring-tauri-apps`, `configuring-tauri-capabilities`, `configuring-tauri-permissions`, `configuring-tauri-scopes`, `configuring-tauri-csp`, `configuring-tauri-http-headers`, `customizing-tauri-windows`, `adding-tauri-splashscreen`, `adding-tauri-system-tray`, `managing-tauri-app-resources` |
-| **IPC & bridge** | `understanding-tauri-ipc`, `calling-rust-from-tauri-frontend`, `calling-frontend-from-tauri-rust`, `listening-to-tauri-events`, `integrating-tauri-js-frontends`, `integrating-tauri-rust-frontends` |
-| **Extend** | `embedding-tauri-sidecars`, `running-nodejs-sidecar-in-tauri`, `developing-tauri-plugins`, `managing-tauri-plugin-permissions` |
-| **Build · sign · ship** | `optimizing-tauri-binary-size`, `building-tauri-with-github-actions`, `signing-tauri-apps`, `distributing-tauri-for-macos`, `distributing-tauri-for-windows`, `packaging-tauri-for-linux`, `distributing-tauri-for-ios`, `distributing-tauri-for-android`, `using-crabnebula-cloud-with-tauri` |
-| **Operate** | `debugging-tauri-apps`, `testing-tauri-apps`, `updating-tauri-dependencies`, `migrating-tauri-apps` |
+## Skills
 
-## The model that ties it together
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `tauri-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `tauri-core` | 📐 hub · shared reference | ✅ enumerated |
+| `adding-tauri-splashscreen` | spoke | ⤵ on-demand |
+| `adding-tauri-system-tray` | spoke | ⤵ on-demand |
+| `building-tauri-with-github-actions` | spoke | ⤵ on-demand |
+| `calling-frontend-from-tauri-rust` | spoke | ⤵ on-demand |
+| `calling-rust-from-tauri-frontend` | spoke | ⤵ on-demand |
+| `configuring-tauri-apps` | spoke | ⤵ on-demand |
+| `configuring-tauri-capabilities` | spoke | ⤵ on-demand |
+| `configuring-tauri-csp` | spoke | ⤵ on-demand |
+| `configuring-tauri-http-headers` | spoke | ⤵ on-demand |
+| `configuring-tauri-permissions` | spoke | ⤵ on-demand |
+| `configuring-tauri-scopes` | spoke | ⤵ on-demand |
+| `customizing-tauri-windows` | spoke | ⤵ on-demand |
+| `debugging-tauri-apps` | spoke | ⤵ on-demand |
+| `developing-tauri-plugins` | spoke | ⤵ on-demand |
+| `distributing-tauri-for-android` | spoke | ⤵ on-demand |
+| `distributing-tauri-for-ios` | spoke | ⤵ on-demand |
+| `distributing-tauri-for-macos` | spoke | ⤵ on-demand |
+| `distributing-tauri-for-windows` | spoke | ⤵ on-demand |
+| `embedding-tauri-sidecars` | spoke | ⤵ on-demand |
+| `integrating-tauri-js-frontends` | spoke | ⤵ on-demand |
+| `integrating-tauri-rust-frontends` | spoke | ⤵ on-demand |
+| `listening-to-tauri-events` | spoke | ⤵ on-demand |
+| `managing-tauri-app-resources` | spoke | ⤵ on-demand |
+| `managing-tauri-plugin-permissions` | spoke | ⤵ on-demand |
+| `migrating-tauri-apps` | spoke | ⤵ on-demand |
+| `optimizing-tauri-binary-size` | spoke | ⤵ on-demand |
+| `packaging-tauri-for-linux` | spoke | ⤵ on-demand |
+| `running-nodejs-sidecar-in-tauri` | spoke | ⤵ on-demand |
+| `setting-up-tauri-projects` | spoke | ⤵ on-demand |
+| `signing-tauri-apps` | spoke | ⤵ on-demand |
+| `tauri-v2` | spoke | ⤵ on-demand |
+| `testing-tauri-apps` | spoke | ⤵ on-demand |
+| `understanding-tauri-architecture` | spoke | ⤵ on-demand |
+| `understanding-tauri-ecosystem-security` | spoke | ⤵ on-demand |
+| `understanding-tauri-ipc` | spoke | ⤵ on-demand |
+| `understanding-tauri-lifecycle-security` | spoke | ⤵ on-demand |
+| `understanding-tauri-process-model` | spoke | ⤵ on-demand |
+| `understanding-tauri-runtime-authority` | spoke | ⤵ on-demand |
+| `updating-tauri-dependencies` | spoke | ⤵ on-demand |
+| `using-crabnebula-cloud-with-tauri` | spoke | ⤵ on-demand |
 
-Access is **default-deny**:
+## Tier & loading
 
-```
-Window ──has──> Capability ──includes──> Permission(s) ──constrained by──> Scope(s)
-```
-
-Grant the narrowest capability that works; the frontend is untrusted, Rust is the trusted core,
-and everything crosses one IPC boundary. Full model in
-[`tauri-core`](../../skills/tauri-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@tauri-orchestrator -g -y     # entry point
-npx skills add Sheshiyer/skill-clusters@distributing-tauri-for-macos -g -y  # any spoke
+npx skills add Sheshiyer/skill-clusters@tauri-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Authored for skill-clusters (MIT). See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

@@ -1,84 +1,56 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,12,20&height=220&text=Healthcare&fontSize=52&fontAlignY=38&desc=Four%20clinical%20specialists%2C%20one%20router%20%E2%80%94%20protect%20%E2%86%92%20build%20%E2%86%92%20decide%20%E2%86%92%20gate&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=10,18,22&height=180&text=healthcare&fontSize=42&fontAlignY=38&desc=Route%20a%20healthcare-software%20task%20to%20the%20right%20specialist&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-6-2ea043?style=flat)](../../skills.sh.json)
-[![Patient safety](https://img.shields.io/badge/patient%20safety-non--negotiable-d1242b?style=flat)](../../skills/healthcare-eval-harness/SKILL.md)
-[![PHI](https://img.shields.io/badge/PHI-default--deny-8957e5?style=flat)](../../skills/healthcare-phi-compliance/SKILL.md)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Four clinical specialists behind a single router.**
-Building, reviewing, or shipping a healthcare app? The orchestrator places your task on the
-**lifecycle × concern** map and routes; `healthcare-core` holds the data-protection contract and
-the patient-safety rules they all share.
+[![tier](https://img.shields.io/badge/tier-deferred-64748b?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-5-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=2,12,20&height=2" width="100%" />
+> Routes a healthcare-software task to the right skill among clinical specialists — PHI/PII privacy & access control, EMR/EHR encounter workflows, the CDSS safety engine (drug interactions, dose, NEWS2), and the patient-safety eval harness that gates deploys. The cross-cutting model every clinical app shares — the three-layer data-protection contract (classify → control access → audit), the patient-safety bias (alerts block, never silently pass), and the CRITICAL-vs-HIGH gate thresholds — lives in `healthcare-core`.
 
-## What it is
-
-6 skills: `healthcare-orchestrator` (router) + `healthcare-core` (shared model) + 4 clinical
-specialists. The cluster's job is to make a patient-safety-critical domain *navigable* — the
-orchestrator knows which specialist to reach for, and the core keeps the interlocking concepts
-(classify → access-control → audit, the alert-severity matrix, the CRITICAL-vs-HIGH deploy gate)
-consistent so no spoke contradicts another.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["healthcare-orchestrator<br/>(hub · lifecycle × concern router)"]
-    O --> PHI["healthcare-phi-compliance<br/>(privacy · RLS · audit)"]
-    O --> EMR["healthcare-emr-patterns<br/>(encounter workflow · UI)"]
-    O --> CDSS["healthcare-cdss-patterns<br/>(drug · dose · NEWS2)"]
-    O --> EVAL["healthcare-eval-harness<br/>(patient-safety deploy gate)"]
-    PHI -. references .-> C["healthcare-core<br/>(classify → access → audit<br/>· alert-severity matrix · gate thresholds)"]
-    EMR -. references .-> C
-    CDSS -. references .-> C
-    EVAL -. references .-> C
-
-    style O fill:#1f6feb,color:#fff
-    style C fill:#2ea043,color:#fff
+graph LR
+  o([healthcare-orchestrator]):::hub --> c([healthcare-core]):::hub
+  o --> s1([healthcare-phi-compliance])
+  o --> s2([healthcare-emr-patterns])
+  o --> s3([healthcare-cdss-patterns])
+  o --> s4([healthcare-eval-harness])
+  o --> s5([claude-ally-health])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
 ## Skills
 
-| Concern | Spokes |
-|---|---|
-| **Router / model** | `healthcare-orchestrator`, `healthcare-core` |
-| **Protect data (privacy)** | `healthcare-phi-compliance` |
-| **Build the app (EMR/EHR)** | `healthcare-emr-patterns` |
-| **Decision support (safety logic)** | `healthcare-cdss-patterns` |
-| **Gate the deploy** | `healthcare-eval-harness` |
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `healthcare-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `healthcare-core` | 📐 hub · shared reference | ✅ enumerated |
+| `healthcare-phi-compliance` | spoke | ⤵ on-demand |
+| `healthcare-emr-patterns` | spoke | ⤵ on-demand |
+| `healthcare-cdss-patterns` | spoke | ⤵ on-demand |
+| `healthcare-eval-harness` | spoke | ⤵ on-demand |
+| `claude-ally-health` | spoke | ⤵ on-demand |
 
-## The model that ties it together
+## Tier & loading
 
-Every healthcare app turns on one three-layer contract, protected **by default**:
-
-```
-Classify (what is sensitive) ──> Access-control (who may see it) ──> Audit (who did see it)
-```
-
-Grant the narrowest access that works; PHI never lands in logs, URLs, browser storage, or LLM
-prompts; a critical clinical alert **blocks** the action (never a dismissable toast); and a single
-CRITICAL eval failure blocks the deploy. Full model in
-[`healthcare-core`](../../skills/healthcare-core/SKILL.md).
+Off by default — 0 startup cost. Activate with `node scripts/tier.mjs --activate healthcare --apply`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@healthcare-orchestrator -g -y     # entry point
-npx skills add Sheshiyer/skill-clusters@healthcare-phi-compliance -g -y   # any spoke
+npx skills add Sheshiyer/skill-clusters@healthcare-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Authored for skill-clusters (MIT) — the clinical spokes were contributed by Health1 Super Speciality Hospitals (Dr. Keyur Patel) + mixed: `claude-ally-health` is from antigravity-awesome-skills (MIT). See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

@@ -1,85 +1,71 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&text=Media-Gen&fontSize=52&fontAlignY=38&desc=11%20generators%20%26%20processors%2C%20one%20router%20%E2%80%94%20generate%20%E2%86%92%20transform%20%E2%86%92%20assemble&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=15,16,30&height=180&text=media-gen&fontSize=42&fontAlignY=38&desc=route%20media%20generation%20to%20the%20right%20tool&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-13-f59e0b?style=flat)](../../skills.sh.json)
-[![Tier](https://img.shields.io/badge/tier-deferred-64748b?style=flat)](../../profiles.json)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Generative + transformational media behind a single router.**
-Generating, editing, upscaling, 3D-ifying, or assembling an image, video, or GIF? The orchestrator
-places your task on the **modality × stage** map and routes; `media-gen-core` holds the
-backend-routing decision they all share.
+[![tier](https://img.shields.io/badge/tier-deferred-64748b?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-13-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=2" width="100%" />
+> The single entry skill for generative and transformational media work. It locates a task on the **modality × stage** map — *what asset* (image / 3D / video / GIF) and *what stage* (generate → transform → assemble) — and routes to one of its specialist spokes, while `media-gen-core` owns the cross-cutting decision every request shares: which backend to use given its access/billing model and modality.
 
-## What it is
-
-13 skills: `media-gen-orchestrator` (router) + `media-gen-core` (shared model) + 11 specialists
-spanning image generation, image enhancement, image-to-3D, AI video direction, FFmpeg processing,
-frame extraction, and GIF search/authoring. The cluster's job is to make a grab-bag of media tools
-*navigable* — the orchestrator knows which backend to reach for, and the core keeps the one
-decision that matters (which generator, given its **access/billing model** and the **modality**)
-consistent.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["media-gen-orchestrator<br/>(hub · modality × stage router)"]
-    O --> IMG["Image<br/>generate"]
-    O --> XF["Image<br/>transform"]
-    O --> D3["Image → 3D"]
-    O --> VID["Video<br/>generate · process"]
-    O --> GIF["GIF<br/>find · author"]
-    IMG -. references .-> C["media-gen-core<br/>(access-model × modality routing<br/>· generate→transform→assemble · formats)"]
-    VID -. references .-> C
-    D3 -. references .-> C
-
-    style O fill:#0e7490,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([media-gen-orchestrator]):::hub --> c([media-gen-core]):::hub
+  o --> s1([art])
+  o --> s2([gpt-image-2])
+  o --> s3([nano-banana-2])
+  o --> s4([openai-image-gen])
+  o --> s5([image-enhancer])
+  o --> s6([hunyuan3d])
+  o --> s7([ai-video-director])
+  o --> s8([ffmpeg])
+  o --> s9([video-frames])
+  o --> s10([gifgrep])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by concern
+_…and 3 more in the table below._
 
-| Concern | Spokes |
-|---|---|
-| **Router / model** | `media-gen-orchestrator`, `media-gen-core` |
-| **Image — generate** | `gpt-image-2`, `nano-banana-2`, `openai-image-gen`, `art` |
-| **Image — transform** | `image-enhancer` |
-| **3D** | `hunyuan3d` |
-| **Video — generate** | `ai-video-director` |
-| **Video — process / extract** | `ffmpeg`, `video-frames` |
-| **GIF — find / author** | `gifgrep`, `slack-gif-creator` |
+## Skills
 
-## The decision that ties it together
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `media-gen-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `media-gen-core` | 📐 hub · shared reference | ✅ enumerated |
+| `art` | spoke | ⤵ on-demand |
+| `image-enhancer` | spoke | ⤵ on-demand |
+| `gpt-image-2` | spoke | ⤵ on-demand |
+| `nano-banana-2` | spoke | ⤵ on-demand |
+| `openai-image-gen` | spoke | ⤵ on-demand |
+| `hunyuan3d` | spoke | ⤵ on-demand |
+| `ffmpeg` | spoke | ⤵ on-demand |
+| `video-frames` | spoke | ⤵ on-demand |
+| `ai-video-director` | spoke | ⤵ on-demand |
+| `gifgrep` | spoke | ⤵ on-demand |
+| `slack-gif-creator` | spoke | ⤵ on-demand |
+| `imagen` | spoke | ⤵ on-demand |
+| `seo-image-gen` | spoke | ⤵ on-demand |
 
-Every generative request resolves on two axes — **modality** × **access model**:
+## Tier & loading
 
-```
-Request ──> [ image | 3D | video | GIF ] × [ subscription-CLI | API-key+billing | local/hosted-GPU | free ] ──> spoke
-```
-
-Confirm the chosen backend's prerequisite (plan / key / GPU endpoint) before spending a call;
-generation is non-deterministic and may cost money. Full model in
-[`media-gen-core`](../../skills/media-gen-core/SKILL.md).
+Off by default — 0 startup cost. Activate with `node scripts/tier.mjs --activate media-gen --apply`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@media-gen-orchestrator -g -y     # entry point
-npx skills add Sheshiyer/skill-clusters@hunyuan3d -g -y                  # any spoke
+npx skills add Sheshiyer/skill-clusters@media-gen-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Authored for skill-clusters (MIT). + mixed — `imagen` and `seo-image-gen` are picked up from antigravity-awesome-skills (MIT). See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

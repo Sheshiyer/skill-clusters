@@ -1,66 +1,44 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=27,29,12&height=220&text=Raycast&fontSize=54&fontAlignY=38&desc=Extensions%2C%20AI%20tools%2C%20Store%20publishing%20%E2%80%94%20one%20router&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=20,24,27&height=180&text=raycast&fontSize=42&fontAlignY=38&desc=Route%20a%20Raycast%20task%20to%20the%20right%20spoke&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-6-ff6363?style=flat)](../../skills.sh.json)
-[![Raycast](https://img.shields.io/badge/Raycast-extensions-FF6363?style=flat&logo=raycast&logoColor=white)](https://developers.raycast.com)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Hub-and-spoke cluster for Raycast.**
-The orchestrator separates the four jobs people mean by "Raycast" — build an extension, make it
-AI-callable, publish to the Store, or design a Raycast-looking app — and routes. `raycast-core`
-holds the extension model. *(2 authored spokes fill the AI + publishing gaps.)*
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-4-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=27,29,12&height=2" width="100%" />
+> Separates the four distinct jobs people mean by "Raycast" — build an extension/command, build an AI extension (tools the Raycast AI calls), publish to the Store, or design a Raycast-aesthetic UI in your own app — and routes accordingly. The shared extension model (command types, the `package.json` manifest, `@raycast/api`, data, build/publish) lives in `raycast-core`.
 
-## What it is
-
-`raycast-orchestrator` + `raycast-core` + 4 spokes. The two existing skills were thin (and one,
-`raycast-ui-skills`, is actually about *mimicking* Raycast's look — not building extensions), so
-this cluster adds a real model plus **authored** `raycast-ai-extensions` and
-`raycast-store-publishing` spokes.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["raycast-orchestrator<br/>(hub · job router)"]
-    O --> E["raycast-extension<br/>(build commands)"]
-    O --> AI["raycast-ai-extensions<br/>(tools[] for Raycast AI) ✦authored"]
-    O --> PUB["raycast-store-publishing<br/>(submit + review) ✦authored"]
-    O --> UI["raycast-ui-skills<br/>(Raycast-look UI · aesthetic only)"]
-    E -. references .-> C["raycast-core<br/>(command types · manifest · @raycast/api<br/>· data hooks · build/publish)"]
-    AI -. references .-> C
-    PUB -. references .-> C
-
-    style O fill:#b91c1c,color:#fff
-    style C fill:#276749,color:#fff
-    style AI fill:#7c2d12,color:#fff
-    style PUB fill:#7c2d12,color:#fff
+graph LR
+  o([raycast-orchestrator]):::hub --> c([raycast-core]):::hub
+  o --> s1([raycast-extension])
+  o --> s2([raycast-ai-extensions])
+  o --> s3([raycast-store-publishing])
+  o --> s4([raycast-ui-skills])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
 ## Skills
 
-| Skill | Role | |
-|---|---|---|
-| `raycast-orchestrator` | Router — job → spoke | |
-| `raycast-core` | Command types, manifest, `@raycast/api`, data hooks, build/publish | |
-| `raycast-extension` | Build extensions/commands (React + TS) | |
-| `raycast-ai-extensions` | `tools[]` the Raycast AI can call | ✦ authored |
-| `raycast-store-publishing` | Package + submit + pass review | ✦ authored |
-| `raycast-ui-skills` | Raycast aesthetic for your *own* app | |
+| Skill | Role | Loaded at startup |
+| --- | --- | --- |
+| `raycast-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `raycast-core` | 📐 hub · shared reference | ✅ enumerated |
+| `raycast-extension` | spoke | ⤵ on-demand |
+| `raycast-ai-extensions` | spoke | ⤵ on-demand |
+| `raycast-store-publishing` | spoke | ⤵ on-demand |
+| `raycast-ui-skills` | spoke | ⤵ on-demand |
 
-## Two jobs people conflate
+## Tier & loading
 
-- **Build an extension** that runs *inside* Raycast → `raycast-extension` + `raycast-core`.
-- **Design your app** to *look like* Raycast (light mode, Inter, 4px grid) → `raycast-ui-skills`.
-
-Full extension model in [`raycast-core`](../../skills/raycast-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
@@ -68,10 +46,9 @@ Full extension model in [`raycast-core`](../../skills/raycast-core/SKILL.md).
 npx skills add Sheshiyer/skill-clusters@raycast-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo (repo = single source of truth):
+Authored for skill-clusters (MIT) + mixed — `raycast-ui-skills` is community-sourced (MIT, from raycast.com). See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

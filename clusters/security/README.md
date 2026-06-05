@@ -1,89 +1,71 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&text=Security&fontSize=52&fontAlignY=38&desc=Six%20specialists%2C%20one%20router%20%E2%80%94%20defend%20%C3%97%20attack%20over%20code%2C%20config%20%26%20runtime&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,12,20&height=180&text=security&fontSize=42&fontAlignY=38&desc=route%20a%20security%20task%20to%20the%20right%20specialist&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-8-ef4444?style=flat)](../../skills.sh.json)
-[![Posture](https://img.shields.io/badge/posture-default--deny-dc2626?style=flat&logo=shieldsdotio&logoColor=white)](../../skills/security-core/SKILL.md)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Six security specialists behind a single router.**
-Securing, auditing, hardening, or attacking a codebase or an agent setup? The orchestrator places
-your task on the **posture × surface** map and routes; `security-core` holds the trust-boundary
-model they all share.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-13-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=2" width="100%" />
+> Routes a security task across the **posture × surface** map — *defend vs attack* against *code, agent-config, source tree, or live runtime* — and delegates to one of thirteen specialists: defensive code review, offensive/bounty vulnerability hunting, agent-config (`.claude`) auditing, source-asset & embedded-dependency scanning, recon/OSINT, web/LLM penetration testing, secret scanning, threat intel, plus a pre-action fact-forcing gate and destructive-operation safety locks. The cross-cutting **trust boundary** — where attacker-controlled input reaches a privileged sink, and the default-deny posture that contains it — lives in `security-core`.
 
-## What it is
-
-8 skills: `security-orchestrator` (router) + `security-core` (shared model) + 6 specialist
-spokes. The cluster's job is to make security work *navigable* — the orchestrator knows which
-of the six to reach for across the *defend vs attack* × *code / agent-config / runtime* matrix,
-and the core keeps the one idea they all turn on — the **trust boundary** (untrusted input/action
-reaching a privileged sink, contained by default-deny) — consistent.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["security-orchestrator<br/>(hub · posture × surface router)"]
-    O --> RV["security-review<br/>(defend · code)"]
-    O --> BH["security-bounty-hunter<br/>(attack · code)"]
-    O --> SC["security-scan<br/>(audit · agent-config)"]
-    O --> RS["repo-scan<br/>(audit · source tree)"]
-    O --> GG["gateguard<br/>(contain · investigate)"]
-    O --> SG["safety-guard<br/>(contain · destructive ops)"]
-
-    RV -. references .-> C["security-core<br/>(trust boundary · default-deny<br/>· severity & exploitability · tooling matrix)"]
-    BH -. references .-> C
-    SC -. references .-> C
-    RS -. references .-> C
-    GG -. references .-> C
-    SG -. references .-> C
-
-    style O fill:#b91c1c,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([security-orchestrator]):::hub --> c([security-core]):::hub
+  o --> s1([security-review])
+  o --> s2([security-bounty-hunter])
+  o --> s3([security-scan])
+  o --> s4([repo-scan])
+  o --> s5([gateguard])
+  o --> s6([safety-guard])
+  o --> s7([secret-scanner])
+  o --> s8([recon])
+  o --> s9([osint])
+  o --> s10([webassessment])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by concern
+_…and 3 more in the table below._
 
-| Concern | Spokes |
-|---|---|
-| **Router / model** | `security-orchestrator`, `security-core` |
-| **Defend — code** | `security-review` |
-| **Attack — code** | `security-bounty-hunter` |
-| **Audit — agent config** | `security-scan` |
-| **Audit — source tree** | `repo-scan` |
-| **Contain — runtime** | `gateguard`, `safety-guard` |
+## Skills
 
-## The model that ties it together
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `security-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `security-core` | 📐 hub · shared reference | ✅ enumerated |
+| `security-review` | spoke | ⤵ on-demand |
+| `security-scan` | spoke | ⤵ on-demand |
+| `security-bounty-hunter` | spoke | ⤵ on-demand |
+| `repo-scan` | spoke | ⤵ on-demand |
+| `gateguard` | spoke | ⤵ on-demand |
+| `safety-guard` | spoke | ⤵ on-demand |
+| `secret-scanner` | spoke | ⤵ on-demand |
+| `osint` | spoke | ⤵ on-demand |
+| `recon` | spoke | ⤵ on-demand |
+| `webassessment` | spoke | ⤵ on-demand |
+| `promptinjection` | spoke | ⤵ on-demand |
+| `annualreports` | spoke | ⤵ on-demand |
+| `secupdates` | spoke | ⤵ on-demand |
 
-Every security question reduces to one thing — **can attacker-controlled input or action reach a
-privileged sink, and what contains it?**
+## Tier & loading
 
-```
-Untrusted source ──reaches──> Sink (privileged effect) ──contained by──> Control (default-deny)
-```
-
-A finding is real only when a reachable path connects an untrusted source to a meaningful sink;
-a control is sound only when it grants the narrowest access that works and never widens silently.
-Full model in [`security-core`](../../skills/security-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@security-orchestrator -g -y     # entry point
-npx skills add Sheshiyer/skill-clusters@security-review -g -y           # any spoke
+npx skills add Sheshiyer/skill-clusters@security-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Authored for skill-clusters (MIT) — the six core spokes (`security-review`, `security-scan`, `security-bounty-hunter`, `repo-scan`, `gateguard`, `safety-guard`). + mixed: folded-in spokes from the PAI/Codex skills library, and `secret-scanner` from lxgic-studios (MIT). See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

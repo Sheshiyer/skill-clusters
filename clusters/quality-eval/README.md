@@ -1,94 +1,79 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,12,20&height=220&text=Quality%20%2B%20Eval&fontSize=52&fontAlignY=38&desc=12%20specialists%2C%20one%20router%20%E2%80%94%20write%20%E2%86%92%20test%20%E2%86%92%20verify%20%E2%86%92%20ship&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,2,7&height=180&text=quality-eval&fontSize=42&fontAlignY=38&desc=route%20a%20testing%20or%20eval%20task&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-14-10b981?style=flat)](../../skills.sh.json)
-[![Gates](https://img.shields.io/badge/gates-write%20%E2%86%92%20commit%20%E2%86%92%20CI%20%E2%86%92%20ship-6366f1?style=flat)](../../skills/quality-eval-core/SKILL.md)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Prove it works — and prove the agent that wrote it works.**
-Testing, verifying, evaluating, benchmarking, or hardening code? The orchestrator places
-your task on the **gate-stage × subject** map and routes; `quality-eval-core` holds the
-four-gate model and the evidence ladder they all share.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-21-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-ECC-0ea5e9?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=2,12,20&height=2" width="100%" />
+> The single entry point for proving software — and the agents that write it — actually works. It places a quality/testing/evaluation task on the gate-stage × subject map (write → commit → CI → ship) and delegates to one of its specialist spokes; the shared model of the four gates, the evidence ladder, and `pass@k` vs a single green run lives in `quality-eval-core`.
 
-## What it is
-
-14 skills: `quality-eval-orchestrator` (router) + `quality-eval-core` (shared model) + 12
-specialist spokes covering evaluation, TDD, verification, E2E (web + Windows desktop),
-AI-regression and browser QA, error handling, performance benchmarking, write-time linting,
-and production-readiness audits. The cluster's job is to make "is this actually done?"
-answerable with evidence instead of vibes — the orchestrator knows which gate to reach for,
-and the core keeps the interlocking concepts (the four gates, the evidence ladder, `pass@k`,
-the AI write-and-review blind spot) consistent.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["quality-eval-orchestrator<br/>(hub · gate-stage × subject router)"]
-    O --> EVAL["Evaluate &<br/>compare agents"]
-    O --> WRITE["Write correctly<br/>(TDD · errors)"]
-    O --> VERIFY["Verify a change<br/>is finished"]
-    O --> E2E["Test behavior<br/>end-to-end"]
-    O --> PERF["Benchmark<br/>performance"]
-    O --> SHIP["Guard quality ·<br/>ship-readiness"]
-
-    EVAL -. references .-> C["quality-eval-core<br/>(four gates · evidence ladder<br/>· pass@k · write-and-review blind spot)"]
-    WRITE -. references .-> C
-    VERIFY -. references .-> C
-    E2E -. references .-> C
-    PERF -. references .-> C
-    SHIP -. references .-> C
-
-    style O fill:#047857,color:#fff
-    style C fill:#4338ca,color:#fff
+graph LR
+  o([quality-eval-orchestrator]):::hub --> c([quality-eval-core]):::hub
+  o --> s1([eval-harness])
+  o --> s2([agent-eval])
+  o --> s3([tdd-workflow])
+  o --> s4([verification-loop])
+  o --> s5([e2e-testing])
+  o --> s6([browser-qa])
+  o --> s7([error-handling])
+  o --> s8([benchmark])
+  o --> s9([plankton-code-quality])
+  o --> s10([production-audit])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by gate stage
+_…and 11 more in the table below._
 
-| Gate stage | Spokes |
-|---|---|
-| **Router / model** | `quality-eval-orchestrator`, `quality-eval-core` |
-| **Evaluate & compare** | `eval-harness`, `agent-eval` |
-| **Write correctly** | `tdd-workflow`, `error-handling` |
-| **Verify (commit-time)** | `verification-loop`, `ai-regression-testing` |
-| **Test end-to-end (CI)** | `e2e-testing`, `windows-desktop-e2e`, `browser-qa` |
-| **Benchmark** | `benchmark` |
-| **Guard & ship** | `plankton-code-quality`, `production-audit` |
+## Skills
 
-## The model that ties it together
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `quality-eval-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `quality-eval-core` | 📐 hub · shared reference | ✅ enumerated |
+| `eval-harness` | spoke | ⤵ on-demand |
+| `agent-eval` | spoke | ⤵ on-demand |
+| `tdd-workflow` | spoke | ⤵ on-demand |
+| `verification-loop` | spoke | ⤵ on-demand |
+| `e2e-testing` | spoke | ⤵ on-demand |
+| `windows-desktop-e2e` | spoke | ⤵ on-demand |
+| `ai-regression-testing` | spoke | ⤵ on-demand |
+| `browser-qa` | spoke | ⤵ on-demand |
+| `error-handling` | spoke | ⤵ on-demand |
+| `benchmark` | spoke | ⤵ on-demand |
+| `plankton-code-quality` | spoke | ⤵ on-demand |
+| `production-audit` | spoke | ⤵ on-demand |
+| `evals` | spoke | ⤵ on-demand |
+| `optimize` | spoke | ⤵ on-demand |
+| `autoresearch` | spoke | ⤵ on-demand |
+| `markdown-rendering-regression` | spoke | ⤵ on-demand |
+| `accesslint-scan` | spoke | ⤵ on-demand |
+| `accesslint-diff` | spoke | ⤵ on-demand |
+| `fix-review` | spoke | ⤵ on-demand |
+| `simplify-code` | spoke | ⤵ on-demand |
+| `clean-code` | spoke | ⤵ on-demand |
 
-Quality is enforced at **four gates**, cheapest-and-earliest first — each catches a
-different failure class:
+## Tier & loading
 
-```
-Edit ──write──> Commit ──commit──> CI ──build──> Release ──ship──> Prod
-```
-
-Push every check to the **earliest** gate that can catch it; climb the **evidence ladder**
-(asserted → ran → tested → measured → reproduced) before claiming a pass; judge anything
-stochastic by its `pass@k` **rate**, not a lucky single green run; and never let the thing
-under test grade itself. Full model in
-[`quality-eval-core`](../../skills/quality-eval-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@quality-eval-orchestrator -g -y   # entry point
-npx skills add Sheshiyer/skill-clusters@e2e-testing -g -y                 # any spoke
+npx skills add Sheshiyer/skill-clusters@quality-eval-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Primary source: **ECC** (affaan-m/ECC, MIT) — see [NOTICE](../../NOTICE). Spokes are mixed: also draws from antigravity-awesome-skills (MIT), the wider agent skills library, and skills authored for skill-clusters (MIT). + mixed.
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

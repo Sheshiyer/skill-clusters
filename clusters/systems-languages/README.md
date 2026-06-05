@@ -1,94 +1,60 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&text=Systems%20Languages&fontSize=48&fontAlignY=38&desc=7%20specialists%2C%20one%20router%20%E2%80%94%20Go%20%C2%B7%20C%2B%2B%20%C2%B7%20Perl%20%C2%B7%20write%20%E2%86%92%20prove%20%E2%86%92%20harden&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=15,16,30&height=180&text=systems-languages&fontSize=42&fontAlignY=38&desc=Go%20C%2B%2B%20Perl%20specialist%20router&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-9-f59e0b?style=flat)](../../skills.sh.json)
-[![Go](https://img.shields.io/badge/Go-1.22%2B-00ADD8?style=flat&logo=go&logoColor=white)](https://go.dev)
-[![C++](https://img.shields.io/badge/C%2B%2B-17%2F20%2F23-00599C?style=flat&logo=cplusplus&logoColor=white)](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
-[![Perl](https://img.shields.io/badge/Perl-5.36%2B-39457E?style=flat&logo=perl&logoColor=white)](https://www.perl.org)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**7 Go, C++ & Perl specialists behind a single router.**
-Writing, reviewing, testing, or hardening systems code? The orchestrator places your task on the
-**language × concern** map and routes; `systems-languages-core` holds the language-axis decision
-and the write → prove → harden lifecycle they all share.
+[![tier](https://img.shields.io/badge/tier-deferred-64748b?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-7-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-ECC-0ea5e9?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=2" width="100%" />
+> Routes a systems-language task to the right specialist among Go, C++, and Perl by locating it on the **language × concern** map, then walks the shared **write → prove → harden** lifecycle: pick the language, apply its idiomatic conventions, drive it test-first, and (for Perl) harden against untrusted input.
 
-## What it is
-
-9 skills: `systems-languages-orchestrator` (router) + `systems-languages-core` (shared model) +
-7 specialists across Go, C++, and Perl. The cluster's job is to make a multi-language skill set
-*navigable* — the orchestrator knows which spoke to reach for given your language and concern, and
-the core keeps the decision (which language → which idiom, error model, and toolchain) and the
-patterns → testing → (Perl) security lifecycle consistent.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["systems-languages-orchestrator<br/>(hub · language × concern router)"]
-    O --> GO["Go"]
-    O --> CPP["C++"]
-    O --> PL["Perl"]
-
-    GO --> g1["golang-patterns"]
-    GO --> g2["golang-testing"]
-    CPP --> c1["cpp-coding-standards"]
-    CPP --> c2["cpp-testing"]
-    PL --> p1["perl-patterns"]
-    PL --> p2["perl-testing"]
-    PL --> p3["perl-security"]
-
-    GO -. references .-> CORE["systems-languages-core<br/>(language axis · write→prove→harden<br/>· idiom / error-model / tooling matrix)"]
-    CPP -. references .-> CORE
-    PL -. references .-> CORE
-
-    style O fill:#b45309,color:#fff
-    style CORE fill:#276749,color:#fff
+graph LR
+  o([systems-languages-orchestrator]):::hub --> c([systems-languages-core]):::hub
+  o --> s1([golang-patterns])
+  o --> s2([golang-testing])
+  o --> s3([cpp-coding-standards])
+  o --> s4([cpp-testing])
+  o --> s5([perl-patterns])
+  o --> s6([perl-testing])
+  o --> s7([perl-security])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by concern
+## Skills
 
-| Concern | Spokes |
-|---|---|
-| **Router / model** | `systems-languages-orchestrator`, `systems-languages-core` |
-| **Go** | `golang-patterns`, `golang-testing` |
-| **C++** | `cpp-coding-standards`, `cpp-testing` |
-| **Perl** | `perl-patterns`, `perl-testing`, `perl-security` |
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `systems-languages-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `systems-languages-core` | 📐 hub · shared reference | ✅ enumerated |
+| `golang-patterns` | spoke | ⤵ on-demand |
+| `golang-testing` | spoke | ⤵ on-demand |
+| `cpp-coding-standards` | spoke | ⤵ on-demand |
+| `cpp-testing` | spoke | ⤵ on-demand |
+| `perl-patterns` | spoke | ⤵ on-demand |
+| `perl-testing` | spoke | ⤵ on-demand |
+| `perl-security` | spoke | ⤵ on-demand |
 
-## The model that ties it together
+## Tier & loading
 
-There is no framework choice here — each spoke is one language. The single decision is **which
-language**, which fixes the idiom, error model, and toolchain; from there every task walks the
-same lifecycle:
-
-```
-Language (Go · C++ · Perl) ──> write ──> prove ──> harden
-                          (patterns/    (testing   (Perl: security)
-                           standards)    spoke)
-```
-
-One language per task — crossing idioms (Go errors vs C++ exceptions vs Perl taint) is the main
-failure mode. Full decision, lifecycle, and the per-language tooling matrix in
-[`systems-languages-core`](../../skills/systems-languages-core/SKILL.md).
+Off by default — 0 startup cost. Activate with `node scripts/tier.mjs --activate systems-languages --apply`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@systems-languages-orchestrator -g -y     # entry point
-npx skills add Sheshiyer/skill-clusters@perl-security -g -y                       # any spoke
+npx skills add Sheshiyer/skill-clusters@systems-languages-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Spokes adapted from [affaan-m/ECC](../../NOTICE) (MIT). See [NOTICE](../../NOTICE) for full attribution.
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

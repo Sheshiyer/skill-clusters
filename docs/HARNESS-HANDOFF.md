@@ -3,6 +3,10 @@
 How the **skill-clusters** debloat system hands off to the tool harness, hooks, and the PAI
 orchestration — so no skill reference becomes a stale/broken link that errors at runtime.
 
+> **Current state:** 716 indexed · 54 enumerated hubs · 27 active / 13 deferred · 75 archived. The
+> `SkillClusterResolver` hook is live; `audit-refs` reports **0 stale refs**. This handoff is the
+> runtime-safety layer under the closed loop (see [`CONDUCTOR-INTEGRATION.md`](CONDUCTOR-INTEGRATION.md)).
+
 ## The situation
 
 The harness enumerates skills by scanning `~/.agents/skills` + `~/.claude/skills` at startup.

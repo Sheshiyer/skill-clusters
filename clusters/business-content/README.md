@@ -1,85 +1,80 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&text=Business%20Content&fontSize=52&fontAlignY=38&desc=10%20specialists%2C%20one%20router%20%E2%80%94%20voice%20%E2%86%92%20publish%20%E2%86%92%20market%20%E2%86%92%20fund%20%E2%86%92%20reach&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,13,14&height=180&text=business-content&fontSize=42&fontAlignY=38&desc=go-to-market%20writing%20and%20outbound&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-12-f59e0b?style=flat)](../../skills.sh.json)
-[![Cluster](https://img.shields.io/badge/cluster-business--content-7c3aed?style=flat)](./README.md)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Go-to-market writing and outbound — 10 specialists behind a single router.**
-Writing, marketing, fundraising, or doing outbound for a product? The orchestrator places your
-task on the **lane × audience** map and routes; `business-content-core` holds the Voice Profile
-and evidence model they all share.
+[![tier](https://img.shields.io/badge/tier-deferred-64748b?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-22-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=2" width="100%" />
+> The single entry point for go-to-market writing and outbound: it locates a task on the **lane × audience** map — publish, market, fund, reach — and delegates to the right specialist. Every spoke shares one substrate: a source-derived **Voice Profile**, the market/competitor evidence base, and a per-channel message contract that keeps copy native to its surface and traceable to real sources.
 
-## What it is
-
-12 skills: `business-content-orchestrator` (router) + `business-content-core` (shared model) +
-10 specialists. The cluster's job is to keep go-to-market output *navigable and consistent* —
-the orchestrator knows which lane to reach for, and the core keeps the interlocking conventions
-(one source-derived Voice Profile, sourced evidence, channel-native messaging) consistent so the
-writing never collapses into generic AI copy.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["business-content-orchestrator<br/>(hub · lane × audience router)"]
-    O --> PUB["Publish<br/>(articles · content · seo)"]
-    O --> MKT["Market<br/>(launch campaign)"]
-    O --> FUND["Fund<br/>(materials · outreach)"]
-    O --> REACH["Reach<br/>(leads · graph)"]
-    PUB -. references .-> C["business-content-core<br/>(VOICE PROFILE · evidence substrate<br/>· channel contract · lane map)"]
-    MKT -. references .-> C
-    FUND -. references .-> C
-    REACH -. references .-> C
-
-    style O fill:#7c3aed,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([business-content-orchestrator]):::hub --> c([business-content-core]):::hub
+  o --> s1([brand-voice])
+  o --> s2([market-research])
+  o --> s3([article-writing])
+  o --> s4([content-engine])
+  o --> s5([seo])
+  o --> s6([marketing-campaign])
+  o --> s7([investor-materials])
+  o --> s8([investor-outreach])
+  o --> s9([lead-intelligence])
+  o --> s10([social-graph-ranker])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by lane
+_…and 12 more in the table below._
 
-| Lane | Spokes |
-|---|---|
-| **Router / model** | `business-content-orchestrator`, `business-content-core` |
-| **Substrate (shared)** | `brand-voice`, `market-research` |
-| **Publish** | `article-writing`, `content-engine`, `seo` |
-| **Market** | `marketing-campaign` |
-| **Fund** | `investor-materials`, `investor-outreach` |
-| **Reach** | `lead-intelligence`, `social-graph-ranker` |
+## Skills
 
-## The model that ties it together
+| Skill | Role | Loaded at startup |
+| --- | --- | --- |
+| `business-content-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `business-content-core` | 📐 hub · shared reference | ✅ enumerated |
+| `brand-voice` | spoke | ⤵ on-demand |
+| `market-research` | spoke | ⤵ on-demand |
+| `article-writing` | spoke | ⤵ on-demand |
+| `content-engine` | spoke | ⤵ on-demand |
+| `seo` | spoke | ⤵ on-demand |
+| `marketing-campaign` | spoke | ⤵ on-demand |
+| `investor-materials` | spoke | ⤵ on-demand |
+| `investor-outreach` | spoke | ⤵ on-demand |
+| `lead-intelligence` | spoke | ⤵ on-demand |
+| `social-graph-ranker` | spoke | ⤵ on-demand |
+| `aphorisms` | spoke | ⤵ on-demand |
+| `writestory` | spoke | ⤵ on-demand |
+| `inkos-multi-agent-novel-writing` | spoke | ⤵ on-demand |
+| `novel-writer-workflow-guide` | spoke | ⤵ on-demand |
+| `natural-dialogue-techniques` | spoke | ⤵ on-demand |
+| `internal-comms` | spoke | ⤵ on-demand |
+| `ai-product` | spoke | ⤵ on-demand |
+| `ai-wrapper-product` | spoke | ⤵ on-demand |
+| `micro-saas-launcher` | spoke | ⤵ on-demand |
+| `notion-template-business` | spoke | ⤵ on-demand |
+| `product-manager` | spoke | ⤵ on-demand |
+| `segment-cdp` | spoke | ⤵ on-demand |
 
-Every output is the same pipeline, whatever the lane:
+## Tier & loading
 
-```
-Real sources ──> VOICE PROFILE ─┐
-                                ├──> Draft ──> Channel-native output
-Market facts ──> Evidence ──────┘
-```
-
-Build the Voice Profile once and reuse it everywhere; ground every business claim in a real
-source; shape each message for its surface (the same copy across email, LinkedIn, and X is a
-tell). Full model in [`business-content-core`](../../skills/business-content-core/SKILL.md).
+Off by default — 0 startup cost. Activate with `node scripts/tier.mjs --activate business-content --apply`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@business-content-orchestrator -g -y   # entry point
-npx skills add Sheshiyer/skill-clusters@marketing-campaign -g -y              # any spoke
+npx skills add Sheshiyer/skill-clusters@business-content-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Authored for skill-clusters (MIT), + mixed: 6 spokes are adapted from antigravity-awesome-skills (MIT). See [NOTICE](../../NOTICE) for the full per-skill provenance.
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

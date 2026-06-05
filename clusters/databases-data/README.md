@@ -1,92 +1,82 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,30&height=220&text=Databases%20%26%20Data&fontSize=48&fontAlignY=38&desc=7%20data-layer%20specialists%2C%20one%20router%20%E2%80%94%20pick%20%E2%86%92%20model%20%E2%86%92%20optimize%20%E2%86%92%20migrate%20%E2%86%92%20move&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,12,20&height=180&text=databases-data&fontSize=42&fontAlignY=38&desc=route%20data-layer%20work%20to%20specialists&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-9-f59e0b?style=flat)](../../skills.sh.json)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14%2B-4169E1?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org)
-[![ClickHouse](https://img.shields.io/badge/ClickHouse-OLAP-FFCC01?style=flat&logo=clickhouse&logoColor=black)](https://clickhouse.com)
-[![Redis](https://img.shields.io/badge/Redis-cache%2Flocks-DC382D?style=flat&logo=redis&logoColor=white)](https://redis.io)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**7 data-layer specialists behind a single router.**
-Designing, querying, optimizing, migrating, or moving data? The orchestrator places your
-task on the **engine × concern** map and routes; `databases-data-core` holds the
-store-selection model and conventions they all share.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-24-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,30&height=2" width="100%" />
+> The single entry point for database and data-layer work. It locates a task on the **engine × concern** map — PostgreSQL, MySQL/MariaDB, the Prisma ORM, Redis, ClickHouse analytics, migrations, ingestion/ETL — and delegates to the right specialist. The cross-cutting decision every data task starts from, *which store fits this workload* (OLTP vs OLAP vs cache vs ORM-managed), plus the shared conventions (index choice, ID strategy, pooling, expand/contract migrations, idempotent bulk writes), live in `databases-data-core`.
 
-## What it is
-
-9 skills: `databases-data-orchestrator` (router) + `databases-data-core` (shared model) +
-7 specialists. The cluster's job is to make the data layer *navigable* — the orchestrator
-knows which store and concern your task belongs to, and the core keeps the interlocking
-decisions (store selection, index choice, ID strategy, pooling, expand/contract
-migrations, idempotent writes) consistent across every spoke.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["databases-data-orchestrator<br/>(hub · engine × concern router)"]
-    O --> PG["postgres-patterns"]
-    O --> MY["mysql-patterns"]
-    O --> PR["prisma-patterns"]
-    O --> CH["clickhouse-io"]
-    O --> RD["redis-patterns"]
-    O --> MG["database-migrations"]
-    O --> TP["data-throughput-accelerator"]
-
-    PG -. references .-> C["databases-data-core<br/>(store selection · indexes · IDs<br/>· pooling · expand/contract · idempotent writes)"]
-    MY -. references .-> C
-    PR -. references .-> C
-    CH -. references .-> C
-    RD -. references .-> C
-    MG -. references .-> C
-    TP -. references .-> C
-
-    style O fill:#b45309,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([databases-data-orchestrator]):::hub --> c([databases-data-core]):::hub
+  o --> s1([postgres-patterns])
+  o --> s2([mysql-patterns])
+  o --> s3([prisma-patterns])
+  o --> s4([clickhouse-io])
+  o --> s5([redis-patterns])
+  o --> s6([database-migrations])
+  o --> s7([data-throughput-accelerator])
+  o --> s8([dbt-transformation-patterns])
+  o --> s9([data-quality-frameworks])
+  o --> s10([airflow-dag-patterns])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by concern
+_…and 14 more in the table below._
 
-| Concern | Spokes |
-|---|---|
-| **Router / model** | `databases-data-orchestrator`, `databases-data-core` |
-| **Relational (OLTP)** | `postgres-patterns`, `mysql-patterns`, `prisma-patterns` |
-| **Analytics (OLAP)** | `clickhouse-io` |
-| **In-memory (cache · locks · queues)** | `redis-patterns` |
-| **Schema change** | `database-migrations` |
-| **Move data fast** | `data-throughput-accelerator` |
+## Skills
 
-## The model that ties it together
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `databases-data-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `databases-data-core` | 📐 hub · shared reference | ✅ enumerated |
+| `postgres-patterns` | spoke | ⤵ on-demand |
+| `mysql-patterns` | spoke | ⤵ on-demand |
+| `prisma-patterns` | spoke | ⤵ on-demand |
+| `clickhouse-io` | spoke | ⤵ on-demand |
+| `redis-patterns` | spoke | ⤵ on-demand |
+| `database-migrations` | spoke | ⤵ on-demand |
+| `data-throughput-accelerator` | spoke | ⤵ on-demand |
+| `airflow-dag-patterns` | spoke | ⤵ on-demand |
+| `backtesting-frameworks` | spoke | ⤵ on-demand |
+| `data-quality-frameworks` | spoke | ⤵ on-demand |
+| `data-storytelling` | spoke | ⤵ on-demand |
+| `dbt-transformation-patterns` | spoke | ⤵ on-demand |
+| `kpi-dashboard-design` | spoke | ⤵ on-demand |
+| `ml-pipeline-workflow` | spoke | ⤵ on-demand |
+| `postgresql` | spoke | ⤵ on-demand |
+| `risk-metrics-calculation` | spoke | ⤵ on-demand |
+| `spark-optimization` | spoke | ⤵ on-demand |
+| `biopython` | spoke | ⤵ on-demand |
+| `data-structure-protocol` | spoke | ⤵ on-demand |
+| `dbos-golang` | spoke | ⤵ on-demand |
+| `dbos-python` | spoke | ⤵ on-demand |
+| `dbos-typescript` | spoke | ⤵ on-demand |
+| `neon-postgres` | spoke | ⤵ on-demand |
+| `networkx` | spoke | ⤵ on-demand |
 
-Match the **store to the access pattern** before writing any schema:
+## Tier & loading
 
-```
-Workload ──is──> { OLTP rows · OLAP scans · in-memory · ORM-managed } ──picks──> Store
-```
-
-Never run analytics off your OLTP primary, Redis is never the system of record, and an ORM
-is a convenience *over* a relational engine — you still own the index and pool decisions.
-Full model in [`databases-data-core`](../../skills/databases-data-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@databases-data-orchestrator -g -y   # entry point
-npx skills add Sheshiyer/skill-clusters@postgres-patterns -g -y             # any spoke
+npx skills add Sheshiyer/skill-clusters@databases-data-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Authored for skill-clusters (MIT) + mixed: the engine, migration, and throughput spokes derive from affaan-m/ECC (MIT), and several picked-up specialists from antigravity-awesome-skills (MIT). See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

@@ -1,80 +1,52 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&text=Mobile%20Flutter&fontSize=52&fontAlignY=38&desc=Dart%20%C2%B7%20Flutter%20%C2%B7%20Android%2FKMP%20%E2%80%94%20one%20router%3A%20write%20%E2%86%92%20structure%20%E2%86%92%20review&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,8&height=180&text=mobile-flutter&fontSize=42&fontAlignY=38&desc=Route%20Flutter%20Dart%20Android%20KMP%20tasks&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-5-f59e0b?style=flat)](../../skills.sh.json)
-[![Flutter](https://img.shields.io/badge/Flutter-3.7+-02569B?style=flat&logo=flutter&logoColor=white)](https://flutter.dev)
-[![Dart](https://img.shields.io/badge/Dart-3-0175C2?style=flat&logo=dart&logoColor=white)](https://dart.dev)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Five skills behind one router for Flutter/Dart and Android/KMP work.**
-Writing, structuring, or reviewing a mobile app? The orchestrator places your task on the
-**layer × phase** map and routes; `mobile-flutter-core` holds the state-management decision they all share.
+[![tier](https://img.shields.io/badge/tier-deferred-64748b?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-3-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-ECC-0ea5e9?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=2" width="100%" />
+> The single entry skill for Flutter/Dart (and Android/KMP) work: it locates a task on the layer × phase map — UI / state / data / build, write → review — and delegates to the right specialist spoke. The cross-cutting decision every app turns on (which state-management solution, and the immutable-state contract it implies) plus shared conventions live in `mobile-flutter-core`.
 
-## What it is
-
-5 skills: `mobile-flutter-orchestrator` (router) + `mobile-flutter-core` (shared model) + 3
-specialist spokes. The cluster's job is to make a deep mobile skill set *navigable* — the
-orchestrator knows which spoke to reach for, and the core keeps the interlocking decisions
-(state management → immutability → layering → tooling) consistent so no spoke contradicts another.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["mobile-flutter-orchestrator<br/>(hub · layer × phase router)"]
-    O --> P["dart-flutter-patterns<br/>(write idiomatic Dart/Flutter)"]
-    O --> A["android-clean-architecture<br/>(structure Android/KMP)"]
-    O --> R["flutter-dart-code-review<br/>(review & harden)"]
-    P -. references .-> C["mobile-flutter-core<br/>(state decision · immutable contract<br/>· layering rule · version matrix)"]
-    A -. references .-> C
-    R -. references .-> C
-
-    style O fill:#b45309,color:#fff
-    style C fill:#1d4ed8,color:#fff
+graph LR
+  o([mobile-flutter-orchestrator]):::hub --> c([mobile-flutter-core]):::hub
+  o --> s1([dart-flutter-patterns])
+  o --> s2([flutter-dart-code-review])
+  o --> s3([android-clean-architecture])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
 ## Skills
 
-| Concern | Skill | Role |
+| Skill | Role | Loaded at startup |
 |---|---|---|
-| **Router** | `mobile-flutter-orchestrator` | Intent router over the layer × phase map |
-| **Shared model** | `mobile-flutter-core` | State-management decision, immutable contract, layering rule, version/tooling matrix |
-| **Write** | `dart-flutter-patterns` | Production Dart 3 / Flutter patterns — null safety, sealed state, async, widgets, BLoC + Riverpod, GoRouter, Dio, Freezed, testing |
-| **Structure** | `android-clean-architecture` | Module boundaries & dependency rules for Android/KMP — UseCases, Repositories, Room/SQLDelight/Ktor, Koin/Hilt |
-| **Review** | `flutter-dart-code-review` | Library-agnostic review checklist across 15 axes (widgets, state, perf, a11y, security, l10n, DI, static analysis) |
+| `mobile-flutter-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `mobile-flutter-core` | 📐 hub · shared reference | ✅ enumerated |
+| `dart-flutter-patterns` | spoke | ⤵ on-demand |
+| `flutter-dart-code-review` | spoke | ⤵ on-demand |
+| `android-clean-architecture` | spoke | ⤵ on-demand |
 
-## The decision that ties it together
+## Tier & loading
 
-The cluster turns on **one choice: which state-management solution** — and that choice
-constrains immutability, testing, rebuild discipline, and DI downstream:
-
-```
-state solution ──implies──> immutable-state contract ──shapes──> layering + testing + rebuilds
-```
-
-Pick one solution and one routing approach per app; model mutually-exclusive states as sealed
-types (not boolean flags); keep `domain` framework-pure; `mounted`-check `BuildContext` after
-every `await`. Full model in [`mobile-flutter-core`](../../skills/mobile-flutter-core/SKILL.md).
+Off by default — 0 startup cost. Activate with `node scripts/tier.mjs --activate mobile-flutter --apply`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@mobile-flutter-orchestrator -g -y   # entry point
-npx skills add Sheshiyer/skill-clusters@dart-flutter-patterns -g -y         # any spoke
+npx skills add Sheshiyer/skill-clusters@mobile-flutter-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Spoke content wholly or substantially extracted from [ECC](https://github.com/affaan-m/ECC) (MIT). See [../../NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

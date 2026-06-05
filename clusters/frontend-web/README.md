@@ -1,85 +1,84 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&text=Frontend%20Web&fontSize=52&fontAlignY=38&desc=18%20specialists%2C%20one%20router%20%E2%80%94%20framework%20%C3%97%20concern&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=15,16,30&height=180&text=frontend-web&fontSize=42&fontAlignY=38&desc=framework,%20build,%20motion%20%26%20accessibility%20routing&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-20-f59e0b?style=flat)](../../skills.sh.json)
-[![React](https://img.shields.io/badge/React-18%2F19-61DAFB?style=flat&logo=react&logoColor=white)](https://react.dev)
-[![Next.js](https://img.shields.io/badge/Next.js-16%2B-000?style=flat&logo=nextdotjs&logoColor=white)](https://nextjs.org)
-[![Vue](https://img.shields.io/badge/Vue-3%2FNuxt%204-4FC08D?style=flat&logo=vuedotjs&logoColor=white)](https://vuejs.org)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**18 frontend-web specialists behind a single router.**
-Building, reviewing, or shipping a web UI? The orchestrator places your task on the
-**framework × concern** map and routes; `frontend-web-core` holds the rendering model they all share.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-37-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-antigravity-ec4899?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=2" width="100%" />
+> Routes a web-UI task to the right specialist across the **framework × concern** map — framework choice (React/Next, Vue/Nuxt, Angular), build tooling (Vite, Turbopack, Bun), motion, accessibility, and design direction. The shared decision every spoke inherits — the rendering model (CSR / SSR / RSC / static) that fixes the hydration boundary — lives in `frontend-web-core`, read before picking a framework or wiring SSR-sensitive code.
 
-## What it is
-
-20 skills: `frontend-web-orchestrator` (router) + `frontend-web-core` (shared model) + 18
-specialists. The cluster's job is to make a broad frontend skill set *navigable* — the
-orchestrator knows which framework spoke to reach for, and the core keeps the interlocking
-concepts (the rendering model, the SSR/`"use client"` boundary, motion layering, the a11y
-baseline) consistent across React, Vue/Nuxt, and Angular.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["frontend-web-orchestrator<br/>(hub · framework × concern router)"]
-    O --> FW["Framework core<br/>(react · nuxt · angular · ui-to-vue)"]
-    O --> BUILD["Build & runtime<br/>(vite · turbopack · bun)"]
-    O --> MOTION["Motion<br/>(foundations → patterns → advanced)"]
-    O --> LOOK["Look & feel<br/>(a11y · design-system · polish · slides)"]
-    FW -. references .-> C["frontend-web-core<br/>(rendering model · SSR boundary<br/>· motion layering · a11y baseline)"]
-    BUILD -. references .-> C
-    MOTION -. references .-> C
-    LOOK -. references .-> C
-
-    style O fill:#b45309,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([frontend-web-orchestrator]):::hub --> c([frontend-web-core]):::hub
+  o --> s1([react-patterns])
+  o --> s2([nextjs-turbopack])
+  o --> s3([nuxt4-patterns])
+  o --> s4([angular-developer])
+  o --> s5([motion-foundations])
+  o --> s6([accessibility])
+  o --> s7([frontend-a11y])
+  o --> s8([design-system])
+  o --> s9([vite-patterns])
+  o --> s10([deploy-to-vercel])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by concern
+_…and 27 more in the table below._
 
-| Concern | Spokes |
-|---|---|
-| **Router / model** | `frontend-web-orchestrator`, `frontend-web-core` |
-| **Framework core** | `react-patterns`, `react-performance`, `react-testing`, `nextjs-turbopack`, `nuxt4-patterns`, `angular-developer`, `ui-to-vue` |
-| **Build & runtime** | `vite-patterns`, `bun-runtime` |
-| **Motion** | `motion-foundations`, `motion-patterns`, `motion-advanced` |
-| **Look & feel** | `accessibility`, `frontend-a11y`, `design-system`, `make-interfaces-feel-better`, `frontend-design-direction`, `frontend-slides` |
+## Skills
 
-## The model that ties it together
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `frontend-web-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `frontend-web-core` | 📐 hub · shared reference | ✅ enumerated |
+| `react-patterns` | spoke | ⤵ on-demand |
+| `react-performance` | spoke | ⤵ on-demand |
+| `react-testing` | spoke | ⤵ on-demand |
+| `frontend-design-direction` | spoke | ⤵ on-demand |
+| `frontend-a11y` | spoke | ⤵ on-demand |
+| `accessibility` | spoke | ⤵ on-demand |
+| `design-system` | spoke | ⤵ on-demand |
+| `make-interfaces-feel-better` | spoke | ⤵ on-demand |
+| `ui-to-vue` | spoke | ⤵ on-demand |
+| `angular-developer` | spoke | ⤵ on-demand |
+| `nextjs-turbopack` | spoke | ⤵ on-demand |
+| `nuxt4-patterns` | spoke | ⤵ on-demand |
+| `vite-patterns` | spoke | ⤵ on-demand |
+| `bun-runtime` | spoke | ⤵ on-demand |
+| `frontend-slides` | spoke | ⤵ on-demand |
+| `motion-foundations` | spoke | ⤵ on-demand |
+| `motion-patterns` | spoke | ⤵ on-demand |
+| `motion-advanced` | spoke | ⤵ on-demand |
+| `3d-web-experience` | spoke | ⤵ on-demand |
+| `algolia-search` | spoke | ⤵ on-demand |
+| `awt-e2e-testing` | spoke | ⤵ on-demand |
+| `deploy-to-vercel` | spoke | ⤵ on-demand |
+| `fp-ts-errors` | spoke | ⤵ on-demand |
+| `fp-ts-react` | spoke | ⤵ on-demand |
+| `nextjs-supabase-auth` | spoke | ⤵ on-demand |
+| …and 11 more | spoke | ⤵ on-demand |
 
-Decide the **rendering model** first — it fixes the hydration boundary every spoke must respect:
+## Tier & loading
 
-```
-Static (SSG) ──► SSR ──► RSC ──► CSR
-  most cacheable  ◄──── most interactive ────►
-```
-
-Mark stateful and motion code `"use client"`, match server/client initial markup, layer motion
-on `motion-foundations`, and keep accessibility (WCAG 2.2 AA + semantic React) as a baseline, not
-a follow-up. Full model in
-[`frontend-web-core`](../../skills/frontend-web-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@frontend-web-orchestrator -g -y     # entry point
-npx skills add Sheshiyer/skill-clusters@react-patterns -g -y                # any spoke
+npx skills add Sheshiyer/skill-clusters@frontend-web-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Primary source: **antigravity-awesome-skills (MIT)** + mixed — also draws on affaan-m/ECC (MIT) and skills authored for skill-clusters (MIT). See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

@@ -1,93 +1,76 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&text=Native%20iOS&fontSize=52&fontAlignY=38&desc=7%20Swift%20specialists%2C%20one%20router%20%E2%80%94%20concurrency%20%E2%86%92%20architecture%20%E2%86%92%20AI%20%E2%86%92%20design&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=180&text=native-ios&fontSize=42&fontAlignY=38&desc=Route%20native%20Apple-platform%20Swift%20work&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-9-f59e0b?style=flat)](../../skills.sh.json)
-[![Swift](https://img.shields.io/badge/Swift-6.2-F05138?style=flat&logo=swift&logoColor=white)](https://swift.org)
-[![iOS](https://img.shields.io/badge/iOS-26-000000?style=flat&logo=apple&logoColor=white)](https://developer.apple.com)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Native Apple-platform development behind a single router.**
-Building, modernizing, or shipping a Swift / SwiftUI app? The orchestrator places your task on the
-**layer × concern** map and routes; `native-ios-core` holds the iOS 26 / Swift 6.2 baseline they all share.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-18-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-antigravity%20+%20mixed-ec4899?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=2" width="100%" />
+> The single entry skill for native Apple-platform (Swift / SwiftUI) work: it locates a task on the **layer × concern** map — language, UI architecture, persistence, testing, on-device AI, design, assets — and delegates to the right specialist spoke. Every spoke shares the **iOS 26 / Swift 6.2 / Xcode 26 baseline**, its availability-gating discipline, and the data-race-safety model, all of which live in `native-ios-core`.
 
-## What it is
-
-9 skills: `native-ios-orchestrator` (router) + `native-ios-core` (shared model) + 7 Swift
-specialists. The cluster's job is to make the new Apple stack *navigable* — the orchestrator knows
-which spoke to reach for, and the core keeps the interlocking facts (the iOS 26 / Swift 6.2 / Xcode
-26 baseline, availability gating, and the actor-isolation data-race model) consistent so no spoke
-contradicts another.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["native-ios-orchestrator<br/>(hub · layer × concern router)"]
-    O --> LANG["swift-concurrency-6-2<br/>(language model)"]
-    O --> UI["swiftui-patterns<br/>(UI architecture)"]
-    O --> STORE["swift-actor-persistence<br/>(storage)"]
-    O --> TEST["swift-protocol-di-testing<br/>(testability seam)"]
-    O --> AI["foundation-models-on-device<br/>(on-device AI)"]
-    O --> GLASS["liquid-glass-design<br/>(design system)"]
-    O --> ICON["ios-icon-gen<br/>(asset pipeline)"]
-    LANG -. references .-> C["native-ios-core<br/>(iOS 26 / Swift 6.2 baseline<br/>· availability gating · data-race safety)"]
-    UI -. references .-> C
-    STORE -. references .-> C
-    TEST -. references .-> C
-    AI -. references .-> C
-    GLASS -. references .-> C
-    ICON -. references .-> C
-
-    style O fill:#b45309,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([native-ios-orchestrator]):::hub --> c([native-ios-core]):::hub
+  o --> s1([swift-concurrency-6-2])
+  o --> s2([swiftui-patterns])
+  o --> s3([swift-actor-persistence])
+  o --> s4([swift-protocol-di-testing])
+  o --> s5([foundation-models-on-device])
+  o --> s6([liquid-glass-design])
+  o --> s7([ios-icon-gen])
+  o --> s8([mobile-ios-design])
+  o --> s9([watchos])
+  o --> s10([swift-concurrency-expert])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by concern
+_…and 8 more in the table below._
 
-| Concern | Spokes |
-|---|---|
-| **Router / model** | `native-ios-orchestrator`, `native-ios-core` |
-| **Language & concurrency** | `swift-concurrency-6-2` |
-| **UI architecture** | `swiftui-patterns` |
-| **Storage** | `swift-actor-persistence` |
-| **Testability** | `swift-protocol-di-testing` |
-| **On-device AI** | `foundation-models-on-device` |
-| **Design system** | `liquid-glass-design` |
-| **Assets** | `ios-icon-gen` |
+## Skills
 
-## The model that ties it together
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `native-ios-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `native-ios-core` | 📐 hub · shared reference | ✅ enumerated |
+| `swiftui-patterns` | spoke | ⤵ on-demand |
+| `swift-concurrency-6-2` | spoke | ⤵ on-demand |
+| `swift-actor-persistence` | spoke | ⤵ on-demand |
+| `swift-protocol-di-testing` | spoke | ⤵ on-demand |
+| `foundation-models-on-device` | spoke | ⤵ on-demand |
+| `ios-icon-gen` | spoke | ⤵ on-demand |
+| `liquid-glass-design` | spoke | ⤵ on-demand |
+| `watchos` | spoke | ⤵ on-demand |
+| `mobile-ios-design` | spoke | ⤵ on-demand |
+| `app-store-changelog` | spoke | ⤵ on-demand |
+| `ios-debugger-agent` | spoke | ⤵ on-demand |
+| `macos-menubar-tuist-app` | spoke | ⤵ on-demand |
+| `macos-spm-app-packaging` | spoke | ⤵ on-demand |
+| `swift-concurrency-expert` | spoke | ⤵ on-demand |
+| `swiftui-liquid-glass` | spoke | ⤵ on-demand |
+| `swiftui-performance-audit` | spoke | ⤵ on-demand |
+| `swiftui-ui-patterns` | spoke | ⤵ on-demand |
+| `swiftui-view-refactor` | spoke | ⤵ on-demand |
 
-Everything targets **one toolchain line**:
+## Tier & loading
 
-```
-Xcode 26 ──compiles──> Swift 6.2 ──targets──> iOS 26 / macOS 26 (with graceful fallback)
-```
-
-The flagship frameworks (Approachable Concurrency, Liquid Glass, on-device FoundationModels) only
-exist on this line — so the first question is always *"what's the deployment target, and is this API
-available there?"* Gate every iOS 26-only API (`if #available`, `SystemLanguageModel.availability`)
-with a real fallback; keep concurrency isolated-by-default. Full model in
-[`native-ios-core`](../../skills/native-ios-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@native-ios-orchestrator -g -y     # entry point
-npx skills add Sheshiyer/skill-clusters@liquid-glass-design -g -y          # any spoke
+npx skills add Sheshiyer/skill-clusters@native-ios-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Primary source: **antigravity-awesome-skills** (upstream: Dimillian/Skills, MIT) for the picked-up workflow spokes — review, fix, refactor, audit, debug, package, ship. The architecture, persistence, AI, and design spokes are authored for skill-clusters (MIT) — so this cluster is **antigravity + mixed**. See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

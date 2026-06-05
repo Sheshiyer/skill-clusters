@@ -1,86 +1,54 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,30&height=220&text=Browser%20Automation&fontSize=48&fontAlignY=38&desc=Pick%20the%20surface%20%E2%86%92%20recon%20%E2%86%92%20act%20%E2%86%92%20prove%20it%20works&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=20,24,27&height=180&text=browser-automation&fontSize=42&fontAlignY=38&desc=route%20a%20browser%2FUI%20automation%20task&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-6-f59e0b?style=flat)](../../skills.sh.json)
-[![Tier](https://img.shields.io/badge/tier-active-22c55e?style=flat)](../../README.md)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Drive any UI — web or native — behind a single router.**
-Automating, scraping, screenshotting, or verifying a page or desktop app? The orchestrator places
-your task on the **surface × session-model** map and routes; `browser-automation-core` holds the
-shared model — the two surfaces, the session lifecycle, and the debug-first evidence rule.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-4-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=0,2,30&height=2" width="100%" />
+> Routes a browser / UI automation task to the right driver by placing it on a **surface × session-model** map — the web/DOM layer vs the native macOS UI layer, one-shot vs persistent vs supervised-TTY. Spokes cover debug-first headless Chromium, local-webapp Playwright testing, native macOS UI capture and control, and an interactive-TTY harness that supervises them.
 
-## What it is
-
-6 skills: `browser-automation-orchestrator` (router) + `browser-automation-core` (shared model) + 4
-specialist drivers. The cluster's job is to make UI automation **navigable** — the orchestrator knows
-whether your task lives on the **web/DOM** surface or the **native OS** surface, and which session
-model fits, while the core keeps the interlocking conventions (recon-then-act, headless-by-default,
-evidence-before-claims) consistent across every driver.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["browser-automation-orchestrator<br/>(hub · surface × session-model router)"]
-    O --> WEB["Web / DOM surface"]
-    O --> NAT["Native macOS surface"]
-    O --> HAR["Harness / supervision"]
-    WEB --> B["browser<br/>(debug-first headless Chromium)"]
-    WEB --> W["webapp-testing<br/>(Playwright · local dev server)"]
-    NAT --> P["peekaboo<br/>(macOS UI capture & control)"]
-    HAR --> T["tmux<br/>(interactive TTY · parallel sessions)"]
-    B -. references .-> C["browser-automation-core<br/>(surface model · session lifecycle<br/>· recon-then-act · evidence rule)"]
-    W -. references .-> C
-    P -. references .-> C
-    T -. references .-> C
-
-    style O fill:#b45309,color:#fff
-    style C fill:#276749,color:#fff
+graph LR
+  o([browser-automation-orchestrator]):::hub --> c([browser-automation-core]):::hub
+  o --> s1([browser])
+  o --> s2([webapp-testing])
+  o --> s3([peekaboo])
+  o --> s4([tmux])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by surface
+## Skills
 
-| Surface | Spokes |
-|---|---|
-| **Router / model** | `browser-automation-orchestrator`, `browser-automation-core` |
-| **Web / DOM (Chromium)** | `browser`, `webapp-testing` |
-| **Native macOS UI** | `peekaboo` |
-| **Harness / supervision** | `tmux` |
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `browser-automation-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `browser-automation-core` | 📐 hub · shared reference | ✅ enumerated |
+| `browser` | spoke | ⤵ on-demand |
+| `webapp-testing` | spoke | ⤵ on-demand |
+| `peekaboo` | spoke | ⤵ on-demand |
+| `tmux` | spoke | ⤵ on-demand |
 
-## The model that ties it together
+## Tier & loading
 
-Start with one question — **what surface are you driving?**
-
-```
-target ──→  web page in a browser   → DOM selectors / ARIA refs → browser · webapp-testing
-            native macOS app's UI    → OS accessibility elements → peekaboo
-```
-
-Then pick a session model (one-shot · persistent · server-backed · supervised-TTY), **recon before
-you act** (snapshot the live state, discover real selectors), and **never claim "it works"** without
-a seen screenshot plus a clean console/network read. Full model in
-[`browser-automation-core`](../../skills/browser-automation-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@browser-automation-orchestrator -g -y   # entry point
-npx skills add Sheshiyer/skill-clusters@browser -g -y                           # any spoke
+npx skills add Sheshiyer/skill-clusters@browser-automation-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Authored for skill-clusters (MIT). See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

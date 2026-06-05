@@ -1,83 +1,88 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=220&text=Research%20%26%20Knowledge&fontSize=46&fontAlignY=38&desc=12%20specialists%2C%20one%20router%20%E2%80%94%20lightest%20lane%20first%2C%20every%20claim%20sourced&descAlignY=58&fontColor=ffffff" width="100%" />
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,8&height=180&text=research-knowledge&fontSize=42&fontAlignY=38&desc=route%20research%20and%20knowledge%20tasks&descAlignY=58&fontColor=ffffff" width="100%" />
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=flat&color=blue)](../../LICENSE)
-[![Skills](https://img.shields.io/badge/skills-14-10b981?style=flat)](../../skills.sh.json)
-[![Evidence](https://img.shields.io/badge/evidence-tiered-6366f1?style=flat)](../../skills/research-knowledge-core/SKILL.md)
-[![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=flat)](https://skills.sh/)
-
-**Research, literature, and codebase knowledge — 12 specialists behind a single router.**
-Researching, reviewing the literature, looking something up, or understanding a repo? The
-orchestrator places your task on the **question type × evidence depth** map and routes;
-`research-knowledge-core` holds the evidence ladder and provenance discipline they all share.
+[![tier](https://img.shields.io/badge/tier-active-8b5cf6?style=plastic)](../../profiles.json)
+[![spokes](https://img.shields.io/badge/spokes-30-22c55e?style=plastic)](#skills)
+[![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
+[![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=2" width="100%" />
+> The single entry skill for research and knowledge work: it locates a task on the **question type × evidence depth** map and delegates to one of its specialist spokes — current-web research, neural discovery, multi-source cited synthesis, systematic literature review, scholarly evaluation, biomedical/patent/genomic databases, codebase onboarding, guided code tours, live docs lookup, and persistent project memory. The shared discipline every spoke carries — pick the lightest evidence lane that answers the question, label every claim by provenance, escalate only when synthesis demands it — lives in `research-knowledge-core`.
 
-## What it is
-
-14 skills: `research-knowledge-orchestrator` (router) + `research-knowledge-core` (shared
-model) + 12 specialists. The cluster's job is to make a broad knowledge-gathering toolkit
-*navigable and trustworthy* — the orchestrator knows which spoke to reach for, and the core
-keeps the cross-cutting discipline (lightest lane first, four provenance tiers, dated &
-reproducible sources) consistent across web research, scientific databases, and code comprehension.
+## Hub-and-spoke
 
 ```mermaid
-graph TD
-    O["research-knowledge-orchestrator<br/>(hub · question-type × depth router)"]
-    O --> WEB["Current-web<br/>research"]
-    O --> LIT["Academic &<br/>scientific literature"]
-    O --> CODE["Understand a<br/>codebase"]
-    O --> REF["Reference &<br/>memory"]
-    WEB -. references .-> C["research-knowledge-core<br/>(evidence ladder · 4 provenance tiers<br/>· freshness · reproducibility)"]
-    LIT -. references .-> C
-    CODE -. references .-> C
-    REF -. references .-> C
-
-    style O fill:#047857,color:#fff
-    style C fill:#4338ca,color:#fff
+graph LR
+  o([research-knowledge-orchestrator]):::hub --> c([research-knowledge-core]):::hub
+  o --> s1([research-ops])
+  o --> s2([exa-search])
+  o --> s3([deep-research])
+  o --> s4([scientific-thinking-literature-review])
+  o --> s5([scientific-thinking-scholar-evaluation])
+  o --> s6([scientific-db-pubmed-database])
+  o --> s7([codebase-onboarding])
+  o --> s8([code-tour])
+  o --> s9([documentation-lookup])
+  o --> s10([ck])
+  classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-## Skills by concern
+_…and 20 more in the table below._
 
-| Concern | Spokes |
-|---|---|
-| **Router / model** | `research-knowledge-orchestrator`, `research-knowledge-core` |
-| **Current-web research** | `research-ops`, `exa-search`, `deep-research` |
-| **Academic & scientific literature** | `scientific-thinking-literature-review`, `scientific-thinking-scholar-evaluation`, `scientific-db-pubmed-database`, `scientific-db-uspto-database`, `scientific-pkg-gget` |
-| **Understand a codebase** | `codebase-onboarding`, `code-tour` |
-| **Reference & memory** | `documentation-lookup`, `ck` |
+## Skills
 
-## The model that ties it together
+| Skill | Role | Loaded at startup |
+|---|---|---|
+| `research-knowledge-orchestrator` | 🧭 hub · router | ✅ enumerated |
+| `research-knowledge-core` | 📐 hub · shared reference | ✅ enumerated |
+| `research-ops` | spoke | ⤵ on-demand |
+| `exa-search` | spoke | ⤵ on-demand |
+| `deep-research` | spoke | ⤵ on-demand |
+| `scientific-thinking-literature-review` | spoke | ⤵ on-demand |
+| `scientific-thinking-scholar-evaluation` | spoke | ⤵ on-demand |
+| `scientific-db-pubmed-database` | spoke | ⤵ on-demand |
+| `scientific-db-uspto-database` | spoke | ⤵ on-demand |
+| `scientific-pkg-gget` | spoke | ⤵ on-demand |
+| `codebase-onboarding` | spoke | ⤵ on-demand |
+| `code-tour` | spoke | ⤵ on-demand |
+| `documentation-lookup` | spoke | ⤵ on-demand |
+| `ck` | spoke | ⤵ on-demand |
+| `research` | spoke | ⤵ on-demand |
+| `web-search` | spoke | ⤵ on-demand |
+| `parser` | spoke | ⤵ on-demand |
+| `summarize` | spoke | ⤵ on-demand |
+| `fabric` | spoke | ⤵ on-demand |
+| `youtube-transcript` | spoke | ⤵ on-demand |
+| `apify` | spoke | ⤵ on-demand |
+| `brightdata` | spoke | ⤵ on-demand |
+| `meeting-insights-analyzer` | spoke | ⤵ on-demand |
+| `fireflies` | spoke | ⤵ on-demand |
+| `blogwatcher` | spoke | ⤵ on-demand |
+| `astropy` | spoke | ⤵ on-demand |
+| `defuddle` | spoke | ⤵ on-demand |
+| `json-canvas` | spoke | ⤵ on-demand |
+| `obsidian-bases` | spoke | ⤵ on-demand |
+| `obsidian-cli` | spoke | ⤵ on-demand |
+| `obsidian-markdown` | spoke | ⤵ on-demand |
+| `sympy` | spoke | ⤵ on-demand |
 
-Two interlocking rules. **Climb the evidence ladder** — start at the cheapest lane that
-answers the question and escalate only when synthesis or verification demands it:
+## Tier & loading
 
-```
-local / docs / ck memory  →  fast discovery (exa, one DB query)  →  multi-source synthesis  →  evaluation
-```
-
-And **label every claim by provenance** — sourced fact · supplied context · inference ·
-recommendation — so nothing misleads. Full model in
-[`research-knowledge-core`](../../skills/research-knowledge-core/SKILL.md).
+Enumerated at CLI startup (orchestrator + core); spokes load on demand from `~/.agents/skill-clusters/skills/<name>/SKILL.md`.
 
 ## Install
 
 ```bash
-npx skills add Sheshiyer/skill-clusters@research-knowledge-orchestrator -g -y   # entry point
-npx skills add Sheshiyer/skill-clusters@deep-research -g -y                     # any spoke
+npx skills add Sheshiyer/skill-clusters@research-knowledge-orchestrator -g -y
 ```
 
-## Local development
+## Attribution
 
-Part of the [`skill-clusters`](../../README.md) monorepo; the repo is the single source of truth.
+Authored for skill-clusters (MIT) + mixed — includes vetted spokes from affaan-m/ECC (MIT) and antigravity-awesome-skills (MIT). See [NOTICE](../../NOTICE).
 
-```bash
-./scripts/link-agents.sh --apply    # symlink ~/.agents/skills → these canonical copies
-```
+---
+<sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>
