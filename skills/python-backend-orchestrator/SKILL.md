@@ -45,6 +45,18 @@ test/verify loop) and are routed exactly like the spokes above — loaded on dem
 
 - `textual` — building Python terminal UIs with Textual (widgets, screens, TCSS, reactivity, async workers, pilot-based tests).
 
+## Picked-up spokes
+
+Vetted standalone spokes picked up from the antigravity-awesome-skills library (MIT). They cover
+backend-adjacent surfaces — CLI design, chat-bot/CRM integration backends, and a framework-upgrade
+analyzer — and are loaded on demand by name exactly like every other spoke.
+
+- `ai-native-cli` — the 98-rule design spec for CLI tools AI agents can safely invoke: JSON-first output, input contracts validated like a public API, fail-closed guardrails, exit codes, agent self-description (extends the cluster's "validate at the boundary" contract to the command-line surface).
+- `discord-bot-architect` — production Discord bots in Discord.js (JS) and Pycord (Python): gateway intents, slash commands, interactive components, rate-limit backoff, and sharding.
+- `slack-bot-builder` — Slack apps on the Bolt framework (Python/JS/Java): Block Kit UIs, interactive components, slash commands, event handling, and OAuth install flows.
+- `hubspot-integration` — HubSpot CRM integration backends (Node.js + Python SDKs): OAuth, CRM objects, associations, batch operations, webhooks, and custom objects.
+- `skill-rails-upgrade` — analyzes a Ruby on Rails app and produces an upgrade assessment: version detection, gem-compatibility checks, and selective config-file merging (cross-framework reference for backend upgrade planning).
+
 ## Routing rules by intent
 
 - **"Write/refactor/review plain Python"** → `python-patterns` (+ `python-testing` for the tests).
@@ -57,6 +69,11 @@ test/verify loop) and are routed exactly like the spokes above — loaded on dem
 - **"Rank/recommend/feed — top-K for a (user, context)"** → `recsys-pipeline-architect`.
 - **"Turn notebook code into a production ML system"** → `mle-workflow` (orchestrates `python-patterns`, `python-testing`, `pytorch-patterns` for the pieces).
 - **"Build a terminal UI / TUI / interactive CLI app"** → `textual` (Textual widgets, screens, TCSS, reactive state, async workers; tests via `run_test`/pilot, built on the `python-patterns` + `python-testing` foundation).
+- **"Make a CLI safe for AI agents to call / agent-friendly CLI spec"** → `ai-native-cli` (JSON-first output, validated input contracts, fail-closed guardrails, exit codes).
+- **"Build a Discord bot"** → `discord-bot-architect` (Discord.js / Pycord, intents, slash commands, components, sharding).
+- **"Build a Slack app / bot"** → `slack-bot-builder` (Bolt framework, Block Kit, slash commands, events, OAuth install).
+- **"Integrate with HubSpot CRM"** → `hubspot-integration` (OAuth, CRM objects, associations, batch, webhooks, custom objects).
+- **"Assess / plan a Rails upgrade"** → `skill-rails-upgrade` (version detection, gem compatibility, selective config merge).
 
 ## Standard flow
 

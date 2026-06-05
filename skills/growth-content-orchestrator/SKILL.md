@@ -38,6 +38,10 @@ targets, and the one source-of-truth positioning doc all spokes read first — l
 **Launch (ship it)**
 - `launch-strategy` — Product Hunt, GTM, the ORB channel model, the five-phase rollout
 
+**Picked-up spokes** (see dedicated section below)
+- `avoid-ai-writing` — strip AI-isms from a draft (run after `copy-editing`, before publish)
+- `zapier-make-patterns` — no-code Zapier/Make automation for marketing ops & lifecycle plumbing
+
 ## Routing rules by intent
 
 | The user says… | Route to |
@@ -55,6 +59,8 @@ targets, and the one source-of-truth positioning doc all spokes read first — l
 | "Ad copy / RSA headlines / Meta primary text" | `ad-creative` |
 | "We're about to launch / Product Hunt / GTM" | `launch-strategy` |
 | Positioning / ICP / "set up context" | `product-marketing-context` |
+| "Remove AI-isms / sounds like AI / de-slop this" | `avoid-ai-writing` |
+| "Automate this in Zapier/Make / no-code workflow / connect these apps" | `zapier-make-patterns` |
 
 **Disambiguation:**
 - New page text → `copywriting`; improving existing text → `copy-editing`; emails the page links to → `email-sequence`.
@@ -78,6 +84,21 @@ ask. **One asset, one job, one CTA, one buyer stage** — don't make a page or e
 **Customer language over company language** — mirror verbatim voice-of-customer, not buzzwords
 ("leverage," "synergy," "best-in-class" are banned). **Draft, then `copy-editing`** — don't ship
 the first pass. Use urgency/scarcity only when genuine.
+
+## Picked-up spokes
+
+Standalone skills adopted from the antigravity-awesome-skills library (MIT). They extend the
+cluster at the edges of the core funnel:
+
+- **`avoid-ai-writing`** — audits and rewrites prose to remove 21 categories of AI writing
+  patterns via a 43-entry replacement table, then re-audits the rewrite. Sits *after*
+  `copy-editing` as a final de-slop pass before publishing any AI-assisted draft. Route here when
+  the user says "remove AI-isms," "make this sound less like AI," or "de-slop this."
+- **`zapier-make-patterns`** — no-code automation playbook for Zapier and Make (Integromat):
+  platform choice, trigger-action and multi-step patterns, error handling, and the line at which
+  to graduate to code. The marketing-ops plumbing layer — wiring lead capture, lifecycle emails,
+  and CRM sync without engineering. Route here when the user names Zapier/Make/integromat/zaps/
+  scenarios or wants to "connect these apps" / "automate this" without writing code.
 
 ## Loading spokes on demand
 

@@ -75,6 +75,59 @@ The `accessibility` spoke here is the WCAG **spec/audit** authority and states c
 
 See `frontend-web-core`. In short: **respect the SSR boundary** — wrap stateful/motion components in `"use client"` and match server/client initial state to avoid hydration mismatch; **layer motion on `motion-foundations`** (never inline ad-hoc durations); **accessibility is not optional** — semantic HTML first, every interactive element keyboard-reachable, every animation honors `prefers-reduced-motion`; **never mix `motion/react` and `framer-motion`** in one project. Pick the framework once and route consistently — don't blend React and Vue idioms in the same surface.
 
+## Picked-up spokes
+
+Additional frontend-web spokes adopted from the **antigravity-awesome-skills (MIT)** library. These extend the cluster into auth, deployment, search, 3D, and component-library territory. Route to them the same way as the core spokes (load on demand, see below).
+
+**Auth & integration**
+- `nextjs-supabase-auth` — Supabase Auth on the Next.js App Router: browser/server clients, middleware session refresh, auth callback route
+- `clerk-auth` — Clerk auth: App Router setup, middleware-protected routes, organizations, webhooks, user→DB sync
+- `shopify-apps` — Shopify embedded apps (Remix/React Router + App Bridge), GraphQL Admin API, webhooks, Polaris, billing, extensions
+
+**Search**
+- `algolia-search` — Algolia indexing strategies, React InstantSearch hooks/widgets, faceting, relevance tuning
+
+**Deploy & ship (Vercel)**
+- `deploy-to-vercel` — deploy apps/sites to Vercel, preferring git-push preview deploys + proper linking ("deploy my app", "push this live")
+- `vercel-cli-with-tokens` — Vercel CLI via token auth (`VERCEL_TOKEN`) for CI / non-interactive deploys and env-var management
+- `vercel-deployment` — Next.js-on-Vercel knowledge: env vars per environment, edge/serverless functions, build config, production rollout
+- `vercel-optimize` — observability-first Vercel cost/perf audit: production metrics → deterministic gates → version-aware recommendations
+
+**React quality & FP**
+- `react-component-performance` — diagnose a slow React component: isolate ticking state, stabilize props/handlers, memoize leaves, virtualize, verify in Profiler
+- `senior-frontend` — senior React/Next/TS/Tailwind workflows: scaffolding, component/hook generation, bundle analysis, patterns, a11y, testing (ships scripts)
+- `fp-ts-errors` — errors-as-values in TypeScript with fp-ts `Either`/`TaskEither`; validation-error accumulation instead of try/catch
+- `fp-ts-react` — fp-ts in React: `Option`/`Either`/`TaskEither`/`RemoteData` for state, forms, and data fetching (React 18/19, Next 14/15)
+
+**Component libraries & view transitions**
+- `shadcn` — manage shadcn/ui: add from registries via CLI, compose, style with semantic tokens, enforced rule set (user-invocable: false — agent-loaded)
+- `rayden-code` — generate React + Tailwind using the Rayden/Rayna UI library (34 components) with correct props/tokens and an anti-pattern ban list
+- `vercel-react-view-transitions` — native React/Next view transitions: shared elements, route transitions, transition types, reduced-motion-safe
+
+**3D / WebGL**
+- `3d-web-experience` — broad 3D-for-web architect: Three.js, React Three Fiber, Spline, WebGL, GLSL — configurators, immersive sites
+- `threejs-skills` — focused Three.js best practices: scene setup, lighting, controls, animation loops, effects, data viz in 3D
+
+**Testing & extensions**
+- `awt-e2e-testing` — AI-driven E2E web testing via declarative YAML → Playwright with visual matching (OpenCV + OCR), no brittle selectors
+- `browser-extension-builder` — cross-browser extensions (Chrome/Firefox): Manifest V3, content scripts, service workers, popup UIs, Web Store publishing
+
+### Routing the picked-up spokes by intent
+
+- **"Add login / auth"** → `nextjs-supabase-auth` (Supabase) or `clerk-auth` (Clerk); Shopify merchant app → `shopify-apps`
+- **"Add search to the site/app"** → `algolia-search`
+- **"Deploy / ship this"** → `deploy-to-vercel` (interactive), `vercel-cli-with-tokens` (CI/token); Next.js specifics → `vercel-deployment`; "it's expensive / slow in prod" → `vercel-optimize`
+- **"Component is slow"** → `react-component-performance` (pairs with the core `react-performance` ruleset)
+- **"Scaffold a React/Next app, generate components"** → `senior-frontend`
+- **"Type-safe error handling / functional React"** → `fp-ts-errors`, then `fp-ts-react`
+- **"Use shadcn / a design-system component lib"** → `shadcn`; Rayden/Rayna stack → `rayden-code`
+- **"Animate between routes / shared element"** → `vercel-react-view-transitions` (native view transitions; for spring/gesture motion stay on `motion-*`)
+- **"Build something in 3D / WebGL"** → `3d-web-experience` for the stack decision and React Three Fiber, `threejs-skills` for raw Three.js implementation
+- **"Write E2E browser tests with AI"** → `awt-e2e-testing` (complements `react-testing` for component-level coverage)
+- **"Build a browser extension"** → `browser-extension-builder`
+
+> Note: React **Native** and Makepad (Rust native UI) skills were intentionally **not** adopted here — native mobile UI hands off to the `react-native` / `expo` / `mobile-flutter` siblings below, and this cluster stays browser-only.
+
 ## Loading spokes on demand
 
 To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:

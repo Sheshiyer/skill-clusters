@@ -89,6 +89,26 @@ The cluster's value is *trustworthy, traceable* answers — don't trade that for
   source — mapping it and authoring `.tour` walkthroughs. They are not web research; for external
   topics use `deep-research` / `exa-search` instead.
 
+## Picked-up spokes (knowledge-base authoring & scientific computation)
+
+Vetted additions from the antigravity-awesome-skills library (MIT). They extend two
+lanes the cluster was thin on: **personal knowledge-base authoring** (Obsidian vaults)
+and **exact scientific computation**, plus one more content-extraction tool.
+
+**Knowledge base authoring (Obsidian)**
+- Write/edit Obsidian Flavored Markdown — wikilinks, embeds, callouts, properties → `obsidian-markdown`
+- Build `.base` database-views (filters, formulas, table/card/list) over notes → `obsidian-bases`
+- Author/edit `.canvas` visual maps, mind maps, knowledge graphs (JSON Canvas 1.0) → `json-canvas`
+- Shell-driven vault ops + plugin/theme dev against a running Obsidian → `obsidian-cli`
+
+**Scientific computation (turn sourced data into exact results)**
+- Symbolic math: solve equations, calculus, simplification, closed-form derivations → `sympy`
+- Astronomy: coordinates, units, FITS I/O, WCS, cosmology, precise time → `astropy`
+
+**Content extraction**
+- Token-lean clean-markdown extraction from a webpage via the Defuddle CLI → `defuddle`
+  (use over a raw page fetch when reading docs/articles/blog posts; complements `parser`/`web-search`)
+
 ## Loading spokes on demand
 
 To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:

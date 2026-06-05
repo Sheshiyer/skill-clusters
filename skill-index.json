@@ -9,12 +9,12 @@
   "pointer": "~/.agents/skill-clusters",
   "archive": "~/.agents/skills-archive",
   "counts": {
-    "total_indexed": 577,
+    "total_indexed": 682,
     "clusters": 39,
     "active-hub": 52,
-    "active-spoke": 298,
+    "active-spoke": 396,
     "deferred-hub": 26,
-    "deferred-spoke": 126,
+    "deferred-spoke": 133,
     "archived": 75
   },
   "clusters": {
@@ -72,35 +72,35 @@
       "title": "Native Ios (from ECC)",
       "orchestrator": "native-ios-orchestrator",
       "core": "native-ios-core",
-      "spokeCount": 9
+      "spokeCount": 18
     },
     "ai-agents-meta": {
       "tier": "active",
       "title": "Ai Agents Meta (from ECC)",
       "orchestrator": "ai-agents-meta-orchestrator",
       "core": "ai-agents-meta-core",
-      "spokeCount": 17
+      "spokeCount": 53
     },
     "quality-eval": {
       "tier": "active",
       "title": "Quality Eval (from ECC)",
       "orchestrator": "quality-eval-orchestrator",
       "core": "quality-eval-core",
-      "spokeCount": 16
+      "spokeCount": 21
     },
     "frontend-web": {
       "tier": "active",
       "title": "Frontend Web (from ECC)",
       "orchestrator": "frontend-web-orchestrator",
       "core": "frontend-web-core",
-      "spokeCount": 18
+      "spokeCount": 37
     },
     "python-backend": {
       "tier": "active",
       "title": "Python Backend (from ECC)",
       "orchestrator": "python-backend-orchestrator",
       "core": "python-backend-core",
-      "spokeCount": 12
+      "spokeCount": 17
     },
     "jvm": {
       "tier": "deferred",
@@ -142,14 +142,14 @@
       "title": "Databases Data (from ECC)",
       "orchestrator": "databases-data-orchestrator",
       "core": "databases-data-core",
-      "spokeCount": 17
+      "spokeCount": 24
     },
     "devops-infra": {
       "tier": "active",
       "title": "Devops Infra (from ECC)",
       "orchestrator": "devops-infra-orchestrator",
       "core": "devops-infra-core",
-      "spokeCount": 14
+      "spokeCount": 22
     },
     "security": {
       "tier": "active",
@@ -163,21 +163,21 @@
       "title": "Healthcare (from ECC)",
       "orchestrator": "healthcare-orchestrator",
       "core": "healthcare-core",
-      "spokeCount": 4
+      "spokeCount": 5
     },
     "research-knowledge": {
       "tier": "active",
       "title": "Research Knowledge (from ECC)",
       "orchestrator": "research-knowledge-orchestrator",
       "core": "research-knowledge-core",
-      "spokeCount": 23
+      "spokeCount": 30
     },
     "business-content": {
       "tier": "deferred",
       "title": "Business Content (from ECC)",
       "orchestrator": "business-content-orchestrator",
       "core": "business-content-core",
-      "spokeCount": 16
+      "spokeCount": 22
     },
     "social-media": {
       "tier": "deferred",
@@ -247,7 +247,7 @@
       "title": "Growth Content (from library)",
       "orchestrator": "growth-content-orchestrator",
       "core": "growth-content-core",
-      "spokeCount": 13
+      "spokeCount": 15
     },
     "git-pr-ops": {
       "tier": "active",
@@ -1139,6 +1139,87 @@
       "path": "~/.agents/skill-clusters/skills/mobile-ios-design/SKILL.md",
       "activate": null
     },
+    "app-store-changelog": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/app-store-changelog/SKILL.md",
+      "activate": null
+    },
+    "ios-debugger-agent": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ios-debugger-agent/SKILL.md",
+      "activate": null
+    },
+    "macos-menubar-tuist-app": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/macos-menubar-tuist-app/SKILL.md",
+      "activate": null
+    },
+    "macos-spm-app-packaging": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/macos-spm-app-packaging/SKILL.md",
+      "activate": null
+    },
+    "swift-concurrency-expert": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/swift-concurrency-expert/SKILL.md",
+      "activate": null
+    },
+    "swiftui-liquid-glass": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/swiftui-liquid-glass/SKILL.md",
+      "activate": null
+    },
+    "swiftui-performance-audit": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/swiftui-performance-audit/SKILL.md",
+      "activate": null
+    },
+    "swiftui-ui-patterns": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/swiftui-ui-patterns/SKILL.md",
+      "activate": null
+    },
+    "swiftui-view-refactor": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/swiftui-view-refactor/SKILL.md",
+      "activate": null
+    },
     "ai-agents-meta-orchestrator": {
       "cluster": "ai-agents-meta",
       "tier": "active",
@@ -1310,6 +1391,330 @@
       "path": "~/.agents/skill-clusters/skills/arch-orchestrator/SKILL.md",
       "activate": null
     },
+    "accesslint-audit": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/accesslint-audit/SKILL.md",
+      "activate": null
+    },
+    "agent-evaluation": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/agent-evaluation/SKILL.md",
+      "activate": null
+    },
+    "agent-memory-systems": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/agent-memory-systems/SKILL.md",
+      "activate": null
+    },
+    "agent-tool-builder": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/agent-tool-builder/SKILL.md",
+      "activate": null
+    },
+    "bullmq-specialist": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/bullmq-specialist/SKILL.md",
+      "activate": null
+    },
+    "context-window-management": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/context-window-management/SKILL.md",
+      "activate": null
+    },
+    "conversation-memory": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conversation-memory/SKILL.md",
+      "activate": null
+    },
+    "convex": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/convex/SKILL.md",
+      "activate": null
+    },
+    "evaluation": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/evaluation/SKILL.md",
+      "activate": null
+    },
+    "file-uploads": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/file-uploads/SKILL.md",
+      "activate": null
+    },
+    "firebase": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/firebase/SKILL.md",
+      "activate": null
+    },
+    "fp-ts-pragmatic": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/fp-ts-pragmatic/SKILL.md",
+      "activate": null
+    },
+    "hierarchical-agent-memory": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hierarchical-agent-memory/SKILL.md",
+      "activate": null
+    },
+    "hugging-face-cli": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hugging-face-cli/SKILL.md",
+      "activate": null
+    },
+    "hugging-face-community-evals": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hugging-face-community-evals/SKILL.md",
+      "activate": null
+    },
+    "hugging-face-dataset-viewer": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hugging-face-dataset-viewer/SKILL.md",
+      "activate": null
+    },
+    "hugging-face-gradio": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hugging-face-gradio/SKILL.md",
+      "activate": null
+    },
+    "hugging-face-jobs": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hugging-face-jobs/SKILL.md",
+      "activate": null
+    },
+    "hugging-face-model-trainer": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hugging-face-model-trainer/SKILL.md",
+      "activate": null
+    },
+    "hugging-face-paper-publisher": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hugging-face-paper-publisher/SKILL.md",
+      "activate": null
+    },
+    "hugging-face-papers": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hugging-face-papers/SKILL.md",
+      "activate": null
+    },
+    "hugging-face-trackio": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hugging-face-trackio/SKILL.md",
+      "activate": null
+    },
+    "hugging-face-vision-trainer": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hugging-face-vision-trainer/SKILL.md",
+      "activate": null
+    },
+    "langfuse": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/langfuse/SKILL.md",
+      "activate": null
+    },
+    "memory-systems": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/memory-systems/SKILL.md",
+      "activate": null
+    },
+    "mesh-memory": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mesh-memory/SKILL.md",
+      "activate": null
+    },
+    "prompt-caching": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/prompt-caching/SKILL.md",
+      "activate": null
+    },
+    "rag-engineer": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/rag-engineer/SKILL.md",
+      "activate": null
+    },
+    "transformers-js": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/transformers-js/SKILL.md",
+      "activate": null
+    },
+    "using-neon": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/using-neon/SKILL.md",
+      "activate": null
+    },
+    "ai-agents-architect": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ai-agents-architect/SKILL.md",
+      "activate": null
+    },
+    "autonomous-agents": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/autonomous-agents/SKILL.md",
+      "activate": null
+    },
+    "crewai": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/crewai/SKILL.md",
+      "activate": null
+    },
+    "computer-use-agents": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/computer-use-agents/SKILL.md",
+      "activate": null
+    },
+    "composition-patterns": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/composition-patterns/SKILL.md",
+      "activate": null
+    },
+    "claude-api": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/claude-api/SKILL.md",
+      "activate": null
+    },
     "quality-eval-orchestrator": {
       "cluster": "quality-eval",
       "tier": "active",
@@ -1470,6 +1875,51 @@
       "status": "active-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/markdown-rendering-regression/SKILL.md",
+      "activate": null
+    },
+    "accesslint-diff": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/accesslint-diff/SKILL.md",
+      "activate": null
+    },
+    "accesslint-scan": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/accesslint-scan/SKILL.md",
+      "activate": null
+    },
+    "fix-review": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/fix-review/SKILL.md",
+      "activate": null
+    },
+    "simplify-code": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/simplify-code/SKILL.md",
+      "activate": null
+    },
+    "clean-code": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/clean-code/SKILL.md",
       "activate": null
     },
     "frontend-web-orchestrator": {
@@ -1652,6 +2102,177 @@
       "path": "~/.agents/skill-clusters/skills/motion-advanced/SKILL.md",
       "activate": null
     },
+    "3d-web-experience": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/3d-web-experience/SKILL.md",
+      "activate": null
+    },
+    "algolia-search": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/algolia-search/SKILL.md",
+      "activate": null
+    },
+    "awt-e2e-testing": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/awt-e2e-testing/SKILL.md",
+      "activate": null
+    },
+    "deploy-to-vercel": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/deploy-to-vercel/SKILL.md",
+      "activate": null
+    },
+    "fp-ts-errors": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/fp-ts-errors/SKILL.md",
+      "activate": null
+    },
+    "fp-ts-react": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/fp-ts-react/SKILL.md",
+      "activate": null
+    },
+    "nextjs-supabase-auth": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/nextjs-supabase-auth/SKILL.md",
+      "activate": null
+    },
+    "rayden-code": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/rayden-code/SKILL.md",
+      "activate": null
+    },
+    "react-component-performance": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/react-component-performance/SKILL.md",
+      "activate": null
+    },
+    "senior-frontend": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/senior-frontend/SKILL.md",
+      "activate": null
+    },
+    "shadcn": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/shadcn/SKILL.md",
+      "activate": null
+    },
+    "shopify-apps": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/shopify-apps/SKILL.md",
+      "activate": null
+    },
+    "threejs-skills": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/threejs-skills/SKILL.md",
+      "activate": null
+    },
+    "vercel-cli-with-tokens": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/vercel-cli-with-tokens/SKILL.md",
+      "activate": null
+    },
+    "vercel-deployment": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/vercel-deployment/SKILL.md",
+      "activate": null
+    },
+    "vercel-optimize": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/vercel-optimize/SKILL.md",
+      "activate": null
+    },
+    "vercel-react-view-transitions": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/vercel-react-view-transitions/SKILL.md",
+      "activate": null
+    },
+    "browser-extension-builder": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/browser-extension-builder/SKILL.md",
+      "activate": null
+    },
+    "clerk-auth": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/clerk-auth/SKILL.md",
+      "activate": null
+    },
     "python-backend-orchestrator": {
       "cluster": "python-backend",
       "tier": "active",
@@ -1776,6 +2397,51 @@
       "status": "active-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/textual/SKILL.md",
+      "activate": null
+    },
+    "ai-native-cli": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ai-native-cli/SKILL.md",
+      "activate": null
+    },
+    "discord-bot-architect": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/discord-bot-architect/SKILL.md",
+      "activate": null
+    },
+    "hubspot-integration": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hubspot-integration/SKILL.md",
+      "activate": null
+    },
+    "skill-rails-upgrade": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/skill-rails-upgrade/SKILL.md",
+      "activate": null
+    },
+    "slack-bot-builder": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/slack-bot-builder/SKILL.md",
       "activate": null
     },
     "jvm-orchestrator": {
@@ -2390,6 +3056,69 @@
       "path": "~/.agents/skill-clusters/skills/spark-optimization/SKILL.md",
       "activate": null
     },
+    "biopython": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/biopython/SKILL.md",
+      "activate": null
+    },
+    "data-structure-protocol": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/data-structure-protocol/SKILL.md",
+      "activate": null
+    },
+    "dbos-golang": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/dbos-golang/SKILL.md",
+      "activate": null
+    },
+    "dbos-python": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/dbos-python/SKILL.md",
+      "activate": null
+    },
+    "dbos-typescript": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/dbos-typescript/SKILL.md",
+      "activate": null
+    },
+    "neon-postgres": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/neon-postgres/SKILL.md",
+      "activate": null
+    },
+    "networkx": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/networkx/SKILL.md",
+      "activate": null
+    },
     "devops-infra-orchestrator": {
       "cluster": "devops-infra",
       "tier": "active",
@@ -2532,6 +3261,78 @@
       "status": "active-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/healthcheck/SKILL.md",
+      "activate": null
+    },
+    "aws-serverless": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/aws-serverless/SKILL.md",
+      "activate": null
+    },
+    "azure-functions": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/azure-functions/SKILL.md",
+      "activate": null
+    },
+    "devcontainer-setup": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/devcontainer-setup/SKILL.md",
+      "activate": null
+    },
+    "gcp-cloud-run": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/gcp-cloud-run/SKILL.md",
+      "activate": null
+    },
+    "inngest": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/inngest/SKILL.md",
+      "activate": null
+    },
+    "terraform-skill": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/terraform-skill/SKILL.md",
+      "activate": null
+    },
+    "upstash-qstash": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/upstash-qstash/SKILL.md",
+      "activate": null
+    },
+    "voice-ai-development": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/voice-ai-development/SKILL.md",
       "activate": null
     },
     "security-orchestrator": {
@@ -2721,6 +3522,15 @@
       "status": "deferred-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/healthcare-eval-harness/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate healthcare --apply"
+    },
+    "claude-ally-health": {
+      "cluster": "healthcare",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/claude-ally-health/SKILL.md",
       "activate": "node scripts/tier.mjs --activate healthcare --apply"
     },
     "research-knowledge-orchestrator": {
@@ -2948,6 +3758,69 @@
       "path": "~/.agents/skill-clusters/skills/blogwatcher/SKILL.md",
       "activate": null
     },
+    "astropy": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/astropy/SKILL.md",
+      "activate": null
+    },
+    "defuddle": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/defuddle/SKILL.md",
+      "activate": null
+    },
+    "json-canvas": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/json-canvas/SKILL.md",
+      "activate": null
+    },
+    "obsidian-bases": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/obsidian-bases/SKILL.md",
+      "activate": null
+    },
+    "obsidian-cli": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/obsidian-cli/SKILL.md",
+      "activate": null
+    },
+    "obsidian-markdown": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/obsidian-markdown/SKILL.md",
+      "activate": null
+    },
+    "sympy": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/sympy/SKILL.md",
+      "activate": null
+    },
     "business-content-orchestrator": {
       "cluster": "business-content",
       "tier": "deferred",
@@ -3108,6 +3981,60 @@
       "status": "deferred-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/internal-comms/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "ai-product": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ai-product/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "ai-wrapper-product": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ai-wrapper-product/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "micro-saas-launcher": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/micro-saas-launcher/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "notion-template-business": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/notion-template-business/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "product-manager": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/product-manager/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "segment-cdp": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/segment-cdp/SKILL.md",
       "activate": "node scripts/tier.mjs --activate business-content --apply"
     },
     "social-media-orchestrator": {
@@ -4215,6 +5142,24 @@
       "status": "active-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/product-marketing-context/SKILL.md",
+      "activate": null
+    },
+    "avoid-ai-writing": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/avoid-ai-writing/SKILL.md",
+      "activate": null
+    },
+    "zapier-make-patterns": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/zapier-make-patterns/SKILL.md",
       "activate": null
     },
     "git-pr-ops-orchestrator": {

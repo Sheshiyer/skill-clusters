@@ -27,3 +27,15 @@ Clusters wholly or substantially extracted from ECC:
 
 ECC is distributed under the MIT License; retaining this NOTICE alongside the
 project LICENSE satisfies the attribution requirement.
+
+--------------------------------------------------------------------------------
+
+Additional spokes were curated from the community library:
+
+    sickn33/antigravity-awesome-skills  —  https://github.com/sickn33/antigravity-awesome-skills  —  MIT License
+
+Each picked-up skill carries `origin: "antigravity-awesome-skills (MIT)"` in its
+frontmatter; upstream attribution within those skills (e.g. fal.ai, HuggingFace,
+Dimillian, claude-seo, scientific-Python projects) is preserved in the skill bodies.
+Only reputable-source, non-offensive skills were selected and read-vetted before
+inclusion.

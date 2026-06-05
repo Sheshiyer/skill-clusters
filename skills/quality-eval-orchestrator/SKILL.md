@@ -38,6 +38,16 @@ These spokes were folded into the cluster from the wider skill library. They ove
 - `autoresearch` — Karpathy-style **keep-or-discard experiment loop**: change one variable, measure, keep or revert, in bounded batches. Use for overnight/iterative research runs on code (train.py-style) or on business hypotheses (positioning, CTA, pricing) where each run is logged with an explicit decision.
 - `markdown-rendering-regression` — **rendered-HTML regression gate** for Markdown/MDX builds (Astro docs/wiki): catches raw-Markdown leaks, frontmatter leakage, placeholder copy, local filesystem paths, internal build labels, and banned emoji icons that a green build still ships. Use after a static build produces `dist/`; pairs with `browser-qa` for visual checks.
 
+## Picked-up spokes
+
+Vetted from the antigravity-awesome-skills library (MIT). Each fills a gap the gates above didn't cover — route to them when the request matches:
+
+- `accesslint-scan` — **live-page accessibility audit**: runs axe over a running page/preview URL, locates every WCAG violation by selector (+ `file:line` when source-mapped), and returns a prioritized fix worklist without editing. Use for a full a11y audit of a deployed/local UI; the runtime counterpart to the design-time `accessibility`/`frontend-a11y` guidance.
+- `accesslint-diff` — **accessibility regression gate**: diffs a live page's violations against a baseline (uncommitted-changes stash mode by default, or `--branch <name>`), reporting only new violations introduced vs fixed vs pre-existing. Use to prove a UI change ships no new WCAG violations before a PR; pairs with `accesslint-scan`.
+- `fix-review` — **remediation-verification gate**: confirms that fix commits actually resolve audit/security findings at the root cause, introduce no new bugs or vulnerabilities, and carry test coverage for the fixed scenario. Use when reviewing commits that claim to close findings; complements `verification-loop` (general "is it done?") and `security-review` with a findings-to-fix focus.
+- `simplify-code` — **safe-simplification review**: reviews a scoped git diff across four parallel roles (reuse, quality, efficiency, clarity) and optionally applies only high-confidence, behavior-preserving fixes. Use when asked to simplify/clean up/refactor changed code without changing behavior; a quality-only pass (it does not hunt for bugs — that's `verification-loop`/`fix-review`).
+- `clean-code` — **Clean Code reference**: Robert C. Martin's principles (intention-revealing names, small single-purpose functions, comment discipline, error handling, code-smell heuristics) as a review/refactor checklist. Use for maintainability-focused PR review or legacy refactors; the language-agnostic readability rubric `simplify-code` and `plankton-code-quality` operationalize.
+
 ## Routing rules by intent
 
 **Define what "done" means / measure reliability**
@@ -52,6 +62,15 @@ These spokes were folded into the cluster from the wider skill library. They ove
 **Verify a change is finished**
 - Final "is it really done?" before a PR → `verification-loop`
 - Catch regressions in AI-modified backend/API → `ai-regression-testing`
+- Verify fix commits actually close audit/security findings without new bugs → `fix-review`
+
+**Improve clarity / maintainability of a change**
+- Simplify / clean up / refactor a diff with safe, behavior-preserving fixes → `simplify-code`
+- Apply Clean Code naming/function/smell heuristics in review or refactor → `clean-code`
+
+**Accessibility (runtime)**
+- Full WCAG audit of a live/preview page with a fix worklist → `accesslint-scan`
+- Prove a UI change adds no new accessibility violations (diff vs baseline/branch) → `accesslint-diff`
 
 **Test behavior end-to-end**
 - Web app flows → `e2e-testing`

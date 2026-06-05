@@ -143,7 +143,16 @@
         "ios-icon-gen",
         "liquid-glass-design",
         "watchos",
-        "mobile-ios-design"
+        "mobile-ios-design",
+        "app-store-changelog",
+        "ios-debugger-agent",
+        "macos-menubar-tuist-app",
+        "macos-spm-app-packaging",
+        "swift-concurrency-expert",
+        "swiftui-liquid-glass",
+        "swiftui-performance-audit",
+        "swiftui-ui-patterns",
+        "swiftui-view-refactor"
       ]
     },
     {
@@ -168,7 +177,43 @@
         "continuous-learning-v2",
         "swarm-architect",
         "task-master-planner",
-        "arch-orchestrator"
+        "arch-orchestrator",
+        "accesslint-audit",
+        "agent-evaluation",
+        "agent-memory-systems",
+        "agent-tool-builder",
+        "bullmq-specialist",
+        "context-window-management",
+        "conversation-memory",
+        "convex",
+        "evaluation",
+        "file-uploads",
+        "firebase",
+        "fp-ts-pragmatic",
+        "hierarchical-agent-memory",
+        "hugging-face-cli",
+        "hugging-face-community-evals",
+        "hugging-face-dataset-viewer",
+        "hugging-face-gradio",
+        "hugging-face-jobs",
+        "hugging-face-model-trainer",
+        "hugging-face-paper-publisher",
+        "hugging-face-papers",
+        "hugging-face-trackio",
+        "hugging-face-vision-trainer",
+        "langfuse",
+        "memory-systems",
+        "mesh-memory",
+        "prompt-caching",
+        "rag-engineer",
+        "transformers-js",
+        "using-neon",
+        "ai-agents-architect",
+        "autonomous-agents",
+        "crewai",
+        "computer-use-agents",
+        "composition-patterns",
+        "claude-api"
       ]
     },
     {
@@ -192,7 +237,12 @@
         "evals",
         "optimize",
         "autoresearch",
-        "markdown-rendering-regression"
+        "markdown-rendering-regression",
+        "accesslint-diff",
+        "accesslint-scan",
+        "fix-review",
+        "simplify-code",
+        "clean-code"
       ]
     },
     {
@@ -218,7 +268,26 @@
         "frontend-slides",
         "motion-foundations",
         "motion-patterns",
-        "motion-advanced"
+        "motion-advanced",
+        "3d-web-experience",
+        "algolia-search",
+        "awt-e2e-testing",
+        "deploy-to-vercel",
+        "fp-ts-errors",
+        "fp-ts-react",
+        "nextjs-supabase-auth",
+        "rayden-code",
+        "react-component-performance",
+        "senior-frontend",
+        "shadcn",
+        "shopify-apps",
+        "threejs-skills",
+        "vercel-cli-with-tokens",
+        "vercel-deployment",
+        "vercel-optimize",
+        "vercel-react-view-transitions",
+        "browser-extension-builder",
+        "clerk-auth"
       ]
     },
     {
@@ -238,7 +307,12 @@
         "pytorch-patterns",
         "recsys-pipeline-architect",
         "mle-workflow",
-        "textual"
+        "textual",
+        "ai-native-cli",
+        "discord-bot-architect",
+        "hubspot-integration",
+        "skill-rails-upgrade",
+        "slack-bot-builder"
       ]
     },
     {
@@ -342,7 +416,14 @@
         "ml-pipeline-workflow",
         "postgresql",
         "risk-metrics-calculation",
-        "spark-optimization"
+        "spark-optimization",
+        "biopython",
+        "data-structure-protocol",
+        "dbos-golang",
+        "dbos-python",
+        "dbos-typescript",
+        "neon-postgres",
+        "networkx"
       ]
     },
     {
@@ -364,7 +445,15 @@
         "flox-environments",
         "uncloud",
         "canary-watch",
-        "healthcheck"
+        "healthcheck",
+        "aws-serverless",
+        "azure-functions",
+        "devcontainer-setup",
+        "gcp-cloud-run",
+        "inngest",
+        "terraform-skill",
+        "upstash-qstash",
+        "voice-ai-development"
       ]
     },
     {
@@ -397,7 +486,8 @@
         "healthcare-phi-compliance",
         "healthcare-cdss-patterns",
         "healthcare-emr-patterns",
-        "healthcare-eval-harness"
+        "healthcare-eval-harness",
+        "claude-ally-health"
       ]
     },
     {
@@ -428,7 +518,14 @@
         "brightdata",
         "meeting-insights-analyzer",
         "fireflies",
-        "blogwatcher"
+        "blogwatcher",
+        "astropy",
+        "defuddle",
+        "json-canvas",
+        "obsidian-bases",
+        "obsidian-cli",
+        "obsidian-markdown",
+        "sympy"
       ]
     },
     {
@@ -452,7 +549,13 @@
         "inkos-multi-agent-novel-writing",
         "novel-writer-workflow-guide",
         "natural-dialogue-techniques",
-        "internal-comms"
+        "internal-comms",
+        "ai-product",
+        "ai-wrapper-product",
+        "micro-saas-launcher",
+        "notion-template-business",
+        "product-manager",
+        "segment-cdp"
       ]
     },
     {
@@ -635,7 +738,9 @@
         "launch-strategy",
         "lead-magnets",
         "free-tool-strategy",
-        "product-marketing-context"
+        "product-marketing-context",
+        "avoid-ai-writing",
+        "zapier-make-patterns"
       ]
     },
     {

@@ -50,6 +50,20 @@ one when the named concern appears; load it on demand exactly like the spokes ab
 - Natural dialogue technique — character-consistent, subtext-driven conversation that reveals character and advances plot → `natural-dialogue-techniques` *(pair with `writestory`/`novel-writer-workflow-guide` when drafting dialogue scenes)*
 - Internal communications — 3P updates, leadership/company newsletters, FAQs, incident & status reports in standard company formats → `internal-comms`
 
+## Picked-up spokes
+
+Recently absorbed specialists (from antigravity-awesome-skills). They sit on the **build / launch /
+measure** side of the same product story the GTM lanes serve — *what* you're shipping, *how* it
+becomes a business, and *whether it works* — so the orchestrator can route product-/SaaS-shaped
+asks, not just writing-shaped ones. Load each on demand exactly like the spokes above.
+
+- Production LLM product engineering — RAG, prompt engineering at scale, structured-output validation, latency/streaming UX, cost control → `ai-product` *(reach for it when "the product itself is AI" and must hold up in production)*
+- AI-API-wrapper business — defensibility, usage metering, rate limiting, model selection, output quality for a paid wrapper tool → `ai-wrapper-product` *(the business/moat angle on top of `ai-product`'s build angle)*
+- Indie micro-SaaS launch playbook — validation → MVP → pricing → launch → sustainable revenue for solo/small founders → `micro-saas-launcher` *(bootstrapped GTM; pairs with `marketing-campaign` for the launch beat)*
+- Notion-template (digital-product) business — design-to-sell, Gumroad/Lemon Squeezy, marketplaces, support systems → `notion-template-business` *(productizing templates into recurring revenue)*
+- Senior PM toolkit — 30+ frameworks (RICE/JTBD/Kano/North Star), PRD/roadmap templates, 32 SaaS metrics with formulas → `product-manager` *(structured product analysis: PRDs, roadmaps, prioritization, metrics — feeds positioning into the publish/fund lanes)*
+- Segment CDP engineering — Analytics.js, server-side tracking, Protocols tracking plans, identity resolution, governance → `segment-cdp` *(the measurement substrate behind launches; route here when "instrument the product / capture clean event data" comes up)*
+
 ## Standard Operating Flow
 
 1. Locate the task: which lane (publish / market / fund / reach) and which audience (public, investor, prospect).
