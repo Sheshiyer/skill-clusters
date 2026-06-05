@@ -53,3 +53,9 @@ mutually-exclusive states as sealed/union types, not boolean flags. Keep `domain
 framework imports). Always `mounted`-check a `BuildContext` after an `await`. Pick **one**
 state-management solution and one routing approach per app and stay consistent — the cluster's
 value is a coherent architecture, not a mix of every pattern at once.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

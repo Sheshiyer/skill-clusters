@@ -81,3 +81,9 @@ expose secrets, tokens, or unnecessary PII; separate **fact** from **recommendat
 canonical home per fact set; and when the real fix is a different surface (triage, hook policy,
 product gap), say so instead of forcing the current tool. The cluster's value is **provable
 operations** — don't quietly assert state you didn't verify.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

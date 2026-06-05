@@ -64,3 +64,9 @@ binding constraint before optimizing around it. Treat every buffer change (safet
 padding, capacity reserve) as a cost-and-risk decision worth naming. Honor compliance hard stops
 (restricted-party hits, safety/quality holds, regulatory documentation) — these are non-negotiable
 gates, not trade-offs. Escalate on the thresholds each spoke defines rather than absorbing risk quietly.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

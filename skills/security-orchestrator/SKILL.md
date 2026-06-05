@@ -71,3 +71,9 @@ works and treat any widening as a security change. **Exploitability over theory*
 local-only and out-of-scope noise. **Contain before you trust** — in autonomous runs keep
 `safety-guard`/`gateguard` on. **Never weaken a control silently** — disabling a gate, widening
 an allowlist, or adding a host is a stated decision, never a quiet one.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

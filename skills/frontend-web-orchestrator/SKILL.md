@@ -74,3 +74,9 @@ The `accessibility` spoke here is the WCAG **spec/audit** authority and states c
 ## Guardrails
 
 See `frontend-web-core`. In short: **respect the SSR boundary** — wrap stateful/motion components in `"use client"` and match server/client initial state to avoid hydration mismatch; **layer motion on `motion-foundations`** (never inline ad-hoc durations); **accessibility is not optional** — semantic HTML first, every interactive element keyboard-reachable, every animation honors `prefers-reduced-motion`; **never mix `motion/react` and `framer-motion`** in one project. Pick the framework once and route consistently — don't blend React and Vue idioms in the same surface.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

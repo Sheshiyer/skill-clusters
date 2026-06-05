@@ -70,3 +70,9 @@ Spring Boot and Quarkus patterns in one module; keep Spring Security vs Quarkus 
 advice with their own framework. Tests come first (`*-tdd` / `kotlin-testing`), security is
 not optional (`*-security`), and nothing ships until the matching `*-verification` loop is
 green. Keep Kotlin null-safe and Java immutable-by-default; validate every external input.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

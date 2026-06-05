@@ -49,3 +49,9 @@ See `expo-core`. In short: keep the **SDK version** the source of truth (it pins
 and native deps — don't mix); prefer config plugins over manual native edits so prebuild stays
 reproducible; confirm credentials/identifiers before an EAS Submit; treat a managed→bare
 ejection as a one-way decision worth stating.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

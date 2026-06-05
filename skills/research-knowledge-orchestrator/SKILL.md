@@ -63,3 +63,9 @@ The cluster's value is *trustworthy, traceable* answers — don't trade that for
 - **Codebase, not the web.** `codebase-onboarding` and `code-tour` operate on *this* repo's own
   source — mapping it and authoring `.tour` walkthroughs. They are not web research; for external
   topics use `deep-research` / `exa-search` instead.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

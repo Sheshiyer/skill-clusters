@@ -2,7 +2,7 @@
 name: react-native-design
 description: Master React Native styling, navigation, and Reanimated animations for cross-platform mobile development. Use when building React Native apps, implementing navigation patterns, or creating performant animations.
 cluster: react-native
-version: 1.0.0
+version: 1.0.1
 ---
 
 # React Native Design
@@ -19,6 +19,8 @@ Master React Native styling patterns, React Navigation, and Reanimated 3 to buil
 - Implementing platform-specific designs (iOS/Android)
 - Creating gesture-driven interactions with Gesture Handler
 - Optimizing React Native performance
+- Reviewing screen-to-screen UI/UX continuity after the product contract and data authority
+  have been traced with `react-native-core`'s integrated-flow audit.
 
 ## Core Concepts
 

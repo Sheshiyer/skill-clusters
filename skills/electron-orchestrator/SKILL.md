@@ -43,3 +43,9 @@ See `electron-core`. In short: **the renderer is untrusted** — keep `contextIs
 `nodeIntegration` off, `sandbox` on; expose only a minimal, typed `contextBridge` API (never the
 whole `ipcRenderer` or Node); validate every IPC argument in the main process; set a strict CSP;
 and always sign + notarize before distributing or auto-updating.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

@@ -38,3 +38,9 @@ lives in `raycast-core`.
 See `raycast-core`. Keep the `package.json` manifest in sync with code; confirm destructive
 actions; never expose secrets from preferences; for AI tools, gate side-effecting tools behind
 confirmation. Defer changing API specifics to developers.raycast.com.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

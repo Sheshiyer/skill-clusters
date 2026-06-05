@@ -60,3 +60,9 @@ See `tauri-core`. In short: **default-deny** — grant the narrowest capability/
 that works; keep the CSP strict; never expand the IPC allowlist or filesystem scope without
 saying so explicitly; confirm signing identities and per-platform requirements before a release
 build. Tauri's value is the locked-down security boundary — don't quietly widen it.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

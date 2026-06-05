@@ -38,3 +38,9 @@ See `astro-core`. In short: **ship static by default**, opt into on-demand SSR o
 need it (and add server islands for dynamic fragments inside static pages); keep islands minimal
 and hydrate at the latest directive that works (`client:visible`/`idle` over `load`); validate
 secrets through `astro:env` rather than raw `import.meta.env` on the server.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

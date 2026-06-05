@@ -60,3 +60,9 @@ See `creative-frontend-core` for the shared guardrails — animate compositor-on
 (`transform`/`opacity`), always gate non-essential motion behind `prefers-reduced-motion`,
 re-init and clean up animations across Astro view transitions, and confirm scope before
 heavy renders (Lambda/Cloud Run cost + time).
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

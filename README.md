@@ -82,6 +82,33 @@ via symlink, so there's exactly one copy and no drift:
 ./scripts/link-agents.sh --unlink --apply   # restore
 ```
 
+## Context debloat: active / deferred tiers
+
+Skills cost context — every skill a CLI scans at startup spends name+description tokens in *every*
+session. The cluster system is a **debloat** mechanism: instead of N spoke skills, the CLI loads one
+**orchestrator** (+ core) per *active* cluster — the index — and spokes load **on demand**.
+
+[`profiles.json`](profiles.json) defines two tiers; [`scripts/tier.mjs`](scripts/tier.mjs) deploys them:
+
+| Tier | Startup cost | Which |
+|---|---|---|
+| **active** (19) | orchestrator + core only → **38 skills** | the agent's working set |
+| **deferred** (9) | **0** | php-laravel · jvm · systems-languages · mobile-flutter · healthcare · supply-chain · blockchain-web3 · business-content · social-media |
+
+Result on the clustered set: **317 → 38 enumerated (−88%)**. Spokes aren't registered as skills; an
+orchestrator routes to one and the agent `Read`s it on demand from
+`~/.agents/skill-clusters/skills/<name>/SKILL.md` (a non-scanned pointer the deployer creates).
+
+```bash
+npm run tier                                            # list tiers + what's deployed
+npm run tier:apply                                      # deploy active hub+core (default)
+node scripts/tier.mjs --activate php-laravel --apply    # debugging an old PHP project? pull it in
+node scripts/tier.mjs --deactivate php-laravel --apply  # put it back to sleep
+npm run tier:all                                        # deploy everything (ignore tiers)
+```
+
+Granularity is tunable: `--granularity orchestrator` (19, leanest) or `--granularity full` (all active spokes).
+
 ## Install (skills.sh)
 
 ```bash

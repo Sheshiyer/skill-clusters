@@ -85,3 +85,9 @@ See `php-laravel-core`. In short: **keep controllers thin** and push logic into 
 gate is sequential** — env/composer failures stop everything, lint must be clean before tests, and
 security/migration review precede any release step. Never widen mass-assignment, CORS origins, or
 scope without saying so explicitly.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

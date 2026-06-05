@@ -61,3 +61,9 @@ line, a firewall rule, a `uc` deploy, a VLAN cutover — as a change that needs 
 rollback, and console/out-of-band access secured first. Network and segmentation changes only
 *add* isolation; verify reachability between segments after each step before moving on. Never
 widen access (open a port, loosen an ACL, full-tunnel a VPN) without saying so explicitly.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

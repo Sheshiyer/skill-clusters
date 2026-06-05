@@ -46,3 +46,9 @@ unless told otherwise; reuse a captured `VOICE PROFILE` rather than re-inventing
 provider secrets in env vars, never in source or logs; treat rate limits and write-permission
 tiers (especially X) as runtime facts to read, not static tables to hardcode. The cluster's
 value is platform-fit content shipped safely — don't quietly mass-broadcast or post unreviewed.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

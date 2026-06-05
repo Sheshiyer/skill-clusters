@@ -51,3 +51,9 @@ real source, not invention; each message is shaped for its surface (the same cop
 email, LinkedIn, and X is a tell). Never auto-send outbound — draft and let the user approve.
 The cluster's value is content that reads like a specific person with receipts; don't quietly
 let it collapse into platform slop.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

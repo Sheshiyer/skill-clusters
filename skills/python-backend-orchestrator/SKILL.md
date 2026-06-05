@@ -56,3 +56,9 @@ lives in `python-backend-core`; read it before choosing a framework or wiring pe
 ## Guardrails
 
 See `python-backend-core`. In short: **keep business logic out of views/routers** — they are thin adapters over a typed core; **validate every input at the boundary** (DRF serializers / Pydantic models), never trust the client; **tests before "done"** — no feature is complete until `python-testing`/`django-tdd` covers it and `django-verification` (or the lane's equivalent gate) passes; **secrets and DEBUG never ship** — `django-security` settings are non-negotiable in production; for ML, **reproducibility and a rollback path** gate promotion (`mle-workflow`). Don't silently widen scope: a new external call, a loosened auth check, or a skipped migration check is a change worth stating.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

@@ -53,3 +53,9 @@ it in `if #available` / `SystemLanguageModel.availability` with a real fallback 
 the whole app's deployment target silently. Prefer `@Observable` over `ObservableObject`, actors
 over manual locks, and isolated-by-default concurrency over ad-hoc background dispatch. Don't widen
 a deployment target or weaken data-race safety without saying so explicitly.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

@@ -68,3 +68,9 @@ missing weight blocks a mg/kg dose (never passes), and PHI never lands in logs, 
 storage, prompts, or client-visible errors. Treat any third-party SaaS / LLM / observability
 vendor as blocked-by-default until its data boundary (and BAA, for US) is clear. A single
 CRITICAL eval failure blocks the deploy — don't lower the threshold to get green.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

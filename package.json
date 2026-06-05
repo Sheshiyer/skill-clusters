@@ -9,7 +9,11 @@
     "health:json": "node scripts/skills-health.mjs --json",
     "normalize": "node scripts/skills-normalize.mjs",
     "link": "bash scripts/link-agents.sh",
-    "link:apply": "bash scripts/link-agents.sh --apply"
+    "link:apply": "bash scripts/link-agents.sh --apply",
+    "tier": "node scripts/tier.mjs --list",
+    "tier:apply": "node scripts/tier.mjs --apply",
+    "tier:all": "node scripts/tier.mjs --all --apply",
+    "footer": "node scripts/add-spoke-footer.mjs"
   },
   "engines": {
     "node": ">=18"

@@ -66,3 +66,9 @@ production, model illegal states as unrepresentable, keep `unsafe` minimal and d
 `anyhow` for applications, and never silently widen that boundary. Tests follow TDD, stay
 independent, never `sleep()`, and assert on typed error variants — not panic strings — wherever
 the code returns a `Result`.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

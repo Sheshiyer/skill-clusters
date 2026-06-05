@@ -49,3 +49,9 @@ existing pattern instead of inventing a second architecture. Validate every inpu
 transport boundary; treat any new public-API contract, persisted schema, or outbound integration
 as a deliberate change worth stating. The cluster's value is keeping business rules independent
 of I/O — don't quietly leak infrastructure into the core.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

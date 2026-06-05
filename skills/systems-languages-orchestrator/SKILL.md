@@ -55,3 +55,9 @@ is involved — taint mode, allowlist validation, parameterized DBI, and list-fo
 table stakes (`perl-security`). Keep Go simple and error-explicit, keep C++ RAII + const-by-default,
 keep Perl on `use v5.36` with safe defaults. Never widen an input surface (new shell call, raw SQL,
 two-arg open) without saying so explicitly.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).

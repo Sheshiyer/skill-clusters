@@ -1,8 +1,8 @@
 ---
 name: react-native-core
-description: "Shared reference for the React Native cluster: the New Architecture (Fabric/TurboModules/JSI/bridgeless), styling approaches, navigation options, the Reanimated + Gesture Handler animation stack, platform differences, and performance rules. USE WHEN making RN UI/interaction decisions — the runtime model every RN spoke shares. Pairs with expo-core for the toolchain."
+description: "Shared reference for the React Native cluster: the New Architecture (Fabric/TurboModules/JSI/bridgeless), styling approaches, navigation options, the Reanimated + Gesture Handler animation stack, platform differences, performance rules, and integrated product-flow audits. USE WHEN making RN UI/interaction decisions or reviewing whole-app flow gaps. Pairs with expo-core for the toolchain."
 cluster: react-native
-version: 1.0.0
+version: 1.0.1
 ---
 
 # React Native Core
@@ -53,10 +53,27 @@ runtime facts — keep them consistent. For build/ship/Expo specifics, see `expo
 Network + cache + offline via `native-data-fetching` (fetch, React Query/SWR). Treat the
 server cache (React Query) as separate from UI state.
 
-## 8. Shared guardrails
+## 8. Integrated product-flow audits
+
+Use `references/integrated-flow-audit.md` when the task asks whether the whole app flow,
+role architecture, or UI/UX implementation matches the product/agent contract. The audit
+order is:
+
+1. Product contract: actors, entry gates, success states, safety/consent, revenue or token rules.
+2. Route graph: first-run, authenticated, role-specific tabs, modal/deep-link paths, exits.
+3. State authority: server, local bootstrap, cache, secure storage, fixtures, and reset behavior.
+4. Data path: screen -> hook/provider -> API -> cache/fallback -> persistence -> recovery UI.
+5. UI/UX states: empty/loading/error/offline/success/retry/back paths, not just happy paths.
+6. Verification: static checks, route validators, simulator scripts, live API smoke where relevant.
+
+For Expo Router or EAS evidence, pair this with `expo-core` / `expo-orchestrator`.
+
+## 9. Shared guardrails
 
 - UI-thread animations/gestures (Reanimated worklets + Gesture Handler) — never block JS.
 - Transforms over layout for motion; 60fps target; respect reduce-motion.
 - Virtualize lists; cut needless re-renders.
 - One navigation paradigm per app.
+- One authority per product fact: auth identity, role, wallet balance, booking, conversation, consent, and safety state should not have competing production sources.
+- Fixture/mock fallbacks must be visibly bounded to demo/simulator/test paths and must not be used as proof that production flow works.
 - Toolchain/build/ship → `expo-core`; native SwiftUI → `native-ios`.

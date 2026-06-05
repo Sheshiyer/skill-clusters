@@ -75,3 +75,9 @@ silently grade itself (the AI write-and-review blind spot), and don't let a gate
 satisfied by loosening its own config — flag config tampering. Pick the cheapest gate
 that catches the failure class: a write-time lint shouldn't be doing a production audit's
 job, and vice versa.
+
+## Loading spokes on demand
+
+To keep CLI startup context lean, this cluster's spokes are **not** separately registered as skills — only this orchestrator and its `*-core` are enumerated. When you route to a spoke named above, **load it on demand** by reading its file:
+
+`~/.agents/skill-clusters/skills/<spoke-name>/SKILL.md`  (or `skills/<spoke-name>/SKILL.md` inside the skill-clusters repo).
