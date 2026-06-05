@@ -47,22 +47,27 @@ if (!nim.hasKey()) {
 const withSchema = rows.filter((r) => r.taste_schema && !r.taste_schema._raw).length;
 if (withSchema < rows.length) console.log(`  note: ${rows.length - withSchema}/${rows.length} rows lack taste_schema — run enrich.mjs first for best quality\n`);
 
-let done = 0, clipped = 0, failed = 0, dim = 0;
+// checkpoint incrementally — a kill loses at most ~20 rows; embed is idempotent (skips embedded rows).
+const save = () => fs.writeFileSync(CORPUS, rows.map((r) => JSON.stringify(r)).join('\n') + '\n');
+process.on('SIGINT', () => { save(); console.log('\n  ⓘ checkpointed on interrupt — re-run to resume'); process.exit(130); });
+process.on('SIGTERM', () => { save(); process.exit(143); });
+
+let done = 0, clipped = 0, failed = 0, dim = 0, since = 0;
 for (const r of (limit ? todo.slice(0, limit) : todo)) {
   try {
     r.embedding = (await nim.embedText([tasteDoc(r)], { inputType: 'passage' }))[0];
     dim = r.embedding.length;
-    done++;
+    done++; since++;
     if (doClip && r.screenshot) {
       const fp = path.join(WING, r.screenshot);
       if (fs.existsSync(fp)) { r.clip = await nim.embedImage(fs.readFileSync(fp), mimeOf(r.screenshot)); clipped++; }
     }
     if (done % 25 === 0) console.log(`  … ${done}/${todo.length} embedded`);
   } catch (e) { failed++; console.log(`  ✗ ${r.title.slice(0, 42)} — ${e.message}`); }
+  if (since >= 20) { save(); since = 0; }   // checkpoint every 20
   await sleep(300);
 }
-
-fs.writeFileSync(CORPUS, rows.map((r) => JSON.stringify(r)).join('\n') + '\n');
+save();
 console.log(`  ${'-'.repeat(60)}`);
 console.log(`  embedded ${done} (dim ${dim})${doClip ? ` · clip ${clipped}` : ''} · failed ${failed} · total vectors: ${rows.filter((r) => r.embedding).length}/${rows.length}`);
 console.log(`  next (P3): node taste/scripts/taste-resolve.mjs "<request>" --brand tryambakam-noesis  → taste brief\n`);
