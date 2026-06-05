@@ -9,10 +9,10 @@
   "pointer": "~/.agents/skill-clusters",
   "archive": "~/.agents/skills-archive",
   "counts": {
-    "total_indexed": 716,
+    "total_indexed": 720,
     "clusters": 40,
     "active-hub": 54,
-    "active-spoke": 424,
+    "active-spoke": 428,
     "deferred-hub": 26,
     "deferred-spoke": 137,
     "archived": 75
@@ -23,7 +23,7 @@
       "title": "Creative Frontend — Astro · GSAP · Remotion",
       "orchestrator": "creative-frontend-orchestrator",
       "core": "creative-frontend-core",
-      "spokeCount": 9
+      "spokeCount": 13
     },
     "tauri": {
       "tier": "active",
@@ -397,6 +397,42 @@
       "status": "active-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/web-perf/SKILL.md",
+      "activate": null
+    },
+    "gsap-awwwards-website": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/gsap-awwwards-website/SKILL.md",
+      "activate": null
+    },
+    "awwwards-ui-skills": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/awwwards-ui-skills/SKILL.md",
+      "activate": null
+    },
+    "awwwards-landing-page": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/awwwards-landing-page/SKILL.md",
+      "activate": null
+    },
+    "awwwards-animations": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/awwwards-animations/SKILL.md",
       "activate": null
     },
     "tauri-orchestrator": {

@@ -16,7 +16,11 @@
         "remotion-best-practices",
         "remotion-video-toolkit",
         "artifacts-builder",
-        "web-perf"
+        "web-perf",
+        "gsap-awwwards-website",
+        "awwwards-ui-skills",
+        "awwwards-landing-page",
+        "awwwards-animations"
       ]
     },
     {

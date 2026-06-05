@@ -32,6 +32,12 @@ above and are routable the same way — load on demand by reading their `SKILL.m
 - `artifacts-builder` — scaffold + bundle elaborate multi-component HTML artifacts (React 18 + TypeScript + Vite + Tailwind + shadcn/ui), inlined to a single self-contained `bundle.html`. Use when the deliverable is a standalone interactive UI/app artifact (state, routing, shadcn components) rather than a page animation or rendered video.
 - `web-perf` — audit and optimize page-load performance via Chrome DevTools MCP: Core Web Vitals (LCP/INP/CLS), render-blocking resources, network dependency chains, layout shifts, caching, and accessibility gaps. Use to profile, debug, or optimize site speed / Lighthouse scores — including verifying that a heavy animation or hero stays within the cluster's performance budget.
 
+**Awwwards / award-worthy aesthetic** (`ihlamury/design-skills`) — premium FWA/Awwwards-grade frontend:
+- `awwwards-animations` — professional React animation (GSAP `useGSAP`, Motion/Framer, Anime.js, Lenis): premium 60fps scroll, custom cursors, page transitions, text/reveal/magnetic/parallax, kinetic typography, generative/algorithmic art. The go-to for "make it award-worthy."
+- `gsap-awwwards-website` — a worked GSAP scroll-landing reference (React 19 + Tailwind 4); use as a concrete example when building a polished GSAP product/landing page.
+- `awwwards-landing-page` — designer-portfolio / agency landing with Locomotive Scroll + GSAP + Framer Motion; use for portfolio/agency smooth-scroll sites.
+- `awwwards-ui-skills` — the Awwwards UI design system (light mode, Inter, 4px grid); use for the Awwwards visual aesthetic / design-system rules (cross-refs the `design` cluster).
+
 ## Routing Rules by Intent
 
 **First, classify the deliverable** (full criteria in `creative-frontend-core` → decision matrix):
@@ -44,6 +50,10 @@ above and are routable the same way — load on demand by reading their `SKILL.m
 - Complex timeline, SVG morph/draw, staggered grids, tween JS values → `animejs`.
 - Simple enter/state transition or micro-interaction → prefer CSS / Astro **View Transitions** (`astro-framework`) before reaching for a JS lib.
 - "Give me a ready-made hero / 3D / WebGL / Framer-Motion component" → `web-motion-library`.
+- "Make it **Awwwards/FWA-grade** — premium 60fps scroll, custom cursor, magnetic, page transitions, kinetic type, generative art" → `awwwards-animations` (pair with `astro-gsap-scrolltrigger` / `web-motion-library` as needed).
+- Worked **GSAP product-landing** example (React 19 + Tailwind 4) → `gsap-awwwards-website`.
+- **Designer portfolio / agency landing** with Locomotive smooth scroll → `awwwards-landing-page`.
+- **Awwwards UI aesthetic / design system** (light, Inter, 4px grid) → `awwwards-ui-skills`.
 - Build / hydrate / deploy the Astro site itself → `astro-framework`.
 
 **Render-time (video) →**
