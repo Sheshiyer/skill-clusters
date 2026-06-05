@@ -12,6 +12,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const regenIndex = () => { try { execFileSync('node', [path.join(path.dirname(fileURLToPath(import.meta.url)), 'gen-index.mjs')], { stdio: 'ignore' }); } catch {} };
 
 const AGENTS = path.join(os.homedir(), '.agents', 'skills');
 const ARCHIVE = path.join(os.homedir(), '.agents', 'skills-archive');
@@ -51,6 +55,7 @@ if (RESTORE) {
     if (fs.existsSync(from) && !fs.existsSync(to)) { if (APPLY) fs.renameSync(from, to); moved++; }
   }
   console.log(`${APPLY ? '' : '[dry-run] '}restore: ${moved} skill(s) back to ~/.agents/skills`);
+  if (APPLY) regenIndex();
   process.exit(0);
 }
 
@@ -72,6 +77,7 @@ for (const name of toArchive) {
   if (APPLY) fs.renameSync(path.join(AGENTS, name), path.join(ARCHIVE, name));
 }
 if (APPLY) fs.writeFileSync(MANIFEST, JSON.stringify({ archived: [...new Set([...prev, ...toArchive])] }, null, 2));
+if (APPLY) regenIndex();
 
 const remain = fs.readdirSync(AGENTS).filter((n) => !n.startsWith('.')).length;
 console.log(`${APPLY ? '' : '[dry-run] '}archive: ${toArchive.length} skill(s) -> ~/.agents/skills-archive/`);

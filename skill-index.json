@@ -1,0 +1,5490 @@
+{
+  "$comment": "Canonical skill resolution map for the harness/hooks/PAI. Regenerate with: node scripts/gen-index.mjs",
+  "resolutionOrder": [
+    "1. active-hub  → already enumerated; invoke directly",
+    "2. active-spoke → Read its `path` on demand, or invoke its cluster orchestrator",
+    "3. deferred-*  → run its `activate` command to enumerate the cluster, then invoke",
+    "4. archived    → run its `restore` command, or Read its `path` directly"
+  ],
+  "pointer": "~/.agents/skill-clusters",
+  "archive": "~/.agents/skills-archive",
+  "counts": {
+    "total_indexed": 577,
+    "clusters": 39,
+    "active-hub": 52,
+    "active-spoke": 298,
+    "deferred-hub": 26,
+    "deferred-spoke": 126,
+    "archived": 75
+  },
+  "clusters": {
+    "creative-frontend": {
+      "tier": "active",
+      "title": "Creative Frontend — Astro · GSAP · Remotion",
+      "orchestrator": "creative-frontend-orchestrator",
+      "core": "creative-frontend-core",
+      "spokeCount": 9
+    },
+    "tauri": {
+      "tier": "active",
+      "title": "Tauri — cross-platform desktop & mobile (Rust + web)",
+      "orchestrator": "tauri-orchestrator",
+      "core": "tauri-core",
+      "spokeCount": 40
+    },
+    "expo": {
+      "tier": "active",
+      "title": "Expo — React Native toolchain",
+      "orchestrator": "expo-orchestrator",
+      "core": "expo-core",
+      "spokeCount": 9
+    },
+    "react-native": {
+      "tier": "active",
+      "title": "React Native — UI & interaction craft",
+      "orchestrator": "react-native-orchestrator",
+      "core": "react-native-core",
+      "spokeCount": 4
+    },
+    "astro": {
+      "tier": "active",
+      "title": "Astro — static-first sites (islands, content, SSR)",
+      "orchestrator": "astro-orchestrator",
+      "core": "astro-core",
+      "spokeCount": 2
+    },
+    "raycast": {
+      "tier": "active",
+      "title": "Raycast — extensions, AI tools, Store publishing",
+      "orchestrator": "raycast-orchestrator",
+      "core": "raycast-core",
+      "spokeCount": 4
+    },
+    "rust": {
+      "tier": "active",
+      "title": "Rust (from ECC)",
+      "orchestrator": "rust-orchestrator",
+      "core": "rust-core",
+      "spokeCount": 3
+    },
+    "native-ios": {
+      "tier": "active",
+      "title": "Native Ios (from ECC)",
+      "orchestrator": "native-ios-orchestrator",
+      "core": "native-ios-core",
+      "spokeCount": 9
+    },
+    "ai-agents-meta": {
+      "tier": "active",
+      "title": "Ai Agents Meta (from ECC)",
+      "orchestrator": "ai-agents-meta-orchestrator",
+      "core": "ai-agents-meta-core",
+      "spokeCount": 17
+    },
+    "quality-eval": {
+      "tier": "active",
+      "title": "Quality Eval (from ECC)",
+      "orchestrator": "quality-eval-orchestrator",
+      "core": "quality-eval-core",
+      "spokeCount": 16
+    },
+    "frontend-web": {
+      "tier": "active",
+      "title": "Frontend Web (from ECC)",
+      "orchestrator": "frontend-web-orchestrator",
+      "core": "frontend-web-core",
+      "spokeCount": 18
+    },
+    "python-backend": {
+      "tier": "active",
+      "title": "Python Backend (from ECC)",
+      "orchestrator": "python-backend-orchestrator",
+      "core": "python-backend-core",
+      "spokeCount": 12
+    },
+    "jvm": {
+      "tier": "deferred",
+      "title": "Jvm (from ECC)",
+      "orchestrator": "jvm-orchestrator",
+      "core": "jvm-core",
+      "spokeCount": 16
+    },
+    "php-laravel": {
+      "tier": "deferred",
+      "title": "Php Laravel (from ECC)",
+      "orchestrator": "php-laravel-orchestrator",
+      "core": "php-laravel-core",
+      "spokeCount": 5
+    },
+    "systems-languages": {
+      "tier": "deferred",
+      "title": "Systems Languages (from ECC)",
+      "orchestrator": "systems-languages-orchestrator",
+      "core": "systems-languages-core",
+      "spokeCount": 7
+    },
+    "mobile-flutter": {
+      "tier": "deferred",
+      "title": "Mobile Flutter (from ECC)",
+      "orchestrator": "mobile-flutter-orchestrator",
+      "core": "mobile-flutter-core",
+      "spokeCount": 3
+    },
+    "backend-architecture": {
+      "tier": "active",
+      "title": "Backend Architecture (from ECC)",
+      "orchestrator": "backend-architecture-orchestrator",
+      "core": "backend-architecture-core",
+      "spokeCount": 8
+    },
+    "databases-data": {
+      "tier": "active",
+      "title": "Databases Data (from ECC)",
+      "orchestrator": "databases-data-orchestrator",
+      "core": "databases-data-core",
+      "spokeCount": 17
+    },
+    "devops-infra": {
+      "tier": "active",
+      "title": "Devops Infra (from ECC)",
+      "orchestrator": "devops-infra-orchestrator",
+      "core": "devops-infra-core",
+      "spokeCount": 14
+    },
+    "security": {
+      "tier": "active",
+      "title": "Security (from ECC)",
+      "orchestrator": "security-orchestrator",
+      "core": "security-core",
+      "spokeCount": 13
+    },
+    "healthcare": {
+      "tier": "deferred",
+      "title": "Healthcare (from ECC)",
+      "orchestrator": "healthcare-orchestrator",
+      "core": "healthcare-core",
+      "spokeCount": 4
+    },
+    "research-knowledge": {
+      "tier": "active",
+      "title": "Research Knowledge (from ECC)",
+      "orchestrator": "research-knowledge-orchestrator",
+      "core": "research-knowledge-core",
+      "spokeCount": 23
+    },
+    "business-content": {
+      "tier": "deferred",
+      "title": "Business Content (from ECC)",
+      "orchestrator": "business-content-orchestrator",
+      "core": "business-content-core",
+      "spokeCount": 16
+    },
+    "social-media": {
+      "tier": "deferred",
+      "title": "Social Media (from ECC)",
+      "orchestrator": "social-media-orchestrator",
+      "core": "social-media-core",
+      "spokeCount": 17
+    },
+    "agentic-ops": {
+      "tier": "active",
+      "title": "Agentic Ops (from ECC)",
+      "orchestrator": "agentic-ops-orchestrator",
+      "core": "agentic-ops-core",
+      "spokeCount": 26
+    },
+    "supply-chain": {
+      "tier": "deferred",
+      "title": "Supply Chain (from ECC)",
+      "orchestrator": "supply-chain-orchestrator",
+      "core": "supply-chain-core",
+      "spokeCount": 8
+    },
+    "blockchain-web3": {
+      "tier": "deferred",
+      "title": "Blockchain Web3 (from ECC)",
+      "orchestrator": "blockchain-web3-orchestrator",
+      "core": "blockchain-web3-core",
+      "spokeCount": 6
+    },
+    "electron": {
+      "tier": "active",
+      "title": "Electron — desktop apps (Chromium + Node)",
+      "orchestrator": "electron-orchestrator",
+      "core": "electron-core",
+      "spokeCount": 4
+    },
+    "cloudflare": {
+      "tier": "active",
+      "title": "Cloudflare (from library)",
+      "orchestrator": "cloudflare-orchestrator",
+      "core": "cloudflare-core",
+      "spokeCount": 9
+    },
+    "supabase": {
+      "tier": "active",
+      "title": "Supabase (from library)",
+      "orchestrator": "supabase-orchestrator",
+      "core": "supabase-core",
+      "spokeCount": 3
+    },
+    "design": {
+      "tier": "active",
+      "title": "Design (from library)",
+      "orchestrator": "design-orchestrator",
+      "core": "design-core",
+      "spokeCount": 9
+    },
+    "growth-seo": {
+      "tier": "active",
+      "title": "Growth Seo (from library)",
+      "orchestrator": "growth-seo-orchestrator",
+      "core": "growth-seo-core",
+      "spokeCount": 8
+    },
+    "growth-content": {
+      "tier": "active",
+      "title": "Growth Content (from library)",
+      "orchestrator": "growth-content-orchestrator",
+      "core": "growth-content-core",
+      "spokeCount": 13
+    },
+    "git-pr-ops": {
+      "tier": "active",
+      "title": "Git Pr Ops (from library)",
+      "orchestrator": "git-pr-ops-orchestrator",
+      "core": "git-pr-ops-core",
+      "spokeCount": 6
+    },
+    "browser-automation": {
+      "tier": "active",
+      "title": "Browser Automation (from library)",
+      "orchestrator": "browser-automation-orchestrator",
+      "core": "browser-automation-core",
+      "spokeCount": 4
+    },
+    "growth-sales-cro": {
+      "tier": "deferred",
+      "title": "Growth Sales Cro (from library)",
+      "orchestrator": "growth-sales-cro-orchestrator",
+      "core": "growth-sales-cro-core",
+      "spokeCount": 24
+    },
+    "media-gen": {
+      "tier": "deferred",
+      "title": "Media Gen (from library)",
+      "orchestrator": "media-gen-orchestrator",
+      "core": "media-gen-core",
+      "spokeCount": 11
+    },
+    "documents": {
+      "tier": "deferred",
+      "title": "Documents (from library)",
+      "orchestrator": "documents-orchestrator",
+      "core": "documents-core",
+      "spokeCount": 8
+    },
+    "extra-languages": {
+      "tier": "deferred",
+      "title": "Extra Languages (from library)",
+      "orchestrator": "extra-languages-orchestrator",
+      "core": "extra-languages-core",
+      "spokeCount": 1
+    }
+  },
+  "skills": {
+    "creative-frontend-orchestrator": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/creative-frontend-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "creative-frontend-core": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/creative-frontend-core/SKILL.md",
+      "activate": null
+    },
+    "astro-framework": {
+      "cluster": "astro",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/astro-framework/SKILL.md",
+      "activate": null
+    },
+    "astro-gsap-scrolltrigger": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/astro-gsap-scrolltrigger/SKILL.md",
+      "activate": null
+    },
+    "animejs": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/animejs/SKILL.md",
+      "activate": null
+    },
+    "web-motion-library": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/web-motion-library/SKILL.md",
+      "activate": null
+    },
+    "remotion": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/remotion/SKILL.md",
+      "activate": null
+    },
+    "remotion-best-practices": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/remotion-best-practices/SKILL.md",
+      "activate": null
+    },
+    "remotion-video-toolkit": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/remotion-video-toolkit/SKILL.md",
+      "activate": null
+    },
+    "artifacts-builder": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/artifacts-builder/SKILL.md",
+      "activate": null
+    },
+    "web-perf": {
+      "cluster": "creative-frontend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/web-perf/SKILL.md",
+      "activate": null
+    },
+    "tauri-orchestrator": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/tauri-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "tauri-core": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/tauri-core/SKILL.md",
+      "activate": null
+    },
+    "setting-up-tauri-projects": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/setting-up-tauri-projects/SKILL.md",
+      "activate": null
+    },
+    "tauri-v2": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/tauri-v2/SKILL.md",
+      "activate": null
+    },
+    "understanding-tauri-architecture": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/understanding-tauri-architecture/SKILL.md",
+      "activate": null
+    },
+    "understanding-tauri-process-model": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/understanding-tauri-process-model/SKILL.md",
+      "activate": null
+    },
+    "understanding-tauri-runtime-authority": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/understanding-tauri-runtime-authority/SKILL.md",
+      "activate": null
+    },
+    "understanding-tauri-lifecycle-security": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/understanding-tauri-lifecycle-security/SKILL.md",
+      "activate": null
+    },
+    "understanding-tauri-ecosystem-security": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/understanding-tauri-ecosystem-security/SKILL.md",
+      "activate": null
+    },
+    "configuring-tauri-apps": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/configuring-tauri-apps/SKILL.md",
+      "activate": null
+    },
+    "configuring-tauri-capabilities": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/configuring-tauri-capabilities/SKILL.md",
+      "activate": null
+    },
+    "configuring-tauri-permissions": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/configuring-tauri-permissions/SKILL.md",
+      "activate": null
+    },
+    "configuring-tauri-scopes": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/configuring-tauri-scopes/SKILL.md",
+      "activate": null
+    },
+    "configuring-tauri-csp": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/configuring-tauri-csp/SKILL.md",
+      "activate": null
+    },
+    "configuring-tauri-http-headers": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/configuring-tauri-http-headers/SKILL.md",
+      "activate": null
+    },
+    "customizing-tauri-windows": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/customizing-tauri-windows/SKILL.md",
+      "activate": null
+    },
+    "adding-tauri-splashscreen": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/adding-tauri-splashscreen/SKILL.md",
+      "activate": null
+    },
+    "adding-tauri-system-tray": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/adding-tauri-system-tray/SKILL.md",
+      "activate": null
+    },
+    "managing-tauri-app-resources": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/managing-tauri-app-resources/SKILL.md",
+      "activate": null
+    },
+    "understanding-tauri-ipc": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/understanding-tauri-ipc/SKILL.md",
+      "activate": null
+    },
+    "calling-rust-from-tauri-frontend": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/calling-rust-from-tauri-frontend/SKILL.md",
+      "activate": null
+    },
+    "calling-frontend-from-tauri-rust": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/calling-frontend-from-tauri-rust/SKILL.md",
+      "activate": null
+    },
+    "listening-to-tauri-events": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/listening-to-tauri-events/SKILL.md",
+      "activate": null
+    },
+    "integrating-tauri-js-frontends": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/integrating-tauri-js-frontends/SKILL.md",
+      "activate": null
+    },
+    "integrating-tauri-rust-frontends": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/integrating-tauri-rust-frontends/SKILL.md",
+      "activate": null
+    },
+    "embedding-tauri-sidecars": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/embedding-tauri-sidecars/SKILL.md",
+      "activate": null
+    },
+    "running-nodejs-sidecar-in-tauri": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/running-nodejs-sidecar-in-tauri/SKILL.md",
+      "activate": null
+    },
+    "developing-tauri-plugins": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/developing-tauri-plugins/SKILL.md",
+      "activate": null
+    },
+    "managing-tauri-plugin-permissions": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/managing-tauri-plugin-permissions/SKILL.md",
+      "activate": null
+    },
+    "optimizing-tauri-binary-size": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/optimizing-tauri-binary-size/SKILL.md",
+      "activate": null
+    },
+    "building-tauri-with-github-actions": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/building-tauri-with-github-actions/SKILL.md",
+      "activate": null
+    },
+    "signing-tauri-apps": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/signing-tauri-apps/SKILL.md",
+      "activate": null
+    },
+    "distributing-tauri-for-macos": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/distributing-tauri-for-macos/SKILL.md",
+      "activate": null
+    },
+    "distributing-tauri-for-windows": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/distributing-tauri-for-windows/SKILL.md",
+      "activate": null
+    },
+    "packaging-tauri-for-linux": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/packaging-tauri-for-linux/SKILL.md",
+      "activate": null
+    },
+    "distributing-tauri-for-ios": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/distributing-tauri-for-ios/SKILL.md",
+      "activate": null
+    },
+    "distributing-tauri-for-android": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/distributing-tauri-for-android/SKILL.md",
+      "activate": null
+    },
+    "using-crabnebula-cloud-with-tauri": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/using-crabnebula-cloud-with-tauri/SKILL.md",
+      "activate": null
+    },
+    "debugging-tauri-apps": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/debugging-tauri-apps/SKILL.md",
+      "activate": null
+    },
+    "testing-tauri-apps": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/testing-tauri-apps/SKILL.md",
+      "activate": null
+    },
+    "updating-tauri-dependencies": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/updating-tauri-dependencies/SKILL.md",
+      "activate": null
+    },
+    "migrating-tauri-apps": {
+      "cluster": "tauri",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/migrating-tauri-apps/SKILL.md",
+      "activate": null
+    },
+    "expo-orchestrator": {
+      "cluster": "expo",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/expo-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "expo-core": {
+      "cluster": "expo",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/expo-core/SKILL.md",
+      "activate": null
+    },
+    "expo-dev-client": {
+      "cluster": "expo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/expo-dev-client/SKILL.md",
+      "activate": null
+    },
+    "expo-tailwind-setup": {
+      "cluster": "expo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/expo-tailwind-setup/SKILL.md",
+      "activate": null
+    },
+    "building-native-ui": {
+      "cluster": "expo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/building-native-ui/SKILL.md",
+      "activate": null
+    },
+    "expo-api-routes": {
+      "cluster": "expo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/expo-api-routes/SKILL.md",
+      "activate": null
+    },
+    "expo-module": {
+      "cluster": "expo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/expo-module/SKILL.md",
+      "activate": null
+    },
+    "expo-cicd-workflows": {
+      "cluster": "expo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/expo-cicd-workflows/SKILL.md",
+      "activate": null
+    },
+    "expo-deployment": {
+      "cluster": "expo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/expo-deployment/SKILL.md",
+      "activate": null
+    },
+    "upgrading-expo": {
+      "cluster": "expo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/upgrading-expo/SKILL.md",
+      "activate": null
+    },
+    "native-data-fetching": {
+      "cluster": "expo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/native-data-fetching/SKILL.md",
+      "activate": null
+    },
+    "react-native-orchestrator": {
+      "cluster": "react-native",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/react-native-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "react-native-core": {
+      "cluster": "react-native",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/react-native-core/SKILL.md",
+      "activate": null
+    },
+    "react-native-design": {
+      "cluster": "react-native",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/react-native-design/SKILL.md",
+      "activate": null
+    },
+    "mobile-touch": {
+      "cluster": "react-native",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mobile-touch/SKILL.md",
+      "activate": null
+    },
+    "sleek-design-mobile-apps": {
+      "cluster": "react-native",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/sleek-design-mobile-apps/SKILL.md",
+      "activate": null
+    },
+    "astro-orchestrator": {
+      "cluster": "astro",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/astro-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "astro-core": {
+      "cluster": "astro",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/astro-core/SKILL.md",
+      "activate": null
+    },
+    "astro-wiki-publisher": {
+      "cluster": "astro",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/astro-wiki-publisher/SKILL.md",
+      "activate": null
+    },
+    "raycast-orchestrator": {
+      "cluster": "raycast",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/raycast-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "raycast-core": {
+      "cluster": "raycast",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/raycast-core/SKILL.md",
+      "activate": null
+    },
+    "raycast-extension": {
+      "cluster": "raycast",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/raycast-extension/SKILL.md",
+      "activate": null
+    },
+    "raycast-ui-skills": {
+      "cluster": "raycast",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/raycast-ui-skills/SKILL.md",
+      "activate": null
+    },
+    "raycast-ai-extensions": {
+      "cluster": "raycast",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/raycast-ai-extensions/SKILL.md",
+      "activate": null
+    },
+    "raycast-store-publishing": {
+      "cluster": "raycast",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/raycast-store-publishing/SKILL.md",
+      "activate": null
+    },
+    "rust-orchestrator": {
+      "cluster": "rust",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/rust-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "rust-core": {
+      "cluster": "rust",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/rust-core/SKILL.md",
+      "activate": null
+    },
+    "rust-patterns": {
+      "cluster": "rust",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/rust-patterns/SKILL.md",
+      "activate": null
+    },
+    "rust-testing": {
+      "cluster": "rust",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/rust-testing/SKILL.md",
+      "activate": null
+    },
+    "rust-coding-skill": {
+      "cluster": "rust",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/rust-coding-skill/SKILL.md",
+      "activate": null
+    },
+    "native-ios-orchestrator": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/native-ios-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "native-ios-core": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/native-ios-core/SKILL.md",
+      "activate": null
+    },
+    "swiftui-patterns": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/swiftui-patterns/SKILL.md",
+      "activate": null
+    },
+    "swift-concurrency-6-2": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/swift-concurrency-6-2/SKILL.md",
+      "activate": null
+    },
+    "swift-actor-persistence": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/swift-actor-persistence/SKILL.md",
+      "activate": null
+    },
+    "swift-protocol-di-testing": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/swift-protocol-di-testing/SKILL.md",
+      "activate": null
+    },
+    "foundation-models-on-device": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/foundation-models-on-device/SKILL.md",
+      "activate": null
+    },
+    "ios-icon-gen": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ios-icon-gen/SKILL.md",
+      "activate": null
+    },
+    "liquid-glass-design": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/liquid-glass-design/SKILL.md",
+      "activate": null
+    },
+    "watchos": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/watchos/SKILL.md",
+      "activate": null
+    },
+    "mobile-ios-design": {
+      "cluster": "native-ios",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mobile-ios-design/SKILL.md",
+      "activate": null
+    },
+    "ai-agents-meta-orchestrator": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/ai-agents-meta-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "ai-agents-meta-core": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/ai-agents-meta-core/SKILL.md",
+      "activate": null
+    },
+    "agentic-engineering": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/agentic-engineering/SKILL.md",
+      "activate": null
+    },
+    "agentic-os": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/agentic-os/SKILL.md",
+      "activate": null
+    },
+    "agent-architecture-audit": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/agent-architecture-audit/SKILL.md",
+      "activate": null
+    },
+    "agent-introspection-debugging": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/agent-introspection-debugging/SKILL.md",
+      "activate": null
+    },
+    "prompt-optimizer": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/prompt-optimizer/SKILL.md",
+      "activate": null
+    },
+    "token-budget-advisor": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/token-budget-advisor/SKILL.md",
+      "activate": null
+    },
+    "cost-aware-llm-pipeline": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/cost-aware-llm-pipeline/SKILL.md",
+      "activate": null
+    },
+    "team-agent-orchestration": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/team-agent-orchestration/SKILL.md",
+      "activate": null
+    },
+    "continuous-agent-loop": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/continuous-agent-loop/SKILL.md",
+      "activate": null
+    },
+    "dynamic-workflow-mode": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/dynamic-workflow-mode/SKILL.md",
+      "activate": null
+    },
+    "blueprint": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/blueprint/SKILL.md",
+      "activate": null
+    },
+    "search-first": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/search-first/SKILL.md",
+      "activate": null
+    },
+    "plan-orchestrate": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/plan-orchestrate/SKILL.md",
+      "activate": null
+    },
+    "continuous-learning-v2": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/continuous-learning-v2/SKILL.md",
+      "activate": null
+    },
+    "swarm-architect": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/swarm-architect/SKILL.md",
+      "activate": null
+    },
+    "task-master-planner": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/task-master-planner/SKILL.md",
+      "activate": null
+    },
+    "arch-orchestrator": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/arch-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "quality-eval-orchestrator": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/quality-eval-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "quality-eval-core": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/quality-eval-core/SKILL.md",
+      "activate": null
+    },
+    "eval-harness": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/eval-harness/SKILL.md",
+      "activate": null
+    },
+    "agent-eval": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/agent-eval/SKILL.md",
+      "activate": null
+    },
+    "tdd-workflow": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/tdd-workflow/SKILL.md",
+      "activate": null
+    },
+    "verification-loop": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/verification-loop/SKILL.md",
+      "activate": null
+    },
+    "e2e-testing": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/e2e-testing/SKILL.md",
+      "activate": null
+    },
+    "windows-desktop-e2e": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/windows-desktop-e2e/SKILL.md",
+      "activate": null
+    },
+    "ai-regression-testing": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ai-regression-testing/SKILL.md",
+      "activate": null
+    },
+    "error-handling": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/error-handling/SKILL.md",
+      "activate": null
+    },
+    "production-audit": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/production-audit/SKILL.md",
+      "activate": null
+    },
+    "plankton-code-quality": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/plankton-code-quality/SKILL.md",
+      "activate": null
+    },
+    "browser-qa": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/browser-qa/SKILL.md",
+      "activate": null
+    },
+    "benchmark": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/benchmark/SKILL.md",
+      "activate": null
+    },
+    "evals": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/evals/SKILL.md",
+      "activate": null
+    },
+    "optimize": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/optimize/SKILL.md",
+      "activate": null
+    },
+    "autoresearch": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/autoresearch/SKILL.md",
+      "activate": null
+    },
+    "markdown-rendering-regression": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/markdown-rendering-regression/SKILL.md",
+      "activate": null
+    },
+    "frontend-web-orchestrator": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/frontend-web-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "frontend-web-core": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/frontend-web-core/SKILL.md",
+      "activate": null
+    },
+    "react-patterns": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/react-patterns/SKILL.md",
+      "activate": null
+    },
+    "react-performance": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/react-performance/SKILL.md",
+      "activate": null
+    },
+    "react-testing": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/react-testing/SKILL.md",
+      "activate": null
+    },
+    "frontend-design-direction": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/frontend-design-direction/SKILL.md",
+      "activate": null
+    },
+    "frontend-a11y": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/frontend-a11y/SKILL.md",
+      "activate": null
+    },
+    "accessibility": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/accessibility/SKILL.md",
+      "activate": null
+    },
+    "design-system": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/design-system/SKILL.md",
+      "activate": null
+    },
+    "make-interfaces-feel-better": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/make-interfaces-feel-better/SKILL.md",
+      "activate": null
+    },
+    "ui-to-vue": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ui-to-vue/SKILL.md",
+      "activate": null
+    },
+    "angular-developer": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/angular-developer/SKILL.md",
+      "activate": null
+    },
+    "nextjs-turbopack": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/nextjs-turbopack/SKILL.md",
+      "activate": null
+    },
+    "nuxt4-patterns": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/nuxt4-patterns/SKILL.md",
+      "activate": null
+    },
+    "vite-patterns": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/vite-patterns/SKILL.md",
+      "activate": null
+    },
+    "bun-runtime": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/bun-runtime/SKILL.md",
+      "activate": null
+    },
+    "frontend-slides": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/frontend-slides/SKILL.md",
+      "activate": null
+    },
+    "motion-foundations": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/motion-foundations/SKILL.md",
+      "activate": null
+    },
+    "motion-patterns": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/motion-patterns/SKILL.md",
+      "activate": null
+    },
+    "motion-advanced": {
+      "cluster": "frontend-web",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/motion-advanced/SKILL.md",
+      "activate": null
+    },
+    "python-backend-orchestrator": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/python-backend-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "python-backend-core": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/python-backend-core/SKILL.md",
+      "activate": null
+    },
+    "python-patterns": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/python-patterns/SKILL.md",
+      "activate": null
+    },
+    "python-testing": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/python-testing/SKILL.md",
+      "activate": null
+    },
+    "django-patterns": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/django-patterns/SKILL.md",
+      "activate": null
+    },
+    "django-tdd": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/django-tdd/SKILL.md",
+      "activate": null
+    },
+    "django-verification": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/django-verification/SKILL.md",
+      "activate": null
+    },
+    "django-security": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/django-security/SKILL.md",
+      "activate": null
+    },
+    "django-celery": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/django-celery/SKILL.md",
+      "activate": null
+    },
+    "fastapi-patterns": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/fastapi-patterns/SKILL.md",
+      "activate": null
+    },
+    "pytorch-patterns": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/pytorch-patterns/SKILL.md",
+      "activate": null
+    },
+    "recsys-pipeline-architect": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/recsys-pipeline-architect/SKILL.md",
+      "activate": null
+    },
+    "mle-workflow": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mle-workflow/SKILL.md",
+      "activate": null
+    },
+    "textual": {
+      "cluster": "python-backend",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/textual/SKILL.md",
+      "activate": null
+    },
+    "jvm-orchestrator": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/jvm-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "jvm-core": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/jvm-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "kotlin-patterns": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/kotlin-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "kotlin-coroutines-flows": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/kotlin-coroutines-flows/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "kotlin-exposed-patterns": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/kotlin-exposed-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "kotlin-ktor-patterns": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/kotlin-ktor-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "kotlin-testing": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/kotlin-testing/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "java-coding-standards": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/java-coding-standards/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "springboot-patterns": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/springboot-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "springboot-tdd": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/springboot-tdd/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "springboot-verification": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/springboot-verification/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "springboot-security": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/springboot-security/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "quarkus-patterns": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/quarkus-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "quarkus-tdd": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/quarkus-tdd/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "quarkus-verification": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/quarkus-verification/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "quarkus-security": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/quarkus-security/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "jpa-patterns": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/jpa-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "compose-multiplatform-patterns": {
+      "cluster": "jvm",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/compose-multiplatform-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate jvm --apply"
+    },
+    "php-laravel-orchestrator": {
+      "cluster": "php-laravel",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/php-laravel-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate php-laravel --apply"
+    },
+    "php-laravel-core": {
+      "cluster": "php-laravel",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/php-laravel-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate php-laravel --apply"
+    },
+    "laravel-patterns": {
+      "cluster": "php-laravel",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/laravel-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate php-laravel --apply"
+    },
+    "laravel-tdd": {
+      "cluster": "php-laravel",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/laravel-tdd/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate php-laravel --apply"
+    },
+    "laravel-verification": {
+      "cluster": "php-laravel",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/laravel-verification/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate php-laravel --apply"
+    },
+    "laravel-security": {
+      "cluster": "php-laravel",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/laravel-security/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate php-laravel --apply"
+    },
+    "laravel-plugin-discovery": {
+      "cluster": "php-laravel",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/laravel-plugin-discovery/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate php-laravel --apply"
+    },
+    "systems-languages-orchestrator": {
+      "cluster": "systems-languages",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/systems-languages-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate systems-languages --apply"
+    },
+    "systems-languages-core": {
+      "cluster": "systems-languages",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/systems-languages-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate systems-languages --apply"
+    },
+    "golang-patterns": {
+      "cluster": "systems-languages",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/golang-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate systems-languages --apply"
+    },
+    "golang-testing": {
+      "cluster": "systems-languages",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/golang-testing/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate systems-languages --apply"
+    },
+    "cpp-coding-standards": {
+      "cluster": "systems-languages",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/cpp-coding-standards/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate systems-languages --apply"
+    },
+    "cpp-testing": {
+      "cluster": "systems-languages",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/cpp-testing/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate systems-languages --apply"
+    },
+    "perl-patterns": {
+      "cluster": "systems-languages",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/perl-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate systems-languages --apply"
+    },
+    "perl-testing": {
+      "cluster": "systems-languages",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/perl-testing/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate systems-languages --apply"
+    },
+    "perl-security": {
+      "cluster": "systems-languages",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/perl-security/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate systems-languages --apply"
+    },
+    "mobile-flutter-orchestrator": {
+      "cluster": "mobile-flutter",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mobile-flutter-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate mobile-flutter --apply"
+    },
+    "mobile-flutter-core": {
+      "cluster": "mobile-flutter",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mobile-flutter-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate mobile-flutter --apply"
+    },
+    "dart-flutter-patterns": {
+      "cluster": "mobile-flutter",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/dart-flutter-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate mobile-flutter --apply"
+    },
+    "flutter-dart-code-review": {
+      "cluster": "mobile-flutter",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/flutter-dart-code-review/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate mobile-flutter --apply"
+    },
+    "android-clean-architecture": {
+      "cluster": "mobile-flutter",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/android-clean-architecture/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate mobile-flutter --apply"
+    },
+    "backend-architecture-orchestrator": {
+      "cluster": "backend-architecture",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/backend-architecture-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "backend-architecture-core": {
+      "cluster": "backend-architecture",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/backend-architecture-core/SKILL.md",
+      "activate": null
+    },
+    "backend-patterns": {
+      "cluster": "backend-architecture",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/backend-patterns/SKILL.md",
+      "activate": null
+    },
+    "api-design": {
+      "cluster": "backend-architecture",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/api-design/SKILL.md",
+      "activate": null
+    },
+    "api-connector-builder": {
+      "cluster": "backend-architecture",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/api-connector-builder/SKILL.md",
+      "activate": null
+    },
+    "mcp-server-patterns": {
+      "cluster": "backend-architecture",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mcp-server-patterns/SKILL.md",
+      "activate": null
+    },
+    "nestjs-patterns": {
+      "cluster": "backend-architecture",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/nestjs-patterns/SKILL.md",
+      "activate": null
+    },
+    "hexagonal-architecture": {
+      "cluster": "backend-architecture",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hexagonal-architecture/SKILL.md",
+      "activate": null
+    },
+    "architecture-decision-records": {
+      "cluster": "backend-architecture",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/architecture-decision-records/SKILL.md",
+      "activate": null
+    },
+    "deployment-patterns": {
+      "cluster": "backend-architecture",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/deployment-patterns/SKILL.md",
+      "activate": null
+    },
+    "databases-data-orchestrator": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/databases-data-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "databases-data-core": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/databases-data-core/SKILL.md",
+      "activate": null
+    },
+    "postgres-patterns": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/postgres-patterns/SKILL.md",
+      "activate": null
+    },
+    "mysql-patterns": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mysql-patterns/SKILL.md",
+      "activate": null
+    },
+    "prisma-patterns": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/prisma-patterns/SKILL.md",
+      "activate": null
+    },
+    "clickhouse-io": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/clickhouse-io/SKILL.md",
+      "activate": null
+    },
+    "redis-patterns": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/redis-patterns/SKILL.md",
+      "activate": null
+    },
+    "database-migrations": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/database-migrations/SKILL.md",
+      "activate": null
+    },
+    "data-throughput-accelerator": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/data-throughput-accelerator/SKILL.md",
+      "activate": null
+    },
+    "airflow-dag-patterns": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/airflow-dag-patterns/SKILL.md",
+      "activate": null
+    },
+    "backtesting-frameworks": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/backtesting-frameworks/SKILL.md",
+      "activate": null
+    },
+    "data-quality-frameworks": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/data-quality-frameworks/SKILL.md",
+      "activate": null
+    },
+    "data-storytelling": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/data-storytelling/SKILL.md",
+      "activate": null
+    },
+    "dbt-transformation-patterns": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/dbt-transformation-patterns/SKILL.md",
+      "activate": null
+    },
+    "kpi-dashboard-design": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/kpi-dashboard-design/SKILL.md",
+      "activate": null
+    },
+    "ml-pipeline-workflow": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ml-pipeline-workflow/SKILL.md",
+      "activate": null
+    },
+    "postgresql": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/postgresql/SKILL.md",
+      "activate": null
+    },
+    "risk-metrics-calculation": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/risk-metrics-calculation/SKILL.md",
+      "activate": null
+    },
+    "spark-optimization": {
+      "cluster": "databases-data",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/spark-optimization/SKILL.md",
+      "activate": null
+    },
+    "devops-infra-orchestrator": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/devops-infra-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "devops-infra-core": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/devops-infra-core/SKILL.md",
+      "activate": null
+    },
+    "docker-patterns": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/docker-patterns/SKILL.md",
+      "activate": null
+    },
+    "cisco-ios-patterns": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/cisco-ios-patterns/SKILL.md",
+      "activate": null
+    },
+    "netmiko-ssh-automation": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/netmiko-ssh-automation/SKILL.md",
+      "activate": null
+    },
+    "network-bgp-diagnostics": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/network-bgp-diagnostics/SKILL.md",
+      "activate": null
+    },
+    "network-config-validation": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/network-config-validation/SKILL.md",
+      "activate": null
+    },
+    "network-interface-health": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/network-interface-health/SKILL.md",
+      "activate": null
+    },
+    "homelab-network-setup": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/homelab-network-setup/SKILL.md",
+      "activate": null
+    },
+    "homelab-pihole-dns": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/homelab-pihole-dns/SKILL.md",
+      "activate": null
+    },
+    "homelab-vlan-segmentation": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/homelab-vlan-segmentation/SKILL.md",
+      "activate": null
+    },
+    "homelab-wireguard-vpn": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/homelab-wireguard-vpn/SKILL.md",
+      "activate": null
+    },
+    "flox-environments": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/flox-environments/SKILL.md",
+      "activate": null
+    },
+    "uncloud": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/uncloud/SKILL.md",
+      "activate": null
+    },
+    "canary-watch": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/canary-watch/SKILL.md",
+      "activate": null
+    },
+    "healthcheck": {
+      "cluster": "devops-infra",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/healthcheck/SKILL.md",
+      "activate": null
+    },
+    "security-orchestrator": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/security-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "security-core": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/security-core/SKILL.md",
+      "activate": null
+    },
+    "security-review": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/security-review/SKILL.md",
+      "activate": null
+    },
+    "security-scan": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/security-scan/SKILL.md",
+      "activate": null
+    },
+    "security-bounty-hunter": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/security-bounty-hunter/SKILL.md",
+      "activate": null
+    },
+    "repo-scan": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/repo-scan/SKILL.md",
+      "activate": null
+    },
+    "gateguard": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/gateguard/SKILL.md",
+      "activate": null
+    },
+    "safety-guard": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/safety-guard/SKILL.md",
+      "activate": null
+    },
+    "secret-scanner": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/secret-scanner/SKILL.md",
+      "activate": null
+    },
+    "osint": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/osint/SKILL.md",
+      "activate": null
+    },
+    "recon": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/recon/SKILL.md",
+      "activate": null
+    },
+    "webassessment": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/webassessment/SKILL.md",
+      "activate": null
+    },
+    "promptinjection": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/promptinjection/SKILL.md",
+      "activate": null
+    },
+    "annualreports": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/annualreports/SKILL.md",
+      "activate": null
+    },
+    "secupdates": {
+      "cluster": "security",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/secupdates/SKILL.md",
+      "activate": null
+    },
+    "healthcare-orchestrator": {
+      "cluster": "healthcare",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/healthcare-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate healthcare --apply"
+    },
+    "healthcare-core": {
+      "cluster": "healthcare",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/healthcare-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate healthcare --apply"
+    },
+    "healthcare-phi-compliance": {
+      "cluster": "healthcare",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/healthcare-phi-compliance/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate healthcare --apply"
+    },
+    "healthcare-cdss-patterns": {
+      "cluster": "healthcare",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/healthcare-cdss-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate healthcare --apply"
+    },
+    "healthcare-emr-patterns": {
+      "cluster": "healthcare",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/healthcare-emr-patterns/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate healthcare --apply"
+    },
+    "healthcare-eval-harness": {
+      "cluster": "healthcare",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/healthcare-eval-harness/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate healthcare --apply"
+    },
+    "research-knowledge-orchestrator": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/research-knowledge-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "research-knowledge-core": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/research-knowledge-core/SKILL.md",
+      "activate": null
+    },
+    "deep-research": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/deep-research/SKILL.md",
+      "activate": null
+    },
+    "exa-search": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/exa-search/SKILL.md",
+      "activate": null
+    },
+    "research-ops": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/research-ops/SKILL.md",
+      "activate": null
+    },
+    "scientific-db-pubmed-database": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/scientific-db-pubmed-database/SKILL.md",
+      "activate": null
+    },
+    "scientific-db-uspto-database": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/scientific-db-uspto-database/SKILL.md",
+      "activate": null
+    },
+    "scientific-pkg-gget": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/scientific-pkg-gget/SKILL.md",
+      "activate": null
+    },
+    "scientific-thinking-literature-review": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/scientific-thinking-literature-review/SKILL.md",
+      "activate": null
+    },
+    "scientific-thinking-scholar-evaluation": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/scientific-thinking-scholar-evaluation/SKILL.md",
+      "activate": null
+    },
+    "codebase-onboarding": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/codebase-onboarding/SKILL.md",
+      "activate": null
+    },
+    "code-tour": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/code-tour/SKILL.md",
+      "activate": null
+    },
+    "documentation-lookup": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/documentation-lookup/SKILL.md",
+      "activate": null
+    },
+    "ck": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ck/SKILL.md",
+      "activate": null
+    },
+    "research": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/research/SKILL.md",
+      "activate": null
+    },
+    "web-search": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/web-search/SKILL.md",
+      "activate": null
+    },
+    "parser": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/parser/SKILL.md",
+      "activate": null
+    },
+    "summarize": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/summarize/SKILL.md",
+      "activate": null
+    },
+    "fabric": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/fabric/SKILL.md",
+      "activate": null
+    },
+    "youtube-transcript": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/youtube-transcript/SKILL.md",
+      "activate": null
+    },
+    "apify": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/apify/SKILL.md",
+      "activate": null
+    },
+    "brightdata": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/brightdata/SKILL.md",
+      "activate": null
+    },
+    "meeting-insights-analyzer": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/meeting-insights-analyzer/SKILL.md",
+      "activate": null
+    },
+    "fireflies": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/fireflies/SKILL.md",
+      "activate": null
+    },
+    "blogwatcher": {
+      "cluster": "research-knowledge",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/blogwatcher/SKILL.md",
+      "activate": null
+    },
+    "business-content-orchestrator": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/business-content-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "business-content-core": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/business-content-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "article-writing": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/article-writing/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "brand-voice": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/brand-voice/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "content-engine": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/content-engine/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "seo": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "market-research": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/market-research/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "marketing-campaign": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/marketing-campaign/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "investor-materials": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/investor-materials/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "investor-outreach": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/investor-outreach/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "lead-intelligence": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/lead-intelligence/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "social-graph-ranker": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/social-graph-ranker/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "aphorisms": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/aphorisms/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "writestory": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/writestory/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "inkos-multi-agent-novel-writing": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/inkos-multi-agent-novel-writing/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "novel-writer-workflow-guide": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/novel-writer-workflow-guide/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "natural-dialogue-techniques": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/natural-dialogue-techniques/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "internal-comms": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/internal-comms/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "social-media-orchestrator": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/social-media-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "social-media-core": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/social-media-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "x-api": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/x-api/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "social-publisher": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/social-publisher/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "crosspost": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/crosspost/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "fal-ai-media": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/fal-ai-media/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "videodb": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/videodb/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "video-editing": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/video-editing/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "manim-video": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/manim-video/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "ui-demo": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ui-demo/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "social-content": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/social-content/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "twitter-automation": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/twitter-automation/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "bird-cli": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/bird-cli/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "gram-cli": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/gram-cli/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "reddit-cli": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/reddit-cli/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "discord": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/discord/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "social-intake-orchestrator": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/social-intake-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "x-bookmark-opportunity-skill": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/x-bookmark-opportunity-skill/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "ai-content-pipeline": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ai-content-pipeline/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "agentic-ops-orchestrator": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/agentic-ops-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "agentic-ops-core": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/agentic-ops-core/SKILL.md",
+      "activate": null
+    },
+    "email-ops": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/email-ops/SKILL.md",
+      "activate": null
+    },
+    "messages-ops": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/messages-ops/SKILL.md",
+      "activate": null
+    },
+    "github-ops": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/github-ops/SKILL.md",
+      "activate": null
+    },
+    "jira-integration": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/jira-integration/SKILL.md",
+      "activate": null
+    },
+    "google-workspace-ops": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/google-workspace-ops/SKILL.md",
+      "activate": null
+    },
+    "project-flow-ops": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/project-flow-ops/SKILL.md",
+      "activate": null
+    },
+    "unified-notifications-ops": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/unified-notifications-ops/SKILL.md",
+      "activate": null
+    },
+    "terminal-ops": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/terminal-ops/SKILL.md",
+      "activate": null
+    },
+    "knowledge-ops": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/knowledge-ops/SKILL.md",
+      "activate": null
+    },
+    "customer-billing-ops": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/customer-billing-ops/SKILL.md",
+      "activate": null
+    },
+    "finance-billing-ops": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/finance-billing-ops/SKILL.md",
+      "activate": null
+    },
+    "automation-audit-ops": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/automation-audit-ops/SKILL.md",
+      "activate": null
+    },
+    "workspace-surface-audit": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/workspace-surface-audit/SKILL.md",
+      "activate": null
+    },
+    "connections-optimizer": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/connections-optimizer/SKILL.md",
+      "activate": null
+    },
+    "dashboard-builder": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/dashboard-builder/SKILL.md",
+      "activate": null
+    },
+    "git-workflow": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/git-workflow/SKILL.md",
+      "activate": null
+    },
+    "connect": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/connect/SKILL.md",
+      "activate": null
+    },
+    "connect-apps": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/connect-apps/SKILL.md",
+      "activate": null
+    },
+    "langsmith-fetch": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/langsmith-fetch/SKILL.md",
+      "activate": null
+    },
+    "supacode-cli": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/supacode-cli/SKILL.md",
+      "activate": null
+    },
+    "hyperframes-cli": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hyperframes-cli/SKILL.md",
+      "activate": null
+    },
+    "developer-growth-analysis": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/developer-growth-analysis/SKILL.md",
+      "activate": null
+    },
+    "ai-automation-workflows": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ai-automation-workflows/SKILL.md",
+      "activate": null
+    },
+    "coding-agent": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/coding-agent/SKILL.md",
+      "activate": null
+    },
+    "model-usage": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/model-usage/SKILL.md",
+      "activate": null
+    },
+    "gemini": {
+      "cluster": "agentic-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/gemini/SKILL.md",
+      "activate": null
+    },
+    "supply-chain-orchestrator": {
+      "cluster": "supply-chain",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/supply-chain-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate supply-chain --apply"
+    },
+    "supply-chain-core": {
+      "cluster": "supply-chain",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/supply-chain-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate supply-chain --apply"
+    },
+    "carrier-relationship-management": {
+      "cluster": "supply-chain",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/carrier-relationship-management/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate supply-chain --apply"
+    },
+    "customs-trade-compliance": {
+      "cluster": "supply-chain",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/customs-trade-compliance/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate supply-chain --apply"
+    },
+    "energy-procurement": {
+      "cluster": "supply-chain",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/energy-procurement/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate supply-chain --apply"
+    },
+    "inventory-demand-planning": {
+      "cluster": "supply-chain",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/inventory-demand-planning/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate supply-chain --apply"
+    },
+    "logistics-exception-management": {
+      "cluster": "supply-chain",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/logistics-exception-management/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate supply-chain --apply"
+    },
+    "production-scheduling": {
+      "cluster": "supply-chain",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/production-scheduling/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate supply-chain --apply"
+    },
+    "quality-nonconformance": {
+      "cluster": "supply-chain",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/quality-nonconformance/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate supply-chain --apply"
+    },
+    "returns-reverse-logistics": {
+      "cluster": "supply-chain",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/returns-reverse-logistics/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate supply-chain --apply"
+    },
+    "blockchain-web3-orchestrator": {
+      "cluster": "blockchain-web3",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/blockchain-web3-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate blockchain-web3 --apply"
+    },
+    "blockchain-web3-core": {
+      "cluster": "blockchain-web3",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/blockchain-web3-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate blockchain-web3 --apply"
+    },
+    "defi-amm-security": {
+      "cluster": "blockchain-web3",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/defi-amm-security/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate blockchain-web3 --apply"
+    },
+    "evm-token-decimals": {
+      "cluster": "blockchain-web3",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/evm-token-decimals/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate blockchain-web3 --apply"
+    },
+    "llm-trading-agent-security": {
+      "cluster": "blockchain-web3",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/llm-trading-agent-security/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate blockchain-web3 --apply"
+    },
+    "prediction-market-oracle-research": {
+      "cluster": "blockchain-web3",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/prediction-market-oracle-research/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate blockchain-web3 --apply"
+    },
+    "prediction-market-risk-review": {
+      "cluster": "blockchain-web3",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/prediction-market-risk-review/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate blockchain-web3 --apply"
+    },
+    "nodejs-keccak256": {
+      "cluster": "blockchain-web3",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/nodejs-keccak256/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate blockchain-web3 --apply"
+    },
+    "electron-orchestrator": {
+      "cluster": "electron",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/electron-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "electron-core": {
+      "cluster": "electron",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/electron-core/SKILL.md",
+      "activate": null
+    },
+    "electron-main-renderer-ipc": {
+      "cluster": "electron",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/electron-main-renderer-ipc/SKILL.md",
+      "activate": null
+    },
+    "electron-security": {
+      "cluster": "electron",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/electron-security/SKILL.md",
+      "activate": null
+    },
+    "electron-builder-packaging": {
+      "cluster": "electron",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/electron-builder-packaging/SKILL.md",
+      "activate": null
+    },
+    "electron-auto-update": {
+      "cluster": "electron",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/electron-auto-update/SKILL.md",
+      "activate": null
+    },
+    "cloudflare-orchestrator": {
+      "cluster": "cloudflare",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/cloudflare-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "cloudflare-core": {
+      "cluster": "cloudflare",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/cloudflare-core/SKILL.md",
+      "activate": null
+    },
+    "cloudflare": {
+      "cluster": "cloudflare",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/cloudflare/SKILL.md",
+      "activate": null
+    },
+    "cloudflare-email-service": {
+      "cluster": "cloudflare",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/cloudflare-email-service/SKILL.md",
+      "activate": null
+    },
+    "cloudflare-manager": {
+      "cluster": "cloudflare",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/cloudflare-manager/SKILL.md",
+      "activate": null
+    },
+    "durable-objects": {
+      "cluster": "cloudflare",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/durable-objects/SKILL.md",
+      "activate": null
+    },
+    "workers-best-practices": {
+      "cluster": "cloudflare",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/workers-best-practices/SKILL.md",
+      "activate": null
+    },
+    "wrangler": {
+      "cluster": "cloudflare",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/wrangler/SKILL.md",
+      "activate": null
+    },
+    "sandbox-sdk": {
+      "cluster": "cloudflare",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/sandbox-sdk/SKILL.md",
+      "activate": null
+    },
+    "agents-sdk": {
+      "cluster": "cloudflare",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/agents-sdk/SKILL.md",
+      "activate": null
+    },
+    "r2-notebooklm-artifact-portal": {
+      "cluster": "cloudflare",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/r2-notebooklm-artifact-portal/SKILL.md",
+      "activate": null
+    },
+    "supabase-orchestrator": {
+      "cluster": "supabase",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/supabase-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "supabase-core": {
+      "cluster": "supabase",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/supabase-core/SKILL.md",
+      "activate": null
+    },
+    "supabase": {
+      "cluster": "supabase",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/supabase/SKILL.md",
+      "activate": null
+    },
+    "supabase-developer": {
+      "cluster": "supabase",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/supabase-developer/SKILL.md",
+      "activate": null
+    },
+    "supabase-postgres-best-practices": {
+      "cluster": "supabase",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/supabase-postgres-best-practices/SKILL.md",
+      "activate": null
+    },
+    "design-orchestrator": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/design-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "design-core": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/design-core/SKILL.md",
+      "activate": null
+    },
+    "refero-design": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/refero-design/SKILL.md",
+      "activate": null
+    },
+    "superdesign": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/superdesign/SKILL.md",
+      "activate": null
+    },
+    "swiss-design": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/swiss-design/SKILL.md",
+      "activate": null
+    },
+    "taste-skill": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/taste-skill/SKILL.md",
+      "activate": null
+    },
+    "theme-factory": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/theme-factory/SKILL.md",
+      "activate": null
+    },
+    "ui-ux-pro-max": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ui-ux-pro-max/SKILL.md",
+      "activate": null
+    },
+    "stitch-design-taste": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/stitch-design-taste/SKILL.md",
+      "activate": null
+    },
+    "openbrand": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/openbrand/SKILL.md",
+      "activate": null
+    },
+    "canvas-design": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/canvas-design/SKILL.md",
+      "activate": null
+    },
+    "growth-seo-orchestrator": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/growth-seo-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "growth-seo-core": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/growth-seo-core/SKILL.md",
+      "activate": null
+    },
+    "ai-seo": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ai-seo/SKILL.md",
+      "activate": null
+    },
+    "seo-audit": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo-audit/SKILL.md",
+      "activate": null
+    },
+    "seo-content-brief": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo-content-brief/SKILL.md",
+      "activate": null
+    },
+    "schema-markup": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/schema-markup/SKILL.md",
+      "activate": null
+    },
+    "programmatic-seo": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/programmatic-seo/SKILL.md",
+      "activate": null
+    },
+    "google-official-seo-guide": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/google-official-seo-guide/SKILL.md",
+      "activate": null
+    },
+    "site-architecture": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/site-architecture/SKILL.md",
+      "activate": null
+    },
+    "searchintentautomation": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/searchintentautomation/SKILL.md",
+      "activate": null
+    },
+    "growth-content-orchestrator": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/growth-content-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "growth-content-core": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/growth-content-core/SKILL.md",
+      "activate": null
+    },
+    "content-strategy": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/content-strategy/SKILL.md",
+      "activate": null
+    },
+    "content-research-writer": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/content-research-writer/SKILL.md",
+      "activate": null
+    },
+    "copywriting": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/copywriting/SKILL.md",
+      "activate": null
+    },
+    "copy-editing": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/copy-editing/SKILL.md",
+      "activate": null
+    },
+    "cold-email": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/cold-email/SKILL.md",
+      "activate": null
+    },
+    "email-sequence": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/email-sequence/SKILL.md",
+      "activate": null
+    },
+    "ad-creative": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ad-creative/SKILL.md",
+      "activate": null
+    },
+    "marketing-ideas": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/marketing-ideas/SKILL.md",
+      "activate": null
+    },
+    "marketing-psychology": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/marketing-psychology/SKILL.md",
+      "activate": null
+    },
+    "launch-strategy": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/launch-strategy/SKILL.md",
+      "activate": null
+    },
+    "lead-magnets": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/lead-magnets/SKILL.md",
+      "activate": null
+    },
+    "free-tool-strategy": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/free-tool-strategy/SKILL.md",
+      "activate": null
+    },
+    "product-marketing-context": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/product-marketing-context/SKILL.md",
+      "activate": null
+    },
+    "git-pr-ops-orchestrator": {
+      "cluster": "git-pr-ops",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/git-pr-ops-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "git-pr-ops-core": {
+      "cluster": "git-pr-ops",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/git-pr-ops-core/SKILL.md",
+      "activate": null
+    },
+    "github": {
+      "cluster": "git-pr-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/github/SKILL.md",
+      "activate": null
+    },
+    "gh-issues": {
+      "cluster": "git-pr-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/gh-issues/SKILL.md",
+      "activate": null
+    },
+    "merge-pr": {
+      "cluster": "git-pr-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/merge-pr/SKILL.md",
+      "activate": null
+    },
+    "prepare-pr": {
+      "cluster": "git-pr-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/prepare-pr/SKILL.md",
+      "activate": null
+    },
+    "review-pr": {
+      "cluster": "git-pr-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/review-pr/SKILL.md",
+      "activate": null
+    },
+    "github-next-wave-orchestrator": {
+      "cluster": "git-pr-ops",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/github-next-wave-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "browser-automation-orchestrator": {
+      "cluster": "browser-automation",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/browser-automation-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "browser-automation-core": {
+      "cluster": "browser-automation",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/browser-automation-core/SKILL.md",
+      "activate": null
+    },
+    "browser": {
+      "cluster": "browser-automation",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/browser/SKILL.md",
+      "activate": null
+    },
+    "peekaboo": {
+      "cluster": "browser-automation",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/peekaboo/SKILL.md",
+      "activate": null
+    },
+    "webapp-testing": {
+      "cluster": "browser-automation",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/webapp-testing/SKILL.md",
+      "activate": null
+    },
+    "tmux": {
+      "cluster": "browser-automation",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/tmux/SKILL.md",
+      "activate": null
+    },
+    "growth-sales-cro-orchestrator": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/growth-sales-cro-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "growth-sales-cro-core": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/growth-sales-cro-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "page-cro": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/page-cro/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "form-cro": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/form-cro/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "popup-cro": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/popup-cro/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "signup-flow-cro": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/signup-flow-cro/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "onboarding-cro": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/onboarding-cro/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "paywall-upgrade-cro": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/paywall-upgrade-cro/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "ab-test-setup": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ab-test-setup/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "analytics-tracking": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/analytics-tracking/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "pricing-strategy": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/pricing-strategy/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "sales": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/sales/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "sales-enablement": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/sales-enablement/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "pitchdeck-skill": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/pitchdeck-skill/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "paid-ads": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/paid-ads/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "revops": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/revops/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "churn-prevention": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/churn-prevention/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "referral-program": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/referral-program/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "customer-research": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/customer-research/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "company-research": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/company-research/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "lead-research-assistant": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/lead-research-assistant/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "competitor-alternatives": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/competitor-alternatives/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "competitor-teardown": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/competitor-teardown/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "app-store-optimization": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/app-store-optimization/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "app-store-screenshots": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/app-store-screenshots/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "aso-appstore-screenshots": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/aso-appstore-screenshots/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "media-gen-orchestrator": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/media-gen-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "media-gen-core": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/media-gen-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "art": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/art/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "image-enhancer": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/image-enhancer/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "gpt-image-2": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/gpt-image-2/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "nano-banana-2": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/nano-banana-2/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "openai-image-gen": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/openai-image-gen/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "hunyuan3d": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/hunyuan3d/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "ffmpeg": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ffmpeg/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "video-frames": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/video-frames/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "ai-video-director": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ai-video-director/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "gifgrep": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/gifgrep/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "slack-gif-creator": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/slack-gif-creator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "documents-orchestrator": {
+      "cluster": "documents",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/documents-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate documents --apply"
+    },
+    "documents-core": {
+      "cluster": "documents",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/documents-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate documents --apply"
+    },
+    "documents": {
+      "cluster": "documents",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/documents/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate documents --apply"
+    },
+    "mintlify": {
+      "cluster": "documents",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mintlify/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate documents --apply"
+    },
+    "changelog-generator": {
+      "cluster": "documents",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/changelog-generator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate documents --apply"
+    },
+    "deepread-ocr": {
+      "cluster": "documents",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/deepread-ocr/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate documents --apply"
+    },
+    "nano-pdf": {
+      "cluster": "documents",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/nano-pdf/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate documents --apply"
+    },
+    "notebooklm": {
+      "cluster": "documents",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/notebooklm/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate documents --apply"
+    },
+    "drawio-diagrams-enhanced": {
+      "cluster": "documents",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/drawio-diagrams-enhanced/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate documents --apply"
+    },
+    "mermaid-to-gif": {
+      "cluster": "documents",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mermaid-to-gif/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate documents --apply"
+    },
+    "extra-languages-orchestrator": {
+      "cluster": "extra-languages",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/extra-languages-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate extra-languages --apply"
+    },
+    "extra-languages-core": {
+      "cluster": "extra-languages",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/extra-languages-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate extra-languages --apply"
+    },
+    "solana-dev": {
+      "cluster": "extra-languages",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/solana-dev/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate extra-languages --apply"
+    },
+    "agent-orchestration": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/agent-orchestration",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "alex-hormozi-pitch": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/alex-hormozi-pitch",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "api-scaffolding": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/api-scaffolding",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "api-testing-observability": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/api-testing-observability",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "application-performance": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/application-performance",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "astro": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/astro",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "backend-api-security": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/backend-api-security",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "backend-development": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/backend-development",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "blockchain-web3": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/blockchain-web3",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "business-analytics": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/business-analytics",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "c4-architecture": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/c4-architecture",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "cicd-automation": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/cicd-automation",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "cloud-infrastructure": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/cloud-infrastructure",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "code-documentation": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/code-documentation",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "code-operations-plugin": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/code-operations-plugin",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "code-refactoring": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/code-refactoring",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "code-review-ai": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/code-review-ai",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "codebase-cleanup": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/codebase-cleanup",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "codex-primary-runtime": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/codex-primary-runtime",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "comprehensive-review": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/comprehensive-review",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "connect-apps-plugin": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/connect-apps-plugin",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "content-marketing": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/content-marketing",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "context-management": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/context-management",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "customer-sales-automation": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/customer-sales-automation",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "data-engineering": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/data-engineering",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "data-validation-suite": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/data-validation-suite",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "database-cloud-optimization": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/database-cloud-optimization",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "database-design": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/database-design",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "debugging-toolkit": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/debugging-toolkit",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "dependency-management": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/dependency-management",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "deployment-strategies": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/deployment-strategies",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "deployment-validation": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/deployment-validation",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "developer-essentials": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/developer-essentials",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "distributed-debugging": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/distributed-debugging",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "document-skills": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/document-skills",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "documentation-generation": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/documentation-generation",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "domain-name-brainstormer": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/domain-name-brainstormer",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "electron": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/electron",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "engineering-workflow-plugin": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/engineering-workflow-plugin",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "error-debugging": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/error-debugging",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "error-diagnostics": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/error-diagnostics",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "execution-runtime": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/execution-runtime",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "file-organizer": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/file-organizer",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "framework-migration": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/framework-migration",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "frontend-mobile-development": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/frontend-mobile-development",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "frontend-mobile-security": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/frontend-mobile-security",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "full-stack-orchestration": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/full-stack-orchestration",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "functional-programming": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/functional-programming",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "game-development": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/game-development",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "git-pr-workflows": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/git-pr-workflows",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "gstack": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/gstack",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "hr-legal-compliance": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/hr-legal-compliance",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "invoice-organizer": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/invoice-organizer",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "julia-development": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/julia-development",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "machine-learning-ops": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/machine-learning-ops",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "multi-platform-apps": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/multi-platform-apps",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "polymarket-analysis": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/polymarket-analysis",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "productivity-skills-plugin": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/productivity-skills-plugin",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "python-development": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/python-development",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "quantitative-trading": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/quantitative-trading",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "raffle-winner-picker": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/raffle-winner-picker",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "seo-analysis-monitoring": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/seo-analysis-monitoring",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "seo-content-creation": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/seo-content-creation",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "seo-technical-optimization": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/seo-technical-optimization",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "spotify-player": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/spotify-player",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "systems-programming": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/systems-programming",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "tailored-resume-generator": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/tailored-resume-generator",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "tdd-workflows": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/tdd-workflows",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "team-collaboration": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/team-collaboration",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "template-processor-core": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/template-processor-core",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "use-dom": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/use-dom",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "usmetrics": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/usmetrics",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "video-downloader": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/video-downloader",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "visual-documentation-plugin": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/visual-documentation-plugin",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    },
+    "weather": {
+      "cluster": null,
+      "tier": "archived",
+      "role": null,
+      "status": "archived",
+      "enumerated": false,
+      "path": "~/.agents/skills-archive/weather",
+      "restore": "node scripts/archive-library.mjs --restore --apply"
+    }
+  }
+}

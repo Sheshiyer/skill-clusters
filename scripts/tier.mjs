@@ -133,3 +133,6 @@ if (opt('--activate') || opt('--deactivate')) run('save activation state', () =>
 console.log(`\n${DRY ? '[dry-run] ' : ''}tier deploy (${GRAN}): +${toAdd.length} enumerated, -${toRemove.length} de-enumerated`);
 console.log(`  deployed clusters: ${deployedClusters.length} · enumerated skills now: ${target.size} (was ${current.size})`);
 console.log(`  spokes load on demand from ~/.agents/skill-clusters/skills/<name>/SKILL.md\n`);
+
+// keep the resolution map (skill-index.json) in sync with the deployed tiers
+if (APPLY) { try { execFileSync('node', [path.join(__dirname, 'gen-index.mjs')], { stdio: 'ignore' }); } catch {} }

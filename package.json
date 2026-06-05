@@ -13,7 +13,9 @@
     "tier": "node scripts/tier.mjs --list",
     "tier:apply": "node scripts/tier.mjs --apply",
     "tier:all": "node scripts/tier.mjs --all --apply",
-    "footer": "node scripts/add-spoke-footer.mjs"
+    "footer": "node scripts/add-spoke-footer.mjs",
+    "index": "node scripts/gen-index.mjs",
+    "audit-refs": "node scripts/audit-refs.mjs"
   },
   "engines": {
     "node": ">=18"
