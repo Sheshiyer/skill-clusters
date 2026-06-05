@@ -39,3 +39,19 @@ frontmatter; upstream attribution within those skills (e.g. fal.ai, HuggingFace,
 Dimillian, claude-seo, scientific-Python projects) is preserved in the skill bodies.
 Only reputable-source, non-offensive skills were selected and read-vetted before
 inclusion.
+
+--------------------------------------------------------------------------------
+
+The `conductor` cluster vendors the conductor-loop skills from:
+
+    robertbarclayy/conducty  —  https://github.com/robertbarclayy/conducty  —  MIT License
+
+The 19 `conducty-*` loop skills (shape, plan, trace/execute, verify, checkpoint,
+debug, improve, review, code-review, ship, system, tdd, terse, dialectic,
+context, obsidian, vault-graph, bootstrap, worktrees) are vendored as on-demand
+spokes; each carries `origin: "robertbarclayy/conducty (MIT)"` in its frontmatter.
+This project's added contribution here is the `conductor-orchestrator` and
+`conductor-core` skills, which wire conducty's Execute step to the skill-clusters
+resolver (`scripts/resolve-task.mjs`) so each task dispatches to the right cluster —
+the closed-loop integration across PAI, spec-kit, conducty, and skill-clusters
+documented in `docs/CONDUCTOR-INTEGRATION.md`.

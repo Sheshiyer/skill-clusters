@@ -857,6 +857,33 @@
         "extra-languages-core",
         "solana-dev"
       ]
+    },
+    {
+      "title": "Conductor — closed-loop spec-driven orchestration",
+      "description": "The conductor wing: runs conducty's closed loop (shape → plan → trace → execute → verify → improve → review → ship) but dispatches each task to the right skill-cluster via the resolver, activating deferred clusters on demand. Integrates PAI (triage + fail-closed gates), spec-kit (specs), and skill-clusters (the capability resolver). Orchestrator + core enumerate; the 19 conducty-* loop skills load on demand. Vendored from robertbarclayy/conducty (MIT).",
+      "skills": [
+        "conductor-orchestrator",
+        "conductor-core",
+        "conducty-bootstrap",
+        "conducty-checkpoint",
+        "conducty-code-review",
+        "conducty-context",
+        "conducty-debug",
+        "conducty-dialectic",
+        "conducty-execute",
+        "conducty-improve",
+        "conducty-obsidian",
+        "conducty-plan",
+        "conducty-review",
+        "conducty-shape",
+        "conducty-ship",
+        "conducty-system",
+        "conducty-tdd",
+        "conducty-terse",
+        "conducty-vault-graph",
+        "conducty-verify",
+        "conducty-worktrees"
+      ]
     }
   ]
 }

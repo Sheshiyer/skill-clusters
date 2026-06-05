@@ -9,10 +9,10 @@
   "pointer": "~/.agents/skill-clusters",
   "archive": "~/.agents/skills-archive",
   "counts": {
-    "total_indexed": 695,
-    "clusters": 39,
-    "active-hub": 52,
-    "active-spoke": 405,
+    "total_indexed": 716,
+    "clusters": 40,
+    "active-hub": 54,
+    "active-spoke": 424,
     "deferred-hub": 26,
     "deferred-spoke": 137,
     "archived": 75
@@ -290,6 +290,13 @@
       "orchestrator": "extra-languages-orchestrator",
       "core": "extra-languages-core",
       "spokeCount": 1
+    },
+    "conductor": {
+      "tier": "active",
+      "title": "Conductor — closed-loop spec-driven orchestration",
+      "orchestrator": "conductor-orchestrator",
+      "core": "conductor-core",
+      "spokeCount": 19
     }
   },
   "skills": {
@@ -5872,6 +5879,195 @@
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/solana-dev/SKILL.md",
       "activate": "node scripts/tier.mjs --activate extra-languages --apply"
+    },
+    "conductor-orchestrator": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/conductor-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "conductor-core": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/conductor-core/SKILL.md",
+      "activate": null
+    },
+    "conducty-bootstrap": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-bootstrap/SKILL.md",
+      "activate": null
+    },
+    "conducty-checkpoint": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-checkpoint/SKILL.md",
+      "activate": null
+    },
+    "conducty-code-review": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-code-review/SKILL.md",
+      "activate": null
+    },
+    "conducty-context": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-context/SKILL.md",
+      "activate": null
+    },
+    "conducty-debug": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-debug/SKILL.md",
+      "activate": null
+    },
+    "conducty-dialectic": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-dialectic/SKILL.md",
+      "activate": null
+    },
+    "conducty-execute": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-execute/SKILL.md",
+      "activate": null
+    },
+    "conducty-improve": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-improve/SKILL.md",
+      "activate": null
+    },
+    "conducty-obsidian": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-obsidian/SKILL.md",
+      "activate": null
+    },
+    "conducty-plan": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-plan/SKILL.md",
+      "activate": null
+    },
+    "conducty-review": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-review/SKILL.md",
+      "activate": null
+    },
+    "conducty-shape": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-shape/SKILL.md",
+      "activate": null
+    },
+    "conducty-ship": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-ship/SKILL.md",
+      "activate": null
+    },
+    "conducty-system": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-system/SKILL.md",
+      "activate": null
+    },
+    "conducty-tdd": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-tdd/SKILL.md",
+      "activate": null
+    },
+    "conducty-terse": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-terse/SKILL.md",
+      "activate": null
+    },
+    "conducty-vault-graph": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-vault-graph/SKILL.md",
+      "activate": null
+    },
+    "conducty-verify": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-verify/SKILL.md",
+      "activate": null
+    },
+    "conducty-worktrees": {
+      "cluster": "conductor",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/conducty-worktrees/SKILL.md",
+      "activate": null
     },
     "agent-orchestration": {
       "cluster": null,
