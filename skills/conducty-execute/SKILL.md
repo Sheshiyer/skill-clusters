@@ -82,9 +82,21 @@ node ~/.agents/skill-clusters/scripts/resolve-task.mjs <tasks.md> <plan.md> --js
 Returns, per task: `{cluster, dispatch: <cluster>-orchestrator, tier, activate?, spokes[], confidence}`.
 Apply per prompt:
 
-1. **Classifier proposes, resolver validates.** Propose a cluster from the prompt's intent; trust
-   the resolver's validation against `skill-index.json` (real clusters only — phantom-proof).
-   `confidence < 0.34` or `cluster: null` → **escalate to the human**, do not guess-dispatch.
+1. **Classifier proposes, resolver validates.** *You* (the conductor) are the classifier: from each
+   prompt's intent, propose its cluster — and optionally a specific skill. Feed your proposals back
+   to the resolver, which **validates** them against `skill-index.json`:
+
+   ```bash
+   # proposals.json: { "T002": "rust", "T010": {"cluster":"supabase","skill":"supabase-postgres-best-practices"} }
+   node ~/.agents/skill-clusters/scripts/resolve-task.mjs <tasks.md> <plan.md> --propose proposals.json --json
+   # or inline:  --propose "T002=rust,T010=supabase"
+   ```
+
+   The resolver returns `source: "classifier"` when it accepts your proposal, `◇!`/`overrode` when
+   your pick beat the keyword guess, and — crucially — **rejects phantoms**: a proposed cluster or
+   skill not in the index is dropped (`phantoms`/`badSkills`) and the keyword result is kept. This
+   is PAI's Capability-Name audit applied to dispatch. `confidence < 0.34`, `cluster: null`, or a
+   rejected phantom with no keyword fallback → **escalate to the human**, do not guess-dispatch.
 2. **Activate deferred clusters** the wave touches, once:
    `node ~/.agents/skill-clusters/scripts/tier.mjs --activate <cluster> --apply`.
 3. **Load the resolved hub into the subagent** — add `~/.agents/skill-clusters/skills/<cluster>-orchestrator/SKILL.md`

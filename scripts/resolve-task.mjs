@@ -23,10 +23,27 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 
-const [tasksPath, ...rest] = process.argv.slice(2);
-const asJson = rest.includes('--json');
-const planPath = rest.find((a) => !a.startsWith('--'));
-if (!tasksPath || !fs.existsSync(tasksPath)) { console.error('usage: resolve-task.mjs <tasks.md> [plan.md] [--json]'); process.exit(2); }
+const argv = process.argv.slice(2);
+const tasksPath = argv[0];
+const asJson = argv.includes('--json');
+// --propose <file.json | id=cluster,id=cluster>  — the classifier's per-task proposals; the
+// resolver VALIDATES them (real cluster? phantom? agrees with keyword?). This is the Phase 3 line.
+let proposeArg = null;
+{ const i = argv.indexOf('--propose'); if (i >= 0) proposeArg = argv[i + 1]; }
+// plan.md = first positional after tasksPath that is neither a flag nor the --propose value
+const planPath = argv.slice(1).find((a) => !a.startsWith('--') && a !== proposeArg);
+if (!tasksPath || !fs.existsSync(tasksPath)) { console.error('usage: resolve-task.mjs <tasks.md> [plan.md] [--json] [--propose <file.json|id=cluster,...>]'); process.exit(2); }
+
+// parse classifier proposals into id -> {cluster, skill?}
+const proposals = {};
+if (proposeArg) {
+  if (fs.existsSync(proposeArg)) {
+    const raw = JSON.parse(fs.readFileSync(proposeArg, 'utf8'));
+    for (const [id, v] of Object.entries(raw)) proposals[id] = typeof v === 'string' ? { cluster: v } : v;
+  } else {
+    for (const pair of proposeArg.split(',')) { const [id, cl] = pair.split('='); if (id && cl) proposals[id.trim()] = { cluster: cl.trim() }; }
+  }
+}
 
 // load the resolution map (via the deployed pointer, else repo)
 const idxPaths = [path.join(os.homedir(), '.agents/skill-clusters/skill-index.json'), path.resolve(path.dirname(new URL(import.meta.url).pathname), '../skill-index.json')];
@@ -111,28 +128,63 @@ function resolve(t) {
   if (!ranked.length) return { cluster: null, confidence: 0 };
   const [cl, top] = ranked[0];
   const second = ranked[1]?.[1] || 0;
+  return { ...describe(cl, ownToks), confidence: +(top / (top + second)).toFixed(2), score: +top.toFixed(2) };
+}
+
+// describe a cluster for dispatch (tier / activate / orchestrator / candidate spokes) — shared by
+// the keyword resolver and the classifier-override path.
+function describe(cl, ownToks) {
   const tier = clusterMeta[cl]?.tier || (index.skills[`${cl}-orchestrator`]?.tier || 'active');
-  // candidate spokes: cluster skills whose name shares a token with the task's own tokens
   const spokes = Object.entries(index.skills).filter(([n, e]) => e.cluster === cl && e.role === 'spoke')
     .map(([n]) => [n, tok(n).filter((x) => ownToks.includes(x)).length]).filter(([, s]) => s > 0)
     .sort((a, b) => b[1] - a[1]).slice(0, 3).map(([n]) => n);
-  return { cluster: cl, dispatch: `${cl}-orchestrator`, tier, activate: tier === 'deferred', spokes, confidence: +(top / (top + second)).toFixed(2), score: +top.toFixed(2) };
+  return { cluster: cl, dispatch: `${cl}-orchestrator`, tier, activate: tier === 'deferred', spokes };
 }
 
-const plan = tasks.map((t) => ({ ...t, ...resolve(t) }));
+// is this a REAL cluster? (has an orchestrator in the index or appears in cluster meta) — phantom-proof
+const realClusters = new Set([...Object.keys(clusterMeta), ...Object.keys(clusterKw)]);
+const clusterIsReal = (cl) => realClusters.has(cl) || !!index.skills[`${cl}-orchestrator`];
+
+// THE Phase 3 organ: classifier proposes, resolver VALIDATES (mirrors PAI's Capability-Name audit).
+// A real proposal overrides the keyword guess; a phantom is rejected and flagged for the human.
+function validate(t, kw) {
+  const p = proposals[t.id];
+  if (!p) return { ...kw, source: 'keyword' };
+  const proposed = p.cluster;
+  if (!clusterIsReal(proposed)) return { ...kw, source: 'keyword', phantom: proposed };  // reject phantom, keep keyword
+  const ownToks = [...new Set([...tok(t.desc), ...t.paths.flatMap((x) => tok(x))])];
+  const agreed = proposed === kw.cluster;
+  const out = { ...describe(proposed, ownToks), source: 'classifier', proposed, agreed, confidence: agreed ? Math.max(kw.confidence || 0, 0.9) : 0.8, score: kw.score };
+  if (!agreed && kw.cluster) out.overrode = kw.cluster;                                  // record the keyword disagreement
+  if (p.skill) { out.skill = p.skill; out.skillReal = index.skills[p.skill]?.cluster === proposed; }
+  return out;
+}
+
+const plan = tasks.map((t) => ({ ...t, ...validate(t, resolve(t)) }));
 const touched = [...new Set(plan.map((p) => p.cluster).filter(Boolean))];
 const activate = [...new Set(plan.filter((p) => p.activate).map((p) => p.cluster))];
 const unresolved = plan.filter((p) => !p.cluster || p.confidence < 0.34);
+const phantoms = plan.filter((p) => p.phantom).map((p) => ({ id: p.id, proposed: p.phantom }));
+const overrides = plan.filter((p) => p.source === 'classifier' && p.agreed === false).map((p) => ({ id: p.id, classifier: p.cluster, keyword: p.overrode || null }));
+const badSkills = plan.filter((p) => p.skill && p.skillReal === false).map((p) => ({ id: p.id, skill: p.skill, cluster: p.cluster }));
 
-if (asJson) { console.log(JSON.stringify({ tasksFile: tasksPath, touched, activate, unresolved: unresolved.map((u) => u.id), plan }, null, 2)); process.exit(0); }
+if (asJson) { console.log(JSON.stringify({ tasksFile: tasksPath, touched, activate, unresolved: unresolved.map((u) => u.id), phantoms, overrides, badSkills, plan }, null, 2)); process.exit(0); }
 
-console.log(`\n  Dispatch plan — ${path.basename(path.dirname(tasksPath))}  (${plan.length} tasks)\n  ${'-'.repeat(64)}`);
+const hasProposals = Object.keys(proposals).length > 0;
+console.log(`\n  Dispatch plan — ${path.basename(path.dirname(tasksPath))}  (${plan.length} tasks${hasProposals ? ', classifier-validated' : ''})\n  ${'-'.repeat(64)}`);
 for (const p of plan) {
   const flag = !p.cluster ? '⚠ UNRESOLVED' : p.confidence < 0.34 ? '⚠ low-conf' : p.activate ? '◆ activate' : '●';
-  console.log(`  ${p.id.padEnd(5)} ${p.done ? '✓' : ' '} ${flag.padEnd(13)} ${(p.cluster || '—').padEnd(20)} ${p.desc.slice(0, 42)}`);
+  const src = p.source === 'classifier' ? (p.agreed ? '◇=' : '◇!') : '  ';   // ◇= classifier agrees · ◇! classifier overrode keyword
+  console.log(`  ${p.id.padEnd(5)} ${p.done ? '✓' : ' '} ${src} ${flag.padEnd(13)} ${(p.cluster || '—').padEnd(20)} ${p.desc.slice(0, 40)}`);
   if (p.spokes?.length) console.log(`        ↳ ${p.dispatch}  spokes: ${p.spokes.join(', ')}`);
+  if (p.overrode) console.log(`        ↳ classifier overrode keyword guess: ${p.overrode} → ${p.cluster}`);
+  if (p.phantom) console.log(`        ⚠ phantom proposal "${p.phantom}" REJECTED (not in index) — kept keyword: ${p.cluster || '—'}`);
+  if (p.skill && p.skillReal === false) console.log(`        ⚠ proposed skill "${p.skill}" not in cluster ${p.cluster}`);
 }
 console.log(`  ${'-'.repeat(64)}`);
 console.log(`  clusters touched: ${touched.join(', ') || 'none'}`);
 console.log(`  DEFERRED → activate first: ${activate.length ? activate.join(', ') + '  (node scripts/tier.mjs --activate <c> --apply)' : 'none'}`);
+if (hasProposals) {
+  console.log(`  classifier: ${plan.filter((p) => p.source === 'classifier').length} validated · ${overrides.length} overrode keyword · ${phantoms.length} phantom rejected · ${badSkills.length} bad-skill`);
+}
 console.log(`  unresolved/low-confidence: ${unresolved.length}/${plan.length}  (conductor escalates these to human)\n`);
