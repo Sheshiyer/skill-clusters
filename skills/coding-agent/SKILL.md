@@ -1,6 +1,6 @@
 ---
 name: coding-agent
-description: Run Codex CLI, Claude Code, OpenCode, or Pi Coding Agent via background process for programmatic control.
+description: "Run Codex CLI, Claude Code, OpenCode, or Pi Coding Agent as a PTY-backed background process for programmatic control. USE WHEN driving another coding agent from the shell, launching a coding CLI in the background, or orchestrating Codex/Claude Code/OpenCode/Pi non-interactively."
 metadata:
   {
     "openclaw": { "emoji": "🧩", "requires": { "anyBins": ["claude", "codex", "opencode", "pi"] } },

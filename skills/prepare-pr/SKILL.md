@@ -1,6 +1,6 @@
 ---
 name: prepare-pr
-description: Script-first PR preparation with structured findings resolution, deterministic push safety, and explicit gate execution.
+description: "Script-first PR preparation with structured findings resolution, deterministic push safety, and explicit gate execution. USE WHEN readying a PR branch for merge after /review-pr, resolving review findings, or running pre-push gates and safety checks before pushing."
 cluster: git-pr-ops
 version: 1.0.0
 ---

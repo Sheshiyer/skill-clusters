@@ -1,6 +1,6 @@
 ---
 name: twitter-automation
-description: "Automate Twitter/X with posting, engagement, and user management via inference.sh CLI. Apps: x/post-tweet, x/post-create (with media), x/post-like, x/post-retweet, x/dm-send, x/user-follow. Capabilities: post tweets, schedule content, like posts, retweet, send DMs, follow users, get profiles. Use for: social media automation, content scheduling, engagement bots, audience growth, X API. Triggers: twitter api, x api, tweet automation, post to twitter, twitter bot, social media automation, x automation, tweet scheduler, twitter integration, post tweet, twitter post, x post, send tweet"
+description: "Automate Twitter/X posting, engagement, and user management via the inference.sh CLI (post tweets with media, like, retweet, send DMs, follow users, fetch profiles). USE WHEN posting to Twitter/X, scheduling content, building an engagement or growth bot, or integrating the X API into a workflow."
 allowed-tools: Bash(infsh *)
 cluster: social-media
 version: 1.0.0

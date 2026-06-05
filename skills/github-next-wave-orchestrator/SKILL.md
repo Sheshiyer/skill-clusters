@@ -1,6 +1,6 @@
 ---
 name: github-next-wave-orchestrator
-description: "Analyze a GitHub repo’s current issue/PR/code state, produce a concise status report, and propose/execute the next wave of work using parallel agents when useful."
+description: "Analyze a GitHub repo's issue/PR/code state, produce a status report, and propose or execute the next wave of work with parallel agents. USE WHEN asked 'where is this repo now?', to summarize issues and decide what's next, to run the next wave, or for ongoing delivery orchestration from issues."
 requiredSources:
   - github
 alwaysAllow:

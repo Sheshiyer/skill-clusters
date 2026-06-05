@@ -1,6 +1,6 @@
 ---
 name: google-official-seo-guide
-description: Official Google SEO guide covering search optimization, best practices, Search Console, crawling, indexing, and improving website search visibility based on official Google documentation
+description: "Official Google SEO guidance on search optimization, Search Console, crawling, indexing, and structured data, grounded in Google's own docs. USE WHEN improving search ranking/visibility, fixing crawl or indexing issues, adding schema.org rich-result markup, or building sitemaps, robots.txt, or hreflang."
 cluster: growth-seo
 version: 1.0.0
 ---

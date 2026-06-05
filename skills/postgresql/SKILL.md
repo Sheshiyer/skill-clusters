@@ -1,6 +1,6 @@
 ---
 name: postgresql
-description: Design a PostgreSQL-specific schema. Covers best-practices, data types, indexing, constraints, performance patterns, and advanced features
+description: "Design PostgreSQL-specific schemas covering data types, indexing, constraints, normalization, performance patterns, and advanced features. USE WHEN creating or reviewing Postgres tables, choosing column types or keys, planning indexes and foreign keys, or modeling a relational schema in PostgreSQL."
 version: 1.0.0
 cluster: databases-data
 ---

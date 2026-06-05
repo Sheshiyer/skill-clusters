@@ -1,6 +1,6 @@
 ---
 name: mermaid-to-gif
-description: Convert Mermaid code blocks in .mmd or .md files to animated GIFs with customizable animation styles (progressive, highlight walk, pulse flow, wave).
+description: "Convert Mermaid code blocks in .mmd or .md files to animated GIFs with customizable styles (progressive, highlight walk, pulse flow, wave). USE WHEN turning a Mermaid diagram into an animated GIF, animating a flowchart from Markdown, or exporting Mermaid as a shareable motion graphic."
 cluster: documents
 version: 1.0.0
 ---

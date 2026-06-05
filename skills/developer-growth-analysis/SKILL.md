@@ -1,6 +1,6 @@
 ---
 name: developer-growth-analysis
-description: Analyzes your recent Codex chat history to identify coding patterns, development gaps, and areas for improvement, curates relevant learning resources from HackerNews, and automatically sends a personalized growth report to your Slack DMs.
+description: "Analyzes recent Codex chat history to surface coding patterns, gaps, and growth areas, curates matching HackerNews learning resources, and DMs a personalized growth report to Slack. USE WHEN you want data-driven feedback on your dev habits, to find your skill gaps, or curated study resources tailored to your real work."
 cluster: agentic-ops
 version: 1.0.0
 ---

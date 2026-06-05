@@ -1,6 +1,6 @@
 ---
 name: content-research-writer
-description: Assists in writing high-quality content by conducting research, adding citations, improving hooks, iterating on outlines, and providing real-time feedback on each section. Transforms your writing process from solo effort to collaborative partnership.
+description: "Act as a writing partner that researches, adds citations, sharpens hooks, iterates on outlines, and gives section-by-section feedback while preserving your voice. USE WHEN drafting an article, blog post, or essay that needs research, citations, a stronger hook, or collaborative outlining and revision."
 cluster: growth-content
 version: 1.0.0
 ---

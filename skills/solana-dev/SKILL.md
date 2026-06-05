@@ -1,6 +1,6 @@
 ---
 name: solana-dev
-description: End-to-end Solana development playbook (Jan 2026). Prefer Solana Foundation framework-kit (@solana/client + @solana/react-hooks) for React/Next.js UI. Prefer @solana/kit for all new client/RPC/transaction code. When legacy dependencies require web3.js, isolate it behind @solana/web3-compat (or @solana/web3.js as a true legacy fallback). Covers wallet-standard-first connection (incl. ConnectorKit), Anchor/Pinocchio programs, Codama-based client generation, LiteSVM/Mollusk/Surfpool testing, and security checklists.
+description: "End-to-end Solana development playbook favoring framework-kit and @solana/kit over legacy web3.js, covering wallet-standard connection, Anchor/Pinocchio programs, client generation, and testing. USE WHEN building Solana dApp UI, wallet connection and signing flows, on-chain programs, or transaction/RPC client code."
 user-invocable: true
 cluster: extra-languages
 version: 1.0.0

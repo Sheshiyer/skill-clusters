@@ -1,6 +1,6 @@
 ---
 name: textual
-description: Expert guidance for building TUI (Text User Interface) applications with the Textual framework. Invoke when user asks about Textual development, TUI apps, widgets, screens, CSS styling, reactive programming, or testing Textual applications.
+description: "Expert guidance for building TUI (text user interface) applications with the Textual Python framework. USE WHEN developing Textual apps, composing widgets and screens, applying Textual CSS styling, wiring reactive attributes, or testing terminal UIs."
 cluster: python-backend
 version: 1.0.0
 ---

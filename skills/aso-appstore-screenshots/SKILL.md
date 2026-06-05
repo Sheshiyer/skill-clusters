@@ -1,6 +1,6 @@
 ---
 name: aso-appstore-screenshots
-description: Generate high-converting App Store screenshots by analyzing your app's codebase, discovering core benefits, and creating ASO-optimized screenshot images using Nano Banana Pro.
+description: "Generate high-converting App Store screenshots by analyzing your app's codebase, discovering its core benefits, and creating ASO-optimized screenshot images with Nano Banana Pro. USE WHEN creating App Store screenshots from an existing app project, or producing benefit-driven ASO screenshot designs for a store listing."
 user-invocable: true
 cluster: growth-sales-cro
 version: 1.0.0

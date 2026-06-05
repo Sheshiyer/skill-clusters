@@ -1,6 +1,6 @@
 ---
 name: lead-research-assistant
-description: Identifies high-quality leads for your product or service by analyzing your business, searching for target companies, and providing actionable contact strategies. Perfect for sales, business development, and marketing professionals.
+description: "Identify high-quality leads by analyzing your business, searching for target companies, and providing actionable contact strategies. USE WHEN building a sales prospect list, finding target companies for a product or service, or developing outreach strategies for business development and marketing."
 cluster: growth-sales-cro
 version: 1.0.0
 ---

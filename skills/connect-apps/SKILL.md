@@ -1,6 +1,6 @@
 ---
 name: connect-apps
-description: Connect Codex to external apps like Gmail, Slack, GitHub. Use this skill when the user wants to send emails, create issues, post messages, or take actions in external services.
+description: "Connect Codex to 1000+ external apps like Gmail, Slack, and GitHub via the Composio toolrouter plugin. USE WHEN the user wants to send emails, create issues, post messages, or take real actions in external services rather than just describing them."
 cluster: agentic-ops
 version: 1.0.0
 ---

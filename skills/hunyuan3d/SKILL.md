@@ -1,6 +1,6 @@
 ---
 name: hunyuan3d
-description: Generate 3D models from images using Tencent's Hunyuan3D-2.1 via Hugging Face Gradio API. This skill should be used when the user wants to create 3D meshes from photographs or reference images, convert 2D images to 3D models, or generate textured 3D assets. Supports single-image and multi-view input, geometry-only and textured output, and export to GLB/OBJ/PLY/STL formats.
+description: "Generate 3D models from images using Tencent's Hunyuan3D-2.1 via Hugging Face Gradio API. Supports single-image and multi-view input, geometry-only or textured output, and GLB/OBJ/PLY/STL export. USE WHEN converting a 2D image or photo to a 3D mesh, or generating textured 3D assets."
 cluster: media-gen
 version: 1.0.0
 ---

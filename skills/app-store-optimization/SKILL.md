@@ -1,6 +1,6 @@
 ---
 name: app-store-optimization
-description: Use this skill when optimizing app store listings, researching keywords, or tracking mobile app performance on Apple App Store and Google Play Store.
+description: "Research keywords, optimize metadata, analyze competitors, and improve app store visibility on Apple App Store and Google Play. USE WHEN optimizing an app store listing, doing ASO, researching app keywords, improving app rankings or conversion rate, or tracking mobile app performance."
 metadata:
   triggers:
     - ASO

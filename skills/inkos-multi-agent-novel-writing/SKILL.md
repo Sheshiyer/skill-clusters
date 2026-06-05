@@ -1,6 +1,6 @@
 ---
 name: inkos-multi-agent-novel-writing
-description: Multi-agent CLI system for autonomous novel writing, auditing, and revision with human review gates
+description: "Multi-agent CLI system for autonomous novel writing, auditing, and revision with human review gates. USE WHEN running an end-to-end novel pipeline with AI agents, generating chapters automatically in TypeScript, or auditing and revising a draft through review-gate checkpoints (InkOS)."
 triggers:
   - write novel with AI agents
   - autonomous novel production

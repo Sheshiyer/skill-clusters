@@ -1,6 +1,6 @@
 ---
 name: ffmpeg
-description: Video and audio processing with FFmpeg. Use for format conversion, resizing, compression, audio extraction, and preparing assets for Remotion. Triggers include converting GIF to MP4, resizing video, extracting audio, compressing files, or any media transformation task.
+description: "Video and audio processing with FFmpeg — format conversion, resizing, compression, audio extraction, and preparing assets for Remotion. USE WHEN converting GIF to MP4, resizing or compressing video, extracting or stripping audio, changing codecs/containers, or any media transformation task."
 cluster: media-gen
 version: 1.0.0
 ---

@@ -1,6 +1,6 @@
 ---
 name: gemini
-description: Gemini CLI for one-shot Q&A, summaries, and generation.
+description: "Gemini CLI for one-shot Q&A, summaries, and text generation from the command line. USE WHEN you want a quick Gemini answer, to summarize a file or piped text, or generate content via the gemini binary without entering interactive mode."
 homepage: https://ai.google.dev/
 metadata:
   {

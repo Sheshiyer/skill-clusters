@@ -1,6 +1,6 @@
 ---
 name: discord
-description: "Discord ops via the message tool (channel=discord)."
+description: "Discord operations through the unified message tool (channel=discord). USE WHEN sending or reading Discord messages, posting to a channel or DMing a user, managing roles/moderation/presence, or building rich Discord UI with components v2."
 metadata: { "openclaw": { "emoji": "🎮", "requires": { "config": ["channels.discord.token"] } } }
 allowed-tools: ["message"]
 cluster: social-media

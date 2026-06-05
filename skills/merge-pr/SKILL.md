@@ -1,6 +1,6 @@
 ---
 name: merge-pr
-description: Script-first deterministic squash merge with strict required-check gating, head-SHA pinning, and reliable attribution/commenting.
+description: "Script-first deterministic squash merge with strict required-check gating, head-SHA pinning, and reliable attribution and commenting. USE WHEN squash-merging a pull request safely, enforcing required status checks before merge, or pinning to a head SHA to avoid merging unexpected new commits."
 cluster: git-pr-ops
 version: 1.0.0
 ---

@@ -1,6 +1,6 @@
 ---
 name: image-enhancer
-description: Improves the quality of images, especially screenshots, by enhancing resolution, sharpness, and clarity. Perfect for preparing images for presentations, documentation, or social media posts.
+description: "Improve image quality by enhancing resolution, sharpness, and clarity, especially for screenshots. USE WHEN upscaling a blurry or low-res image, sharpening a screenshot, or prepping visuals for presentations, documentation, or social media posts."
 cluster: media-gen
 version: 1.0.0
 ---

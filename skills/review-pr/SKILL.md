@@ -1,6 +1,6 @@
 ---
 name: review-pr
-description: Script-first review-only GitHub pull request analysis. Use for deterministic PR review with structured findings handoff to /prepare-pr.
+description: "Script-first, review-only GitHub pull request analysis producing human and machine-readable findings. USE WHEN reviewing a PR by number or URL, performing a read-only code review, or generating structured findings to hand off to /prepare-pr."
 cluster: git-pr-ops
 version: 1.0.0
 ---

@@ -1,6 +1,6 @@
 ---
 name: connect
-description: Connect Codex to any app. Send emails, create issues, post messages, update databases - take real actions across Gmail, Slack, GitHub, Notion, and 1000+ services.
+description: "Connect Codex to any app to take real actions — send emails, create issues, post messages, update databases — across Gmail, Slack, GitHub, Notion, and 1000+ services. USE WHEN you need to actually do something in an external service, not just generate text about it."
 cluster: agentic-ops
 version: 1.0.0
 ---

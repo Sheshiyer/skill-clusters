@@ -1,6 +1,6 @@
 ---
 name: deepread-ocr
-description: OCR that never fails silently. Multi-pass document processing API with intelligent quality review flags. Extract text and structured data from PDFs with AI-powered confidence scoring. Free tier - 2,000 pages/month.
+description: "Production OCR that never fails silently — multi-pass PDF processing with AI confidence scoring and per-field human-review flags. USE WHEN extracting text or structured JSON from PDFs, scanning invoices/forms/receipts, or needing OCR that flags which fields to verify. Free tier: 2,000 pages/month."
 cluster: documents
 version: 1.0.0
 ---

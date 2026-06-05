@@ -1,7 +1,6 @@
 ---
 name: superdesign
-description: >
-  Superdesign is a design agent specialized in frontend UI/UX design. Use this skill before implementing any UI that requires design thinking. Common commands: superdesign create-project --title "X" (setup project), superdesign create-design-draft --project-id <id> --title "Current UI" -p "Faithfully reproduce..." --context-file src/Component.tsx (faithful reproduction), superdesign iterate-design-draft --draft-id <id> -p "dark theme" -p "minimal" --mode branch --context-file src/Component.tsx (design variations), superdesign execute-flow-pages --draft-id <id> --pages '[...]' --context-file src/Component.tsx (extend to more pages). Supports line ranges: --context-file path:startLine:endLine
+description: "Frontend UI/UX design agent for finding design inspiration and iterating design drafts on an infinite canvas, with CLI commands for projects, drafts, variations, and flow pages. USE WHEN designing a feature, page, or flow before implementation, exploring style variations, or reproducing an existing UI."
 metadata:
   author: superdesign
   version: "0.0.1"

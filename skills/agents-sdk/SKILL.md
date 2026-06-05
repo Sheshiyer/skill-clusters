@@ -1,6 +1,6 @@
 ---
 name: agents-sdk
-description: Build AI agents on Cloudflare Workers using the Agents SDK. Load when creating stateful agents, durable workflows, real-time WebSocket apps, scheduled tasks, MCP servers, chat applications, voice agents, or browser automation. Covers Agent class, state management, callable RPC, Workflows, durable execution, queues, retries, observability, and React hooks. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.
+description: "Build AI agents on Cloudflare Workers with the Agents SDK — Agent class, state, callable RPC, Workflows, durable execution, queues, retries, React hooks. USE WHEN creating stateful agents, durable workflows, real-time WebSocket apps, scheduled tasks, MCP servers, chat or voice agents, or browser automation."
 cluster: cloudflare
 version: 1.0.0
 ---
