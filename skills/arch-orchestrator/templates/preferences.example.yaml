@@ -1,0 +1,85 @@
+# Architecture Orchestrator - Stack Preferences
+# Copy this file to specs/preferences.yaml and customize for your project
+#
+# These preferences are treated as HARD CONSTRAINTS by the orchestrator.
+# All generated specs will conform to these choices.
+
+version: 1
+
+project:
+  name: "my-app"                          # Your project name
+  repo_layout: "apps/web + apps/api + packages/ui"  # Monorepo structure
+  environments: ["dev", "staging", "prod"]
+
+# ============================================================================
+# FRONTEND CONFIGURATION
+# ============================================================================
+frontend:
+  framework: "react"                      # react | vue | svelte | solid
+  hosting: "cloudflare-pages"             # cloudflare-pages | vercel | netlify
+  package_manager: "bun"                  # bun | pnpm | npm | yarn
+
+  design_system:
+    component_source: "reactbits"         # reactbits | shadcn | radix | custom
+    component_docs_url: "https://reactbits.dev/"
+    styling: ["tailwindcss"]              # tailwindcss | css-modules | styled-components
+    accessibility: ["wcag-2.2-aa"]        # wcag-2.2-aa | wcag-2.2-aaa
+    documentation_integration:
+      # How the generator incorporates DS into specs:
+      # - "inline": embed key usage into frontend-specs.md
+      # - "design-system-doc": generate specs/design-system.md separately
+      mode: "design-system-doc"
+
+  icons:
+    library: "itshover"                   # itshover | lucide | heroicons | custom
+    repo_url: "https://github.com/itshover/itshover"
+    install_strategy: "shadcn-remote-json"
+    notes: "Use shadcn CLI remote json per icon, wrap exports in packages/ui."
+
+  fonts:
+    primary: "Inter"
+    fallback: ["system-ui", "sans-serif"]
+
+# ============================================================================
+# BACKEND CONFIGURATION
+# ============================================================================
+backend:
+  platform: "cloudflare-workers"          # cloudflare-workers | aws-lambda | node
+  deployment: "wrangler"                  # wrangler | serverless | docker
+  http_framework: "hono"                  # hono | express | fastify | elysia
+
+  database:
+    primary: "cloudflare-d1"              # cloudflare-d1 | postgres | mysql | sqlite
+    orm: "drizzle"                        # drizzle | prisma | kysely | raw
+
+  storage:
+    object: "cloudflare-r2"               # cloudflare-r2 | s3 | gcs
+    kv: "workers-kv"                      # workers-kv | redis | upstash
+
+  async:
+    queue: "cloudflare-queues"            # cloudflare-queues | sqs | bullmq
+
+  stateful:
+    durable_objects: true                 # Enable Durable Objects for stateful logic
+
+  auth:
+    strategy: "jwt"                       # jwt | session | oauth-only
+    notes: "Document specific auth decisions in specs/decisions.md"
+
+  observability:
+    logs: "cloudflare-logs"               # cloudflare-logs | datadog | custom
+    error_tracking: "sentry"              # sentry | bugsnag | rollbar
+    analytics: "cloudflare-web-analytics" # cloudflare-web-analytics | plausible | ga4
+
+# ============================================================================
+# AI/LLM CONFIGURATION (optional)
+# ============================================================================
+ai:
+  enabled: true                           # Set to false if no AI features
+  inference: "cloudflare-workers-ai"      # cloudflare-workers-ai | openai | anthropic
+  gateway: "cloudflare-ai-gateway"        # cloudflare-ai-gateway | custom
+  vector_db: "cloudflare-vectorize"       # cloudflare-vectorize | pinecone | weaviate
+  agent_framework: "langgraph"            # langgraph | langchain | custom
+  rag:
+    chunking: "recursive"                 # recursive | semantic | fixed
+    reranking: "optional"                 # optional | always | never

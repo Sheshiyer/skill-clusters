@@ -30,6 +30,27 @@ copy for more than one network or pushing anything live.
 - Direct X/Twitter API — post, thread, media, search, analytics → `x-api`
 - Multi-platform scheduling/publishing across 13 networks (SocialClaw) → `social-publisher`
 
+## Folded spokes (extended cluster-map)
+
+Additional specialists folded into this cluster. Route to these the same way — load on demand
+(see "Loading spokes on demand" below). They extend the create → adapt → publish pipeline with
+content strategy, per-platform CLIs, and bookmark-intake automation.
+
+**Strategy & ideation (before the asset)**
+- Plan content pillars, hooks, calendars, repurposing & engagement strategy across LinkedIn / X / IG / TikTok / FB → `social-content`
+- Run the full source-to-distribution content pipeline (brief → packet → staging → dry-run/publish), coordinating OpenClaw/Paperclip/Higgsfield/inference.sh adapters → `ai-content-pipeline`
+
+**Per-platform CLIs (read, engage, publish)**
+- X/Twitter via inference.sh apps — post/create-with-media, like, retweet, DM, follow → `twitter-automation`
+- X/Twitter via the local `bird` CLI — read timelines, search, threads/replies, bookmarks/likes, post (draft→confirm→post) → `bird-cli`
+- Instagram via the `gram`/`glam` CLI — login/cookie auth, download profiles/posts/stories/highlights → `gram-cli`
+- Reddit via the local `reddit-cli` — read subreddits/users/threads, monitor inbox/mentions, publish with confirmation → `reddit-cli`
+- Discord ops via the `message` tool (`channel=discord`) — send/read/react/poll/threads/search → `discord`
+
+**Bookmark intake & opportunity mining**
+- Ingest X bookmarks + IG saves, dedupe, AI-enrich, route into a PARA/Obsidian vault → `social-intake-orchestrator`
+- Convert X bookmark intake into actionable implementation opportunities + cadence-based Discord digests → `x-bookmark-opportunity-skill`
+
 ## Standard Operating Flow
 
 1. Locate the task on the pipeline: are we **creating** an asset, **adapting** copy, or **publishing**? Most "post this" asks touch all three in that order.

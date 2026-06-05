@@ -23,6 +23,8 @@ the new concurrency mode or any of the iOS 26 frameworks.
 - `liquid-glass-design` — the **design system**: iOS 26 Liquid Glass material for SwiftUI, UIKit, WidgetKit.
 - `ios-icon-gen` — the **asset pipeline**: PNG icon imagesets for Xcode asset catalogs from SF Symbols or Iconify.
 
+See also **## Folded spokes** below for the watchOS and HIG-design spokes.
+
 ## Routing rules by intent
 
 **Set the foundation**
@@ -36,7 +38,20 @@ the new concurrency mode or any of the iOS 26 frameworks.
 
 **Make it look native**
 - Glass buttons/cards/toolbars, morphing, iOS 26 material → `liquid-glass-design`
+- HIG-conformant UI, SF Symbols, Dynamic Type, adaptive iPhone/iPad layout, Dark Mode, accessibility → `mobile-ios-design`
 - App/feature icons, asset-catalog imagesets → `ios-icon-gen`
+
+**Ship to the wrist**
+- watchOS app/extension, Watch Connectivity sync, complications, watch workouts/HealthKit, Smart Stack widgets → `watchos`
+
+## Folded spokes
+
+These spokes were folded into this cluster from overlapping standalone skills. They share the
+`native-ios` baseline (`native-ios-core`) and the SwiftUI architecture in `swiftui-patterns`; route
+to them like any other spoke above.
+
+- `mobile-ios-design` — the **HIG layer**: Apple Human Interface Guidelines made concrete in SwiftUI — layout/grids, navigation patterns, SF Symbols, Dynamic Type, semantic color/materials, and iPhone/iPad adaptivity. Pairs with `swiftui-patterns` (architecture) and `liquid-glass-design` (iOS 26 material).
+- `watchos` — the **wrist platform**: watchOS apps and Watch extensions — Watch Connectivity (iPhone <-> Watch sync), complications (ClockKit and WidgetKit), HealthKit workout sessions, and Smart Stack widgets. Reuses the cluster's concurrency and SwiftUI conventions on the watch form factor.
 
 ## Standard flow
 

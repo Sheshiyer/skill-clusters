@@ -29,11 +29,21 @@ deciding what counts as "done" or wiring a measurement loop.
 - `plankton-code-quality` — write-time gate: auto-format, lint, and Claude-powered fixes on every file edit via hooks.
 - `production-audit` — release-time gate: local-evidence production-readiness audit ("what breaks in prod?") with no third-party data sharing.
 
+## Folded spokes (also routable)
+
+These spokes were folded into the cluster from the wider skill library. They overlap the gates above but each adds a distinct capability — route to them when the request matches:
+
+- `evals` — Anthropic-style agent-**workflow** evaluation: three grader types (code/model/human), transcript capture, `pass@k`/`pass^k`, capability-vs-regression suites with saturation tracking. Use when grading multi-turn agent *trajectories* (not just final outputs) or building a reusable eval suite; `eval-harness` stays the lighter pass/fail-criteria entry point.
+- `optimize` — autonomous hill-climbing **optimization loop** (`/optimize`): metric mode (a shell command emitting a number — latency, bundle size, page speed) or eval mode (LLM-as-judge for skills/prompts/agents). Use when the goal is to *iteratively improve* a target, not just measure it once; complements `benchmark` (which establishes the baseline this loop climbs from).
+- `autoresearch` — Karpathy-style **keep-or-discard experiment loop**: change one variable, measure, keep or revert, in bounded batches. Use for overnight/iterative research runs on code (train.py-style) or on business hypotheses (positioning, CTA, pricing) where each run is logged with an explicit decision.
+- `markdown-rendering-regression` — **rendered-HTML regression gate** for Markdown/MDX builds (Astro docs/wiki): catches raw-Markdown leaks, frontmatter leakage, placeholder copy, local filesystem paths, internal build labels, and banned emoji icons that a green build still ships. Use after a static build produces `dist/`; pairs with `browser-qa` for visual checks.
+
 ## Routing rules by intent
 
 **Define what "done" means / measure reliability**
 - "How do I know the agent succeeded?" / pass@k → `eval-harness`  *(model in `quality-eval-core`)*
 - "Which coding agent/model is best for this repo?" → `agent-eval`
+- Grade multi-turn agent *workflows*/transcripts, build a reusable eval suite (graders, `pass^k`, saturation) → `evals`
 
 **Write code correctly (test-first)**
 - New feature / bugfix / refactor → `tdd-workflow`
@@ -47,9 +57,14 @@ deciding what counts as "done" or wiring a measurement loop.
 - Web app flows → `e2e-testing`
 - Native Windows desktop app → `windows-desktop-e2e`
 - Visual / interaction check on a deployed UI → `browser-qa`
+- Rendered Markdown/MDX (Astro docs/wiki) leaking raw syntax, placeholders, or local paths in `dist/` → `markdown-rendering-regression`
 
 **Performance**
 - Baselines, before/after PR, "it feels slow" → `benchmark`
+
+**Optimize / iterate toward a target**
+- Autonomously hill-climb a metric (latency, bundle size, page speed) or an LLM-judged quality target (skill/prompt/agent) → `optimize`
+- Karpathy-style keep-or-discard experiment loop, overnight/bounded batches (code or business hypotheses) → `autoresearch`
 
 **Guard quality continuously / before shipping**
 - Format + lint on every edit → `plankton-code-quality`

@@ -44,6 +44,32 @@ the secrets/PII guardrails — lives in `agentic-ops-core`; read it before any l
 - `connections-optimizer` — prune/grow X + LinkedIn graph with review-first outreach.
 - `dashboard-builder` — turn metrics into a working operator dashboard (Grafana/SigNoz).
 
+## Folded spokes (coding-agent runtime, app-connections & usage)
+
+Folded-in operator spokes for **driving coding-agent runtimes, wiring external apps, and proving
+usage/cost**. Same evidence-first loop applies — resolve the surface, read live state, smallest
+reversible action, prove it, report exact status. Load on demand exactly like the spokes above.
+
+**Coding-agent execution surfaces**
+- `coding-agent` — run Codex CLI / Claude Code / OpenCode / Pi as a background process for programmatic coding runs.
+- `ai-automation-workflows` — choreograph an approved workflow / scheduled automation through the packet + approval gate (no bypass).
+- `supacode-cli` — drive Supacode from the terminal: CLI commands, worktrees, agent runs.
+- `hyperframes-cli` — HyperFrames CLI dev loop (`npx hyperframes`): scaffold (init), lint/validate, run.
+
+**App-connection surfaces**
+- `connect` — connect a coding agent to any app: send email, open issues, post messages, update databases.
+- `connect-apps` — connect to named external apps (Gmail, Slack, GitHub) when the user wants to act through them.
+
+**Observability & usage surfaces**
+- `langsmith-fetch` — debug LangChain/LangGraph agents by pulling execution traces from LangSmith.
+- `model-usage` — summarize per-model usage and cost (Codex / Claude) via the CodexBar CLI local data.
+- `developer-growth-analysis` — analyze recent coding-agent chat history to surface patterns, gaps, and growth.
+
+**General-purpose model call**
+- `gemini` — Gemini CLI for one-shot Q&A, summaries, and generation.
+
+Routing: **"run / background a coding agent"** → `coding-agent`; **"run an approved workflow / scheduled automation"** → `ai-automation-workflows`; **Supacode terminal** → `supacode-cli`; **HyperFrames scaffold/lint/run** → `hyperframes-cli`; **"connect my agent to an app / act through Gmail·Slack·GitHub"** → `connect` / `connect-apps`; **"why did my LangChain/LangGraph run do that"** → `langsmith-fetch`; **"per-model usage / cost"** → `model-usage`; **"analyze my coding history / where am I weak"** → `developer-growth-analysis`; **one-shot Gemini ask** → `gemini`.
+
 ## Routing rules (intent → spoke)
 
 - **"Triage / clean my inbox", "draft a reply", "prove it sent"** → `email-ops`.

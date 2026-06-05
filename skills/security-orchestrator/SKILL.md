@@ -23,6 +23,24 @@ before triaging a finding or deciding whether something is exploitable.
 - **`gateguard`** — Pre-action fact-forcing gate. A PreToolUse hook that blocks the first Edit/Write/Bash and demands concrete investigation (importers, data schema, the user's instruction) before allowing it. Use to stop blind, guessed changes in an autonomous loop.
 - **`safety-guard`** — Destructive-operation lock. Intercepts `rm -rf`, force-push, `DROP TABLE`, etc., and freezes writes to a chosen directory. Use to contain blast radius when an agent runs full-auto or on production.
 
+## Folded spokes (offensive recon, AppSec testing, threat intel)
+
+These spokes extend the cluster beyond the original six — they cover the **offensive recon → web/LLM testing** pipeline and the **threat-intelligence** feeds that inform it. Route to them the same way (load on demand; see "Loading spokes on demand"):
+
+- **`recon`** — Infrastructure & network reconnaissance. Passive-by-default WHOIS/DNS/cert-transparency/ASN mapping plus authorization-gated active port/service scanning. Use to map a target's attack surface (domains, IPs, netblocks, subdomains) before testing.
+- **`osint`** — Open-source intelligence on people, companies, and entities/domains. Public-sources-only, authorization-first. Use for due diligence, background checks, or entity/threat-actor research; commonly hands off to `recon` for the technical infrastructure.
+- **`webassessment`** — Web application security assessment. Builds an app narrative, threat-models it, then runs a 6-phase pentest (recon → mapping → vuln analysis → exploitation → reporting) with ffuf fuzzing. Use for "pentest / security-test this web app".
+- **`promptinjection`** — LLM/AI application security testing. Direct, indirect (RAG/document), and multi-stage injection + jailbreak testing with an attack taxonomy and defense/remediation guidance. Use to test a chatbot or LLM feature for prompt injection. Authorized use only.
+- **`secret-scanner`** — Leaked-secret detection. Scans files, `.env`, and git history for hardcoded API keys/credentials (AWS, Stripe, GitHub tokens, etc.). Use as a fast pre-push / CI credential-exposure check (complements `security-review`'s secrets section).
+- **`secupdates`** — Security news aggregation. Pulls and ranks the latest breaches, CVEs/research, and industry analysis from tl;dr sec, Krebs, THN, Schneier, etc. Use for "what's new in security / sec updates".
+- **`annualreports`** — Annual security-report aggregation & analysis. Indexes 570+ industry threat/AppSec/cloud/ransomware reports and synthesizes cross-vendor trends. Use to pull or analyze the threat landscape from vendor annual reports.
+
+**Routing the additions:**
+- Recon / attack-surface mapping / OSINT / due diligence → `recon`, `osint`
+- Web app or LLM/chatbot penetration testing → `webassessment`, `promptinjection`
+- Credential-leak / secrets scan of a repo → `secret-scanner`
+- Threat-intel & industry trends (news, CVEs, annual reports) → `secupdates`, `annualreports`
+
 ## Routing rules by intent
 
 **Defend — code (build time)**

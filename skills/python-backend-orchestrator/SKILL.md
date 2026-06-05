@@ -34,6 +34,17 @@ lives in `python-backend-core`; read it before choosing a framework or wiring pe
 - `recsys-pipeline-architect` — the six-stage Source→Hydrator→Filter→Scorer→Selector→SideEffect ranking/feed pattern.
 - `mle-workflow` — production ML: data contracts, reproducible training, eval gates, deployment, monitoring, rollback.
 
+**Python application surface (folded spokes)**
+- `textual` — TUI (Text User Interface) apps with the Textual framework: App/Screen/Widget architecture, TCSS styling, reactive programming, workers, and `run_test`/pilot testing.
+
+## Folded spokes
+
+These spokes were folded into this cluster from the wider skill library. They share the cluster's
+core contract (typed, tested core; validate at the boundary; gate every change through the
+test/verify loop) and are routed exactly like the spokes above — loaded on demand by name.
+
+- `textual` — building Python terminal UIs with Textual (widgets, screens, TCSS, reactivity, async workers, pilot-based tests).
+
 ## Routing rules by intent
 
 - **"Write/refactor/review plain Python"** → `python-patterns` (+ `python-testing` for the tests).
@@ -45,6 +56,7 @@ lives in `python-backend-core`; read it before choosing a framework or wiring pe
 - **"Train a model / training loop / GPU"** → `pytorch-patterns`.
 - **"Rank/recommend/feed — top-K for a (user, context)"** → `recsys-pipeline-architect`.
 - **"Turn notebook code into a production ML system"** → `mle-workflow` (orchestrates `python-patterns`, `python-testing`, `pytorch-patterns` for the pieces).
+- **"Build a terminal UI / TUI / interactive CLI app"** → `textual` (Textual widgets, screens, TCSS, reactive state, async workers; tests via `run_test`/pilot, built on the `python-patterns` + `python-testing` foundation).
 
 ## Standard flow
 

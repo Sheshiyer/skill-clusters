@@ -1,0 +1,145 @@
+# reddit-cli help snapshot
+# cli: scripts/run-reddit-cli.sh
+# generated: 2026-02-21T19:26:19Z
+
+============================================================
+$ scripts/run-reddit-cli.sh --help
+============================================================
+usage: reddit-cli [-h] [--version]
+                  {auth,whoami,subreddit,post,search,user,inbox,mentions,saved,comment,vote,save,unsave,message} ...
+
+Deterministic Reddit CLI (public read-only fallback + OAuth for writes)
+
+positional arguments:
+  {auth,whoami,subreddit,post,search,user,inbox,mentions,saved,comment,vote,save,unsave,message}
+    auth                Authentication commands
+    whoami              Show authenticated account
+    subreddit           Subreddit operations
+    post                Post operations
+    search              Search submissions
+    user                User profile/history operations
+    inbox               Fetch inbox items (OAuth only)
+    mentions            Fetch mentions (OAuth only)
+    saved               Fetch saved items (OAuth only)
+    comment             Comment operations (OAuth only)
+    vote                Vote on a submission/comment (OAuth only)
+    save                Save a submission/comment (OAuth only)
+    unsave              Unsave a submission/comment (OAuth only)
+    message             Direct message operations (OAuth only)
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+
+============================================================
+$ scripts/run-reddit-cli.sh auth check --help
+============================================================
+usage: reddit-cli auth check [-h] [--json]
+
+options:
+  -h, --help  show this help message and exit
+  --json      Output JSON.
+
+============================================================
+$ scripts/run-reddit-cli.sh whoami --help
+============================================================
+usage: reddit-cli whoami [-h] [--json]
+
+options:
+  -h, --help  show this help message and exit
+  --json      Output JSON.
+
+============================================================
+$ scripts/run-reddit-cli.sh subreddit posts --help
+============================================================
+usage: reddit-cli subreddit posts [-h] [--sort {hot,new,top}]
+                                  [--time {all,day,hour,month,week,year}]
+                                  [--limit LIMIT] [--json]
+                                  subreddit
+
+positional arguments:
+  subreddit
+
+options:
+  -h, --help            show this help message and exit
+  --sort {hot,new,top}
+  --time {all,day,hour,month,week,year}
+  --limit LIMIT
+  --json                Output JSON.
+
+============================================================
+$ scripts/run-reddit-cli.sh post thread --help
+============================================================
+usage: reddit-cli post thread [-h] [--limit LIMIT] [--json] post_ref
+
+positional arguments:
+  post_ref       Submission ID or URL
+
+options:
+  -h, --help     show this help message and exit
+  --limit LIMIT
+  --json         Output JSON.
+
+============================================================
+$ scripts/run-reddit-cli.sh search --help
+============================================================
+usage: reddit-cli search [-h] [--subreddit SUBREDDIT]
+                         [--sort {relevance,hot,new,top,comments}]
+                         [--time {all,day,hour,month,week,year}]
+                         [--limit LIMIT] [--json]
+                         query
+
+positional arguments:
+  query
+
+options:
+  -h, --help            show this help message and exit
+  --subreddit SUBREDDIT
+  --sort {relevance,hot,new,top,comments}
+  --time {all,day,hour,month,week,year}
+  --limit LIMIT
+  --json                Output JSON.
+
+============================================================
+$ scripts/run-reddit-cli.sh post create --help
+============================================================
+usage: reddit-cli post create [-h] --subreddit SUBREDDIT --title TITLE
+                              [--body BODY] [--url URL] [--nsfw] [--spoiler]
+                              [--json]
+
+options:
+  -h, --help            show this help message and exit
+  --subreddit SUBREDDIT
+  --title TITLE
+  --body BODY
+  --url URL
+  --nsfw
+  --spoiler
+  --json                Output JSON.
+
+============================================================
+$ scripts/run-reddit-cli.sh comment reply --help
+============================================================
+usage: reddit-cli comment reply [-h] --text TEXT [--json] thing_ref
+
+positional arguments:
+  thing_ref    Comment/submission ID or URL
+
+options:
+  -h, --help   show this help message and exit
+  --text TEXT
+  --json       Output JSON.
+
+============================================================
+$ scripts/run-reddit-cli.sh message send --help
+============================================================
+usage: reddit-cli message send [-h] --to TO --subject SUBJECT --body BODY
+                               [--json]
+
+options:
+  -h, --help         show this help message and exit
+  --to TO
+  --subject SUBJECT
+  --body BODY
+  --json             Output JSON.
+

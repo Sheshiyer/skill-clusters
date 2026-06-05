@@ -44,6 +44,21 @@ autonomous loop, granting tools, or routing by model cost.
 **Evolve**
 - `continuous-learning-v2` — observe sessions via hooks, mint atomic instincts with confidence scoring, evolve them into skills/commands/agents (project-scoped).
 
+## Folded spokes
+
+Additional planning/architecture specialists folded into this cluster. Route to them on demand the same way as the cluster-map spokes above.
+
+**Plan & compose (heavyweight planning)**
+- `swarm-architect` — upgraded large-scale planning protocol: interactive discovery, 80-task default granularity, phase→wave→swarm decomposition with explicit dependencies, verification gates, and dispatch-aware GitHub issue sync. Reach for it when `blueprint` is too lightweight and you need a production-grade, heavily parallelized execution plan.
+- `task-master-planner` — interactive Taskmaster protocol producing 70–80+ schema-complete tasks (phases/waves/swarms) with verification gates and GitHub issue synchronization; ships JSON blueprints plus context-collection and plan-generation scripts. Use to turn a spec/architecture doc into a GitHub-synced, orchestrator-ready task plan.
+
+**Architect the runtime (spec generation)**
+- `arch-orchestrator` — turn a raw product brief into a consistent, implementation-ready spec pack under `specs/` (frontend, backend, API, AI) by coordinating specialist agents and enforcing a project's preferred stack as hard constraints. Use when the ask is "create architecture / generate specs / turn my brief into docs".
+
+Routing notes:
+- "I have a brief, give me the docs/specs" → `arch-orchestrator`.
+- "I have specs, give me a big parallelized build plan" → `swarm-architect` (or `task-master-planner` when you specifically want the Taskmaster JSON + GitHub-issue sync flow); for lighter single-PR planning stay on `blueprint`/`plan-orchestrate`.
+
 ## Routing rules by intent
 
 1. **"Help me plan / scope a big agent project"** → `blueprint`; if a plan already exists and needs an execution chain → `plan-orchestrate`.

@@ -24,6 +24,14 @@ reduced-motion, performance budget, Astro hydration boundaries) live in
 - `remotion-best-practices` — Remotion conventions, gotchas, and rules to follow.
 - `remotion-video-toolkit` — advanced Remotion: Lambda/Cloud Run/Node rendering, captions, 3D, charts, large component toolkit.
 
+## Folded spokes
+
+Additional spokes folded into this cluster. They sit alongside the motion/video spokes
+above and are routable the same way — load on demand by reading their `SKILL.md`.
+
+- `artifacts-builder` — scaffold + bundle elaborate multi-component HTML artifacts (React 18 + TypeScript + Vite + Tailwind + shadcn/ui), inlined to a single self-contained `bundle.html`. Use when the deliverable is a standalone interactive UI/app artifact (state, routing, shadcn components) rather than a page animation or rendered video.
+- `web-perf` — audit and optimize page-load performance via Chrome DevTools MCP: Core Web Vitals (LCP/INP/CLS), render-blocking resources, network dependency chains, layout shifts, caching, and accessibility gaps. Use to profile, debug, or optimize site speed / Lighthouse scores — including verifying that a heavy animation or hero stays within the cluster's performance budget.
+
 ## Routing Rules by Intent
 
 **First, classify the deliverable** (full criteria in `creative-frontend-core` → decision matrix):
@@ -41,6 +49,10 @@ reduced-motion, performance budget, Astro hydration boundaries) live in
 **Render-time (video) →**
 - Most tasks → `remotion`; check `remotion-best-practices` for conventions.
 - Cloud/Lambda rendering, captions, 3D, charts, data-driven batch → `remotion-video-toolkit`.
+
+**Standalone artifact / perf audit →** (folded spokes)
+- "Build a self-contained interactive UI/app artifact" (React + shadcn/ui, state/routing, bundle to one HTML file) → `artifacts-builder`.
+- "Audit / profile / optimize page-load performance, Core Web Vitals, Lighthouse, or site speed" — or check a hero/animation against the perf budget → `web-perf`.
 
 **Composition** (common): "Astro landing page with a scroll hero **and** an embedded promo
 video" → `astro-framework` (substrate) + `astro-gsap-scrolltrigger` (hero) + `remotion`

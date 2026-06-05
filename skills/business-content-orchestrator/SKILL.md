@@ -36,6 +36,20 @@ fundraising-sensitive.
 - Full find → score → warm-path → enrich → draft pipeline for high-value contacts → `lead-intelligence`
 - The standalone graph-ranking engine (bridge math, decay tuning, network-gap analysis) → `social-graph-ranker` *(the model `lead-intelligence` runs internally; break it out when the user wants the ranking itself)*
 
+## Folded spokes
+
+Additional specialists folded into this cluster. They cover **narrative craft** (long-form
+storytelling, fiction technique) and **internal/HR-facing writing** — adjacent to the
+go-to-market lanes above and sharing the same voice-first, evidence-backed discipline. Route to
+one when the named concern appears; load it on demand exactly like the spokes above.
+
+- Curated quote/aphorism library — theme matching, add/research/search, newsletter variety → `aphorisms` *(reach for the opener/closer quote when drafting a newsletter or article)*
+- Layered fiction system (Storr science + rhetorical figures) — story bibles, character arcs, chapters, prose → `writestory`
+- Autonomous multi-agent novel pipeline (Writer→Validator→Auditor→Reviser CLI, review gates) → `inkos-multi-agent-novel-writing` *(book-length production at scale; distinct from `writestory`'s single-author craft loop)*
+- Seven-step novel methodology guide — how to organize a novel project end-to-end → `novel-writer-workflow-guide`
+- Natural dialogue technique — character-consistent, subtext-driven conversation that reveals character and advances plot → `natural-dialogue-techniques` *(pair with `writestory`/`novel-writer-workflow-guide` when drafting dialogue scenes)*
+- Internal communications — 3P updates, leadership/company newsletters, FAQs, incident & status reports in standard company formats → `internal-comms`
+
 ## Standard Operating Flow
 
 1. Locate the task: which lane (publish / market / fund / reach) and which audience (public, investor, prospect).

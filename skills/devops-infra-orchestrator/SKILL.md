@@ -37,10 +37,17 @@ production deploy.
 - `homelab-pihole-dns` — Pi-hole install, blocklists, DoH, DHCP integration, local DNS records, broken-resolution troubleshooting.
 - `homelab-wireguard-vpn` — WireGuard server + peers, key generation, split- vs full-tunnel routing, remote access from mobile and laptop.
 
+## Folded spokes
+
+Additional spokes folded into this cluster; route to them the same way as the map above (load on demand).
+
+**Host security & hardening**
+- `healthcheck` — host security audit + risk-tolerance hardening for a machine running an agent runtime / gateway: OS firewall, listening ports, SSH, disk encryption, OS auto-updates, exposure review, plan-then-apply remediation with rollback, and scheduling periodic re-audits. Read-only assessment first; every state change needs explicit approval.
+
 ## Routing rules by intent
 
 - **"Set up / run containers locally"** → `docker-patterns`. Self-hosting it on a cluster → `uncloud`.
-- **"I just deployed — is it healthy?"** → `canary-watch`.
+- **"I just deployed — is it healthy?"** → `canary-watch`. **"Is this *host* secure / harden it before I expose it"** → `healthcheck` (OS firewall, ports, SSH, encryption, updates, exposure).
 - **"Make this project's toolchain reproducible / works-on-my-machine"** → `flox-environments`.
 - **A router/switch is misbehaving** → start read-only: `network-interface-health` (physical/link), `network-bgp-diagnostics` (routing), `cisco-ios-patterns` (IOS specifics). Automating the collection → `netmiko-ssh-automation`.
 - **About to push a device config** → `network-config-validation` first; on Cisco, pair with `cisco-ios-patterns`.

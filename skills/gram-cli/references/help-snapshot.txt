@@ -1,0 +1,112 @@
+# gram-cli help snapshot
+# cli: scripts/run-glam.sh
+# generated: 2026-02-21T19:05:28Z
+
+============================================================
+$ scripts/run-glam.sh --help
+============================================================
+Usage: glam [OPTIONS] COMMAND [ARGS]...
+
+  Instagram CLI tool for downloading posts, stories, and profiles.
+
+Options:
+  --version      Show the version and exit.
+  --config PATH  Path to config file
+  --json         JSON output
+  --quiet        Quiet mode
+  --help         Show this message and exit.
+
+Commands:
+  check       Verify credentials are working.
+  highlights  Download profile highlights (requires authentication).
+  login       Extract cookies from browser for authentication.
+  post        Download a single post by URL.
+  profile     Download profile posts and metadata.
+  stories     Download current stories (requires authentication).
+  whoami      Show logged-in account info.
+
+============================================================
+$ scripts/run-glam.sh check --help
+============================================================
+Usage: glam check [OPTIONS]
+
+  Verify credentials are working.
+
+Options:
+  --help  Show this message and exit.
+
+============================================================
+$ scripts/run-glam.sh whoami --help
+============================================================
+Usage: glam whoami [OPTIONS]
+
+  Show logged-in account info.
+
+Options:
+  --help  Show this message and exit.
+
+============================================================
+$ scripts/run-glam.sh login --help
+============================================================
+Usage: glam login [OPTIONS]
+
+  Extract cookies from browser for authentication.
+
+Options:
+  --chrome-profile TEXT   Chrome profile name
+  --firefox-profile TEXT  Firefox profile name
+  --save                  Save to config file
+  --print-env             Print export commands with raw credential values
+  --no-lock               Ignore browser lock by reading from a copied cookie
+                          DB
+  --help                  Show this message and exit.
+
+============================================================
+$ scripts/run-glam.sh profile --help
+============================================================
+Usage: glam profile [OPTIONS] USERNAME
+
+  Download profile posts and metadata.
+
+Options:
+  --output PATH    Output directory
+  --posts          Download posts
+  --stories        Download stories
+  --highlights     Download highlights
+  --limit INTEGER  Limit number of posts
+  --resume         Resume interrupted download
+  --help           Show this message and exit.
+
+============================================================
+$ scripts/run-glam.sh post --help
+============================================================
+Usage: glam post [OPTIONS] URL
+
+  Download a single post by URL.
+
+Options:
+  --output PATH  Output directory
+  --help         Show this message and exit.
+
+============================================================
+$ scripts/run-glam.sh stories --help
+============================================================
+Usage: glam stories [OPTIONS] USERNAME
+
+  Download current stories (requires authentication).
+
+Options:
+  --output PATH  Output directory
+  --help         Show this message and exit.
+
+============================================================
+$ scripts/run-glam.sh highlights --help
+============================================================
+Usage: glam highlights [OPTIONS] USERNAME
+
+  Download profile highlights (requires authentication).
+
+Options:
+  --output PATH  Output directory
+  --help         Show this message and exit.
+

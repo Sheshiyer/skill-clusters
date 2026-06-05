@@ -14,7 +14,9 @@
         "web-motion-library",
         "remotion",
         "remotion-best-practices",
-        "remotion-video-toolkit"
+        "remotion-video-toolkit",
+        "artifacts-builder",
+        "web-perf"
       ]
     },
     {
@@ -123,7 +125,8 @@
         "rust-orchestrator",
         "rust-core",
         "rust-patterns",
-        "rust-testing"
+        "rust-testing",
+        "rust-coding-skill"
       ]
     },
     {
@@ -138,7 +141,9 @@
         "swift-protocol-di-testing",
         "foundation-models-on-device",
         "ios-icon-gen",
-        "liquid-glass-design"
+        "liquid-glass-design",
+        "watchos",
+        "mobile-ios-design"
       ]
     },
     {
@@ -160,7 +165,10 @@
         "blueprint",
         "search-first",
         "plan-orchestrate",
-        "continuous-learning-v2"
+        "continuous-learning-v2",
+        "swarm-architect",
+        "task-master-planner",
+        "arch-orchestrator"
       ]
     },
     {
@@ -180,7 +188,11 @@
         "production-audit",
         "plankton-code-quality",
         "browser-qa",
-        "benchmark"
+        "benchmark",
+        "evals",
+        "optimize",
+        "autoresearch",
+        "markdown-rendering-regression"
       ]
     },
     {
@@ -225,7 +237,8 @@
         "fastapi-patterns",
         "pytorch-patterns",
         "recsys-pipeline-architect",
-        "mle-workflow"
+        "mle-workflow",
+        "textual"
       ]
     },
     {
@@ -319,7 +332,17 @@
         "clickhouse-io",
         "redis-patterns",
         "database-migrations",
-        "data-throughput-accelerator"
+        "data-throughput-accelerator",
+        "airflow-dag-patterns",
+        "backtesting-frameworks",
+        "data-quality-frameworks",
+        "data-storytelling",
+        "dbt-transformation-patterns",
+        "kpi-dashboard-design",
+        "ml-pipeline-workflow",
+        "postgresql",
+        "risk-metrics-calculation",
+        "spark-optimization"
       ]
     },
     {
@@ -340,7 +363,8 @@
         "homelab-wireguard-vpn",
         "flox-environments",
         "uncloud",
-        "canary-watch"
+        "canary-watch",
+        "healthcheck"
       ]
     },
     {
@@ -354,7 +378,14 @@
         "security-bounty-hunter",
         "repo-scan",
         "gateguard",
-        "safety-guard"
+        "safety-guard",
+        "secret-scanner",
+        "osint",
+        "recon",
+        "webassessment",
+        "promptinjection",
+        "annualreports",
+        "secupdates"
       ]
     },
     {
@@ -386,7 +417,18 @@
         "codebase-onboarding",
         "code-tour",
         "documentation-lookup",
-        "ck"
+        "ck",
+        "research",
+        "web-search",
+        "parser",
+        "summarize",
+        "fabric",
+        "youtube-transcript",
+        "apify",
+        "brightdata",
+        "meeting-insights-analyzer",
+        "fireflies",
+        "blogwatcher"
       ]
     },
     {
@@ -404,7 +446,13 @@
         "investor-materials",
         "investor-outreach",
         "lead-intelligence",
-        "social-graph-ranker"
+        "social-graph-ranker",
+        "aphorisms",
+        "writestory",
+        "inkos-multi-agent-novel-writing",
+        "novel-writer-workflow-guide",
+        "natural-dialogue-techniques",
+        "internal-comms"
       ]
     },
     {
@@ -420,7 +468,16 @@
         "videodb",
         "video-editing",
         "manim-video",
-        "ui-demo"
+        "ui-demo",
+        "social-content",
+        "twitter-automation",
+        "bird-cli",
+        "gram-cli",
+        "reddit-cli",
+        "discord",
+        "social-intake-orchestrator",
+        "x-bookmark-opportunity-skill",
+        "ai-content-pipeline"
       ]
     },
     {
@@ -444,7 +501,17 @@
         "workspace-surface-audit",
         "connections-optimizer",
         "dashboard-builder",
-        "git-workflow"
+        "git-workflow",
+        "connect",
+        "connect-apps",
+        "langsmith-fetch",
+        "supacode-cli",
+        "hyperframes-cli",
+        "developer-growth-analysis",
+        "ai-automation-workflows",
+        "coding-agent",
+        "model-usage",
+        "gemini"
       ]
     },
     {

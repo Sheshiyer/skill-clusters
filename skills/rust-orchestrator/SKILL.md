@@ -25,6 +25,19 @@ error type or shaping a public API.
 - **`rust-core`** *(shared reference)* — the error-strategy decision both spokes turn on, plus
   shared cargo conventions, the version/tooling matrix, and guardrails.
 
+## Folded spokes
+
+- **`rust-coding-skill`** — deep-dive authoring companion to `rust-patterns`. Goes
+  finer-grained on **data modeling** (`struct`/`enum`/`newtype`, `&str` vs `String`,
+  `Cow`/`Arc` ownership choices, modeling invariants with types like `NonZeroU32`),
+  **impl-block organization** (placement, constructor/getter/mutation grouping, builders),
+  **macros** (derive, focused declarative macros, proc-macro boundaries), and **build-speed
+  tuning** (`mold` linker, `sccache`, `cargo check` iteration, workspace splitting,
+  dev/release profiles). Route here when the ask is specifically about *how to shape the
+  types/impls/macros* or *speed up compiles*; route to `rust-patterns` for broader idiomatic
+  review (borrow-checker fights, concurrency, error propagation) and to `rust-core` for the
+  error-strategy and toolchain model both share.
+
 ## Routing rules by intent
 
 **Writing or shaping code → `rust-patterns`**
@@ -34,6 +47,9 @@ error type or shaping a public API.
 - Modeling states as enums, newtypes, builders, trait objects vs generics → `rust-patterns`
 - Concurrency — `Arc<Mutex<T>>`, channels, async/Tokio → `rust-patterns`
 - Crate/module structure, `pub` surface, visibility → `rust-patterns`
+- Detailed data modeling (`struct`/`enum`/`newtype`, ownership of each field), impl-block
+  layout, writing macros, or **build-speed** tuning (`mold`, `sccache`, `cargo check`,
+  workspaces) → `rust-coding-skill`
 
 **Proving or measuring code → `rust-testing`**
 - "Write tests for this" / add coverage → `rust-testing`

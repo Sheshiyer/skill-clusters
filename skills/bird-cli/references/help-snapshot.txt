@@ -1,0 +1,1702 @@
+# bird help snapshot
+# generated: 2026-02-21T18:22:12Z
+
+============================================================
+$ bird --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird [options] [command]
+
+Post tweets and replies via Twitter/X GraphQL API
+
+Options:
+  -V, --version                             output the version number
+  --auth-token <token>                      Twitter auth_token cookie
+  --ct0 <token>                             Twitter ct0 cookie
+  --chrome-profile <name>                   Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>               Chrome/Chromium profile directory or cookie DB path for cookie extraction
+  --firefox-profile <name>                  Firefox profile name for cookie extraction
+  --cookie-timeout <ms>                     Cookie extraction timeout in milliseconds (keychain/OS helpers)
+  --cookie-source <source>                  Cookie source for browser cookie extraction (repeatable)
+  --media <path>                            Attach media file (repeatable, up to 4 images or 1 video)
+  --alt <text>                              Alt text for the corresponding --media (repeatable)
+  --timeout <ms>                            Request timeout in milliseconds
+  --quote-depth <depth>                     Max quoted tweet depth (default: 1; 0 disables)
+  --plain                                   Plain output (stable, no emoji, no color)
+  --no-emoji                                Disable emoji output
+  --no-color                                Disable ANSI colors (or set NO_COLOR)
+  -h, --help                                display help for command
+
+Commands:
+  help [command]                            Show help for a command
+  query-ids [options]                       Show or refresh cached Twitter GraphQL query IDs
+  tweet <text>                              Post a new tweet
+  reply <tweet-id-or-url> <text>            Reply to an existing tweet
+  read [options] <tweet-id-or-url>          Read/fetch a tweet by ID or URL
+  replies [options] <tweet-id-or-url>       List replies to a tweet (by ID or URL)
+  thread [options] <tweet-id-or-url>        Show the full conversation thread containing the tweet
+  search [options] <query>                  Search for tweets
+  mentions [options]                        Find tweets mentioning a user (defaults to current user)
+  bookmarks [options]                       Get your bookmarked tweets
+  unbookmark <tweet-id-or-url...>           Remove bookmarked tweets
+  follow <username-or-id>                   Follow a user
+  unfollow <username-or-id>                 Unfollow a user
+  lists [options]                           Get your Twitter lists
+  list-timeline [options] <list-id-or-url>  Get tweets from a list timeline
+  home [options]                            Get your home timeline ("For You" feed)
+  following [options]                       Get users that you (or another user) follow
+  followers [options]                       Get users that follow you (or another user)
+  likes [options]                           Get your liked tweets
+  whoami                                    Show which Twitter account the current credentials belong to
+  about [options] <username>                Get account origin and location information for a user
+  user-tweets [options] <handle>            Get tweets from a user's profile timeline
+  news|trending [options]                   Fetch AI-curated news and trending topics from Explore tabs
+  check                                     Check credential availability
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird query-ids --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird query-ids [options]
+
+Show or refresh cached Twitter GraphQL query IDs
+
+Options:
+  --json                       Output as JSON
+  --fresh                      Force refresh (downloads X client bundles)
+                               (default: false)
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird tweet --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird tweet [options] <text>
+
+Post a new tweet
+
+Arguments:
+  text                         Tweet text
+
+Options:
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird reply --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird reply [options] <tweet-id-or-url> <text>
+
+Reply to an existing tweet
+
+Arguments:
+  tweet-id-or-url              Tweet ID or URL to reply to
+  text                         Reply text
+
+Options:
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird read --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird read [options] <tweet-id-or-url>
+
+Read/fetch a tweet by ID or URL
+
+Arguments:
+  tweet-id-or-url              Tweet ID or URL to read
+
+Options:
+  --json                       Output as JSON
+  --json-full                  Output as JSON with full raw API response in _raw
+                               field
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird replies --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird replies [options] <tweet-id-or-url>
+
+List replies to a tweet (by ID or URL)
+
+Arguments:
+  tweet-id-or-url              Tweet ID or URL
+
+Options:
+  --all                        Fetch all replies (paged)
+  --max-pages <number>         Fetch N pages (implies pagination)
+  --delay <ms>                 Delay in ms between page fetches (default:
+                               "1000")
+  --cursor <string>            Resume pagination from a cursor
+  --json                       Output as JSON
+  --json-full                  Output as JSON with full raw API response in _raw
+                               field
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird thread --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird thread [options] <tweet-id-or-url>
+
+Show the full conversation thread containing the tweet
+
+Arguments:
+  tweet-id-or-url              Tweet ID or URL
+
+Options:
+  --all                        Fetch all thread tweets (paged)
+  --max-pages <number>         Fetch N pages (implies pagination)
+  --delay <ms>                 Delay in ms between page fetches (default:
+                               "1000")
+  --cursor <string>            Resume pagination from a cursor
+  --json                       Output as JSON
+  --json-full                  Output as JSON with full raw API response in _raw
+                               field
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird search --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird search [options] <query>
+
+Search for tweets
+
+Arguments:
+  query                        Search query (e.g., "@clawdbot" or
+                               "from:clawdbot")
+
+Options:
+  -n, --count <number>         Number of tweets to fetch (default: "10")
+  --all                        Fetch all search results (paged)
+  --max-pages <number>         Stop after N pages when using --all
+  --cursor <string>            Resume pagination from a cursor
+  --json                       Output as JSON
+  --json-full                  Output as JSON with full raw API response in _raw
+                               field
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird mentions --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird mentions [options]
+
+Find tweets mentioning a user (defaults to current user)
+
+Options:
+  -u, --user <handle>          User handle (e.g. @steipete)
+  -n, --count <number>         Number of tweets to fetch (default: "10")
+  --json                       Output as JSON
+  --json-full                  Output as JSON with full raw API response in _raw
+                               field
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird bookmarks --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird bookmarks [options]
+
+Get your bookmarked tweets
+
+Options:
+  -n, --count <number>         Number of bookmarks to fetch (default: "20")
+  --folder-id <id>             Bookmark folder (collection) id
+  --all                        Fetch all bookmarks (paged)
+  --max-pages <number>         Stop after N pages when using --all
+  --cursor <string>            Resume pagination from a cursor
+  --expand-root-only           Only expand threads when bookmarked tweet is root
+  --author-chain               Only include author self-reply chains connected
+                               to the bookmark
+  --author-only                Include all tweets from bookmarked tweet author
+                               in thread
+  --full-chain-only            Save entire reply chain connected to the
+                               bookmarked tweet
+  --include-ancestor-branches  Include sibling branches for ancestors when using
+                               --full-chain-only
+  --include-parent             Include direct parent tweet for non-root
+                               bookmarks
+  --thread-meta                Add metadata fields (isThread, threadPosition,
+                               etc.)
+  --sort-chronological         Sort output globally oldest -> newest
+  --json                       Output as JSON
+  --json-full                  Output as JSON with full raw API response in _raw
+                               field
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird unbookmark --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird unbookmark [options] <tweet-id-or-url...>
+
+Remove bookmarked tweets
+
+Arguments:
+  tweet-id-or-url              Tweet IDs or URLs to remove from bookmarks
+
+Options:
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird follow --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird follow [options] <username-or-id>
+
+Follow a user
+
+Arguments:
+  username-or-id               Username (with or without @) or user ID to follow
+
+Options:
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird unfollow --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird unfollow [options] <username-or-id>
+
+Unfollow a user
+
+Arguments:
+  username-or-id               Username (with or without @) or user ID to
+                               unfollow
+
+Options:
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird lists --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird lists [options]
+
+Get your Twitter lists
+
+Options:
+  --member-of                  Show lists you are a member of (instead of owned
+                               lists)
+  -n, --count <number>         Number of lists to fetch (default: "100")
+  --json                       Output as JSON
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird list-timeline --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird list-timeline [options] <list-id-or-url>
+
+Get tweets from a list timeline
+
+Options:
+  -n, --count <number>         Number of tweets to fetch (default: "20")
+  --all                        Fetch all tweets from list (paged). WARNING: your
+                               account might get banned using this flag
+  --max-pages <number>         Fetch N pages (implies --all)
+  --cursor <string>            Resume pagination from a cursor
+  --json                       Output as JSON
+  --json-full                  Output as JSON with full raw API response in _raw
+                               field
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird home --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird home [options]
+
+Get your home timeline ("For You" feed)
+
+Options:
+  -n, --count <number>         Number of tweets to fetch (default: "20")
+  --following                  Get "Following" feed (chronological) instead of
+                               "For You"
+  --json                       Output as JSON
+  --json-full                  Output as JSON with full raw API response in _raw
+                               field
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird following --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird following [options]
+
+Get users that you (or another user) follow
+
+Options:
+  --user <userId>              User ID to get following for (defaults to current
+                               user)
+  -n, --count <number>         Number of users to fetch per page (default: "20")
+  --cursor <cursor>            Cursor for pagination (from previous response)
+  --all                        Fetch all users (paginate automatically)
+  --max-pages <number>         Stop after N pages when using --all
+  --json                       Output as JSON
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird followers --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird followers [options]
+
+Get users that follow you (or another user)
+
+Options:
+  --user <userId>              User ID to get followers for (defaults to current
+                               user)
+  -n, --count <number>         Number of users to fetch per page (default: "20")
+  --cursor <cursor>            Cursor for pagination (from previous response)
+  --all                        Fetch all users (paginate automatically)
+  --max-pages <number>         Stop after N pages when using --all
+  --json                       Output as JSON
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird likes --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird likes [options]
+
+Get your liked tweets
+
+Options:
+  -n, --count <number>         Number of likes to fetch (default: "20")
+  --all                        Fetch all likes (paged)
+  --max-pages <number>         Stop after N pages when using --all
+  --cursor <string>            Resume pagination from a cursor
+  --json                       Output as JSON
+  --json-full                  Output as JSON with full raw API response in _raw
+                               field
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird whoami --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird whoami [options]
+
+Show which Twitter account the current credentials belong to
+
+Options:
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird about --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird about [options] <username>
+
+Get account origin and location information for a user
+
+Arguments:
+  username                     Twitter username (with or without @)
+
+Options:
+  --json                       Output as JSON
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird user-tweets --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird user-tweets [options] <handle>
+
+Get tweets from a user's profile timeline
+
+Arguments:
+  handle                       Username to fetch tweets from (e.g., @steipete or
+                               steipete)
+
+Options:
+  -n, --count <number>         Number of tweets to fetch (default: "20")
+  --max-pages <number>         Stop after N pages (max: 10)
+  --delay <ms>                 Delay in ms between page fetches (default:
+                               "1000")
+  --cursor <string>            Resume pagination from a cursor
+  --json                       Output as JSON
+  --json-full                  Output as JSON with full raw API response in _raw
+                               field
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Command Examples
+  bird user-tweets @steipete
+    Get recent tweets from a user
+  bird user-tweets steipete -n 10
+    Get 10 tweets (@ is optional)
+  bird user-tweets @steipete -n 50
+    Fetch 50 tweets (paged)
+  bird user-tweets @steipete --max-pages 3 -n 200
+    Safety cap (max 3 pages)
+  bird user-tweets @steipete --json
+    Output as JSON
+  bird user-tweets @steipete --cursor "DAABCg..."
+    Resume from cursor
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird news --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird news|trending [options]
+
+Fetch AI-curated news and trending topics from Explore tabs
+
+Options:
+  -n, --count <number>         Number of items to fetch (default: "10")
+  --ai-only                    Show only AI-curated news items
+  --with-tweets                Also fetch related tweets for each news item
+  --tweets-per-item <number>   Number of tweets to fetch per news item (default:
+                               5) (default: "5")
+  --for-you                    Fetch only from For You tab
+  --news-only                  Fetch only from News tab
+  --sports                     Fetch only from Sports tab
+  --entertainment              Fetch only from Entertainment tab
+  --trending-only              Fetch only from Trending tab
+  --json                       Output as JSON
+  --json-full                  Output as JSON with full raw API response in _raw
+                               field
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+
+============================================================
+$ bird check --help
+============================================================
+bird 0.8.0 (d3dd4a0d) — fast X CLI for tweeting, replying, and reading
+Usage: bird check [options]
+
+Check credential availability
+
+Options:
+  -h, --help                   display help for command
+
+Global Options:
+  -V, --version                output the version number
+  --auth-token <token>         Twitter auth_token cookie
+  --ct0 <token>                Twitter ct0 cookie
+  --chrome-profile <name>      Chrome profile name for cookie extraction
+  --chrome-profile-dir <path>  Chrome/Chromium profile directory or cookie DB
+                               path for cookie extraction
+  --firefox-profile <name>     Firefox profile name for cookie extraction
+  --cookie-timeout <ms>        Cookie extraction timeout in milliseconds
+                               (keychain/OS helpers)
+  --cookie-source <source>     Cookie source for browser cookie extraction
+                               (repeatable)
+  --media <path>               Attach media file (repeatable, up to 4 images or
+                               1 video)
+  --alt <text>                 Alt text for the corresponding --media
+                               (repeatable)
+  --timeout <ms>               Request timeout in milliseconds
+  --quote-depth <depth>        Max quoted tweet depth (default: 1; 0 disables)
+  --plain                      Plain output (stable, no emoji, no color)
+  --no-emoji                   Disable emoji output
+  --no-color                   Disable ANSI colors (or set NO_COLOR)
+
+Examples
+  bird whoami
+    Show the logged-in account via GraphQL cookies
+
+  bird --firefox-profile default-release whoami
+    Use Firefox profile cookies
+
+  bird tweet "hello from bird"
+    Send a tweet
+
+  bird 1234567890123456789 --json
+    Read a tweet (ID or URL shorthand for `read`) and print JSON
+
+Shortcuts
+  bird <tweet-id-or-url> [--json]
+    Shorthand for `bird read <tweet-id-or-url>`
+
+JSON Output
+  Add --json to: read, replies, thread, search, mentions, bookmarks, likes, following, followers, about, lists, list-timeline, user-tweets, query-ids
+  Add --json-full to include raw API response in _raw field (tweet commands only)
+  (Run bird <command> --help to see per-command flags.)
+
+
+Config
+  Reads ~/.config/bird/config.json5 and ./.birdrc.json5 (JSON5)
+  Supports: chromeProfile, chromeProfileDir, firefoxProfile, cookieSource, cookieTimeoutMs, timeoutMs, quoteDepth
+
+Env
+  NO_COLOR, BIRD_TIMEOUT_MS, BIRD_COOKIE_TIMEOUT_MS, BIRD_QUOTE_DEPTH
+

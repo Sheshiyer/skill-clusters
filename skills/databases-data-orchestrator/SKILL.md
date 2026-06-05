@@ -42,6 +42,34 @@ read it before picking a store or planning a schema change.
 - **"This backfill/ETL is too slow."** → `data-throughput-accelerator`; pair with the target engine spoke for native-load specifics.
 - **Polyglot ask** (e.g. "Postgres for app data + ClickHouse for analytics + Redis cache") → fan out to each engine spoke; route the cutover through `database-migrations`.
 
+## Folded spokes
+
+Additional data-layer specialists folded into this cluster. Route to them on demand the same way as the spokes above (load `skills/<spoke-name>/SKILL.md`). They cover the pipeline/transform/quality/ML/analytics concerns that sit alongside the engine spokes.
+
+**Pipelines & orchestration / ETL**
+- Apache Airflow DAGs — operators, sensors, scheduling, testing, deployment → `airflow-dag-patterns` *(USE WHEN building/orchestrating batch pipelines or scheduling jobs; pair with `data-throughput-accelerator` for the heavy load step.)*
+- Apache Spark tuning — partitioning, caching, shuffle, memory → `spark-optimization` *(USE WHEN a Spark job is slow or won't scale.)*
+
+**Transform & analytics engineering**
+- dbt models — organization, tests, docs, incremental strategies → `dbt-transformation-patterns` *(USE WHEN building warehouse transformations / analytics models; the SQL transform layer above `clickhouse-io`/`postgres-patterns`.)*
+
+**Data quality & validation**
+- Data quality frameworks — Great Expectations, dbt tests, data contracts → `data-quality-frameworks` *(USE WHEN adding validation rules, quality gates, or contracts to a pipeline; this is the correctness gate `data-throughput-accelerator` hands off to.)*
+
+**Relational schema design (PostgreSQL deep-dive)**
+- PostgreSQL table design — data types, indexing, constraints, advanced features → `postgresql` *(USE WHEN designing a Postgres schema from scratch; complements `postgres-patterns`, which owns query tuning/RLS/pooling.)*
+
+**MLOps**
+- End-to-end ML pipelines — data prep → training → validation → deployment → `ml-pipeline-workflow` *(USE WHEN building an ML training/deployment pipeline on top of the data layer.)*
+
+**Business analytics & presentation**
+- KPI dashboard design — metric selection, viz best practices, real-time monitoring → `kpi-dashboard-design` *(USE WHEN designing a business dashboard or choosing metrics.)*
+- Data storytelling — turning analytics into stakeholder narratives → `data-storytelling` *(USE WHEN presenting analytics / building an exec report from data.)*
+
+**Quantitative finance data**
+- Backtesting frameworks — look-ahead/survivorship bias, transaction costs → `backtesting-frameworks` *(USE WHEN building/validating a trading strategy backtest.)*
+- Risk metrics — VaR, CVaR, Sharpe, Sortino, drawdown → `risk-metrics-calculation` *(USE WHEN computing portfolio risk metrics or wiring risk limits.)*
+
 ## Standard flow
 
 1. Locate the task: which **store** (relational / analytical / in-memory / ORM-managed) and which **concern** (model → query → optimize → migrate → move).

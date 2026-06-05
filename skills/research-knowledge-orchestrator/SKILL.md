@@ -37,6 +37,31 @@ lives in `research-knowledge-core`; read it before promising coverage or mixing 
 - Up-to-date library/framework docs (named framework, API, setup) → `documentation-lookup`
 - Persist project context across sessions; resume where you left off → `ck`
 
+## Folded spokes (content extraction, scraping, transcripts, monitoring)
+
+Routable spokes folded into this cluster. They cover the *acquisition and
+distillation* lanes — getting raw content out of the web/feeds/recordings and
+turning it into structured, summarized evidence — feeding the research lanes above.
+
+**General research & content distillation**
+- Three-mode research (quick/standard/extensive) + content extraction; 240+ Fabric patterns → `research`
+- Current open-web search with source extraction and evidence gathering → `web-search`
+- Apply a named Fabric pattern (extract wisdom, summarize, threat model, etc.) to content → `fabric`
+- Summarize/transcribe a URL, podcast, or local file (text + transcript fallback) → `summarize`
+
+**Parse & extract structured content**
+- Parse URLs, files, videos, PDFs, articles to structured JSON (entities, transcripts, batch) → `parser`
+- Fetch + summarize a YouTube video's transcript (proxy-backed for cloud IP blocks) → `youtube-transcript`
+
+**Scrape the web at scale**
+- Social-media / e-commerce / business-data scraping via Apify actors (Twitter, IG, LinkedIn, TikTok, Maps, Amazon) → `apify`
+- Progressive, tiered URL scraping via Bright Data → `brightdata`
+
+**Meetings & feeds monitoring**
+- Analyze meeting transcripts/recordings for communication patterns and actionable feedback → `meeting-insights-analyzer`
+- Interact with Fireflies meeting data and the Fireflies API (via Membrane) → `fireflies`
+- Monitor blogs and RSS/Atom feeds for updates (blogwatcher CLI) → `blogwatcher`
+
 ## Standard Operating Flow
 
 1. Classify the ask: which **question type** (current fact · comparison · literature · IP · genomic · codebase · API reference · resume context) and which **evidence depth**.
