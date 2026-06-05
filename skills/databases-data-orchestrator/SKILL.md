@@ -70,6 +70,25 @@ Additional data-layer specialists folded into this cluster. Route to them on dem
 - Backtesting frameworks — look-ahead/survivorship bias, transaction costs → `backtesting-frameworks` *(USE WHEN building/validating a trading strategy backtest.)*
 - Risk metrics — VaR, CVaR, Sharpe, Sortino, drawdown → `risk-metrics-calculation` *(USE WHEN computing portfolio risk metrics or wiring risk limits.)*
 
+## Picked-up spokes
+
+Standalone data-layer skills imported from external libraries (origin noted in each spoke's frontmatter). Route to them on demand the same way (load `skills/<spoke-name>/SKILL.md`).
+
+**Durable workflows / reliable data ops (DBOS)**
+- Go application with DBOS durable workflows, steps, queues → `dbos-golang` *(USE WHEN adding fault-tolerant, exactly-once workflows to a Go service backed by Postgres.)*
+- Python application with DBOS durable workflows, steps, queues → `dbos-python` *(USE WHEN adding fault-tolerant, exactly-once workflows to a Python service backed by Postgres.)*
+- TypeScript application with DBOS durable workflows, steps, queues → `dbos-typescript` *(USE WHEN adding fault-tolerant, exactly-once workflows to a TypeScript service backed by Postgres.)*
+
+**Serverless Postgres**
+- Neon serverless Postgres — branching, connection pooling, Prisma/Drizzle integration → `neon-postgres` *(USE WHEN running Postgres on Neon, setting up DB branching per preview/PR, or wiring the serverless driver/pooler; complements `postgres-patterns` query tuning.)*
+
+**Graph & scientific data (Python)**
+- NetworkX graph modeling and algorithms — shortest path, centrality, community detection → `networkx` *(USE WHEN the data is a graph/network and you need graph algorithms or connectivity analysis in Python.)*
+- Biopython bioinformatics — sequence/structure parsing, NCBI/Entrez, phylogenetics → `biopython` *(USE WHEN parsing biological file formats or running sequence/structure analysis in Python.)*
+
+**Codebase structural memory**
+- Data Structure Protocol — persistent dependency/public-API map for agents over a codebase → `data-structure-protocol` *(USE WHEN an agent must reason over a large codebase's structure without re-reading the whole repo.)*
+
 ## Standard flow
 
 1. Locate the task: which **store** (relational / analytical / in-memory / ORM-managed) and which **concern** (model → query → optimize → migrate → move).

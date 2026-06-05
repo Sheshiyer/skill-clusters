@@ -717,7 +717,16 @@
         "programmatic-seo",
         "google-official-seo-guide",
         "site-architecture",
-        "searchintentautomation"
+        "searchintentautomation",
+        "seo-competitor-pages",
+        "seo-content",
+        "seo-dataforseo",
+        "seo-hreflang",
+        "seo-images",
+        "seo-page",
+        "seo-plan",
+        "seo-sitemap",
+        "seo-technical"
       ]
     },
     {
@@ -817,7 +826,9 @@
         "video-frames",
         "ai-video-director",
         "gifgrep",
-        "slack-gif-creator"
+        "slack-gif-creator",
+        "imagen",
+        "seo-image-gen"
       ]
     },
     {
@@ -833,7 +844,9 @@
         "nano-pdf",
         "notebooklm",
         "drawio-diagrams-enhanced",
-        "mermaid-to-gif"
+        "mermaid-to-gif",
+        "readme",
+        "screenshots"
       ]
     },
     {

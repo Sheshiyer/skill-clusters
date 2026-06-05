@@ -9,12 +9,12 @@
   "pointer": "~/.agents/skill-clusters",
   "archive": "~/.agents/skills-archive",
   "counts": {
-    "total_indexed": 682,
+    "total_indexed": 695,
     "clusters": 39,
     "active-hub": 52,
-    "active-spoke": 396,
+    "active-spoke": 405,
     "deferred-hub": 26,
-    "deferred-spoke": 133,
+    "deferred-spoke": 137,
     "archived": 75
   },
   "clusters": {
@@ -240,7 +240,7 @@
       "title": "Growth Seo (from library)",
       "orchestrator": "growth-seo-orchestrator",
       "core": "growth-seo-core",
-      "spokeCount": 8
+      "spokeCount": 17
     },
     "growth-content": {
       "tier": "active",
@@ -275,14 +275,14 @@
       "title": "Media Gen (from library)",
       "orchestrator": "media-gen-orchestrator",
       "core": "media-gen-core",
-      "spokeCount": 11
+      "spokeCount": 13
     },
     "documents": {
       "tier": "deferred",
       "title": "Documents (from library)",
       "orchestrator": "documents-orchestrator",
       "core": "documents-core",
-      "spokeCount": 8
+      "spokeCount": 10
     },
     "extra-languages": {
       "tier": "deferred",
@@ -5009,6 +5009,87 @@
       "path": "~/.agents/skill-clusters/skills/searchintentautomation/SKILL.md",
       "activate": null
     },
+    "seo-competitor-pages": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo-competitor-pages/SKILL.md",
+      "activate": null
+    },
+    "seo-content": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo-content/SKILL.md",
+      "activate": null
+    },
+    "seo-dataforseo": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo-dataforseo/SKILL.md",
+      "activate": null
+    },
+    "seo-hreflang": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo-hreflang/SKILL.md",
+      "activate": null
+    },
+    "seo-images": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo-images/SKILL.md",
+      "activate": null
+    },
+    "seo-page": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo-page/SKILL.md",
+      "activate": null
+    },
+    "seo-plan": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo-plan/SKILL.md",
+      "activate": null
+    },
+    "seo-sitemap": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo-sitemap/SKILL.md",
+      "activate": null
+    },
+    "seo-technical": {
+      "cluster": "growth-seo",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo-technical/SKILL.md",
+      "activate": null
+    },
     "growth-content-orchestrator": {
       "cluster": "growth-content",
       "tier": "active",
@@ -5639,6 +5720,24 @@
       "path": "~/.agents/skill-clusters/skills/slack-gif-creator/SKILL.md",
       "activate": "node scripts/tier.mjs --activate media-gen --apply"
     },
+    "imagen": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/imagen/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "seo-image-gen": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/seo-image-gen/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
     "documents-orchestrator": {
       "cluster": "documents",
       "tier": "deferred",
@@ -5727,6 +5826,24 @@
       "status": "deferred-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/mermaid-to-gif/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate documents --apply"
+    },
+    "readme": {
+      "cluster": "documents",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/readme/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate documents --apply"
+    },
+    "screenshots": {
+      "cluster": "documents",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/screenshots/SKILL.md",
       "activate": "node scripts/tier.mjs --activate documents --apply"
     },
     "extra-languages-orchestrator": {

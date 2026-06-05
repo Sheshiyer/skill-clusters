@@ -1,6 +1,6 @@
 ---
 name: networkx
-description: "NetworkX is a Python package for creating, manipulating, and analyzing complex networks and graphs."
+description: "NetworkX is a Python package for creating, manipulating, and analyzing complex networks and graphs. USE WHEN modeling graph/network data, running graph algorithms (shortest path, centrality, community detection), or analyzing relationships and connectivity in Python."
 license: 3-clause BSD license
 metadata:
     skill-author: K-Dense Inc.
@@ -8,6 +8,7 @@ risk: unknown
 source: "https://github.com/networkx/networkx"
 cluster: databases-data
 version: 1.0.0
+origin: "antigravity-awesome-skills (MIT)"
 ---
 
 # NetworkX

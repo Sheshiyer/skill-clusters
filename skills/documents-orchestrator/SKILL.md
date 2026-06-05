@@ -31,6 +31,16 @@ before you pick a tool, because the choice locks which spoke can touch the file 
 - Professional draw.io diagrams (flowcharts, BPMN, WBS/Gantt/RACI, network, UML) → `drawio-diagrams-enhanced`
 - Animate a Mermaid diagram into a GIF → `mermaid-to-gif`
 
+## Picked-up spokes
+
+Additional documents spokes folded in from the antigravity-awesome-skills library (MIT). Route to these the same way — load on demand by reading their `SKILL.md`.
+
+**Author project docs**
+- Write an absurdly thorough `README.md` after deep codebase exploration (tech stack, getting-started, architecture, env vars, scripts, testing, deployment, troubleshooting) → `readme`
+
+**Rendered marketing artifacts**
+- Capture true-retina (2x) marketing screenshots of an app with Playwright — discover routes/features from the codebase, handle login, then shoot each view (Product Hunt / social / landing / docs) → `screenshots` *(one-way render gate: produces PNGs you cannot edit back into the app)*
+
 ## Standard Operating Flow
 
 1. Classify the task: which **format** (DOCX/PDF/PPTX/XLSX/diagram/site) and which **intent** (create → edit → extract → convert → publish).

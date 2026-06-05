@@ -39,6 +39,22 @@ modality** — lives in `media-gen-core`; read it before picking an image or vid
 - Search GIF providers, download, extract stills/sheets → `gifgrep`
 - Author a size-constrained animated GIF for Slack → `slack-gif-creator`
 
+## Picked-up spokes
+
+Additional image-generation spokes (picked up from antigravity-awesome-skills, MIT). Route to these
+alongside the generators above:
+
+- **Standalone Gemini image CLI** — generate an image from a prompt with *only* a `GEMINI_API_KEY`
+  and stdlib Python, no MCP server (good for UI placeholders, docs illustrations, icons) → `imagen`
+- **SEO-optimized image assets** — OG/social cards, blog heroes, schema `ImageObject` visuals,
+  product shots, infographics, each with per-use-case aspect ratio + resolution and a post-gen SEO
+  checklist (alt text, WebP, schema, `og:image` tags) → `seo-image-gen`
+
+Routing note: prefer `seo-image-gen` when the image is destined for a page/social card and must be
+search/social optimized; prefer `imagen` for a quick subscription-free local generate; prefer the
+plan-backed generators (`gpt-image-2`, `nano-banana-2`, `openai-image-gen`) when their specific
+backend/capability (multi-image input, character consistency, batch gallery) is required.
+
 ## Standard Operating Flow
 
 1. Locate the task: which **modality** (image / 3D / video / GIF) and which **stage** (generate →

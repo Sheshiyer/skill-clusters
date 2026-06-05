@@ -1,7 +1,6 @@
 ---
 name: neon-postgres
-description: Expert patterns for Neon serverless Postgres, branching, connection
-  pooling, and Prisma/Drizzle integration
+description: "Expert patterns for Neon serverless Postgres — branching, connection pooling, and Prisma/Drizzle integration. USE WHEN running Postgres on Neon, setting up per-PR/preview DB branches, or wiring the serverless driver/pooler from a serverless or edge app."
 risk: safe
 source: vibeship-spawner-skills (Apache 2.0)
 date_added: 2026-02-27

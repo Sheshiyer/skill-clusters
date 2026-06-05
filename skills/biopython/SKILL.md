@@ -1,6 +1,6 @@
 ---
 name: biopython
-description: "Biopython is a comprehensive set of freely available Python tools for biological computation. It provides functionality for sequence manipulation, file I/O, database access, structural bioinformatics, phylogenetics, and many other bioinformatics tasks."
+description: "Biopython is a comprehensive set of freely available Python tools for biological computation — sequence manipulation, file I/O, database access, structural bioinformatics, and phylogenetics. USE WHEN parsing FASTA/GenBank or other bio file formats, querying NCBI/Entrez, or running sequence/structure/phylogenetic analysis in Python."
 license: Unknown
 metadata:
     skill-author: K-Dense Inc.
@@ -8,6 +8,7 @@ risk: unknown
 source: "https://github.com/biopython/biopython"
 cluster: databases-data
 version: 1.0.0
+origin: "antigravity-awesome-skills (MIT)"
 ---
 
 # Biopython: Computational Molecular Biology in Python

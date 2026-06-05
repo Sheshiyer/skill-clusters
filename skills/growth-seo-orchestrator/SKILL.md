@@ -33,6 +33,25 @@ will rank.
 - Audit, "why am I not ranking," technical/on-page issues, traffic drop, Core Web Vitals → `seo-audit`
 - Get cited by LLMs / appear in AI Overviews, ChatGPT, Perplexity (AEO/GEO/LLMO) → `ai-seo`
 
+## Picked-up spokes
+
+Granular execution specialists folded in from the claude-seo library (MIT). The 8 spokes above stay the primary map; route to these when the task is narrower or needs live data. They complement, not replace, the spokes above (e.g. `seo-audit` stays the entry for "why am I not ranking"; drop to `seo-technical`/`seo-page` for a deep crawl/single-page pass).
+
+**Diagnose at finer grain**
+- One URL, full on-page + content + schema + image + meta pass with a score card → `seo-page`
+- Infrastructure audit — crawlability, indexability, security headers, Core Web Vitals, JS rendering, robots.txt / AI-crawler access, IndexNow → `seo-technical`
+- Content-only review — E-E-A-T, readability, thin-content risk, AI-citation readiness → `seo-content`
+- Image SEO + CWV — alt text, WebP/AVIF, srcset, lazy loading, CLS → `seo-images`
+
+**Build & validate artifacts**
+- Competitor comparison / "X vs Y" / alternatives / roundup pages with schema → `seo-competitor-pages`
+- Generate or validate an XML sitemap (format, limits, lastmod, canonical hygiene) → `seo-sitemap`
+- Hreflang / international SEO — validate or generate locale alternates → `seo-hreflang`
+
+**Plan & pull live data**
+- Full strategic SEO plan/roadmap with industry templates, competitive analysis, KPIs, phasing → `seo-plan`
+- Live SEO data (real SERPs, keyword volumes/difficulty/intent, backlinks, on-page, LLM mentions) via the DataForSEO MCP → `seo-dataforseo` (feeds every other spoke when available)
+
 ## Standard Operating Flow
 
 1. Locate the task: which funnel stage (understand → research → architect → produce → optimize) and which concern.
