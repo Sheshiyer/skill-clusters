@@ -4,6 +4,8 @@
 // NVIDIA_API_KEY / NIM_API_KEY in the env (or a .env the caller loads) and these activate.
 // Models are env-overridable so swapping the embedder/VLM is a one-line change (Tier-B requirement).
 
+import './load-env.mjs';   // populate NVIDIA_API_KEY from the user's env files (in-process, never shell-sourced)
+
 const BASE = process.env.NIM_BASE_URL || 'https://integrate.api.nvidia.com/v1';
 const KEY = () => process.env.NVIDIA_API_KEY || process.env.NIM_API_KEY || null;
 export const hasKey = () => !!KEY();
