@@ -9,3 +9,7 @@ dist/
 .env.local
 .agents/skills.backup/
 feedback/*.jsonl
+taste/corpus/shots/
+taste/corpus/*.jsonl
+taste/index/
+taste/feedback/*.jsonl
