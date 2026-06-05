@@ -12,4 +12,5 @@ feedback/*.jsonl
 taste/corpus/shots/
 taste/corpus/*.jsonl
 taste/index/
+taste/brands/*.json
 taste/feedback/*.jsonl
