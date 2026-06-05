@@ -12,6 +12,13 @@ version: 1.0.0
 
 # GitHub Next Wave Orchestrator
 
+> **Conductor integration.** This is the **Execute** stage of the conductor's `github-delivery` modality
+> (see `conductor-core` §4): `swarm-architect` plans → this orchestrator dispatches each task to its
+> `human` / `copilot-swe-agent[bot]` lane → `ship-battery.mjs` gates (fail-closed) → `loop-feedback.mjs`
+> closes. `resolve-task.mjs --modality github-delivery` resolves each task's capability cluster + lane.
+> Full `.github/` Copilot-bootstrap templates live in the source repo
+> `~/.../thoughtseed/github-next-wave-orchestrator/`.
+
 Use this skill when the user asks for:
 - “Where is this repo right now?”
 - “Summarize issues and tell me what to do next”

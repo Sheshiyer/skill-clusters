@@ -8,6 +8,14 @@ version: 1.0.0
 
 # Swarm Architect
 
+> **Conductor integration.** This is the **Plan** stage of the conductor's `github-delivery` modality
+> (see `conductor-core` §4): swarm-architect plans → `github-next-wave-orchestrator` dispatches →
+> `ship-battery.mjs` gates (fail-closed) → `loop-feedback.mjs` closes. `resolve-task.mjs` resolves each
+> swarm task to its capability cluster + `human`/`copilot` lane. The **full** runbooks, playbooks,
+> schemas, machine-readable specs, OpenViking memory, Superset workspaces, and Copilot-bootstrap
+> templates live in the source repo `~/.../thoughtseed/swarm-architect-skill/` — load them from there
+> for production runs; this spoke is the condensed on-demand version.
+
 Use this skill to design execution-ready engineering plans from specs, architecture docs, and repo context.
 
 This is not a lightweight checklist generator. It is a full orchestration workflow.

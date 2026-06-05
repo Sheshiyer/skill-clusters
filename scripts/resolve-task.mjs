@@ -11,6 +11,13 @@
 // loaded into the dispatched subagent. Deterministic + validated against skill-index.json
 // (real clusters only — phantom-proof, like PAI's Capability-Name audit).
 //
+// Delivery modality (--modality <local|github-delivery>): the resolver also picks the EXECUTION
+// path. `local` = conducty-execute dispatches loaded subagents. `github-delivery` = swarm-architect
+// plans → github-next-wave-orchestrator dispatches to human/copilot-swe-agent lanes. The conductor
+// proposes the modality; the resolver validates it against detected work-shape signals (issues, PRs,
+// copilot, swarm/wave language) + orchestrator availability. The per-task CLUSTER (capability) is the
+// same across modalities — modality decides WHO runs each task, the cluster decides WITH WHAT.
+//
 // Scoring (v1.5 — 5/5 on the mixed RN/Rust/Flutter/Remotion/Supabase smoke): per-task UNIQUE
 // tokens, IDF-weighted (a distinctive token like "rust"/"flutter"/"remotion" beats a common one),
 // sqrt-damped cluster mass (a big cluster can't win on spoke-count alone), plus an explicit
@@ -30,9 +37,13 @@ const asJson = argv.includes('--json');
 // resolver VALIDATES them (real cluster? phantom? agrees with keyword?). This is the Phase 3 line.
 let proposeArg = null;
 { const i = argv.indexOf('--propose'); if (i >= 0) proposeArg = argv[i + 1]; }
-// plan.md = first positional after tasksPath that is neither a flag nor the --propose value
-const planPath = argv.slice(1).find((a) => !a.startsWith('--') && a !== proposeArg);
-if (!tasksPath || !fs.existsSync(tasksPath)) { console.error('usage: resolve-task.mjs <tasks.md> [plan.md] [--json] [--propose <file.json|id=cluster,...>]'); process.exit(2); }
+// --modality <local|github-delivery>  — the conductor's PROPOSED execution modality; the resolver
+// validates it against detected work-shape signals + orchestrator availability (classifier/validate).
+let modalityArg = null;
+{ const i = argv.indexOf('--modality'); if (i >= 0) modalityArg = argv[i + 1]; }
+// plan.md = first positional after tasksPath that is neither a flag nor a consumed flag-value
+const planPath = argv.slice(1).find((a) => !a.startsWith('--') && a !== proposeArg && a !== modalityArg);
+if (!tasksPath || !fs.existsSync(tasksPath)) { console.error('usage: resolve-task.mjs <tasks.md> [plan.md] [--json] [--propose <file.json|id=cluster,...>] [--modality <local|github-delivery>]'); process.exit(2); }
 
 // parse classifier proposals into id -> {cluster, skill?}
 const proposals = {};
@@ -168,14 +179,52 @@ const phantoms = plan.filter((p) => p.phantom).map((p) => ({ id: p.id, proposed:
 const overrides = plan.filter((p) => p.source === 'classifier' && p.agreed === false).map((p) => ({ id: p.id, classifier: p.cluster, keyword: p.overrode || null }));
 const badSkills = plan.filter((p) => p.skill && p.skillReal === false).map((p) => ({ id: p.id, skill: p.skill, cluster: p.cluster }));
 
-if (asJson) { console.log(JSON.stringify({ tasksFile: tasksPath, touched, activate, unresolved: unresolved.map((u) => u.id), phantoms, overrides, badSkills, plan }, null, 2)); process.exit(0); }
+// ── Delivery modality (the swarm-architect / github-next-wave axis) ─────────────────────────────
+// Two execution modalities: LOCAL subagents (conducty-execute) vs GITHUB multi-agent delivery
+// (swarm-architect plans → github-next-wave dispatches to human/copilot-swe-agent lanes). The
+// conductor (classifier) PROPOSES the modality via --modality; this resolver VALIDATES it against
+// detected work-shape signals + the orchestrators' presence in the index. Same contract as Phase 3:
+// the per-task cluster (capability loadout) is unchanged across modalities — modality decides WHO
+// runs each task (a loaded subagent vs a human/Copilot lane), the cluster decides WITH WHAT.
+const MODALITY = {
+  'github-delivery': { plan: 'swarm-architect', execute: 'github-next-wave-orchestrator' },
+  'local': { plan: 'conductor-orchestrator', execute: 'conducty-execute' },
+};
+const GH_SIGNAL = /\b(issues?|pull request|prs?|copilot|agent-ready|agent-blocked|swarms?|waves?|milestones?|assignee|gh api|github\.com|draft pr|merge queue|worktrees?|multi-agent|multi-squad|squads?|copilot[_-]?eligible)\b/gi;
+const planText = planPath && fs.existsSync(planPath) ? fs.readFileSync(planPath, 'utf8') : '';
+const ghHits = ((tasks.map((t) => t.desc).join('\n') + '\n' + planText).match(GH_SIGNAL) || []).length;
+const detected = ghHits >= 3 ? 'github-delivery' : 'local';
+const phantomModality = modalityArg && !MODALITY[modalityArg] ? modalityArg : null;
+const chosen = (!phantomModality && modalityArg) || detected;      // validated proposal wins, else detected
+const orch = MODALITY[chosen];
+const modality = {
+  chosen, proposed: phantomModality ? null : (modalityArg || null), detected, signals: ghHits,
+  agreed: modalityArg && !phantomModality ? modalityArg === detected : null,
+  phantom: phantomModality,
+  orchestrators: { plan: orch.plan, execute: orch.execute, available: !!index.skills[orch.plan] && !!index.skills[orch.execute] },
+};
+// per-task lane hint (github-delivery only): well-scoped/copilot-flagged → copilot lane, else human.
+if (chosen === 'github-delivery') {
+  const COPILOT = /\bcopilot[_-]?eligible\b|\bagent-ready\b|\bwell[- ]?scoped\b/i;
+  const HUMAN = /\b(secret|infra|credential|architect\w*|migration|destructive|deploy|production)\b/i;
+  for (const p of plan) p.lane = COPILOT.test(p.desc) && !HUMAN.test(p.desc) ? 'copilot-swe-agent[bot]' : 'human';
+}
+const lanes = chosen === 'github-delivery'
+  ? { human: plan.filter((p) => p.lane === 'human').length, copilot: plan.filter((p) => p.lane !== 'human').length }
+  : null;
+
+if (asJson) { console.log(JSON.stringify({ tasksFile: tasksPath, modality, lanes, touched, activate, unresolved: unresolved.map((u) => u.id), phantoms, overrides, badSkills, plan }, null, 2)); process.exit(0); }
 
 const hasProposals = Object.keys(proposals).length > 0;
-console.log(`\n  Dispatch plan — ${path.basename(path.dirname(tasksPath))}  (${plan.length} tasks${hasProposals ? ', classifier-validated' : ''})\n  ${'-'.repeat(64)}`);
+console.log(`\n  Dispatch plan — ${path.basename(path.dirname(tasksPath))}  (${plan.length} tasks${hasProposals ? ', classifier-validated' : ''})`);
+const mflag = modality.phantom ? `⚠ phantom modality "${modality.phantom}" → detected fallback` : modality.agreed === false ? `⚠ proposed ${modality.proposed} ≠ detected ${modality.detected}` : '';
+console.log(`  modality: ${modality.chosen}  (plan: ${modality.orchestrators.plan} · exec: ${modality.orchestrators.execute}${modality.orchestrators.available ? '' : ' ⚠MISSING'})  gh-signals:${modality.signals}  ${mflag}`);
+console.log(`  ${'-'.repeat(64)}`);
 for (const p of plan) {
   const flag = !p.cluster ? '⚠ UNRESOLVED' : p.confidence < 0.34 ? '⚠ low-conf' : p.activate ? '◆ activate' : '●';
   const src = p.source === 'classifier' ? (p.agreed ? '◇=' : '◇!') : '  ';   // ◇= classifier agrees · ◇! classifier overrode keyword
-  console.log(`  ${p.id.padEnd(5)} ${p.done ? '✓' : ' '} ${src} ${flag.padEnd(13)} ${(p.cluster || '—').padEnd(20)} ${p.desc.slice(0, 40)}`);
+  const lane = p.lane ? (p.lane === 'human' ? '👤' : '🤖') : '  ';
+  console.log(`  ${p.id.padEnd(5)} ${p.done ? '✓' : ' '} ${src} ${lane} ${flag.padEnd(13)} ${(p.cluster || '—').padEnd(18)} ${p.desc.slice(0, 38)}`);
   if (p.spokes?.length) console.log(`        ↳ ${p.dispatch}  spokes: ${p.spokes.join(', ')}`);
   if (p.overrode) console.log(`        ↳ classifier overrode keyword guess: ${p.overrode} → ${p.cluster}`);
   if (p.phantom) console.log(`        ⚠ phantom proposal "${p.phantom}" REJECTED (not in index) — kept keyword: ${p.cluster || '—'}`);
@@ -183,6 +232,7 @@ for (const p of plan) {
 }
 console.log(`  ${'-'.repeat(64)}`);
 console.log(`  clusters touched: ${touched.join(', ') || 'none'}`);
+if (lanes) console.log(`  lanes (github-delivery): ${lanes.human} human 👤 · ${lanes.copilot} copilot 🤖  → ${modality.orchestrators.execute} dispatches via agent-ready label`);
 console.log(`  DEFERRED → activate first: ${activate.length ? activate.join(', ') + '  (node scripts/tier.mjs --activate <c> --apply)' : 'none'}`);
 if (hasProposals) {
   console.log(`  classifier: ${plan.filter((p) => p.source === 'classifier').length} validated · ${overrides.length} overrode keyword · ${phantoms.length} phantom rejected · ${badSkills.length} bad-skill`);

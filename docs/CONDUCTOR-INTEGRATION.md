@@ -47,6 +47,27 @@ graph LR
 - **✅ Phase 4 — fail-closed gates.** `scripts/ship-battery.mjs` built: a project-generic, **fail-closed** ship gate (structural=skills-health · secrets · lint · typecheck · tests, + advisory secrets-heuristic & gitclean) that **exits non-zero on any required failure** → do not ship, escalate. Proven both ways: planted AWS key → HOLD(secrets) exit 1; this repo (2528 files) → SHIP exit 0 with example-doc passwords correctly downgraded to advisory. Wired into `conductor-orchestrator`'s Ship row + `conductor-core` guardrails. *(commit-on-criterion is satisfied by conducty's existing atomic-commit checkpoint discipline; the live-PAI `exit(0)→exit(2)` flip is offered as an opt-in — see below — not auto-applied, to avoid disrupting the daily driver.)*
 - **✅ Phase 5 — close the feedback.** `scripts/loop-feedback.mjs` built: records each cycle (clusters dispatched · deferred activated · escalations · overrides/phantoms/bad-skills · ship verdict) to `feedback/loop-log.jsonl`, and `--rollup` aggregates it into the signal the next Plan reads — *promote hot deferred clusters · retune high-override resolutions · author clusters the classifier keeps phantom-proposing · harden gates that keep failing.* Full closed-loop smoke passed: resolve→ship→record→rollup over 2 cycles surfaced `mobile-flutter` as a promote-candidate and `secrets` as a weak point. This is the capability-wing close, complementing conducty's vault (narrative) and PAI's learning (user-pattern).
 
+## Delivery modalities — local vs GitHub multi-agent (wired)
+
+The conductor runs Execute in one of two modalities; `resolve-task --modality <local|github-delivery>`
+validates the conductor's proposal (work-shape signals + orchestrator availability). The per-task
+**cluster** is identical across modalities — modality decides **who** runs each task, the cluster **with what**.
+
+| Phase | local (built) | github-delivery (the user's two orchestrators, kept in place) |
+|---|---|---|
+| Plan | conducty-plan | **swarm-architect** (in `ai-agents-meta`) — phase→wave→swarm, ~80 tasks, `copilot_eligible` |
+| Execute | conducty-execute (loaded subagents) | **github-next-wave-orchestrator** (in `git-pr-ops`) — `human` / `copilot-swe-agent[bot]` lanes |
+| Gate | `ship-battery.mjs` | swarm verification-gates / next-wave review + `ship-battery.mjs` |
+| Close | `loop-feedback.mjs` + vault | swarm OpenViking memory + `loop-feedback.mjs` (records modality + lane split) |
+
+Both are the user's own MIT skills; their full runbooks/playbooks/schemas live in the source repos
+(`thoughtseed/{swarm-architect-skill,github-next-wave-orchestrator}/`), the skill-clusters copies are
+condensed on-demand versions. Wired via: `resolve-task` modality detection + per-task lane hint (👤/🤖);
+`loop-feedback` modality/lane capture; cross-refs in `conductor-core` §4, `conductor-orchestrator`, and
+both spoke copies. **Smoke:** a GitHub-delivery plan auto-detected (16 signals), routed
+swarm-architect→github-next-wave, split 3 human / 2 copilot lanes, each task still cluster-resolved;
+`--modality` proposal validates (disagree→flag) and rejects phantom modalities.
+
 ## Live-PAI opt-ins (documented switches, NOT auto-applied)
 To keep the daily driver stable, two enforcement upgrades are left as explicit switches the user
 throws, not silent edits to `~/.claude`:

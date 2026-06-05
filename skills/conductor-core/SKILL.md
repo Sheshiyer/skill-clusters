@@ -37,13 +37,38 @@ per task — Iron Law) → Debug (leverage points: **plan > prompt > code**; 3 s
 Improve (Toyota-Kata; Failure Patterns) → Review (5-lens) → Ship (6-gate battery; advisory until
 PAI gates pass; **never auto-merge**).
 
-## 4. Triage doctrine (from PAI)
+## 4. Delivery modalities — local subagents vs GitHub multi-agent
+
+The Execute phase runs in one of two modalities. The conductor **proposes** one;
+`resolve-task --modality <local|github-delivery>` **validates** it (work-shape signals +
+orchestrator availability — same classifier/validate contract as the seams). The per-task
+**cluster** (capability loadout) is identical across modalities — modality decides **who** runs
+each task, the cluster decides **with what**.
+
+| Phase | **local** (built) | **github-delivery** (the user's orchestrators) |
+|---|---|---|
+| Plan | conducty-plan / conductor-orchestrator | **swarm-architect** — phase→wave→swarm, ~80 schema'd tasks, contract-first parallelism, `copilot_eligible` routing |
+| Execute | conducty-execute → loaded Task subagents | **github-next-wave-orchestrator** — repo scan → next wave → `human` / `copilot-swe-agent[bot]` lanes (via `agent-ready` label) |
+| Verify/Ship | conducty-verify + `ship-battery.mjs` | swarm verification-gates / next-wave review + `ship-battery.mjs` |
+| Close | conducty-improve + vault-graph | swarm OpenViking memory + `loop-feedback.mjs` |
+
+Both are the user's own MIT skills, **kept in place** (`swarm-architect` in `ai-agents-meta`,
+`github-next-wave-orchestrator` in `git-pr-ops`). Their full runbooks/playbooks/schemas live in
+their source repos: `~/.../thoughtseed/{swarm-architect-skill,github-next-wave-orchestrator}/` —
+load companion files from there, not the trimmed skill-clusters spoke copy.
+
+**Choose github-delivery when:** work is issue-tracked, multi-agent, Copilot-dispatchable, or
+team/squad-scale with wave/milestone rollout. **Choose local when:** solo, fast iteration on this
+machine. **Shared organs run in BOTH:** `resolve-task` (per-task cluster + lane), `ship-battery`
+(fail-closed gate), `loop-feedback` (the close — records modality + the human/copilot lane split).
+
+## 5. Triage doctrine (from PAI)
 
 A classifier proposes; the system **obeys the validated line** and **rejects phantoms** (a
 cluster/skill not in `skill-index.json` is a hard error, like PAI's Capability-Name audit). Effort
 tiers and capability floors map onto conducty's `reviewLevel` (verify-only / spec-review / full-review).
 
-## 5. Guardrails
+## 6. Guardrails
 
 - One canonical conductor (conducty); the others contribute organs — don't run three loops.
 - Resolve to **real** clusters only; escalate low-confidence/unresolved tasks to a human.

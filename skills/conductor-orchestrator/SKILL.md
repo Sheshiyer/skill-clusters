@@ -45,6 +45,33 @@ load that cluster's orchestrator into the subagent:
 5. **Gate** via PAI hooks (`SkillClusterResolver` denies non-enumerated skills; fail-closed `exit(2)` gates;
    commit-on-criterion). The orchestrator never writes the verdict — it synthesizes the subagents' status.
 
+## Delivery modality — local subagents vs GitHub multi-agent
+
+Before Execute, pick the modality (see `conductor-core` §4). Propose it from the work shape; let the
+resolver validate it (work-shape signals + orchestrator availability):
+
+```bash
+node ~/.agents/skill-clusters/scripts/resolve-task.mjs <tasks.md> <plan.md> --modality github-delivery --json
+```
+
+- **local** (default) — Execute as above: `conducty-execute` dispatches subagents loaded with the
+  resolved `<cluster>-orchestrator`.
+- **github-delivery** — work is issue-tracked / multi-agent / Copilot-dispatchable / team-scale. Hand
+  the loop to the user's two orchestrators (kept in place; full trees in their **source repos**):
+  1. **Plan → `swarm-architect`** — decompose into phase→wave→swarm (~80 schema'd tasks), freeze
+     contracts, map tasks to GitHub issues, mark `copilot_eligible`. *(Source: `thoughtseed/swarm-architect-skill/` — its runbooks/playbooks/schemas live there, not in the trimmed spoke copy.)*
+  2. **Execute → `github-next-wave-orchestrator`** — repo reality scan → ranked next wave → dispatch
+     each task to its lane: `human` or autonomous `copilot-swe-agent[bot]` (via the `agent-ready`
+     label). `resolve-task` still resolves each task's **cluster**, so every worker — human or bot —
+     carries the right capability loadout; the resolver also emits the per-task lane hint (👤/🤖).
+  3. **Gate → `ship-battery.mjs`** (fail-closed) wraps swarm verification-gates + the next-wave review
+     checkpoint. Never auto-merge a Copilot PR; a second reviewer (not the issue author) approves.
+  4. **Close → `loop-feedback.mjs`** records the cycle (now with modality + the human/copilot lane
+     split) alongside swarm OpenViking memory capture.
+
+The conductor proposes the modality; `resolve-task` validates (real orchestrators? signals agree?); a
+phantom or low-signal mismatch → escalate to the human, exactly like the cluster-name audit.
+
 ## Standard flow
 
 spec-kit `/specify → /plan → /tasks` → **conductor-orchestrator**: shape→plan from the spec →

@@ -49,6 +49,8 @@ function record() {
     phantoms: (d.phantoms || []).length,
     badSkills: (d.badSkills || []).length,
     bySource: (d.plan || []).reduce((a, p) => { const s = p.source || 'keyword'; a[s] = (a[s] || 0) + 1; return a; }, {}),
+    modality: d.modality?.chosen || 'local',
+    lanes: d.lanes || null,
     ship: ship ? { shipOk: ship.shipOk, failed: ship.failed || [] } : null,
     note: opt('--note') || null,
   };
@@ -61,14 +63,16 @@ function rollup() {
   if (!fs.existsSync(LOG)) { console.log('  no feedback log yet (run --record first)'); process.exit(0); }
   const cycles = fs.readFileSync(LOG, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l));
   const inc = (m, k, n = 1) => m.set(k, (m.get(k) || 0) + n);
-  const clusterUse = new Map(), activations = new Map(), escalations = new Map(), gateFails = new Map();
-  let tasks = 0, overrides = 0, phantoms = 0, badSkills = 0, classifier = 0, keyword = 0, ships = 0, shipOk = 0;
+  const clusterUse = new Map(), activations = new Map(), escalations = new Map(), gateFails = new Map(), modalityUse = new Map();
+  let tasks = 0, overrides = 0, phantoms = 0, badSkills = 0, classifier = 0, keyword = 0, ships = 0, shipOk = 0, humanLane = 0, copilotLane = 0;
   for (const c of cycles) {
     tasks += c.tasks || 0; overrides += c.overrides || 0; phantoms += c.phantoms || 0; badSkills += c.badSkills || 0;
     for (const cl of c.clusters || []) inc(clusterUse, cl);
     for (const cl of c.activated || []) inc(activations, cl);
     for (const id of c.escalated || []) inc(escalations, c.tasksFile ? path.basename(path.dirname(c.tasksFile)) + ':' + id : id);
     classifier += c.bySource?.classifier || 0; keyword += c.bySource?.keyword || 0;
+    inc(modalityUse, c.modality || 'local');
+    if (c.lanes) { humanLane += c.lanes.human || 0; copilotLane += c.lanes.copilot || 0; }
     if (c.ship) { ships++; if (c.ship.shipOk) shipOk++; for (const g of c.ship.failed || []) inc(gateFails, g); }
   }
   const top = (m, n = 8) => [...m.entries()].sort((a, b) => b[1] - a[1]).slice(0, n);
@@ -79,6 +83,8 @@ function rollup() {
     escalationRate: tasks ? +(([...escalations.values()].reduce((a, b) => a + b, 0)) / tasks).toFixed(3) : 0,
     classifierShare: classifier + keyword ? +(classifier / (classifier + keyword)).toFixed(3) : 0,
     overrides, phantoms, badSkills,
+    modality: Object.fromEntries(top(modalityUse)),
+    lanes: { human: humanLane, copilot: copilotLane },
     shipPassRate: ships ? +(shipOk / ships).toFixed(3) : null,
     gateFails: Object.fromEntries(top(gateFails)),
   };
@@ -89,6 +95,7 @@ function rollup() {
   console.log(`  deferred activated : ${top(activations).map(([k, v]) => `${k}×${v}`).join('  ') || 'none'}  ← candidates to promote to active`);
   console.log(`  escalation rate    : ${(rep.escalationRate * 100).toFixed(1)}%  (unresolved/low-confidence → human)`);
   console.log(`  classifier share   : ${(rep.classifierShare * 100).toFixed(1)}%  · overrides ${overrides} · phantoms ${phantoms} · bad-skills ${badSkills}`);
+  console.log(`  modality           : ${top(modalityUse).map(([k, v]) => `${k}×${v}`).join('  ') || 'local'}  · lanes ${humanLane} human 👤 / ${copilotLane} copilot 🤖`);
   console.log(`  ship pass rate     : ${rep.shipPassRate === null ? 'n/a' : (rep.shipPassRate * 100).toFixed(1) + '%'}`);
   console.log(`  gates failing      : ${top(gateFails).map(([k, v]) => `${k}×${v}`).join('  ') || 'none'}  ← process weak points`);
   console.log(`  ${'-'.repeat(60)}`);
