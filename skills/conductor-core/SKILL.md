@@ -48,5 +48,5 @@ tiers and capability floors map onto conducty's `reviewLevel` (verify-only / spe
 - One canonical conductor (conducty); the others contribute organs — don't run three loops.
 - Resolve to **real** clusters only; escalate low-confidence/unresolved tasks to a human.
 - Independent verification per task; no self-attested "done"; tracer before multiplying.
-- Gates are fail-**closed** for correctness/security/secrets; ship never auto-merges.
-- Durable state lives in the vault graph — "history that doesn't change behavior is just a log."
+- Gates are fail-**closed** for correctness/security/secrets (`scripts/ship-battery.mjs` — non-zero exit on any required gate blocks ship); ship never auto-merges.
+- Durable state lives in the vault graph + `scripts/loop-feedback.mjs` (cluster-health-over-time) — "history that doesn't change behavior is just a log."

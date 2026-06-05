@@ -24,7 +24,7 @@ integration contract; this routes the loop.
 | **Verify** | `conducty-verify`, `conducty-checkpoint` | Iron Law: no advancement without independent evidence per task. |
 | **Debug** | `conducty-debug` | classify failure **plan > prompt > code**; 3 strikes on one task → STOP/escalate. |
 | **Improve** | `conducty-improve` | Toyota-Kata; append to **Failure Patterns** → next Plan reads it. |
-| **Review/Ship** | `conducty-code-review`, `conducty-ship` | 5-lens review + 6-gate ship battery (advisory → PAI makes it fail-closed). |
+| **Review/Ship** | `conducty-code-review`, `conducty-ship` | 5-lens review + ship battery. conducty's battery is *advisory*; run `scripts/ship-battery.mjs` to make it **fail-closed** — non-zero exit on any required gate (structural/secrets/lint/typecheck/tests) → do not ship, escalate. |
 | State | `conducty-obsidian`, `conducty-vault-graph`, `conducty-bootstrap` | durable loop memory in the vault. |
 
 ## Execute — the integration (THIS is the new organ)

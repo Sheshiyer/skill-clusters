@@ -8,3 +8,4 @@ dist/
 .env
 .env.local
 .agents/skills.backup/
+feedback/*.jsonl
