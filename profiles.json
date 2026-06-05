@@ -20,7 +20,14 @@
       "devops-infra",
       "security",
       "research-knowledge",
-      "agentic-ops"
+      "agentic-ops",
+      "cloudflare",
+      "supabase",
+      "design",
+      "growth-seo",
+      "growth-content",
+      "git-pr-ops",
+      "browser-automation"
     ],
     "deferred": [
       "php-laravel",
@@ -31,7 +38,11 @@
       "supply-chain",
       "blockchain-web3",
       "business-content",
-      "social-media"
+      "social-media",
+      "extra-languages",
+      "media-gen",
+      "documents",
+      "growth-sales-cro"
     ]
   }
 }
