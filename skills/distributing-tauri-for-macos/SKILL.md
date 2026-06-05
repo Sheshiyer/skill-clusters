@@ -1,6 +1,6 @@
 ---
 name: distributing-tauri-for-macos
-description: Guides users through distributing Tauri applications on macOS, including creating DMG installers, configuring app bundles, setting up entitlements, and customizing Info.plist files for proper macOS distribution.
+description: "Distribute Tauri apps on macOS: DMG installers, app bundle configuration, entitlements, and Info.plist customization. USE WHEN packaging a Tauri macOS app, building a DMG, or configuring entitlements and Info.plist for distribution."
 cluster: tauri
 version: 1.0.0
 ---

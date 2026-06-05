@@ -1,6 +1,6 @@
 ---
 name: git-workflow
-description: Git workflow patterns including branching strategies, commit conventions, merge vs rebase, conflict resolution, and collaborative development best practices for teams of all sizes.
+description: "Git workflow patterns: branching strategies, commit conventions, merge vs rebase, conflict resolution, and collaborative development practices. USE WHEN choosing a branching model, writing commits or PR descriptions, resolving merge conflicts, or managing releases and tags."
 origin: ECC
 cluster: agentic-ops
 version: 1.0.0

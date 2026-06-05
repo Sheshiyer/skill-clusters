@@ -1,6 +1,6 @@
 ---
 name: code-tour
-description: Create CodeTour `.tour` files — persona-targeted, step-by-step walkthroughs with real file and line anchors. Use for onboarding tours, architecture walkthroughs, PR tours, RCA tours, and structured "explain how this works" requests.
+description: "Create CodeTour .tour files — persona-targeted, step-by-step walkthroughs anchored to real files and line ranges. USE WHEN building onboarding tours, architecture walkthroughs, PR tours, RCA tours, or a reusable 'explain how this works' artifact."
 origin: ECC
 cluster: research-knowledge
 version: 1.0.0

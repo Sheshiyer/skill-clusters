@@ -1,6 +1,6 @@
 ---
 name: springboot-patterns
-description: Spring Boot architecture patterns, REST API design, layered services, data access, caching, async processing, and logging. Use for Java Spring Boot backend work.
+description: "Spring Boot patterns for REST API design, layered controller-service-repository structure, Spring Data JPA, caching, async processing, and logging. USE WHEN building Java Spring Boot backends, structuring services, configuring data access or caching, or adding validation, exception handling, or event-driven patterns."
 cluster: jvm
 version: 1.0.0
 ---

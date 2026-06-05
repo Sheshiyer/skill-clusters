@@ -1,6 +1,6 @@
 ---
 name: springboot-verification
-description: "Verification loop for Spring Boot projects: build, static analysis, tests with coverage, security scans, and diff review before release or PR."
+description: "Verification loop for Spring Boot projects running build, static analysis, tests with coverage, security scans, and diff review. USE WHEN opening a PR for a Spring Boot service, after major refactoring or dependency upgrades, before deploying to staging or production, or validating that test coverage meets thresholds."
 cluster: jvm
 version: 1.0.0
 ---

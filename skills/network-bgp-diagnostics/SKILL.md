@@ -1,6 +1,6 @@
 ---
 name: network-bgp-diagnostics
-description: Diagnostics-only BGP troubleshooting patterns for neighbor state, route exchange, prefix policy, AS path inspection, and safe evidence collection.
+description: "Diagnostics-only BGP troubleshooting for neighbor state, route exchange, prefix policy, AS path inspection, and safe evidence collection. USE WHEN a BGP session is down, flapping, Established but missing routes, advertising unexpected prefixes, or you need before/after change evidence."
 origin: community
 cluster: devops-infra
 version: 1.0.0

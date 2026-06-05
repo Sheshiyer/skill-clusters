@@ -1,6 +1,6 @@
 ---
 name: evm-token-decimals
-description: Prevent silent decimal mismatch bugs across EVM chains. Covers runtime decimal lookup, chain-aware caching, bridged-token precision drift, and safe normalization for bots, dashboards, and DeFi tools.
+description: "Prevent silent decimal-mismatch bugs across EVM chains: runtime decimal lookup, chain-aware caching, bridged-token precision drift, and safe normalization. USE WHEN reading ERC-20 balances, computing fiat values, or comparing token amounts across chains in bots, dashboards, or DeFi tools."
 origin: blockchain-web3 cluster
 version: "1.0.0"
 cluster: blockchain-web3

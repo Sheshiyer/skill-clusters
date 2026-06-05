@@ -1,6 +1,6 @@
 ---
 name: debugging-tauri-apps
-description: Helps users debug Tauri v2 applications across VS Code, RustRover, IntelliJ, and Neovim. Covers console debugging, WebView DevTools, Rust backtrace, CrabNebula DevTools integration, and IDE-specific launch configurations.
+description: "Debug Tauri v2 apps across VS Code, RustRover, IntelliJ, and Neovim: console debugging, WebView DevTools, Rust backtraces, CrabNebula DevTools, and IDE launch configs. USE WHEN a Tauri app misbehaves and you need breakpoints, DevTools, or backtraces wired up."
 cluster: tauri
 version: 1.0.0
 ---

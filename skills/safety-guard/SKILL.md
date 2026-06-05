@@ -1,6 +1,6 @@
 ---
 name: safety-guard
-description: Use this skill to prevent destructive operations when working on production systems or running agents autonomously.
+description: "Prevent destructive operations by restricting edits and guarding sensitive commands. USE WHEN working on production systems, running agents in full-auto mode, confining edits to a directory, or performing migrations, deploys, and data changes."
 cluster: security
 version: 1.0.0
 ---

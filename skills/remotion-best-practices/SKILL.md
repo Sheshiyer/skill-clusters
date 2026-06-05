@@ -1,6 +1,6 @@
 ---
 name: remotion-best-practices
-description: Best practices for Remotion - Video creation in React
+description: "Best practices for Remotion, the React framework for programmatic video creation. USE WHEN writing or reviewing Remotion code, building compositions, animating frames, handling captions/subtitles, or using FFmpeg for video operations."
 metadata:
   tags: remotion, video, react, animation, composition
 cluster: creative-frontend

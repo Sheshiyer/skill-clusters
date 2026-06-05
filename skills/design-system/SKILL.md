@@ -1,6 +1,6 @@
 ---
 name: design-system
-description: Use this skill to generate or audit design systems, check visual consistency, and review PRs that touch styling.
+description: "Generate or audit design systems, check visual consistency, and review styling changes. USE WHEN creating a design system or design tokens, auditing visual consistency, or reviewing a PR that touches CSS, theming, or styling."
 origin: ECC
 cluster: frontend-web
 version: 1.0.0

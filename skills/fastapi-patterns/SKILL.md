@@ -1,6 +1,6 @@
 ---
 name: fastapi-patterns
-description: FastAPI patterns for async APIs, dependency injection, Pydantic request and response models, OpenAPI docs, tests, security, and production readiness.
+description: "FastAPI patterns for async APIs: dependency injection, Pydantic request/response models, OpenAPI docs, tests, security, and production readiness. USE WHEN building or reviewing a FastAPI app, structuring routers and dependencies, or adding auth, tests, or deployment settings."
 origin: community
 cluster: python-backend
 version: 1.0.0

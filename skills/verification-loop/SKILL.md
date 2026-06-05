@@ -1,6 +1,6 @@
 ---
 name: verification-loop
-description: "A comprehensive verification system for Claude Code sessions."
+description: "A comprehensive verification system for Claude Code sessions, running build, type-check, and quality gates in phases. USE WHEN finishing a feature or significant code change, before opening a PR, or after refactoring to confirm quality gates still pass."
 origin: ECC
 cluster: quality-eval
 version: 1.0.0

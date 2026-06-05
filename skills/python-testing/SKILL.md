@@ -1,6 +1,6 @@
 ---
 name: python-testing
-description: Python testing strategies using pytest, TDD methodology, fixtures, mocking, parametrization, and coverage requirements.
+description: "Python testing with pytest, TDD, fixtures, mocking, parametrization, and coverage. USE WHEN writing tests, designing test suites, setting up test infrastructure, or reviewing Python test coverage."
 origin: ECC
 cluster: python-backend
 version: 1.0.0

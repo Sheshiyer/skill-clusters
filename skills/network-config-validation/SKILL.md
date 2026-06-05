@@ -1,6 +1,6 @@
 ---
 name: network-config-validation
-description: Pre-deployment checks for router and switch configuration, including dangerous commands, duplicate addresses, subnet overlaps, stale references, management-plane risk, and IOS-style security hygiene.
+description: "Pre-deployment checks for router and switch configs: dangerous commands, duplicate addresses, subnet overlaps, stale references, management-plane risk, and IOS-style security hygiene. USE WHEN reviewing Cisco IOS/IOS-XE snippets or script-generated config before a change window or automation run."
 origin: community
 cluster: devops-infra
 version: 1.0.0

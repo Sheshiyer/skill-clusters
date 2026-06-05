@@ -1,6 +1,6 @@
 ---
 name: prediction-market-oracle-research
-description: Research prediction markets as data sources or oracle signals for products, agents, dashboards, and corporate decision intelligence. Use for source-grounded analysis of market-implied probabilities, caveats, and integration patterns without investment advice.
+description: "Research prediction markets as data sources or oracle signals for products, agents, dashboards, and decision intelligence, with source-grounded analysis of market-implied probabilities and caveats. USE WHEN evaluating a prediction market as a forecasting input or oracle-like signal, never for investment advice."
 origin: blockchain-web3 cluster
 version: 1.0.0
 cluster: blockchain-web3

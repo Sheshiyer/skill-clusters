@@ -1,6 +1,6 @@
 ---
 name: healthcare-emr-patterns
-description: EMR/EHR development patterns for healthcare applications. Clinical safety, encounter workflows, prescription generation, clinical decision support integration, and accessibility-first UI for medical data entry.
+description: "EMR/EHR development patterns covering clinical safety, encounter workflows, prescription generation, CDSS integration, and accessibility-first UI. USE WHEN building patient encounter, clinical note, prescription, or lab-result features for medical records systems."
 origin: Health1 Super Speciality Hospitals — contributed by Dr. Keyur Patel
 version: "1.0.0"
 cluster: healthcare

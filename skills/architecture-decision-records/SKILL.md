@@ -1,6 +1,6 @@
 ---
 name: architecture-decision-records
-description: Capture architectural decisions made during Claude Code sessions as structured ADRs. Auto-detects decision moments, records context, alternatives considered, and rationale. Maintains an ADR log so future developers understand why the codebase is shaped the way it is.
+description: "Capture architectural decisions as structured ADRs, recording context, alternatives considered, and rationale, and maintaining an ADR log of why the codebase is shaped as it is. USE WHEN a significant design or technology choice is made and should be documented for future developers."
 origin: ECC
 cluster: backend-architecture
 version: 1.0.0

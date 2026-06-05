@@ -1,6 +1,6 @@
 ---
 name: scientific-db-pubmed-database
-description: Direct PubMed and NCBI E-utilities search workflows for biomedical literature, MeSH queries, PMID lookup, citation retrieval, and API-backed literature monitoring.
+description: "Direct PubMed and NCBI E-utilities workflows for biomedical literature, MeSH queries, PMID lookup, and citation retrieval. USE WHEN searching MEDLINE, building MeSH-tagged queries, looking up PMIDs or abstracts, or running repeatable systematic-review searches."
 origin: community
 cluster: research-knowledge
 version: 1.0.0

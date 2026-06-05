@@ -1,6 +1,6 @@
 ---
 name: running-nodejs-sidecar-in-tauri
-description: Guides users through running Node.js as a sidecar process in Tauri applications, enabling JavaScript backend functionality without requiring end-user Node.js installations.
+description: "Run Node.js as a sidecar process in Tauri apps for JavaScript backend logic without requiring an end-user Node.js install. USE WHEN bundling Node.js tools or npm packages with a Tauri desktop app or isolating Node logic from the main process."
 cluster: tauri
 version: 1.0.0
 ---

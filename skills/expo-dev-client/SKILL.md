@@ -1,6 +1,6 @@
 ---
 name: expo-dev-client
-description: Build and distribute Expo development clients locally or via TestFlight
+description: "Build and distribute Expo development clients locally or via TestFlight using EAS Build. USE WHEN an app needs custom native code, local Expo modules, Apple targets, or third-party native modules not available in Expo Go."
 version: 1.0.0
 license: MIT
 cluster: expo

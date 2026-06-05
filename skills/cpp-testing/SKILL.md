@@ -1,6 +1,6 @@
 ---
 name: cpp-testing
-description: Use only when writing/updating/fixing C++ tests, configuring GoogleTest/CTest, diagnosing failing or flaky tests, or adding coverage/sanitizers.
+description: "C++ test authoring and tooling with GoogleTest and CTest. USE WHEN writing, updating, or fixing C++ tests, configuring GoogleTest/CTest, diagnosing failing or flaky tests, or adding coverage or sanitizers."
 origin: ECC
 cluster: systems-languages
 version: 1.0.0

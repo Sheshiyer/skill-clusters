@@ -1,6 +1,6 @@
 ---
 name: security-review
-description: Use this skill when adding authentication, handling user input, working with secrets, creating API endpoints, or implementing payment/sensitive features. Provides comprehensive security checklist and patterns.
+description: "Comprehensive security checklist and patterns to catch vulnerabilities in application code. USE WHEN adding authentication or authorization, handling user input or file uploads, creating API endpoints, working with secrets or credentials, implementing payment features, or storing and transmitting sensitive data."
 cluster: security
 version: 1.0.0
 ---

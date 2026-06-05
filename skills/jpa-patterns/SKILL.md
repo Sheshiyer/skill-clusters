@@ -1,6 +1,6 @@
 ---
 name: jpa-patterns
-description: JPA/Hibernate patterns for entity design, relationships, query optimization, transactions, auditing, indexing, pagination, and pooling in Spring Boot.
+description: "JPA/Hibernate patterns for entity design, relationships, query optimization, transactions, auditing, indexing, pagination, and pooling in Spring Boot. USE WHEN modeling JPA entities, defining relationships, fixing N+1 queries, or tuning HikariCP and caching."
 cluster: jvm
 version: 1.0.0
 ---

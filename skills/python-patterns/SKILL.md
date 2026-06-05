@@ -1,6 +1,6 @@
 ---
 name: python-patterns
-description: Pythonic idioms, PEP 8 standards, type hints, and best practices for building robust, efficient, and maintainable Python applications.
+description: "Pythonic idioms, PEP 8 standards, type hints, and best practices for robust, maintainable Python. USE WHEN writing, reviewing, or refactoring Python code or designing packages and modules."
 origin: ECC
 cluster: python-backend
 version: 1.0.0

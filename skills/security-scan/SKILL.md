@@ -1,6 +1,6 @@
 ---
 name: security-scan
-description: Scan your Claude Code configuration (.claude/ directory) for security vulnerabilities, misconfigurations, and injection risks using AgentShield. Checks CLAUDE.md, settings.json, MCP servers, hooks, and agent definitions.
+description: "Scan a Claude Code config (.claude/) for vulnerabilities, misconfigurations, and injection risks with AgentShield, covering CLAUDE.md, settings.json, MCP servers, hooks, and agents. USE WHEN setting up a project, after editing settings.json or MCP configs, before committing config, or onboarding to a repo."
 cluster: security
 version: 1.0.0
 ---

@@ -1,6 +1,6 @@
 ---
 name: agentic-engineering
-description: Operate as an agentic engineer using eval-first execution, decomposition, and cost-aware model routing.
+description: "Operate as an agentic engineer using eval-first execution, task decomposition, and cost-aware model routing. USE WHEN planning or executing LLM-driven engineering work and you need disciplined evals, decomposition, and model-selection practices."
 origin: ECC
 cluster: ai-agents-meta
 version: 1.0.0

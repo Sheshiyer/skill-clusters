@@ -1,6 +1,6 @@
 ---
 name: understanding-tauri-process-model
-description: Explains the Tauri process model architecture including the Core process, WebView process, inter-process communication, multiwindow handling, and process isolation security patterns.
+description: "Explains the Tauri process model: the Core process, WebView processes, inter-process communication, multiwindow handling, and process isolation security patterns. USE WHEN reasoning about process boundaries, debugging multiwindow behavior, or applying process isolation in a Tauri app."
 cluster: tauri
 version: 1.0.0
 ---

@@ -1,6 +1,6 @@
 ---
 name: updating-tauri-dependencies
-description: Assists users with updating Tauri dependencies including the Tauri CLI, Rust crates, JavaScript packages, and checking for outdated versions to upgrade to the latest version.
+description: "Guides updating Tauri dependencies across the CLI, Rust crates, and JavaScript packages, keeping versions synchronized and checking for outdated releases. USE WHEN upgrading Tauri or its plugins, fixing version-mismatch errors between @tauri-apps/api and the tauri crate, or auditing outdated dependencies."
 cluster: tauri
 version: 1.0.0
 ---

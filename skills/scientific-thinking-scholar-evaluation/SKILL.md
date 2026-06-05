@@ -1,6 +1,6 @@
 ---
 name: scientific-thinking-scholar-evaluation
-description: Structured scholarly-work evaluation for papers, proposals, literature reviews, methods sections, evidence quality, citation support, and research-writing feedback.
+description: "Structured rubric-based evaluation of scholarly work: methodology, evidence quality, citation support, and limitations. USE WHEN reviewing a paper, proposal, thesis chapter, or literature review, checking whether claims are backed by cited evidence, comparing papers, or producing revision feedback."
 origin: community
 cluster: research-knowledge
 version: 1.0.0

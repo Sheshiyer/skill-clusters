@@ -1,6 +1,6 @@
 ---
 name: android-clean-architecture
-description: Clean Architecture patterns for Android and Kotlin Multiplatform projects — module structure, dependency rules, UseCases, Repositories, and data layer patterns.
+description: "Clean Architecture patterns for Android and Kotlin Multiplatform projects, covering module structure, dependency rules, UseCases, Repositories, and data-layer patterns. USE WHEN structuring an Android/KMP codebase, defining module boundaries, or applying UseCase and Repository layers."
 cluster: mobile-flutter
 version: 1.0.0
 ---

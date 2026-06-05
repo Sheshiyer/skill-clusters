@@ -1,6 +1,6 @@
 ---
 name: browser-qa
-description: Use this skill to automate visual testing and UI interaction verification using browser automation after deploying features.
+description: "Automate visual testing and UI interaction verification through browser automation. USE WHEN confirming a deployed or in-progress feature renders and behaves correctly in a real browser, or catching visual and interaction regressions."
 origin: ECC
 cluster: quality-eval
 version: 1.0.0

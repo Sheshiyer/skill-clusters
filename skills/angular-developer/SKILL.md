@@ -1,6 +1,6 @@
 ---
 name: angular-developer
-description: Generates Angular code and provides architectural guidance. Trigger when creating projects, components, or services, or for best practices on reactivity (signals, linkedSignal, resource), forms, dependency injection, routing, SSR, accessibility (ARIA), animations, styling (component styles, Tailwind CSS), testing, or CLI tooling.
+description: "Generate Angular code and architectural guidance covering signals reactivity, forms, dependency injection, routing, SSR, ARIA, animations, styling, testing, and CLI tooling. USE WHEN creating Angular projects, components, or services, or applying modern Angular best practices."
 origin: ECC
 cluster: frontend-web
 version: 1.0.0

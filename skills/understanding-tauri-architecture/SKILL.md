@@ -1,6 +1,6 @@
 ---
 name: understanding-tauri-architecture
-description: Teaches Claude about Tauri's core architecture, including the Rust backend, webview integration, Core-Shell design pattern, IPC mechanisms, and security model fundamentals.
+description: "Explains Tauri's core architecture: the Rust backend, native webview integration, Core-Shell design, IPC mechanisms, and security model fundamentals. USE WHEN orienting to how a Tauri app is structured, deciding what belongs in Rust vs the frontend, or reasoning about the Core-Shell split."
 cluster: tauri
 version: 1.0.0
 ---

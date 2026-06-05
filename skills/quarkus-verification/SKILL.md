@@ -1,6 +1,6 @@
 ---
 name: quarkus-verification
-description: "Verification loop for Quarkus projects: build, static analysis, tests with coverage, security scans, native compilation, and diff review before release or PR."
+description: "Verification loop for Quarkus projects: build, static analysis, tests with coverage, security scans, native compilation, and diff review. USE WHEN opening a PR, after major refactors or dependency upgrades, or running pre-deploy checks for a Quarkus service."
 cluster: jvm
 version: 1.0.0
 ---

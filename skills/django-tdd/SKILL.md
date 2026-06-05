@@ -1,6 +1,6 @@
 ---
 name: django-tdd
-description: Django testing strategies with pytest-django, TDD methodology, factory_boy, mocking, coverage, and testing Django REST Framework APIs.
+description: "Django testing strategies with pytest-django: TDD methodology, factory_boy, mocking, coverage, and testing DRF APIs. USE WHEN writing Django tests, setting up pytest-django or factory_boy, or test-driving a Django or DRF feature."
 origin: ECC
 cluster: python-backend
 version: 1.0.0

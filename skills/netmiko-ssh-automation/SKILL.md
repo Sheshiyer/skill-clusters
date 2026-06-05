@@ -1,6 +1,6 @@
 ---
 name: netmiko-ssh-automation
-description: Safe Python Netmiko patterns for read-only collection, bounded batch SSH, TextFSM parsing, guarded config changes, timeouts, and network automation error handling.
+description: "Safe Python Netmiko patterns for read-only collection, bounded batch SSH, TextFSM parsing, guarded config changes, timeouts, and error handling. USE WHEN writing or reviewing Netmiko automation to collect show output across network devices, parse with TextFSM, or apply guarded config changes safely."
 origin: community
 cluster: devops-infra
 version: 1.0.0

@@ -1,6 +1,6 @@
 ---
 name: laravel-patterns
-description: Laravel architecture patterns, routing/controllers, Eloquent ORM, service layers, queues, events, caching, and API resources for production apps.
+description: "Laravel architecture patterns: routing and controllers, Eloquent ORM, service layers, queues, events, caching, and API resources for production apps. USE WHEN building Laravel apps or APIs, structuring controllers and services, modeling Eloquent relationships, or adding queues, events, and caching."
 origin: ECC
 cluster: php-laravel
 version: 1.0.0

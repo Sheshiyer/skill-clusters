@@ -1,6 +1,6 @@
 ---
 name: continuous-agent-loop
-description: Patterns for continuous autonomous agent loops with quality gates, evals, and recovery controls.
+description: "Patterns for continuous autonomous agent loops with quality gates, evals, and recovery controls. USE WHEN running long-lived agent loops and choosing between sequential, continuous-PR, RFC-DAG, or infinite parallel modes with safe recovery."
 origin: ECC
 cluster: ai-agents-meta
 version: 1.0.0

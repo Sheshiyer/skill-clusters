@@ -1,6 +1,6 @@
 ---
 name: clickhouse-io
-description: ClickHouse database patterns, query optimization, analytics, and data engineering best practices for high-performance analytical workloads.
+description: "ClickHouse schema, query optimization, and data-engineering patterns for high-performance OLAP workloads. USE WHEN designing MergeTree tables, writing or tuning analytical queries, ingesting large data volumes, or migrating from Postgres/MySQL to ClickHouse."
 origin: ECC
 cluster: databases-data
 version: 1.0.0

@@ -1,6 +1,6 @@
 ---
 name: building-tauri-with-github-actions
-description: Guides users through setting up Tauri GitHub Actions CI/CD pipelines and workflows for automated building, testing, and releasing cross-platform desktop applications.
+description: "Set up Tauri CI/CD with GitHub Actions and tauri-action for cross-platform desktop builds. USE WHEN automating Tauri build, test, or release across Windows/macOS/Linux, configuring workflow triggers, or publishing signed releases."
 cluster: tauri
 version: 1.0.0
 ---

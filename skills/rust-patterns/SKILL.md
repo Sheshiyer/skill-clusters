@@ -1,6 +1,6 @@
 ---
 name: rust-patterns
-description: Idiomatic Rust patterns, ownership, error handling, traits, concurrency, and best practices for building safe, performant applications.
+description: "Idiomatic Rust patterns: ownership, error handling, traits, concurrency, and safe, performant design. USE WHEN writing, reviewing, or refactoring Rust code or designing crate structure and module layout."
 cluster: rust
 version: 1.0.0
 ---

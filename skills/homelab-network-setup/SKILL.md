@@ -1,6 +1,6 @@
 ---
 name: homelab-network-setup
-description: Practical home and homelab network planning for gateways, switches, access points, IP ranges, DHCP reservations, DNS, cabling, and common beginner mistakes.
+description: "Practical home and homelab network planning for gateways, switches, access points, IP ranges, DHCP reservations, DNS, and cabling. USE WHEN designing a new home network, replacing an ISP-router-only setup, or troubleshooting double NAT and unstable Wi-Fi."
 origin: community
 cluster: devops-infra
 version: 1.0.0

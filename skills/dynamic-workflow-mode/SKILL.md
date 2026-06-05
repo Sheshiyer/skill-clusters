@@ -1,6 +1,6 @@
 ---
 name: dynamic-workflow-mode
-description: "Design task-local harnesses, eval gates, and reusable skill extraction for Claude dynamic workflow mode and other adaptive agent harnesses."
+description: "Design task-local harnesses, eval gates, and reusable skill extraction for Claude dynamic workflow mode and adaptive agent harnesses. USE WHEN a task needs a custom loop, evaluator, watcher, or local dashboard, or when repeated work should become a shared skill."
 origin: ECC
 cluster: ai-agents-meta
 version: 1.0.0

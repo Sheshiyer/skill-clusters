@@ -1,6 +1,6 @@
 ---
 name: perl-patterns
-description: Modern Perl 5.36+ idioms, best practices, and conventions for building robust, maintainable Perl applications.
+description: "Modern Perl 5.36+ idioms, best practices, and conventions for building robust, maintainable Perl applications. USE WHEN writing new Perl code or modules, reviewing Perl for idiom compliance, refactoring legacy Perl, or migrating pre-5.36 code to modern standards."
 origin: ECC
 cluster: systems-languages
 version: 1.0.0

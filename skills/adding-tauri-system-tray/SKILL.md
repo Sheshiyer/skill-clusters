@@ -1,6 +1,6 @@
 ---
 name: adding-tauri-system-tray
-description: Guides the user through implementing Tauri system tray functionality, including tray icon setup, tray menu creation, handling tray events, and updating the tray at runtime in the notification area.
+description: "Implement Tauri system tray functionality including tray icon setup, tray menu creation, event handling, and runtime updates in the notification area. USE WHEN adding a menu-bar or system-tray icon, tray menu, or notification-area behavior to a Tauri app."
 cluster: tauri
 version: 1.0.0
 ---

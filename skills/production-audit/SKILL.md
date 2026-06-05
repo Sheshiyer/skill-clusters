@@ -1,6 +1,6 @@
 ---
 name: production-audit
-description: Local-evidence production readiness audit for shipped apps, pre-launch reviews, post-merge checks, and "what breaks in prod?" questions without sending repo data to an external audit service.
+description: "Local-evidence production readiness audit that keeps repo data off external services. USE WHEN asked is this production-ready, what would break in prod, or what did we miss, for pre-launch reviews, post-merge risk passes, or when CI is green but production risk is unknown."
 origin: community
 cluster: quality-eval
 version: 1.0.0

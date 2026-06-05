@@ -1,6 +1,6 @@
 ---
 name: golang-patterns
-description: Idiomatic Go patterns, best practices, and conventions for building robust, efficient, and maintainable Go applications.
+description: "Idiomatic Go patterns, best practices, and conventions for robust, efficient, maintainable applications. USE WHEN writing new Go code, reviewing or refactoring Go, or designing Go packages and modules."
 origin: ECC
 cluster: systems-languages
 version: 1.0.0

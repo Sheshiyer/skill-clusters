@@ -1,6 +1,6 @@
 ---
 name: using-crabnebula-cloud-with-tauri
-description: Guides the user through distributing Tauri applications via CrabNebula Cloud, including pipeline setup, cloud configuration, auto-updates integration, and CI/CD workflows for seamless app distribution.
+description: "Guides distributing Tauri apps via CrabNebula Cloud: pipeline setup, cloud configuration, auto-update integration, and CI/CD workflows. USE WHEN publishing Tauri release artifacts to CrabNebula Cloud, wiring its update server to the Tauri updater, or automating releases through GitHub Actions."
 cluster: tauri
 version: 1.0.0
 ---

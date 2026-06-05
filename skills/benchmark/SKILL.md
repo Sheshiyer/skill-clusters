@@ -1,6 +1,6 @@
 ---
 name: benchmark
-description: Use this skill to measure performance baselines, detect regressions before/after PRs, and compare stack alternatives.
+description: "Measure performance baselines, detect regressions before and after PRs, and compare stack alternatives. USE WHEN establishing a perf baseline, checking whether a change slowed things down, or benchmarking competing libraries or approaches."
 origin: ECC
 cluster: quality-eval
 version: 1.0.0

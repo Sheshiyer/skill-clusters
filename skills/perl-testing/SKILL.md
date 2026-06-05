@@ -1,6 +1,6 @@
 ---
 name: perl-testing
-description: Perl testing patterns using Test2::V0, Test::More, prove runner, mocking, coverage with Devel::Cover, and TDD methodology.
+description: "Perl testing patterns using Test2::V0, Test::More, the prove runner, mocking, coverage with Devel::Cover, and TDD methodology. USE WHEN writing Perl tests, designing test suites for modules, setting up testing infrastructure, migrating Test::More to Test2::V0, or debugging failing Perl tests."
 origin: ECC
 cluster: systems-languages
 version: 1.0.0

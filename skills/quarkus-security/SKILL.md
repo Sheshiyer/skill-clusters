@@ -1,6 +1,6 @@
 ---
 name: quarkus-security
-description: Quarkus Security best practices for authentication, authorization, JWT/OIDC, RBAC, input validation, CSRF, secrets management, and dependency security.
+description: "Quarkus security: authentication, authorization, JWT/OIDC, RBAC, input validation, CSRF, secrets, and dependency CVEs. USE WHEN adding auth, securing endpoints, validating input, managing secrets, or scanning Quarkus dependencies."
 cluster: jvm
 version: 1.0.0
 ---

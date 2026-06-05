@@ -1,6 +1,6 @@
 ---
 name: configuring-tauri-apps
-description: Guides developers through Tauri v2 configuration including tauri.conf.json structure, Cargo.toml settings, environment-specific configs, and common configuration options for desktop and mobile applications.
+description: "Configure Tauri v2 apps via tauri.conf.json, Cargo.toml, and package.json, including environment-specific overrides. USE WHEN setting up or editing Tauri config, tuning window/bundle/plugin options, or managing per-environment desktop and mobile settings."
 cluster: tauri
 version: 1.0.0
 ---

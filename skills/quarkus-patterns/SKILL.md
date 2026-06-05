@@ -1,6 +1,6 @@
 ---
 name: quarkus-patterns
-description: Quarkus 3.x LTS architecture patterns with Camel for messaging, RESTful API design, CDI services, data access with Panache, and async processing. Use for Java Quarkus backend work with event-driven architectures.
+description: "Quarkus 3.x architecture: REST APIs, CDI services, Panache data access, Apache Camel messaging, and async processing. USE WHEN building Java Quarkus backends, structuring resource-service-repository layers, or implementing event-driven flows."
 cluster: jvm
 version: 1.0.0
 ---

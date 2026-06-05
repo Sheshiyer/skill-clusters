@@ -1,6 +1,6 @@
 ---
 name: upgrading-expo
-description: Guidelines for upgrading Expo SDK versions and fixing dependency issues
+description: "Guidelines for upgrading Expo SDK versions and fixing the dependency issues that follow. USE WHEN bumping an Expo SDK (including beta/preview releases), running expo-doctor, or resolving New Architecture, React 19, or native-tabs migration breakage after an upgrade."
 version: 1.0.0
 license: MIT
 cluster: expo

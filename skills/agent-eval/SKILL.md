@@ -1,6 +1,6 @@
 ---
 name: agent-eval
-description: Head-to-head comparison of coding agents (Claude Code, Aider, Codex, etc.) on custom tasks with pass rate, cost, time, and consistency metrics
+description: "Run head-to-head comparisons of coding agents (Claude Code, Aider, Codex, etc.) on custom tasks, reporting pass rate, cost, time, and consistency metrics. USE WHEN choosing between coding agents or benchmarking agent performance on representative tasks."
 origin: ECC
 tools: Read, Write, Edit, Bash, Grep, Glob
 cluster: quality-eval

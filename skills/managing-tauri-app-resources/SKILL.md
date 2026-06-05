@@ -1,6 +1,6 @@
 ---
 name: managing-tauri-app-resources
-description: Assists with managing Tauri application resources including app icons setup and generation, embedding static files and assets, accessing bundled resources at runtime, and implementing thread-safe state management patterns.
+description: "Manage Tauri app resources: app icon generation, embedding static files and assets, accessing bundled resources at runtime, and thread-safe state management. USE WHEN generating Tauri icons, bundling assets, reading resource files at runtime, or sharing mutable state safely across Tauri commands."
 cluster: tauri
 version: 1.0.0
 ---

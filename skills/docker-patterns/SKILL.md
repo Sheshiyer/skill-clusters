@@ -1,6 +1,6 @@
 ---
 name: docker-patterns
-description: Docker and Docker Compose patterns for local development, container security, networking, volume strategies, and multi-service orchestration.
+description: "Docker and Docker Compose patterns for local development, container security, networking, volumes, and multi-service orchestration. USE WHEN writing a Dockerfile or compose stack, debugging container networking/volumes, or hardening images."
 origin: ECC
 cluster: devops-infra
 version: 1.0.0

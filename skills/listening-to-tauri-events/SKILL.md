@@ -1,6 +1,6 @@
 ---
 name: listening-to-tauri-events
-description: Teaches how to subscribe to and listen for Tauri events in the frontend using the events API, including typed event handlers and cleanup patterns.
+description: "Subscribe to and listen for Tauri v2 events in the frontend via @tauri-apps/api/event, including typed handlers and cleanup. USE WHEN listening to Rust-emitted events in a webview, distinguishing global vs webview-specific scopes, or unsubscribing listeners on unmount."
 cluster: tauri
 version: 1.0.0
 ---

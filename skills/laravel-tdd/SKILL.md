@@ -1,6 +1,6 @@
 ---
 name: laravel-tdd
-description: Test-driven development for Laravel with PHPUnit and Pest, factories, database testing, fakes, and coverage targets.
+description: "Test-driven development for Laravel with PHPUnit and Pest, factories, database testing, fakes, and coverage targets. USE WHEN building new Laravel features or endpoints, fixing bugs or refactoring, or testing Eloquent models, policies, jobs, and notifications via red-green-refactor."
 origin: ECC
 cluster: php-laravel
 version: 1.0.0

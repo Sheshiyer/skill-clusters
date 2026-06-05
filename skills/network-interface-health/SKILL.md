@@ -1,6 +1,6 @@
 ---
 name: network-interface-health
-description: Diagnose interface errors, drops, CRCs, duplex mismatches, flapping, speed negotiation issues, and counter trends on routers, switches, and Linux hosts.
+description: "Diagnose interface errors, drops, CRCs, duplex mismatches, flapping, speed negotiation, and counter trends on routers, switches, and Linux hosts. USE WHEN a link shows packet loss, latency spikes, rising ifInErrors/ifOutDiscards, or you need before/after interface evidence before replacing hardware."
 origin: community
 cluster: devops-infra
 version: 1.0.0

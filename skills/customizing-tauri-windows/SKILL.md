@@ -1,6 +1,6 @@
 ---
 name: customizing-tauri-windows
-description: Guides users through Tauri window customization including custom titlebar implementation, transparent windows, window decorations, drag regions, window menus, submenus, and menu keyboard shortcuts for desktop applications.
+description: "Customize Tauri desktop windows: custom titlebars, transparent windows, decorations, drag regions, menus, submenus, and menu keyboard shortcuts. USE WHEN building a frameless or custom titlebar, transparent window, drag region, or native window menu in Tauri."
 cluster: tauri
 version: 1.0.0
 ---

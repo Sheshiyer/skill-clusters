@@ -1,6 +1,6 @@
 ---
 name: tdd-workflow
-description: Use this skill when writing new features, fixing bugs, or refactoring code. Enforces test-driven development with 80%+ coverage including unit, integration, and E2E tests.
+description: "Enforces test-driven development — tests before code — with 80%+ coverage across unit, integration, and E2E tests, including edge cases and error scenarios. USE WHEN writing a new feature or functionality, fixing a bug, refactoring existing code, adding an API endpoint, or creating a new component."
 origin: ECC
 cluster: quality-eval
 version: 1.0.0

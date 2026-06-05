@@ -1,6 +1,6 @@
 ---
 name: configuring-tauri-http-headers
-description: Guides developers through configuring HTTP headers security in Tauri v2 applications, covering security headers, custom headers, and CORS configuration for secure cross-origin resource handling.
+description: "Configure HTTP response headers in Tauri v2.1+ webview responses, covering security headers, custom headers, and CORS from the allowlist. USE WHEN adding security headers, setting CORS for cross-origin requests, or customizing webview response headers."
 cluster: tauri
 version: 1.0.0
 ---

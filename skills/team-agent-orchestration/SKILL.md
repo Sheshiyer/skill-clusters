@@ -1,6 +1,6 @@
 ---
 name: team-agent-orchestration
-description: "Run team-based orchestration for agent squads using work items, ownership, agent Kanban, merge gates, and control pane handoffs."
+description: "Reliable team-based orchestration for agent squads using work items, explicit ownership, agent Kanban state, branch isolation, control-pane visibility, and merge gates. USE WHEN work spans multiple agents, harnesses, branches, or worktrees, or when fan-out produces output but not mergeable product."
 origin: ECC
 cluster: ai-agents-meta
 version: 1.0.0

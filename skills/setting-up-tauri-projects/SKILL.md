@@ -1,6 +1,6 @@
 ---
 name: setting-up-tauri-projects
-description: Helps users create and initialize new Tauri v2 projects for building cross-platform desktop and mobile applications. Covers system prerequisites and setup requirements for macOS, Windows, and Linux. Guides through project creation using create-tauri-app or manual Tauri CLI initialization. Explains project directory structure and configuration files. Supports vanilla JavaScript, TypeScript, React, Vue, Svelte, Angular, SolidJS, and Rust-based frontends.
+description: "Create and initialize Tauri v2 cross-platform desktop and mobile projects, covering prerequisites, create-tauri-app or manual CLI setup, directory structure, and config. USE WHEN scaffolding a new Tauri app, installing prerequisites on macOS/Windows/Linux, or picking a frontend (React, Vue, Svelte, vanilla JS/TS)."
 cluster: tauri
 version: 1.0.0
 ---

@@ -1,6 +1,6 @@
 ---
 name: deployment-patterns
-description: Deployment workflows, CI/CD pipeline patterns, Docker containerization, health checks, rollback strategies, and production readiness checklists for web applications.
+description: "Deployment workflows for web apps: CI/CD pipelines, Docker containerization, health checks, rollback strategies, and production readiness checklists. USE WHEN shipping a web app, setting up a CI/CD pipeline, containerizing with Docker, or hardening a release for production."
 origin: ECC
 cluster: backend-architecture
 version: 1.0.0

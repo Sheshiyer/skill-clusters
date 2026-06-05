@@ -1,6 +1,6 @@
 ---
 name: java-coding-standards
-description: "Java coding standards for Spring Boot and Quarkus services: naming, immutability, Optional usage, streams, exceptions, generics, CDI, reactive patterns, and project layout. Automatically applies framework-specific conventions."
+description: "Java coding standards for Spring Boot and Quarkus services covering naming, immutability, Optional, streams, exceptions, generics, CDI, and reactive patterns. USE WHEN writing or reviewing Java 17+ code or enforcing conventions in Spring Boot or Quarkus projects."
 cluster: jvm
 version: 1.0.0
 ---

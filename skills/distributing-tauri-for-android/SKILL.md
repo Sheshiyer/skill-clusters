@@ -1,6 +1,6 @@
 ---
 name: distributing-tauri-for-android
-description: Guides the user through distributing Tauri applications for Android, including Google Play Store submission, APK and AAB generation, build configuration, signing setup, and version management.
+description: "Distribute Tauri apps for Android: Google Play Store submission, APK and AAB generation, build configuration, signing setup, and version management. USE WHEN building a signed Android APK/AAB of a Tauri app or submitting it to the Play Store."
 cluster: tauri
 version: 1.0.0
 ---

@@ -1,6 +1,6 @@
 ---
 name: understanding-tauri-lifecycle-security
-description: Assists developers with understanding Tauri application lifecycle security threats spanning development, build, distribution, and runtime phases, including threat mitigation strategies and security best practices.
+description: "Maps Tauri application lifecycle security threats across development, build, distribution, and runtime phases, with mitigation strategies and best practices. USE WHEN threat-modeling a Tauri app end to end or hardening a specific lifecycle phase against attack."
 cluster: tauri
 version: 1.0.0
 ---

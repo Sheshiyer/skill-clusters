@@ -1,6 +1,6 @@
 ---
 name: configuring-tauri-permissions
-description: Guides the user through configuring Tauri permissions, including the security permission system, allow and deny lists, plugin permissions, permission identifiers, scopes, and capability integration.
+description: "Configure the Tauri v2 permission system controlling frontend access to backend commands and resources. USE WHEN defining allow/deny lists, enabling plugin permissions, referencing permission identifiers, or wiring permissions into scopes and capabilities."
 cluster: tauri
 version: 1.0.0
 ---

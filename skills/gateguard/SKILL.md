@@ -1,6 +1,6 @@
 ---
 name: gateguard
-description: Fact-forcing gate that blocks Edit/Write/Bash (including MultiEdit) and demands concrete investigation (importers, data schemas, user instruction) before allowing the action. Measurably improves output quality by +2.25 points vs ungated agents.
+description: "Fact-forcing PreToolUse gate that blocks Edit/Write/Bash until concrete investigation (importers, data schemas, user instruction) is done. USE WHEN edits must match existing patterns or schemas, or to stop an agent from guessing instead of investigating before it writes."
 cluster: security
 version: 1.0.0
 ---

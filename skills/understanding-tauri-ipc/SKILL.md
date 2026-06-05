@@ -1,6 +1,6 @@
 ---
 name: understanding-tauri-ipc
-description: Teaches the assistant about Tauri IPC (Inter-Process Communication) patterns including brownfield and isolation approaches for secure message passing between frontend and Rust backend.
+description: "Explains Tauri IPC (Inter-Process Communication) patterns, including brownfield and isolation approaches for secure message passing between frontend and Rust backend. USE WHEN wiring commands or events between the webview and Rust, or choosing between the brownfield and isolation IPC patterns."
 cluster: tauri
 version: 1.0.0
 ---

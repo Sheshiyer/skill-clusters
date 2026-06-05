@@ -1,6 +1,6 @@
 ---
 name: scientific-thinking-literature-review
-description: Systematic literature-review workflow for academic, biomedical, technical, and scientific topics, including search planning, source screening, synthesis, citation checks, and evidence logging.
+description: "Systematic literature-review workflow with search planning, source screening, synthesis, citation checks, and evidence logging. USE WHEN building a systematic, scoping, or narrative review, synthesizing the state of the art, or finding gaps for a research question."
 origin: community
 cluster: research-knowledge
 version: 1.0.0

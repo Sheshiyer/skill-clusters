@@ -1,6 +1,6 @@
 ---
 name: kotlin-testing
-description: Kotlin testing patterns with Kotest, MockK, coroutine testing, property-based testing, and Kover coverage. Follows TDD methodology with idiomatic Kotlin practices.
+description: "Kotlin testing patterns with Kotest, MockK, coroutine testing, property-based testing, and Kover coverage, following TDD methodology. USE WHEN writing tests for Kotlin code, adding coverage, doing property-based tests, or running a red-green-refactor workflow in Kotlin projects."
 cluster: jvm
 version: 1.0.0
 ---

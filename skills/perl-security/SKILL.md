@@ -1,6 +1,6 @@
 ---
 name: perl-security
-description: Comprehensive Perl security covering taint mode, input validation, safe process execution, DBI parameterized queries, web security (XSS/SQLi/CSRF), and perlcritic security policies.
+description: "Perl security covering taint mode, input validation, safe process execution, DBI parameterized queries, web security (XSS/SQLi/CSRF), and perlcritic security policies. USE WHEN handling user input, building Perl web apps, running system commands, writing DBI queries, or reviewing Perl for vulnerabilities."
 origin: ECC
 cluster: systems-languages
 version: 1.0.0

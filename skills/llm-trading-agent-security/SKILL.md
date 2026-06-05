@@ -1,6 +1,6 @@
 ---
 name: llm-trading-agent-security
-description: Security patterns for autonomous trading agents with wallet or transaction authority. Covers prompt injection, spend limits, pre-send simulation, circuit breakers, MEV protection, and key handling.
+description: "Security patterns for autonomous trading agents with wallet or transaction authority: prompt injection, spend limits, pre-send simulation, circuit breakers, MEV protection, and key handling. USE WHEN building an agent that signs transactions, auditing a trading bot, or designing agent wallet key management."
 origin: blockchain-web3 cluster
 version: "1.0.0"
 cluster: blockchain-web3
