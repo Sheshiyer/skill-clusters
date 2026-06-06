@@ -17,16 +17,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
+// asArr/oneLine + the safe brand-spec reader are shared with the other brandmint generators.
+import { asArr, oneLine, readBrandTokens } from './lib/brand-tokens.mjs';
+
 // ---- small helpers --------------------------------------------------------
-
-const isStr = (v) => typeof v === 'string' && v.trim().length > 0;
-const asArr = (v) => (Array.isArray(v) ? v.filter((x) => isStr(x)).map((x) => x.trim()) : []);
-
-// Flatten any multi-line string to one flowing line (newlines → spaces, runs collapsed).
-function oneLine(s) {
-  if (typeof s !== 'string') return '';
-  return s.replace(/\s*\n\s*/g, ' ').replace(/\s+/g, ' ').trim();
-}
 
 // Drop a trailing sentence terminator so a clause can be spliced mid-sentence cleanly.
 function clause(s) {
@@ -64,25 +58,9 @@ function leadDiff(differentiation) {
   return clause(firstClause || d);
 }
 
-// Pull the positioning primitives out of a (possibly under-specified) spec, with safe fallbacks —
-// so the body builder below never touches a possibly-undefined nested field.
-function positioningTokens(spec = {}) {
-  const identity = spec.identity || {};
-  const pos = spec.positioning || {};
-  const persona = spec.persona || {};
-  const name = isStr(identity.name) ? identity.name.trim() : (isStr(spec.brand) ? spec.brand.trim() : 'The brand');
-  return {
-    name,
-    tagline: isStr(identity.tagline) ? oneLine(identity.tagline) : '',
-    mission: isStr(identity.mission) ? oneLine(identity.mission) : '',
-    category: isStr(pos.category) ? oneLine(pos.category) : 'solution',
-    differentiation: isStr(pos.differentiation) ? oneLine(pos.differentiation) : '',
-    target: isStr(pos.target_market) ? oneLine(pos.target_market) : '',
-    who: isStr(persona.who) ? oneLine(persona.who) : '',
-    pains: asArr(persona.pains),
-    gains: asArr(persona.gains),
-  };
-}
+// The positioning primitives (name/tagline/mission/category/differentiation/target + persona
+// who/pains/gains) come from the shared readBrandTokens(spec) — same safe fallbacks, now in one
+// place (./lib/brand-tokens.mjs).
 
 // The classic positioning statement. The schema carries no `alternatives` field, so the "unlike"
 // clause is synthesized from the category ("unlike other {category} options") rather than inventing
@@ -98,7 +76,7 @@ function positioningStatement(t) {
 // ── genPositioning (PURE) ─────────────────────────────────────────────────────────────────────
 // brand-spec → a Markdown positioning brief string. No I/O, no network, no mutation of `spec`.
 export function genPositioning(spec) {
-  const t = positioningTokens(spec);
+  const t = readBrandTokens(spec);
   const L = []; // lines
 
   L.push(`# ${t.name} — Positioning Brief`);

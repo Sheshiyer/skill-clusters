@@ -17,16 +17,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
+// isStr/asArr/oneLine + the safe brand-spec reader are shared with the other brandmint generators.
+import { isStr, asArr, oneLine, readBrandTokens } from './lib/brand-tokens.mjs';
+
 // ---- small helpers --------------------------------------------------------
-
-const isStr = (v) => typeof v === 'string' && v.trim().length > 0;
-const asArr = (v) => (Array.isArray(v) ? v.filter((x) => isStr(x)).map((x) => x.trim()) : []);
-
-// Flatten any multi-line string to one flowing line (newlines → spaces, runs collapsed).
-function oneLine(s) {
-  if (typeof s !== 'string') return '';
-  return s.replace(/\s*\n\s*/g, ' ').replace(/\s+/g, ' ').trim();
-}
 
 // Capitalize the first visible character (for "Direct, confident…" tone phrasing).
 function cap(s) {
@@ -49,26 +43,8 @@ function andList(arr) {
   return `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`;
 }
 
-// Pull the brand's verbal primitives out of a (possibly under-specified) spec, with safe
-// fallbacks — so the body builder below never touches a possibly-undefined nested field.
-function voiceTokens(spec = {}) {
-  const identity = spec.identity || {};
-  const vt = spec.voice_tokens || {};
-  const persona = spec.persona || {};
-  const name = isStr(identity.name) ? identity.name.trim() : (isStr(spec.brand) ? spec.brand.trim() : 'The brand');
-  return {
-    name,
-    tagline: isStr(identity.tagline) ? oneLine(identity.tagline) : '',
-    mission: isStr(identity.mission) ? oneLine(identity.mission) : '',
-    tone: asArr(vt.tone),
-    vocabulary: asArr(vt.vocabulary),
-    dos: asArr(vt.dos),
-    donts: asArr(vt.donts),
-    who: isStr(persona.who) ? oneLine(persona.who) : '',
-    pains: asArr(persona.pains),
-    gains: asArr(persona.gains),
-  };
-}
+// The verbal primitives (name/tagline/tone/dos/donts/vocabulary + persona who/pains/gains) come from
+// the shared readBrandTokens(spec) — same safe fallbacks, now in one place (./lib/brand-tokens.mjs).
 
 // Build 2–3 generic→on-brand rewrites from the tone + name, so it works for ANY spec
 // (never hardcoded to one brand). Each pair shows a flat generic line rewritten in-voice.
@@ -96,7 +72,7 @@ function exampleRewrites(t) {
 // ── genVoiceGuide (PURE) ─────────────────────────────────────────────────────────────────────
 // brand-spec → a Markdown voice & tone guide string. No I/O, no network, no mutation of `spec`.
 export function genVoiceGuide(spec) {
-  const t = voiceTokens(spec);
+  const t = readBrandTokens(spec);
   const L = []; // lines
 
   L.push(`# ${t.name} — Voice & Tone Guide`);
