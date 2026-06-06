@@ -3,11 +3,11 @@
 // Picks the strongest provider/model per TASK TYPE, with a per-task FALLBACK CHAIN (primary first),
 // a per-venture BUDGET+RATE GOVERNOR (governor.mjs), and PROVIDER FAILOVER on any error.
 //
-// Only the `nim` adapter is wired today (it rides the NIM key-pool + Cloudflare Worker via nim.mjs).
-// The rest (claude, gpt-image-2, arcplume, fal, fal-video) are intentional STUBS that throw
-// "provider <name> not configured" — they get wired in later phases. Because generate() treats a
-// throwing adapter as a failover signal, a route whose primary is a stub transparently falls through
-// to the next live attempt (e.g. creative-text: claude-stub → nim).
+// Live adapters: `nim` (NIM key-pool + Cloudflare Worker via nim.mjs) and `ollama` (the local Ollama
+// daemon proxying a cloud model — the LLM-reasoning lane; NO Anthropic/fal keys needed). The rest
+// (claude, gpt-image-2, arcplume, fal, fal-video) are intentional STUBS that throw "provider <name>
+// not configured" until wired. Because generate() treats a throwing adapter as a failover signal, a
+// route whose primary is a stub transparently falls through to the next live attempt.
 
 import * as nim from './nim.mjs';
 import { makeGovernor, BudgetPaused, RateLimited } from './governor.mjs';
@@ -15,13 +15,17 @@ import { makeGovernor, BudgetPaused, RateLimited } from './governor.mjs';
 // ── ROUTES ───────────────────────────────────────────────────────────────────────────────────────
 // task → ordered attempts. attempt[0] is the preferred provider/model; the rest are fallbacks.
 // Frozen so route() can hand callers the live array without risking corruption of the table.
+// LLM-reasoning lanes run on Ollama (local daemon → cloud model) for now — no Anthropic/fal keys.
+// NIM stays the text fallback. Swap the Ollama model with OLLAMA_MODEL.
+const OLLAMA  = { provider: 'ollama', model: process.env.OLLAMA_MODEL || 'kimi-k2.6:cloud' };
+const NIM_LLM = { provider: 'nim',    model: 'meta/llama-3.3-70b-instruct' };
 export const ROUTES = Object.freeze({
-  'creative-text':  [{ provider: 'claude', model: 'claude-sonnet' },            { provider: 'nim', model: 'meta/llama-3.3-70b-instruct' }],
-  'structured-json':[{ provider: 'nim',    model: 'meta/llama-3.3-70b-instruct' }, { provider: 'claude', model: 'claude-sonnet' }],
-  'code':           [{ provider: 'claude', model: 'claude-sonnet' },            { provider: 'nim', model: 'meta/llama-3.3-70b-instruct' }],
-  'outreach':       [{ provider: 'claude', model: 'claude-sonnet' },            { provider: 'nim', model: 'meta/llama-3.3-70b-instruct' }],
-  'image':          [{ provider: 'gpt-image-2', model: 'gpt-image-2' },         { provider: 'fal', model: 'fal-image' }],
-  'video':          [{ provider: 'arcplume', model: 'arcplume' },               { provider: 'fal-video', model: 'fal-video' }],
+  'creative-text':  [OLLAMA, NIM_LLM],
+  'structured-json':[NIM_LLM, OLLAMA],
+  'code':           [OLLAMA, NIM_LLM],
+  'outreach':       [OLLAMA, NIM_LLM],
+  'image':          [{ provider: 'gpt-image-2', model: 'gpt-image-2' }],   // session provider; no fal fallback (no key for now)
+  'video':          [{ provider: 'arcplume', model: 'arcplume' }],         // session provider; no fal fallback (no key for now)
   'embed':          [{ provider: 'nim',    model: 'nvidia/nv-embedqa-e5-v5' }],
   'vision':         [{ provider: 'nim',    model: 'meta/llama-3.2-90b-vision-instruct' }],
 });
@@ -44,7 +48,7 @@ export function estimateCost(task) {
 }
 
 // ── PROVIDER ADAPTER REGISTRY ──────────────────────────────────────────────────────────────────
-// Each adapter exposes `run(model, payload)`. `nim` is live; the rest throw until wired.
+// Each adapter exposes `run(model, payload)`. `nim` + `ollama` are live; the rest throw until wired.
 // Injectable: generate() accepts a custom `adapters` map so tests can mock providers.
 const notConfigured = (name) => ({
   run: async () => { throw new Error(`provider ${name} not configured`); },
@@ -68,6 +72,28 @@ export const ADAPTERS = {
         { role: 'user', content: payload.prompt ?? String(payload) },
       ];
       return nim.chat(messages, { model, ...(payload.opts || {}) });
+    },
+  },
+  // Live Ollama adapter — OpenAI-compatible chat at the local daemon (which proxies cloud models like
+  // kimi-k2.6:cloud). No API key for the local proxy; set OLLAMA_API_KEY only if the endpoint needs it.
+  // NOTE: kimi-k2.6 is a REASONING model — it spends tokens in `reasoning` before emitting `content`,
+  // so a too-small max_tokens yields empty content. Default to 1024 (matching the NIM lane); callers
+  // override via payload.opts.max_tokens.
+  ollama: {
+    async run(model, payload = {}) {
+      const base = (process.env.OLLAMA_BASE_URL || 'http://localhost:11434/v1').replace(/\/$/, '');
+      const messages = payload.messages || [
+        ...(payload.system ? [{ role: 'system', content: payload.system }] : []),
+        { role: 'user', content: payload.prompt ?? String(payload) },
+      ];
+      const res = await fetch(`${base}/chat/completions`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...(process.env.OLLAMA_API_KEY ? { Authorization: `Bearer ${process.env.OLLAMA_API_KEY}` } : {}) },
+        body: JSON.stringify({ model, messages, stream: false, max_tokens: 1024, ...(payload.opts || {}) }),
+      });
+      if (!res.ok) throw new Error(`ollama ${res.status}: ${(await res.text()).slice(0, 200)}`);
+      const out = await res.json();
+      return out.choices?.[0]?.message?.content || '';
     },
   },
   claude: notConfigured('claude'),

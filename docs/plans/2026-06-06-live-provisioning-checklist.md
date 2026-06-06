@@ -2,14 +2,19 @@
 
 **Pilot:** HDILINT / **Fitcheck** (AI virtual try-on for Shopify fashion brands). **Runtime:** local-first; cloud only for the NIM Worker. Each item = *what to get* → *where the secret lands* → *what it unblocks* → *our wiring task*. Secrets go in `.env` / `~/.claude/.env` for the local-first slice (KV via the Worker comes when we productize).
 
-## 1 · Provider API keys — the router's fallback adapters  *(unblocks Phase 2/3 generation · gaps G1/G4)*
-| Get | Secret (env) | Unblocks | Our wiring task |
-|---|---|---|---|
-| **Anthropic API key** | `ANTHROPIC_API_KEY` | Claude as the **primary** for creative-text · code · outreach (best-of-breed) | Implement the `claude` adapter in `router.mjs` (replace the stub) |
-| **fal.ai key** | `FAL_API_KEY` | Autonomous-safe **image/video fallback** when the gpt-image-2/arcplume sessions expire | Implement the `fal` / `fal-video` adapters |
-| *(have)* gpt-image-2 (ChatGPT) · arcplume (Grok) sessions | — | primary image/video (quality) | session-keeper or accept fal fallback |
+## 1 · Provider API keys — the router's adapters  *(unblocks Phase 2/3 generation · gaps G1/G4)*
 
-→ With these three, the router stops being NIM-only and every content type has a live primary + fallback.
+**LLM-reasoning lanes are already live — no keys to provision.** creative-text · code · outreach run on **Ollama** (the local daemon proxying `kimi-k2.6:cloud`) as primary, with **NIM** (`llama-3.3-70b`) as the autonomous fallback; structured-json is NIM-primary, Ollama-fallback. Both adapters are wired and tested in `router.mjs`. No Anthropic or fal.ai key is required for the slice.
+
+| Have / Get | Secret (env) | Status | Notes |
+|---|---|---|---|
+| *(have)* **Ollama** local daemon | `OLLAMA_BASE_URL` (opt), `OLLAMA_MODEL` (opt), `OLLAMA_API_KEY` (opt) | **LIVE** | Primary for text/code/outreach. `kimi-k2.6:cloud` is a reasoning model — adapter defaults `max_tokens:1024` so content isn't starved. |
+| *(have)* **NIM** key-pool | `NVIDIA_NIM_API_KEY` / `NVIDIA_API_KEY` | **LIVE** | Text fallback + embed + vision. Via the `taste-nim` Worker in prod. |
+| *(have)* gpt-image-2 (ChatGPT) · arcplume (Grok) sessions | — | session-based | Primary image/video. **No fal fallback for now** — if a session expires, that media lane simply fails (acceptable for the slice). |
+| *(later)* Anthropic API key | `ANTHROPIC_API_KEY` | deferred | Optional future upgrade if we want Claude as a text primary; the `claude` adapter stub stays until then. |
+| *(later)* fal.ai key | `FAL_API_KEY` | deferred | Optional future image/video fallback; the `fal`/`fal-video` stubs stay until then. |
+
+→ Every text content type already has a live primary + fallback on hardware/accounts we hold. Image/video have a live primary (no fallback) for now.
 
 ## 2 · Domain + hosting  *(unblocks Phase 5 publish · gap G15)*
 - **Check + register a domain** for Fitcheck — verify availability: `getfitcheck.com` / `fitcheck.ai` / `tryfitcheck.com` / `fitcheck.app`. (The brand name is set; the domain must exist before "publish.")
@@ -42,10 +47,10 @@ Federated memories accepted (decision G6); the `taste-nim` Worker already holds 
 ---
 
 ## Priority order (knock these out)
-1. **Anthropic + fal keys** → unblocks all generation (do first; cheapest, biggest).
+1. ~~Anthropic + fal keys~~ → **DONE differently:** text generation runs live on Ollama+NIM today; no keys to buy. (Anthropic/fal are deferred nice-to-haves, not blockers.)
 2. **Domain** (register early — DNS propagates).
 3. **PostHog** (instrument early so the funnel measures from day one).
 4. **explee + Composio** (the outbound + reply loop — needed at Phase 3).
 5. **Hermes + Paperclip live** (the gates route here — needed before the first gate).
 
-**You provide the keys/accounts (1, 3, 4, 5, 6) + the domain (2); we write the adapters + wiring (the → tasks).** None of this blocks Phase 1's buildable half (brand-spec emit + validate), which needs nothing live.
+**You provide the accounts (3, 4, 5, 6) + the domain (2); we write the wiring (the → tasks).** Generation (item 1) is already live on Ollama+NIM. None of this blocks Phase 1's buildable half (brand-spec emit + validate), which needs nothing live.

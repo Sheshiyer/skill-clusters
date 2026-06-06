@@ -5,9 +5,9 @@ import { test } from 'node:test';
 import assert from 'node:assert';
 import { route, generate, ROUTES } from './router.mjs';
 
-test('route(creative-text): claude primary, nim fallback', () => {
+test('route(creative-text): ollama primary, nim fallback', () => {
   const attempts = route('creative-text');
-  assert.equal(attempts[0].provider, 'claude');
+  assert.equal(attempts[0].provider, 'ollama');
   assert.equal(attempts[1].provider, 'nim');
 });
 
@@ -17,10 +17,10 @@ test('route(embed): nim with nv-embedqa-e5-v5', () => {
   assert.match(attempts[0].model, /nv-embedqa-e5-v5/);
 });
 
-test('route(structured-json): nim primary, claude fallback', () => {
+test('route(structured-json): nim primary, ollama fallback', () => {
   const attempts = route('structured-json');
   assert.equal(attempts[0].provider, 'nim');
-  assert.equal(attempts[1].provider, 'claude');
+  assert.equal(attempts[1].provider, 'ollama');
 });
 
 test('route(zzz): unknown task throws', () => {
@@ -36,17 +36,17 @@ test('route returns a copy — mutating it does not corrupt the ROUTES table', (
 test('generate: primary throws → falls over to next adapter and returns its result', async () => {
   const calls = [];
   const adapters = {
-    claude: { run: async () => { calls.push('claude'); throw new Error('session failure (simulated)'); } },
+    ollama: { run: async () => { calls.push('ollama'); throw new Error('local daemon down (simulated)'); } },
     nim: { run: async (model, payload) => { calls.push('nim'); return `nim-ok:${payload.prompt}`; } },
   };
   const out = await generate('creative-text', { prompt: 'hi' }, { adapters });
   assert.equal(out, 'nim-ok:hi');
-  assert.deepEqual(calls, ['claude', 'nim'], 'tried claude first, then nim');
+  assert.deepEqual(calls, ['ollama', 'nim'], 'tried ollama first, then nim');
 });
 
 test('generate: all attempts throw → throws the LAST error', async () => {
   const adapters = {
-    claude: { run: async () => { throw new Error('first-fail'); } },
+    ollama: { run: async () => { throw new Error('first-fail'); } },
     nim: { run: async () => { throw new Error('last-fail'); } },
   };
   await assert.rejects(
@@ -56,7 +56,7 @@ test('generate: all attempts throw → throws the LAST error', async () => {
 });
 
 test('generate: a missing adapter for a provider is treated as a failover, not a crash', async () => {
-  // creative-text = [claude, nim]; omit claude entirely → should skip to nim
+  // creative-text = [ollama, nim]; omit ollama entirely → should skip to nim
   const adapters = {
     nim: { run: async () => 'nim-saved-the-day' },
   };
