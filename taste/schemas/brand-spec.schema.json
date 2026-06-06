@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Sheshiyer/skill-clusters/taste/schemas/brand-spec.schema.json",
+  "title": "Canonical Brand Spec",
+  "description": "The single contract that carries brand truth across the brandmint -> taste -> conductor seam. brandmint emits it, the conductor builds on-brand from it, the je-ne-sais-quoi taste engine keeps output on-brand against it. Enforced by taste/scripts/validate-brand-spec.mjs: an under-specified spec is how 'on-brand' silently becomes 'off-brand', so the validator fails loudly on a malformed one.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["brand", "identity", "positioning", "voice_tokens", "visual_tokens"],
+  "properties": {
+    "brand": {
+      "type": "string",
+      "description": "The brand slug/handle (e.g. 'tryambakam-noesis'). The join key across artifacts."
+    },
+    "identity": {
+      "type": "object",
+      "description": "Who the brand is.",
+      "required": ["name"],
+      "additionalProperties": true,
+      "properties": {
+        "name": { "type": "string", "description": "Display name. Required." },
+        "tagline": { "type": "string", "description": "Short positioning line." },
+        "mission": { "type": "string", "description": "Why the brand exists." }
+      }
+    },
+    "positioning": {
+      "type": "object",
+      "description": "Where the brand sits in the market.",
+      "required": ["category", "differentiation"],
+      "additionalProperties": true,
+      "properties": {
+        "category": { "type": "string", "description": "The market/frame the brand competes in. Required." },
+        "differentiation": { "type": "string", "description": "What makes it not-the-same. Required." },
+        "target_market": { "type": "string", "description": "Who it is for." }
+      }
+    },
+    "persona": {
+      "type": "object",
+      "description": "The primary audience the brand speaks to.",
+      "required": ["who"],
+      "additionalProperties": true,
+      "properties": {
+        "who": { "type": "string", "description": "One-line audience description. Required." },
+        "pains": { "type": "array", "items": { "type": "string" }, "description": "What hurts them today." },
+        "gains": { "type": "array", "items": { "type": "string" }, "description": "What they want to be true." }
+      }
+    },
+    "voice_tokens": {
+      "type": "object",
+      "description": "The verbal half of brand truth — how it sounds. The taste engine scores copy against this.",
+      "required": ["tone"],
+      "additionalProperties": true,
+      "properties": {
+        "tone": { "type": "array", "items": { "type": "string" }, "description": "Tone adjectives (e.g. 'mystical', 'precise'). Required, array of string." },
+        "vocabulary": { "type": "array", "items": { "type": "string" }, "description": "On-brand words/terms of art." },
+        "dos": { "type": "array", "items": { "type": "string" }, "description": "Voice rules to follow." },
+        "donts": { "type": "array", "items": { "type": "string" }, "description": "Voice rules to avoid." }
+      }
+    },
+    "visual_tokens": {
+      "type": "object",
+      "description": "The visual half of brand truth — how it looks. The conductor reads these as build primitives.",
+      "required": ["palette"],
+      "additionalProperties": true,
+      "properties": {
+        "palette": { "type": "array", "items": { "type": "string" }, "description": "Color values (hex/named/token). Required, array of string." },
+        "type": {
+          "type": "object",
+          "description": "Typography pairing.",
+          "additionalProperties": true,
+          "properties": {
+            "heading": { "type": "string", "description": "Heading typeface." },
+            "body": { "type": "string", "description": "Body typeface." }
+          }
+        },
+        "motion": { "type": "string", "description": "Motion language (easing/feel)." },
+        "imagery": { "type": "string", "description": "Imagery direction." }
+      }
+    },
+    "taste_seed": {
+      "type": "object",
+      "description": "The je-ne-sais-quoi seed — the aesthetic north star + reference set used to bootstrap the brand-DNA prototype.",
+      "additionalProperties": true,
+      "properties": {
+        "aesthetic": { "type": "string", "description": "One-line aesthetic statement." },
+        "references": { "type": "array", "items": { "type": "string" }, "description": "Reference URLs (e.g. Codrops demos) or names." }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "description": "Concrete brand assets. Each carries exactly one location: a local path OR a url.",
+      "items": {
+        "type": "object",
+        "required": ["id"],
+        "additionalProperties": true,
+        "oneOf": [
+          { "required": ["path"] },
+          { "required": ["url"] }
+        ],
+        "properties": {
+          "id": { "type": "string", "description": "Stable asset id. Required." },
+          "kind": { "type": "string", "description": "Asset kind (e.g. 'image', 'font', 'video')." },
+          "path": { "type": "string", "description": "Local path. Provide path XOR url." },
+          "url": { "type": "string", "description": "Remote URL. Provide path XOR url." },
+          "origin": {
+            "type": "string",
+            "enum": ["user_provided", "generated"],
+            "description": "Provenance: 'user_provided' or 'generated'."
+          }
+        }
+      }
+    }
+  }
+}
