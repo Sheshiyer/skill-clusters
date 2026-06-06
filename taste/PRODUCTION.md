@@ -16,6 +16,7 @@ alternating calls genuinely halves the per-account load.
 | `NIM_KEYS` | *(optional)* comma-separated env-var **names** to define the pool + order explicitly | — |
 | `NIM_BASE_URL` | endpoint override (default `integrate.api.nvidia.com/v1`) | — |
 | `NIM_VLM_MODEL` · `NIM_EMBED_MODEL` · `NIM_CLIP_MODEL` | model overrides | — |
+| `NIM_VLM_FALLBACK` | VLM retried on this model if the primary errors (default `llama-3.2-11b-vision`) | — |
 
 Keys are loaded **in-process** by `lib/load-env.mjs` (repo `.env` first, then `~/.claude/.env` …) —
 never shell-sourced. Already-set env vars always win.

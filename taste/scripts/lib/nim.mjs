@@ -45,17 +45,23 @@ async function post(path, body) {
 
 // VLM auto-annotation → the structured taste schema (the aesthetic vocabulary the tags lack).
 const TASTE_KEYS = ['aesthetic_category', 'mood', 'motion_language', 'color_story', 'type_voice', 'density', 'composition', 'era'];
-export async function vlmAnnotate(imageBuf, mime = 'image/jpeg', { model = process.env.NIM_VLM_MODEL || 'meta/llama-3.2-90b-vision-instruct' } = {}) {
+export async function vlmAnnotate(imageBuf, mime = 'image/jpeg', { model = process.env.NIM_VLM_MODEL || 'meta/llama-3.2-90b-vision-instruct', fallback = process.env.NIM_VLM_FALLBACK || 'meta/llama-3.2-11b-vision-instruct' } = {}) {
   const b64 = imageBuf.toString('base64');
   const prompt = `You are a senior art director analyzing a web-design preview. Return ONLY a compact JSON object (no markdown, no prose) with EXACTLY these keys: ${TASTE_KEYS.join(', ')}. Each value is a short, specific phrase (2-6 words) describing that aesthetic dimension of the design shown.`;
-  const out = await post('/chat/completions', {
-    model,
-    messages: [{ role: 'user', content: [{ type: 'text', text: prompt }, { type: 'image_url', image_url: { url: `data:${mime};base64,${b64}` } }] }],
-    max_tokens: 320, temperature: 0.2,
-  });
-  const txt = out.choices?.[0]?.message?.content || '';
-  const json = txt.match(/\{[\s\S]*\}/)?.[0];
-  try { return json ? JSON.parse(json) : { _raw: txt }; } catch { return { _raw: txt }; }
+  const call = async (m) => {
+    const out = await post('/chat/completions', {
+      model: m,
+      messages: [{ role: 'user', content: [{ type: 'text', text: prompt }, { type: 'image_url', image_url: { url: `data:${mime};base64,${b64}` } }] }],
+      max_tokens: 320, temperature: 0.2,
+    });
+    const txt = out.choices?.[0]?.message?.content || '';
+    const json = txt.match(/\{[\s\S]*\}/)?.[0];
+    try { return json ? JSON.parse(json) : { _raw: txt }; } catch { return { _raw: txt }; }
+  };
+  // model-fallback: the 90B occasionally 500s on a specific image the 11B handles fine (a different
+  // axis from the key-failover in post() — that's for rate-limits, this is per-image model failures).
+  try { return await call(model); }
+  catch (e) { if (fallback && fallback !== model) return call(fallback); throw e; }
 }
 
 // Text embeddings. input_type: 'passage' to index, 'query' to search. nv-embedqa caps at 512 tokens.
