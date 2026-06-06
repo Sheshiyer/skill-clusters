@@ -14,5 +14,6 @@ taste/corpus/*.jsonl
 taste/index/
 taste/brands/*.json
 taste/feedback/*.jsonl
+taste/eval/*.jsonl
 taste/worker/.proxy.env
 taste/worker/.wrangler/

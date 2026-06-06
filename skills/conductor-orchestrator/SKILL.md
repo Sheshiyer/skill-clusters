@@ -42,8 +42,16 @@ load that cluster's orchestrator into the subagent:
 3. **Activate deferred clusters** the wave touches: `node ~/.agents/skill-clusters/scripts/tier.mjs --activate <cluster> --apply`.
 4. **Dispatch** a `conducty-execute` subagent whose loaded skill is the resolved `<cluster>-orchestrator`
    (the hub then routes to the spoke on demand). Respect `[P]` for parallel waves; tracer-first per group.
-5. **Gate** via PAI hooks (`SkillClusterResolver` denies non-enumerated skills; fail-closed `exit(2)` gates;
+5. **Taste — the right brain** (`je-ne-sais-quoi`). For **visual/frontend** clusters (creative-frontend ·
+   astro · react-native · expo · design · electron · tauri UI), consult the taste engine *before* the
+   subagent builds:
+   `node ~/.agents/skill-clusters/taste/scripts/taste-resolve.mjs "<task>" --brand <brand> --json`
+   → inject the returned **taste brief** (aesthetic classification · top-K on-brand Codrops exemplars +
+   code links · conformance directive · steerable axes) into the subagent's context. The left brain picks
+   the *technique*; the right brain says how it should *feel*, on-brand. Skip for non-visual clusters.
+6. **Gate** via PAI hooks (`SkillClusterResolver` denies non-enumerated skills; fail-closed `exit(2)` gates;
    commit-on-criterion). The orchestrator never writes the verdict — it synthesizes the subagents' status.
+   After ship, **record the cycle** for taste learning: `node taste/scripts/taste-feedback.mjs --record …`.
 
 ## Delivery modality — local subagents vs GitHub multi-agent
 
