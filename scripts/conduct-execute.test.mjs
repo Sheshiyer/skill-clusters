@@ -68,3 +68,42 @@ test('executePlan: taste-resolve failure does not abort the venture — task deg
   assert.equal(out.results[0].status, 'built');
   assert.equal(seen[0], null, 'dispatched with a null brief rather than crashing');
 });
+
+// ── #89 · the four hard-gates ───────────────────────────────────────────────────────────────────
+test('executePlan: a gated task (deploy/spend/outbound) is HELD by default, never auto-fires', async () => {
+  const seen = [];
+  const out = await executePlan({ tasksPath: 'x', brand: 'acme' }, {
+    resolveTask: async () => ({ plan: [{ id: 'T1', desc: 'deploy the landing to production', cluster: 'cloudflare' }] }),
+    tasteResolve: async () => ({ directive: 'x' }),
+    dispatch: async (t) => { seen.push(t.id); return { ok: true }; },
+  });
+  assert.equal(out.results[0].status, 'held');
+  assert.equal(out.results[0].gate, 'publish');
+  assert.equal(seen.length, 0, 'held — not dispatched');
+  assert.deepEqual(out.held, ['T1']);
+});
+
+test('executePlan: an approving gate lets the gated task through', async () => {
+  const seen = [];
+  await executePlan({ tasksPath: 'x', brand: 'acme' }, {
+    resolveTask: async () => ({ plan: [{ id: 'T1', desc: 'send the outbound batch', cluster: 'explee' }] }),
+    tasteResolve: async () => ({ directive: 'x' }),
+    dispatch: async (t) => { seen.push(t.id); return { ok: true }; },
+    gate: async (task, type) => ({ approved: type === 'outbound' }),
+  });
+  assert.deepEqual(seen, ['T1']);
+});
+
+// ── #92 · checkpoint / resume ────────────────────────────────────────────────────────────────────
+test('executePlan: checkpoint resume skips already-built tasks + saves newly-built ones', async () => {
+  const saved = [];
+  const out = await executePlan({ tasksPath: 'x', brand: 'acme' }, {
+    resolveTask: async () => ({ plan: [{ id: 'T1', desc: 'a', cluster: 'c1' }, { id: 'T2', desc: 'b', cluster: 'c2' }] }),
+    tasteResolve: async () => ({ directive: 'x' }),
+    dispatch: async () => ({ ok: true }),
+    checkpoint: { load: () => ['T1'], save: (id) => saved.push(id) },
+  });
+  assert.equal(out.results.find((r) => r.id === 'T1').status, 'skipped', 'resumed past T1');
+  assert.equal(out.results.find((r) => r.id === 'T2').status, 'built');
+  assert.deepEqual(saved, ['T2'], 'only the newly-built task is checkpointed');
+});
