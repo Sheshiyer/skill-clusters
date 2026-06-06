@@ -11,9 +11,11 @@ import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));         // taste/scripts/lib
 const repoEnv = path.resolve(here, '../../../.env');              // skill-clusters/.env (the new account)
+const proxyEnv = path.resolve(here, '../../worker/.proxy.env');  // taste/worker/.proxy.env (the Cloudflare Worker)
 
-// repo .env FIRST so the new account's key is preferred, then the home env files
+// proxy env + repo .env FIRST so the Worker URL/token + the new account's key win, then the homes
 const CANDIDATES = [
+  proxyEnv,
   repoEnv,
   path.join(os.homedir(), '.claude/.env'),
   path.join(os.homedir(), '.hermes/.env'),
@@ -22,8 +24,9 @@ const CANDIDATES = [
 ];
 const WANT = [
   'NVIDIA_NIM_API_KEY', 'NVIDIA_API_KEY', 'NIM_API_KEY', 'NIM_KEYS',   // the key pool (primary first)
-  'NVIDIA_NIM_API_URL', 'NIM_BASE_URL', 'NIM_VLM_MODEL', 'NIM_EMBED_MODEL', 'NIM_CLIP_MODEL',
-  'INFERENCE_SH_API_KEY', 'INFERENCE_API_KEY',                         // a possible future lane (different provider)
+  'NVIDIA_NIM_API_URL', 'NIM_BASE_URL', 'NIM_VLM_MODEL', 'NIM_VLM_FALLBACK', 'NIM_EMBED_MODEL', 'NIM_CLIP_MODEL',
+  'NIM_PROXY_URL', 'NIM_PROXY_TOKEN',                                  // the Cloudflare proxy (production path)
+  'INFERENCE_SH_API_KEY', 'INFERENCE_API_KEY',                         // the LLM-reasoning lane (inference.sh)
 ];
 
 function parseEnv(text) {

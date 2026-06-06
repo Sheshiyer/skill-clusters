@@ -21,11 +21,24 @@ const POOL = [...new Set((process.env.NIM_KEYS
 ).filter(Boolean))];
 
 let rr = 0;
-export const hasKey = () => POOL.length > 0;
+
+// Production path: if NIM_PROXY_URL (the Cloudflare taste-nim Worker) is set, route every call through
+// it — the keys live in KV server-side and never reach the client. Else call NVIDIA directly w/ the pool.
+const PROXY = (process.env.NIM_PROXY_URL || '').replace(/\/$/, '');
+const PROXY_TOKEN = process.env.NIM_PROXY_TOKEN || '';
+const PROXY_ROUTE = { '/embeddings': '/embed', '/chat/completions': '/vlm' };
+
+export const hasKey = () => POOL.length > 0 || !!PROXY;
 export const keyCount = () => POOL.length;
-export const baseUrl = () => BASE;
+export const baseUrl = () => PROXY || BASE;
+export const viaProxy = () => !!PROXY;
 
 async function post(path, body) {
+  if (PROXY) {                                              // → Cloudflare Worker (keys stay in KV)
+    const res = await fetch(PROXY + (PROXY_ROUTE[path] || path), { method: 'POST', headers: { Authorization: `Bearer ${PROXY_TOKEN}`, 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) });
+    if (!res.ok) throw new Error(`proxy ${res.status}: ${(await res.text()).slice(0, 200)}`);
+    return res.json();
+  }
   if (!POOL.length) throw new Error('no NVIDIA key — set NVIDIA_NIM_API_KEY (or NVIDIA_API_KEY) in .env');
   let lastErr;
   for (let attempt = 0; attempt < POOL.length; attempt++) {

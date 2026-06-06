@@ -2,6 +2,17 @@
 
 How the taste engine consumes NVIDIA NIM today, and the path to Cloudflare KV + a Worker for prod.
 
+> ## ✅ DEPLOYED
+> - **KV namespace** `TASTE_SECRETS` (`cad55b37…`) holds: `nvidia_nim_primary`, `nvidia_nim_secondary`,
+>   `proxy_token`, `inference_sh`.
+> - **Worker** `taste-nim` → **`https://taste-nim.sheshnarayan-iyer.workers.dev`** — a bearer-gated
+>   proxy with `POST /embed`, `POST /vlm`, `GET /health`; round-robin + failover over the NVIDIA pool;
+>   keys never leave KV.
+> - **Client**: `nim.mjs` routes through the Worker whenever `NIM_PROXY_URL` is set (in
+>   `taste/worker/.proxy.env`, git-ignored). Validated end-to-end — a taste brief runs through the
+>   Worker with no local key. To run direct instead, unset `NIM_PROXY_URL`.
+> - **Re-run secrets**: `node taste/worker/put-secrets.mjs` · **redeploy**: `cd taste/worker && wrangler deploy`.
+
 ## The key pool (don't overload one account)
 
 `taste/scripts/lib/nim.mjs` uses a **pool of NVIDIA keys**, round-robin per call with failover on

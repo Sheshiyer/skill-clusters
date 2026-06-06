@@ -1,0 +1,10 @@
+name = "taste-nim"
+main = "worker.js"
+compatibility_date = "2026-06-06"
+workers_dev = true
+
+# Secret store for the taste engine — NVIDIA key pool + proxy token (+ future inference.sh).
+# Populated by taste/worker/put-secrets.mjs (reads keys from env, never prints values).
+[[kv_namespaces]]
+binding = "TASTE_SECRETS"
+id = "cad55b37e92546b8afd567a375423b61"
