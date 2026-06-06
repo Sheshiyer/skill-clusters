@@ -2,6 +2,20 @@
 
 **Date:** 2026-06-06 · adversarial review of the frozen tapestry before the fully-live HDILINT slice.
 
+## Resolutions (decided 2026-06-06, one-by-one)
+
+| Gap | Decision |
+|---|---|
+| **G1** model router | **Best-of-breed per task** — strongest model per content type (creative→Claude, structured→NIM, image→gpt-image-2, video→arcplume, embed/vision→NIM); add `chat()` + a router with per-task fallbacks. |
+| **G2** idempotency | **Centralized KV idempotency ledger** at the gate/execute boundary — key = content hash, check-before-fire, record-after. |
+| **G3** sending | **explee owns deliverability** (sends via its warmed domains). We build the **Composio reply loop**: connect the founder inbox (Gmail/Zoho) → explee conversations + replies retrievable → demand-signal to north-star + founder-gated response drafts. |
+| **G4** provider resilience | **Hybrid** — keep gpt-image-2/arcplume primary; **API-key fallbacks auto-engage** on session failure; NIM→backup LLM. |
+| **G5** budget governor | **Per-venture budget + rate governor in the router** — soft-warn (~80%) → hard-pause (100%) + Hermes alert. |
+| **G6** noesis | **Accept federated memories for slice-1** (taste cosine + brandmint design-memory + snow-gloves knowledge separate); noesis = explicit v2. |
+| **G7** brand-spec | **Define the full canonical `brand-spec.json` now**, formalized from brandmint's existing HDILINT output (identity · positioning · voice/visual tokens · persona · taste-seed · asset refs). |
+| **G8–G15** mediums | **Handle inline during the build** (this doc = the checklist); **fold the 3 live-gating ones into the slice plan**: rails (domain/hosting), build-entry (idea→spec→tasks via spec-kit), approval-deadline policy (safe default if the founder is slow). |
+
+
 > The rule: a *fully-live* run touches real money, real inboxes, real domains. Every gap below is a place
 > the autonomous loop could do something irreversible, expensive, or off-brand without a safety net.
 
