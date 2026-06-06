@@ -18,6 +18,7 @@
 //   lint        npm run lint                 — required, when the script exists
 //   typecheck   npm run typecheck | tsc      — required, when configured
 //   tests       npm test                     — required, when the script exists
+//   visual-qa   visual-qa.mjs WCAG contrast  — required, when dist/index.html exists (web build)
 //   gitclean    uncommitted working tree     — advisory (warn, never blocks)
 
 import fs from 'node:fs';
@@ -104,7 +105,45 @@ for (const [gate, script, fallback] of [
   }
 }
 
-// 6. gitclean — advisory only
+// 6. visual-qa — REQUIRED when the project has a built web page (dist/index.html). We render it with
+// the reusable visual-qa tool and fail CLOSED on any WCAG contrast failure. visual-qa exits 0 on a
+// clean audit and non-zero when it finds failures (exit 1) or can't audit (exit 2/3); any non-zero is
+// treated as a required failure here. Skips cleanly (advisory) when there's no web build to gate.
+{
+  const distHtml = path.join(dir, 'dist', 'index.html');
+  if (fs.existsSync(distHtml)) {
+    const vqa = path.join(__dirname, 'visual-qa.mjs');
+    const outDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ship-vqa-'));
+    let code = 0, stderr = '';
+    try {
+      execSync(`node ${JSON.stringify(vqa)} ${JSON.stringify(distHtml)} --widths 1280 --out ${JSON.stringify(outDir)}`,
+        { cwd: dir, stdio: ['ignore', 'pipe', 'pipe'], encoding: 'utf8', timeout: 600000 });
+    } catch (e) {
+      code = typeof e.status === 'number' ? e.status : 1;
+      stderr = ((e.stderr || '') + (e.stdout || '')).trim();
+    }
+    // Read the structured report for an exact failure count (more precise than the exit code alone).
+    let failureCount = null, audited = null, reportErr = null;
+    try {
+      const rep = JSON.parse(fs.readFileSync(path.join(outDir, 'contrast-report.json'), 'utf8'));
+      failureCount = rep.failureCount; audited = rep.audited; reportErr = rep.error || null;
+    } catch { /* report unreadable → fall back to exit code */ }
+
+    const ok = code === 0 && (failureCount === null || failureCount === 0) && !reportErr;
+    const detail = ok
+      ? `0 contrast failures (${audited ?? '?'} text elements audited @1280px)`
+      : reportErr
+        ? `visual-qa could not audit: ${reportErr}`
+        : failureCount && failureCount > 0
+          ? `${failureCount} WCAG contrast failure(s) @1280px → fix before shipping`
+          : `visual-qa failed (exit ${code})${stderr ? ': ' + stderr.split('\n').slice(-2).join(' / ') : ''}`;
+    add('visual-qa', ok ? 'pass' : 'fail', detail, true);
+  } else {
+    add('visual-qa', 'skip', 'no dist/index.html (not a built web project)', false);
+  }
+}
+
+// 7. gitclean — advisory only
 {
   let dirty = '';
   try { dirty = execSync('git status --porcelain', { cwd: dir, encoding: 'utf8' }).trim(); } catch {}
