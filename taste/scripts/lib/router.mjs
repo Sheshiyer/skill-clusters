@@ -9,7 +9,9 @@
 // not configured" until wired. Because generate() treats a throwing adapter as a failover signal, a
 // route whose primary is a stub transparently falls through to the next live attempt.
 
+import { readFileSync } from 'node:fs';
 import * as nim from './nim.mjs';
+import * as comfyui from './comfyui.mjs';
 import { makeGovernor, BudgetPaused, RateLimited } from './governor.mjs';
 
 // ── ROUTES ───────────────────────────────────────────────────────────────────────────────────────
@@ -25,6 +27,7 @@ export const ROUTES = Object.freeze({
   'code':           [OLLAMA, NIM_LLM],
   'outreach':       [OLLAMA, NIM_LLM],
   'image':          [{ provider: 'gpt-image-2', model: 'gpt-image-2' }],   // session provider; no fal fallback (no key for now)
+  'tryon':          [{ provider: 'comfyui', model: 'qwen-image-edit-tryon' }], // dedicated VTO backend (ComfyUI + Qwen-Edit try-on LoRA on AWS GPU)
   'video':          [{ provider: 'arcplume', model: 'arcplume' }],         // session provider; no fal fallback (no key for now)
   'embed':          [{ provider: 'nim',    model: 'nvidia/nv-embedqa-e5-v5' }],
   'vision':         [{ provider: 'nim',    model: 'meta/llama-3.2-90b-vision-instruct' }],
@@ -41,6 +44,7 @@ const COST = {
   'embed': 0.2,
   'vision': 2,
   'image': 5,
+  'tryon': 8,   // a Qwen-Image-Edit try-on render is GPU-heavy (≈30 steps @ 832×1248)
   'video': 20,
 };
 export function estimateCost(task) {
@@ -97,6 +101,24 @@ export const ADAPTERS = {
     },
   },
   claude: notConfigured('claude'),
+  // Live ComfyUI virtual-try-on adapter — Qwen-Image-Edit + the FoxBaze try-on LoRA on an AWS GPU box.
+  // GATED until configured: needs COMFYUI_URL + COMFYUI_TRYON_WORKFLOW. Until then run() throws and
+  // renderTryOn() degrades to its graceful fallback — no silent broken render, no surprise GPU spend.
+  comfyui: {
+    async run(model, payload = {}) {
+      const wfPath = process.env.COMFYUI_TRYON_WORKFLOW;
+      if (!comfyui.hasBackend() || !wfPath) {
+        throw new Error('comfyui try-on not configured — set COMFYUI_URL + COMFYUI_TRYON_WORKFLOW (the AWS GPU backend)');
+      }
+      const workflow = JSON.parse(readFileSync(wfPath, 'utf8'));
+      return comfyui.tryOn({
+        subject: payload.body ?? payload.subject,
+        garments: payload.garments ?? (payload.productImage ? [payload.productImage] : []),
+        prompt: payload.prompt,
+        workflow,
+      }, payload.opts || {});
+    },
+  },
   'gpt-image-2': notConfigured('gpt-image-2'),
   arcplume: notConfigured('arcplume'),
   fal: notConfigured('fal'),

@@ -11,8 +11,8 @@ import { renderTryOn } from './render.mjs';
 import { makeMemoryStore } from './idempotency.mjs';
 
 const REQ = { productImage: 'https://shop/img/dress.jpg', body: 'preset:athletic', venture: 'fitcheck' };
-// the router `image` lane's provider is `gpt-image-2`; inject a mock so nothing real is generated.
-const okAdapter = (counter) => ({ 'gpt-image-2': { run: async () => { counter.n++; return { url: 'mock://render.png' }; } } });
+// the router `tryon` lane's provider is `comfyui`; inject a mock so nothing real is generated.
+const okAdapter = (counter) => ({ 'comfyui': { run: async () => { counter.n++; return { status: 'rendered', imageBase64: 'MOCK' }; } } });
 
 test('renderTryOn: identical request generates exactly once (idempotency ledger)', async () => {
   const counter = { n: 0 };
@@ -42,7 +42,7 @@ test('renderTryOn: over-budget venture → BudgetPaused, model never fires (no s
 });
 
 test('renderTryOn: adapter failure → graceful fallback object (not a crash)', async () => {
-  const failAdapter = { 'gpt-image-2': { run: async () => { throw new Error('image model down'); } } };
+  const failAdapter = { 'comfyui': { run: async () => { throw new Error('tryon backend down'); } } };
   const out = await renderTryOn(REQ, { adapters: failAdapter, store: makeMemoryStore(), cap: 100 });
   assert.equal(out.status, 'fallback');
   assert.equal(out.image, null);

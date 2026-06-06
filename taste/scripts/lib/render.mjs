@@ -49,7 +49,7 @@ export async function renderTryOn(request, opts = {}) {
       ...(opts.genOpts || {}),
     };
     try {
-      const image = await generate('image', payload, {
+      const image = await generate('tryon', payload, {
         venture,
         adapters: opts.adapters,
         governor: opts.governor,
