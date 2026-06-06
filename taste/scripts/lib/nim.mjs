@@ -77,6 +77,14 @@ export async function vlmAnnotate(imageBuf, mime = 'image/jpeg', { model = proce
   catch (e) { if (fallback && fallback !== model) return call(fallback); throw e; }
 }
 
+// Text chat completion. Rides the same post() path as vlmAnnotate (so it inherits the key-pool
+// round-robin + failover AND the Cloudflare Worker proxy), but text-only. `messages` is the standard
+// OpenAI chat array; returns the assistant's reply text (or '' if the response shape is unexpected).
+export async function chat(messages, { model = process.env.NIM_CHAT_MODEL || 'meta/llama-3.3-70b-instruct', maxTokens = 1024, temperature = 0.7 } = {}) {
+  const out = await post('/chat/completions', { model, messages, max_tokens: maxTokens, temperature });
+  return out.choices?.[0]?.message?.content || '';
+}
+
 // Text embeddings. input_type: 'passage' to index, 'query' to search. nv-embedqa caps at 512 tokens.
 export async function embedText(input, { model = process.env.NIM_EMBED_MODEL || 'nvidia/nv-embedqa-e5-v5', inputType = 'passage', maxChars = 900 } = {}) {
   // token-dense text runs ~0.46 tok/char, so 900 chars (~410 tokens) stays safely under the 512 cap
