@@ -1,6 +1,6 @@
-# Unified Cortex — one nervous system for the whole organism
+# `noesis` — the unified cortex (one nervous system for the whole organism)
 
-**Date:** 2026-06-06 · **Status:** design (the unification map) · **Scope:** cross-repo (taste · brandmint · snow-gloves)
+**Date:** 2026-06-06 · **Status:** design **finalized** (decisions locked) — build deferred · **Scope:** cross-repo (taste · brandmint · snow-gloves)
 
 > Three systems independently built the *same* memory: NVIDIA NIM `nv-embedqa-e5-v5` (**1024-dim**)
 > embeddings behind a Cloudflare Worker. This unifies them into **one Worker + one tenant-scoped
@@ -17,13 +17,13 @@
 All three: **same model, same 1024-dim space, same Worker shape.** They differ only in *what they hold*
 and *who they're scoped to* — which means they're not three systems, they're three **collections** in one.
 
-## 2. The unified substrate — `cortex`
+## 2. The unified substrate — `noesis`
 
-**One Worker** (generalize the live `taste-nim`) + **one Cloudflare Vectorize store** + the existing NIM
-key pool. Everything is addressed by **`(tenant, collection)`**:
+**One Worker** (generalize the live `taste-nim` → `noesis`) + **one Cloudflare Vectorize store** + the
+existing NIM key pool. Everything is addressed by **`(tenant, collection)`**:
 
 ```
-cortex Worker  (Cloudflare)
+noesis Worker  (Cloudflare)
 ├── keys: NVIDIA pool + proxy_token   (KV: TASTE_SECRETS → rename SECRETS)
 ├── embed/vlm: NIM nv-embedqa (1024-dim) + llama-vision   ← already built
 └── vector store: Cloudflare Vectorize (1024-dim, metadata-filtered)
@@ -78,7 +78,8 @@ Auth-gated (proxy token); the Worker **enforces tenant scoping** so one venture 
 
 Each consumer flips independently; nothing breaks if a phase is paused.
 
-## 7. Decisions to confirm
-- **Vector store** = Cloudflare **Vectorize** (native to the Worker, 1024-dim, metadata-filtered for tenancy). Alt: self-host (Qdrant/LanceDB) — heavier, unneeded.
-- **Name** = `cortex` (proposed) — the shared nervous system. Alt: `noesis` (your brand) / `memory`.
-- **Tenant of `taste`** = global (Codrops is universal aesthetic knowledge); brand/knowledge are per-tenant.
+## 7. Decisions (locked 2026-06-06)
+- **Vector store** = Cloudflare **Vectorize** ✓ — native to the Worker, 1024-dim, metadata-filtered for `(tenant, collection)`.
+- **Name** = **`noesis`** ✓ — the knowing/perceiving layer (the founder's own brand). Worker `noesis`, binding `NOESIS`, KV `NOESIS_SECRETS` (or keep `TASTE_SECRETS`).
+- **Tenant of `taste`** = global ✓ — Codrops is universal aesthetic knowledge; `brand:` / `knowledge:` are per-tenant-isolated.
+- **Build** = **deferred.** Entry point when resumed = **Phase A**: generalize `taste-nim` → `noesis` (add the Vectorize binding + `/upsert` + `/query` + tenant scoping; keep `/embed` + `/vlm`), redeploy, test. Additive + reversible.
