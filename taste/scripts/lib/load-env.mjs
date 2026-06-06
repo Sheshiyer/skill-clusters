@@ -7,14 +7,24 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
+const here = path.dirname(fileURLToPath(import.meta.url));         // taste/scripts/lib
+const repoEnv = path.resolve(here, '../../../.env');              // skill-clusters/.env (the new account)
+
+// repo .env FIRST so the new account's key is preferred, then the home env files
 const CANDIDATES = [
+  repoEnv,
   path.join(os.homedir(), '.claude/.env'),
   path.join(os.homedir(), '.hermes/.env'),
   path.join(os.homedir(), '.codex/.env'),
   path.join(os.homedir(), '.env'),
 ];
-const WANT = ['NVIDIA_API_KEY', 'NIM_API_KEY', 'NIM_BASE_URL', 'NIM_VLM_MODEL', 'NIM_EMBED_MODEL', 'NIM_CLIP_MODEL'];
+const WANT = [
+  'NVIDIA_NIM_API_KEY', 'NVIDIA_API_KEY', 'NIM_API_KEY', 'NIM_KEYS',   // the key pool (primary first)
+  'NVIDIA_NIM_API_URL', 'NIM_BASE_URL', 'NIM_VLM_MODEL', 'NIM_EMBED_MODEL', 'NIM_CLIP_MODEL',
+  'INFERENCE_SH_API_KEY', 'INFERENCE_API_KEY',                         // a possible future lane (different provider)
+];
 
 function parseEnv(text) {
   const out = {};

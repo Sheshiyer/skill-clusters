@@ -1,25 +1,46 @@
-// nim.mjs — swappable NVIDIA NIM client (hosted build.nvidia.com / integrate.api.nvidia.com).
+// nim.mjs — multi-key NVIDIA NIM client (hosted integrate.api.nvidia.com, OpenAI-compatible).
 //
-// The ONLY thing gating VLM enrichment + multi-modal embeddings is the API key. Set one of
-// NVIDIA_API_KEY / NIM_API_KEY in the env (or a .env the caller loads) and these activate.
-// Models are env-overridable so swapping the embedder/VLM is a one-line change (Tier-B requirement).
+// Uses a POOL of keys, round-robin per call so no single account is overloaded, with failover on
+// 429 / 5xx to the next key. Primary is NVIDIA_NIM_API_KEY; NVIDIA_API_KEY (and any NIM_KEYS list)
+// are additional lanes. Models are env-overridable so swapping the embedder/VLM is a one-line change.
+//
+// PRODUCTIZABLE: the pool is just env vars, so a Cloudflare Worker injects them from KV secrets in
+// prod (see taste/PRODUCTION.md). Nothing here is hard-coded to a single account.
 
-import './load-env.mjs';   // populate NVIDIA_API_KEY from the user's env files (in-process, never shell-sourced)
+import './load-env.mjs';   // populate keys from the repo .env + home env files (in-process, never shell-sourced)
 
-const BASE = process.env.NIM_BASE_URL || 'https://integrate.api.nvidia.com/v1';
-const KEY = () => process.env.NVIDIA_API_KEY || process.env.NIM_API_KEY || null;
-export const hasKey = () => !!KEY();
+// Endpoint: both NVIDIA accounts use integrate.api.nvidia.com. The repo .env's NVIDIA_NIM_API_URL
+// (api.nvidia.com/nim/v1) is NOT a real endpoint — only honor a configured URL if it's an integrate host.
+const cfg = process.env.NIM_BASE_URL || (/integrate\.api\.nvidia\.com/.test(process.env.NVIDIA_NIM_API_URL || '') ? process.env.NVIDIA_NIM_API_URL : '');
+const BASE = (cfg || 'https://integrate.api.nvidia.com/v1').replace(/\/$/, '');
+
+// Key pool — primary first, deduped. NIM_KEYS (comma-separated env var NAMES) overrides the default order.
+const POOL = [...new Set((process.env.NIM_KEYS
+  ? process.env.NIM_KEYS.split(',').map((n) => process.env[n.trim()])
+  : [process.env.NVIDIA_NIM_API_KEY, process.env.NVIDIA_API_KEY, process.env.NIM_API_KEY]
+).filter(Boolean))];
+
+let rr = 0;
+export const hasKey = () => POOL.length > 0;
+export const keyCount = () => POOL.length;
+export const baseUrl = () => BASE;
 
 async function post(path, body) {
-  const key = KEY();
-  if (!key) throw new Error('NVIDIA_API_KEY not set');
-  const res = await fetch(BASE + path, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) throw new Error(`NIM ${res.status}: ${(await res.text()).slice(0, 240)}`);
-  return res.json();
+  if (!POOL.length) throw new Error('no NVIDIA key — set NVIDIA_NIM_API_KEY (or NVIDIA_API_KEY) in .env');
+  let lastErr;
+  for (let attempt = 0; attempt < POOL.length; attempt++) {
+    const key = POOL[(rr++) % POOL.length];                 // round-robin across calls + failover within a call
+    let res;
+    try {
+      res = await fetch(BASE + path, { method: 'POST', headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) });
+    } catch (e) { lastErr = e; continue; }                  // network error → try the next key
+    if (res.ok) return res.json();
+    const text = (await res.text()).slice(0, 240);
+    // only fail over on rate-limit / server errors; a 4xx (bad input) won't be fixed by another key
+    if (res.status === 429 || res.status >= 500) { lastErr = new Error(`NIM ${res.status}: ${text}`); continue; }
+    throw new Error(`NIM ${res.status}: ${text}`);
+  }
+  throw lastErr || new Error('NIM: all keys failed');
 }
 
 // VLM auto-annotation → the structured taste schema (the aesthetic vocabulary the tags lack).
@@ -37,10 +58,9 @@ export async function vlmAnnotate(imageBuf, mime = 'image/jpeg', { model = proce
   try { return json ? JSON.parse(json) : { _raw: txt }; } catch { return { _raw: txt }; }
 }
 
-// Text embeddings (e.g. nv-embedqa-e5-v5 / llama-3.2-nv-embedqa). input_type: 'passage' to index, 'query' to search.
+// Text embeddings. input_type: 'passage' to index, 'query' to search. nv-embedqa caps at 512 tokens.
 export async function embedText(input, { model = process.env.NIM_EMBED_MODEL || 'nvidia/nv-embedqa-e5-v5', inputType = 'passage', maxChars = 900 } = {}) {
-  // nv-embedqa caps input at 512 tokens. Token-dense text runs ~0.46 tok/char, so 900 chars (~410
-  // tokens) stays safely under the cap — truncate each input so a long one never 400s.
+  // token-dense text runs ~0.46 tok/char, so 900 chars (~410 tokens) stays safely under the 512 cap
   const arr = (Array.isArray(input) ? input : [input]).map((s) => String(s).slice(0, maxChars));
   const out = await post('/embeddings', { model, input: arr, input_type: inputType, encoding_format: 'float' });
   return out.data.map((d) => d.embedding);
