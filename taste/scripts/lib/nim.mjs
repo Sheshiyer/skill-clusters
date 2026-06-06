@@ -38,8 +38,11 @@ export async function vlmAnnotate(imageBuf, mime = 'image/jpeg', { model = proce
 }
 
 // Text embeddings (e.g. nv-embedqa-e5-v5 / llama-3.2-nv-embedqa). input_type: 'passage' to index, 'query' to search.
-export async function embedText(input, { model = process.env.NIM_EMBED_MODEL || 'nvidia/nv-embedqa-e5-v5', inputType = 'passage' } = {}) {
-  const out = await post('/embeddings', { model, input: Array.isArray(input) ? input : [input], input_type: inputType, encoding_format: 'float' });
+export async function embedText(input, { model = process.env.NIM_EMBED_MODEL || 'nvidia/nv-embedqa-e5-v5', inputType = 'passage', maxChars = 900 } = {}) {
+  // nv-embedqa caps input at 512 tokens. Token-dense text runs ~0.46 tok/char, so 900 chars (~410
+  // tokens) stays safely under the cap — truncate each input so a long one never 400s.
+  const arr = (Array.isArray(input) ? input : [input]).map((s) => String(s).slice(0, maxChars));
+  const out = await post('/embeddings', { model, input: arr, input_type: inputType, encoding_format: 'float' });
   return out.data.map((d) => d.embedding);
 }
 

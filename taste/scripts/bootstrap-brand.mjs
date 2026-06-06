@@ -59,7 +59,13 @@ console.log(`\n  bootstrapping brand: ${brand}`);
 console.log(`  docs: ${docsDir} (${docText.length} chars) · sites: ${sites.length} · techniques: ${[...techniques].join(', ') || '—'} · tone: ${tone.join(', ') || '—'}`);
 if (!nim.hasKey()) { console.error('\n  NVIDIA_API_KEY not set — needed to embed the brand DNA. Set it and re-run.\n'); process.exit(0); }
 
-const prototype = (await nim.embedText([brandText], { inputType: 'passage' }))[0];
+// chunk the brand DNA (the embedder caps at 512 tokens) and average → a richer prototype than truncating
+const CHUNK = 800;   // ~365 tokens — safely under the embedder's 512-token cap (token-dense docs)
+const chunks = [];
+for (let i = 0; i < brandText.length && chunks.length < 12; i += CHUNK) chunks.push(brandText.slice(i, i + CHUNK));
+const vecs = await nim.embedText(chunks, { inputType: 'passage' });
+const prototype = vecs[0].map((_, i) => vecs.reduce((s, v) => s + v[i], 0) / vecs.length);
+console.log(`  embedded ${chunks.length} brand-DNA chunk(s) → centroid prototype`);
 const profile = {
   brand,
   prototype,
