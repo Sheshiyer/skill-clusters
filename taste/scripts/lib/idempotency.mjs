@@ -24,24 +24,12 @@ import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { stableStringify } from './canonical.mjs';
 
 // --- canonical JSON --------------------------------------------------------------------------------
-
-// Recursively sort object keys so {a:1,b:2} and {b:2,a:1} (at ANY depth) serialize identically.
-// Arrays keep their order (order is meaningful there); primitives pass through untouched.
-function canonicalize(value) {
-  if (Array.isArray(value)) return value.map(canonicalize);
-  if (value && typeof value === 'object') {
-    const out = {};
-    for (const k of Object.keys(value).sort()) out[k] = canonicalize(value[k]);
-    return out;
-  }
-  return value;
-}
-
-export function stableStringify(value) {
-  return JSON.stringify(canonicalize(value));
-}
+// canonicalize + stableStringify now live in ./canonical.mjs (shared with brand-spec versioning).
+// Re-exported here so existing `import { stableStringify } from './idempotency.mjs'` keeps working.
+export { stableStringify };
 
 // Deterministic key for an irreversible action. Same (type, payload) → same key, regardless of key order.
 export function actionKey(type, payload) {

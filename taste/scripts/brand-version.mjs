@@ -20,30 +20,15 @@
 
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
+import { stableStringify } from './lib/canonical.mjs';
 
 // The brand-truth surface diffSpecs walks. The top-level `brand` slug and `assets` are intentionally
 // out of scope — they aren't brand *truth*, they're identity/attachments — matching the task's
 // named field list.
 const SECTIONS = ['identity', 'positioning', 'voice_tokens', 'visual_tokens', 'persona', 'taste_seed'];
 
-// --- canonical JSON (order-invariant) --------------------------------------------------------------
-
-// Recursively sort object keys so { a, b } and { b, a } serialize identically at every depth. Arrays
-// keep order (meaningful); primitives pass through. Same approach as lib/idempotency.mjs, re-implemented
-// here to keep brand-version self-contained (no cross-lib coupling for a single-purpose tool).
-function canonicalize(value) {
-  if (Array.isArray(value)) return value.map(canonicalize);
-  if (value && typeof value === 'object') {
-    const out = {};
-    for (const k of Object.keys(value).sort()) out[k] = canonicalize(value[k]);
-    return out;
-  }
-  return value;
-}
-
-function stableStringify(value) {
-  return JSON.stringify(canonicalize(value));
-}
+// canonical JSON (order-invariant) → ./lib/canonical.mjs, shared with the idempotency ledger so the
+// brand version hash and the action key fingerprint content the same, drift-free way.
 
 // --- versionOf -------------------------------------------------------------------------------------
 

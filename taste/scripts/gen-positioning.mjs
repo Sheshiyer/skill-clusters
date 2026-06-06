@@ -16,17 +16,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { isStr, asArr, oneLine } from './lib/brand-tokens.mjs';
 
 // ---- small helpers --------------------------------------------------------
 
-const isStr = (v) => typeof v === 'string' && v.trim().length > 0;
-const asArr = (v) => (Array.isArray(v) ? v.filter((x) => isStr(x)).map((x) => x.trim()) : []);
-
-// Flatten any multi-line string to one flowing line (newlines → spaces, runs collapsed).
-function oneLine(s) {
-  if (typeof s !== 'string') return '';
-  return s.replace(/\s*\n\s*/g, ' ').replace(/\s+/g, ' ').trim();
-}
+// isStr · asArr · oneLine → ./lib/brand-tokens.mjs (shared with gen-voice).
 
 // Drop a trailing sentence terminator so a clause can be spliced mid-sentence cleanly.
 function clause(s) {
