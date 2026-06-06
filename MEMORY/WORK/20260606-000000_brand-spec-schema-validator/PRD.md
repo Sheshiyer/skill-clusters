@@ -2,11 +2,11 @@
 task: canonical brand-spec schema plus zero-dep validator
 slug: 20260606-000000_brand-spec-schema-validator
 effort: extended
-phase: verify
+phase: complete
 progress: 22/22
 mode: interactive
 started: 2026-06-06T00:00:00Z
-updated: 2026-06-06T00:18:00Z
+updated: 2026-06-06T00:20:00Z
 ---
 
 ## Context
