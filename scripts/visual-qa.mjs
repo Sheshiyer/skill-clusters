@@ -333,6 +333,9 @@ function contrastAuditInPage() {
   for (const el of all) {
     if (SKIP.has(el.tagName)) continue;
     if (!document.body || !document.body.contains(el)) continue;
+    // SVG graphic text (logos, illustrations) is painted by the `fill` attribute, not CSS `color`,
+    // and is WCAG-exempt (1.4.3 — logotypes). getComputedStyle().color can't evaluate it — skip.
+    if (el.closest && el.closest('svg')) continue;
 
     // only elements with a DIRECT, non-empty visible text node
     let directText = '';
