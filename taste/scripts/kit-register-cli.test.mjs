@@ -7,16 +7,17 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { spawnCli } from './test-helpers/spawn-cli.mjs';
+
 const SCRIPT = fileURLToPath(new URL('./kit-register.mjs', import.meta.url));
 const FIXTURE = fileURLToPath(new URL('./__fixtures__/sample-prototype.json', import.meta.url));
 
-const run = (args) => spawnSync('node', [SCRIPT, ...args], { encoding: 'utf8' });
+const run = (args) => spawnCli(SCRIPT, args);
 const tmp = (p = 'kr-') => fs.mkdtempSync(path.join(os.tmpdir(), p));
 function kitDir(version = 'abc123def456') {
   const d = tmp('kr-kit-');
@@ -110,4 +111,14 @@ test('CLI default (no --persist): writes no store files', () => {
   assert.equal(r.status, 0);
   assert.ok(!fs.existsSync(path.join(kit, 'noesis-brand.json')), 'no store file beside the kit');
   assert.doesNotMatch(r.stdout, /persisted →/, 'no persist line in the default path');
+});
+
+test('CLI --persist re-run: re-registering the same kit leaves one row (upsert — no dup)', () => {
+  const pdir = tmp('kr-persist-');
+  const kit = kitDir('rerun01');
+  run([FIXTURE, kit, '--persist', pdir]);
+  run([FIXTURE, kit, '--persist', pdir]); // identical brand:version into the same dir
+  const data = JSON.parse(fs.readFileSync(path.join(pdir, 'noesis-brand.json'), 'utf8'));
+  const rows = data.brand.filter((r) => r.id === 'demobrand:rerun01');
+  assert.equal(rows.length, 1, 'two identical --persist runs leave exactly one row on disk');
 });

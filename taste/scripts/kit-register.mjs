@@ -46,10 +46,11 @@ export function registerKit({ brand, version, embedding, meta = {}, noesis, desi
   const id = `${brand}:${version}`;
   const record = { ...meta, brand, version, kind: 'brand-kit' };
 
-  // noesis: into the `brand` lane of the federated cortex.
-  const { id: noesisId } = noesis.add('brand', id, embedding, record);
+  // noesis: into the `brand` lane of the federated cortex. upsert → re-registering the same
+  // brand:version replaces its row instead of duplicating it (the id is stable + derivable).
+  const { id: noesisId } = noesis.add('brand', id, embedding, record, { upsert: true });
   // design-memory: into the per-brand visual-DNA store, namespaced by the brand string.
-  const { id: designMemoryId } = designMemory.add(brand, id, embedding, record);
+  const { id: designMemoryId } = designMemory.add(brand, id, embedding, record, { upsert: true });
 
   return { noesisId, designMemoryId };
 }
