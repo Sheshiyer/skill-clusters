@@ -1,0 +1,14 @@
+{
+  "brand": "demobrand",
+  "prototype": [0.12, -0.34, 0.56, -0.78, 0.9, -0.11, 0.22, -0.33, 0.44, -0.55, 0.66, -0.77],
+  "rules": {
+    "tone": "clear, direct, confident",
+    "palette": ["#2D6CDF", "#10141F", "#F4F6FB"],
+    "type": "geometric sans-serif",
+    "motion": "purposeful",
+    "imagery": "clean, modern",
+    "aesthetic": "minimal"
+  },
+  "spec_grounded": true,
+  "brand_text": "Brand: Demobrand. A synthetic, leak-free fixture (short fake embedding, no real brand data, no filesystem paths) for kit-register CLI integration tests. Mirrors the shape kit-register.mjs reads: .prototype (embedding) + .brand."
+}
