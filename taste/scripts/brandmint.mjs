@@ -166,26 +166,38 @@ export function runBrandKit({ spec, outDir, generateImage, writeFile, mkdir = ()
 }
 
 // ── CLI ──────────────────────────────────────────────────────────────────────────────────────────
+
+// parseArgs — the CLI option parser, extracted so the defaults are unit-testable. Headline contract:
+// reroll is ON BY DEFAULT (the flow self-corrects every render); --no-reroll opts out. PURE: argv in →
+// options out, no I/O. The library runBrandKit stays reroll=null by default (it can't self-score
+// without an injected scorer) — the default lives at the CLI layer, where the real scorer exists.
+export function parseArgs(argv) {
+  const positional = [];
+  let skillDir = DEFAULT_SKILL_DIR;
+  let images = true;
+  let reroll = true; // self-correct by default — opt out with --no-reroll
+  let threshold = 0.12, maxAttempts = 2, metric = 'coverage';
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--no-images') images = false;
+    else if (a === '--no-reroll') reroll = false;
+    else if (a === '--reroll') reroll = true;
+    else if (a === '--skill-dir') skillDir = argv[++i];
+    else if (a === '--threshold') threshold = Number(argv[++i]);
+    else if (a === '--max-attempts') maxAttempts = Number(argv[++i]);
+    else if (a === '--metric') metric = argv[++i];
+    else positional.push(a);
+  }
+  const [specPath, outDir] = positional;
+  return { specPath, outDir, skillDir, images, reroll, threshold, maxAttempts, metric };
+}
+
 // Wires the REAL gpt-image adapter (spawnSync bash gen.sh) and real fs writes. Importing the module
 // (e.g. from tests) is side-effect-free — only a direct invocation runs main().
 function main() {
-  const args = process.argv.slice(2);
-  const positional = [];
-  let skillDir = DEFAULT_SKILL_DIR;
-  let noImages = false;
-  let reroll = false, threshold = 0.12, maxAttempts = 2, metric = 'coverage';
-  for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--no-images') noImages = true;
-    else if (args[i] === '--skill-dir') skillDir = args[++i];
-    else if (args[i] === '--reroll') reroll = true;
-    else if (args[i] === '--threshold') threshold = Number(args[++i]);
-    else if (args[i] === '--max-attempts') maxAttempts = Number(args[++i]);
-    else if (args[i] === '--metric') metric = args[++i];
-    else positional.push(args[i]);
-  }
-  const [specPath, outDir] = positional;
+  const { specPath, outDir, skillDir, images, reroll, threshold, maxAttempts, metric } = parseArgs(process.argv.slice(2));
   if (!specPath || !outDir) {
-    console.error('usage: node taste/scripts/brandmint.mjs <brand-spec.json> <outDir> [--no-images] [--skill-dir <path>] [--reroll [--threshold N] [--max-attempts N] [--metric coverage|accentPresence]]');
+    console.error('usage: node taste/scripts/brandmint.mjs <brand-spec.json> <outDir> [--no-images] [--no-reroll] [--skill-dir <path>] [--threshold N] [--max-attempts N] [--metric coverage|accentPresence]');
     process.exit(2);
   }
 
@@ -208,14 +220,14 @@ function main() {
   // --reroll wires the REAL scorer: read the rendered PNG → decodePng → scorePalette vs the spec
   // palette, gate on the chosen metric. Off → the default single-generation path.
   let rerollCfg = null;
-  if (reroll) {
+  if (reroll && images) {
     const palette = spec.visual_tokens?.palette || [];
     const scoreImage = (out) => scorePalette(decodePng(fs.readFileSync(out)).pixels, palette);
     rerollCfg = { scoreImage, scoreOf: (s) => s[metric], threshold, maxAttempts };
-    console.log(`  (reroll on · metric ${metric} · threshold ${threshold} · max ${maxAttempts} attempts)`);
+    console.log(`  (reroll on · metric ${metric} · threshold ${threshold} · max ${maxAttempts} attempts — --no-reroll to disable)`);
   }
 
-  const manifest = runBrandKit({ spec, outDir, generateImage, writeFile, mkdir, log, images: !noImages, reroll: rerollCfg });
+  const manifest = runBrandKit({ spec, outDir, generateImage, writeFile, mkdir, log, images, reroll: rerollCfg });
 
   console.log(`\n  brandmint — ${manifest.brand} @ ${manifest.version}`);
   console.log(`  ${'-'.repeat(48)}`);
