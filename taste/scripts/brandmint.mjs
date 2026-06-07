@@ -25,6 +25,9 @@ import { genVoiceGuide } from './gen-voice.mjs';
 import { genPositioning } from './gen-positioning.mjs';
 import { versionOf } from './brand-version.mjs';
 import { makeGptImage } from './lib/gpt-image.mjs';
+import { rerollImages } from './lib/reroll.mjs';
+import { decodePng } from './lib/png-decode.mjs';
+import { scorePalette } from './lib/kit-qa.mjs';
 
 // Where the gpt-image-2 skill lives by default (its scripts/gen.sh is the codex bridge). Derived from
 // $HOME so it's portable across users/CI; override with --skill-dir for a non-standard install.
@@ -78,6 +81,15 @@ export function planImageArtifacts(spec) {
   ];
 }
 
+// The reroll-detail suffix for an image artifact — "· N attempt(s) · best X[ <mark>]" — or '' for the
+// single-generation path (no bestScore). Shared by the README and the CLI summary so the format lives
+// in one place; the on-brand marker differs per surface (README prose vs CLI tick).
+function rerollSuffix(a, onBrandMark) {
+  if (a.bestScore === undefined) return '';
+  const best = a.bestScore === -Infinity ? 'n/a' : Number(a.bestScore).toFixed(3);
+  return ` · ${a.attempts} attempt(s) · best ${best}${a.onBrand ? onBrandMark : ''}`;
+}
+
 // ── README index for the kit ─────────────────────────────────────────────────────────────────────
 // A small human-readable manifest: brand name, version, the text files, and each image's render
 // status (rendered / gated when generation was skipped or failed). PURE string builder.
@@ -96,7 +108,7 @@ function buildReadme({ brand, version, textArtifacts, imageArtifacts }) {
   } else {
     for (const a of imageArtifacts) {
       const status = a.ok ? '✓ rendered' : `gated (code ${a.code ?? 'n/a'})`;
-      L.push(`- \`${a.file}\` — ${a.name} — ${status}`);
+      L.push(`- \`${a.file}\` — ${a.name} — ${status}${rerollSuffix(a, ' · on-brand')}`);
     }
   }
   L.push('');
@@ -108,7 +120,7 @@ function buildReadme({ brand, version, textArtifacts, imageArtifacts }) {
 // or codex. Writes every text artifact, then (unless images:false) renders each planned image via the
 // injected generateImage, recording its result. version is a pure function of spec → two runs of the
 // same spec yield the same version (idempotent). Returns a manifest enumerating everything produced.
-export function runBrandKit({ spec, outDir, generateImage, writeFile, mkdir = () => {}, log = () => {}, images = true }) {
+export function runBrandKit({ spec, outDir, generateImage, writeFile, mkdir = () => {}, log = () => {}, images = true, reroll = null }) {
   mkdir(outDir);
   mkdir(`${outDir}/images`);
 
@@ -121,11 +133,27 @@ export function runBrandKit({ spec, outDir, generateImage, writeFile, mkdir = ()
 
   let imageArtifacts = [];
   if (images) {
-    for (const d of planImageArtifacts(spec)) {
-      const out = `${outDir}/${d.file}`;
-      const res = generateImage({ prompt: d.prompt, out, refs: d.refs });
-      imageArtifacts.push({ name: d.name, file: d.file, out, ok: res?.ok ?? false, code: res?.code });
-      log(`  ${res?.ok ? '✓' : '✗'} ${d.file}`);
+    const descriptors = planImageArtifacts(spec).map((d) => ({ ...d, out: `${outDir}/${d.file}` }));
+    if (reroll) {
+      // self-correcting path: generate → score → regenerate any off-brand render, keep the best
+      // (lib/reroll.mjs). `reroll` = { scoreImage, scoreOf, threshold, maxAttempts }. Each result
+      // carries { attempts, bestScore, onBrand } on top of { name, file, out, ok }.
+      imageArtifacts = rerollImages({
+        descriptors,
+        generateImage,
+        scoreImage: reroll.scoreImage,
+        scoreOf: reroll.scoreOf,
+        threshold: reroll.threshold,
+        maxAttempts: reroll.maxAttempts,
+        log,
+      });
+    } else {
+      // default path: one generation per descriptor (unchanged single-gen behavior)
+      for (const d of descriptors) {
+        const res = generateImage({ prompt: d.prompt, out: d.out, refs: d.refs });
+        imageArtifacts.push({ name: d.name, file: d.file, out: d.out, ok: res?.ok ?? false, code: res?.code });
+        log(`  ${res?.ok ? '✓' : '✗'} ${d.file}`);
+      }
     }
   }
 
@@ -145,14 +173,19 @@ function main() {
   const positional = [];
   let skillDir = DEFAULT_SKILL_DIR;
   let noImages = false;
+  let reroll = false, threshold = 0.12, maxAttempts = 2, metric = 'coverage';
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--no-images') noImages = true;
     else if (args[i] === '--skill-dir') skillDir = args[++i];
+    else if (args[i] === '--reroll') reroll = true;
+    else if (args[i] === '--threshold') threshold = Number(args[++i]);
+    else if (args[i] === '--max-attempts') maxAttempts = Number(args[++i]);
+    else if (args[i] === '--metric') metric = args[++i];
     else positional.push(args[i]);
   }
   const [specPath, outDir] = positional;
   if (!specPath || !outDir) {
-    console.error('usage: node taste/scripts/brandmint.mjs <brand-spec.json> <outDir> [--no-images] [--skill-dir <path>]');
+    console.error('usage: node taste/scripts/brandmint.mjs <brand-spec.json> <outDir> [--no-images] [--skill-dir <path>] [--reroll [--threshold N] [--max-attempts N] [--metric coverage|accentPresence]]');
     process.exit(2);
   }
 
@@ -172,7 +205,17 @@ function main() {
   const mkdir = (p) => fs.mkdirSync(p, { recursive: true });
   const log = (m) => console.log(m);
 
-  const manifest = runBrandKit({ spec, outDir, generateImage, writeFile, mkdir, log, images: !noImages });
+  // --reroll wires the REAL scorer: read the rendered PNG → decodePng → scorePalette vs the spec
+  // palette, gate on the chosen metric. Off → the default single-generation path.
+  let rerollCfg = null;
+  if (reroll) {
+    const palette = spec.visual_tokens?.palette || [];
+    const scoreImage = (out) => scorePalette(decodePng(fs.readFileSync(out)).pixels, palette);
+    rerollCfg = { scoreImage, scoreOf: (s) => s[metric], threshold, maxAttempts };
+    console.log(`  (reroll on · metric ${metric} · threshold ${threshold} · max ${maxAttempts} attempts)`);
+  }
+
+  const manifest = runBrandKit({ spec, outDir, generateImage, writeFile, mkdir, log, images: !noImages, reroll: rerollCfg });
 
   console.log(`\n  brandmint — ${manifest.brand} @ ${manifest.version}`);
   console.log(`  ${'-'.repeat(48)}`);
@@ -180,7 +223,9 @@ function main() {
   if (manifest.imageArtifacts.length === 0) {
     console.log('  images: (skipped)');
   } else {
-    for (const a of manifest.imageArtifacts) console.log(`  image:  ${a.file} — ${a.ok ? 'rendered' : `gated (code ${a.code ?? 'n/a'})`}`);
+    for (const a of manifest.imageArtifacts) {
+      console.log(`  image:  ${a.file} — ${a.ok ? 'rendered' : `gated (code ${a.code ?? 'n/a'})`}${rerollSuffix(a, ' ✓')}`);
+    }
   }
   console.log(`  → ${outDir}\n`);
 }
