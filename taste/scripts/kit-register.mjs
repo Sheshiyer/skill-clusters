@@ -34,6 +34,7 @@ import { pathToFileURL } from 'node:url';
 
 import { makeNoesis } from './lib/noesis.mjs';
 import { makeDesignMemory } from './lib/design-memory.mjs';
+import { makeFileStore } from './lib/store-fs.mjs';
 
 // --- pure core -------------------------------------------------------------------------------------
 
@@ -81,9 +82,18 @@ function readVersion(kitDir) {
 }
 
 function main(argv = process.argv.slice(2)) {
-  const [protoPath, kitDir] = argv;
+  // --persist <dir> is ADDITIVE: when set, the stores are file-backed so registrations survive across
+  // runs; without it the stores are fresh in-memory and the output is byte-identical to before. Strip
+  // the flag out, leaving the two positionals.
+  const positional = [];
+  let persistDir = null;
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === '--persist') persistDir = argv[++i];
+    else positional.push(argv[i]);
+  }
+  const [protoPath, kitDir] = positional;
   if (!protoPath || !kitDir) {
-    console.error('usage: node taste/scripts/kit-register.mjs <prototype.json> <kitDir>');
+    console.error('usage: node taste/scripts/kit-register.mjs <prototype.json> <kitDir> [--persist <dir>]');
     process.exit(2);
   }
 
@@ -97,9 +107,15 @@ function main(argv = process.argv.slice(2)) {
 
   const version = readVersion(kitDir);
 
-  // Fresh cortex + design memory, then register the kit into both.
-  const noesis = makeNoesis();
-  const designMemory = makeDesignMemory();
+  // Cortex + design memory: file-backed under --persist (durable — the brand lane + the design-memory
+  // store survive the process), else fresh in-memory (the default). The brand lane is the only noesis
+  // namespace kit-register writes, so only it needs a durable backend.
+  const noesis = persistDir
+    ? makeNoesis({ stores: { brand: makeFileStore(join(persistDir, 'noesis-brand.json')) } })
+    : makeNoesis();
+  const designMemory = persistDir
+    ? makeDesignMemory({ store: makeFileStore(join(persistDir, 'design-memory.json')) })
+    : makeDesignMemory();
   const { noesisId, designMemoryId } = registerKit({ brand, version, embedding, noesis, designMemory });
 
   // DEMONSTRATE RECALL: query both stores with the SAME embedding and show the top hit + score.
@@ -114,6 +130,7 @@ function main(argv = process.argv.slice(2)) {
   console.log(`  noesis[brand]   → ${noesisTop.id}  score=${noesisTop.score.toFixed(4)}  (kind=${noesisTop.meta.kind})`);
   console.log(`  design-memory   → ${dmTop.id}  score=${dmTop.score.toFixed(4)}  (kind=${dmTop.meta.kind})`);
   console.log(`  noesis census:  ${JSON.stringify(noesis.stats())}`);
+  if (persistDir) console.log(`  persisted →     ${persistDir}`);
 }
 
 // isMain guard: run main() only when invoked directly, never on import (keeps the test's import pure).
