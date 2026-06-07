@@ -1,6 +1,8 @@
 # Venture-OS — State of the System
 
-**As of 2026-06-07.** Roadmap: [Project 9](https://github.com/users/Sheshiyer/projects/9) · master map [#25](https://github.com/Sheshiyer/skill-clusters/issues/25). **233 tests green · 23 issues closed / 74 open · $0 spent** (8 media-gen credits + gpt-image-2 rides the ChatGPT sub — no new spend).
+**As of 2026-06-07.** Roadmap: [Project 9](https://github.com/users/Sheshiyer/projects/9) · master map [#25](https://github.com/Sheshiyer/skill-clusters/issues/25). **278 tests green · 23 issues closed / 74 open · $0 spent** (8 media-gen credits + gpt-image-2 rides the ChatGPT sub — no new spend).
+
+> **Closed loops (2026-06-07):** brandmint now runs end-to-end (one spec → kit + real gpt-image-2 imagery), **multi-brand** (runs across N brands — proven on Fitcheck + Tryambakam Noesis), **packs** kits (`pack.json`, per-file sha256), **scores** its own renders on-brand (`kit-qa`, zero-dep PNG decoder → palette coverage), and **registers** kits into noesis + design-memory (recall at cosine 1.0).
 
 > One fractal cell — hub-and-spoke clusters + a conductor loop + a 1024-dim NIM memory + spec-kit + governance — recurring at six scales (skill → cluster → organ → venture → company → portfolio). A founder describes a venture; the C-suite brands it, keeps it on-brand, builds + runs it, takes it to market — learning + governing itself.
 
