@@ -25,6 +25,7 @@ import { genVoiceGuide } from './gen-voice.mjs';
 import { genPositioning } from './gen-positioning.mjs';
 import { versionOf } from './brand-version.mjs';
 import { makeGptImage } from './lib/gpt-image.mjs';
+import { makeNanoBanana } from './lib/nanobanana.mjs';
 import { rerollImages } from './lib/reroll.mjs';
 import { decodePng } from './lib/png-decode.mjs';
 import { scorePalette } from './lib/kit-qa.mjs';
@@ -32,6 +33,9 @@ import { scorePalette } from './lib/kit-qa.mjs';
 // Where the gpt-image-2 skill lives by default (its scripts/gen.sh is the codex bridge). Derived from
 // $HOME so it's portable across users/CI; override with --skill-dir for a non-standard install.
 const DEFAULT_SKILL_DIR = path.join(os.homedir(), '.agents', 'skills-archive', 'gpt-image-2');
+// Nano Banana Pro (Gemini 3 Pro Image) skill's generate.py — the alternate render backend
+// (--backend nanobanana). Needs GEMINI_API_KEY in the env; override the path with --nano-script.
+const DEFAULT_NANO_SCRIPT = path.join(os.homedir(), '.agents', 'skills', 'nanobanana', 'scripts', 'generate.py');
 
 // ── PURE: the text half of the kit ───────────────────────────────────────────────────────────────
 // Five files, all string contents. brand-spec.json is a plain pretty-print so it round-trips the
@@ -190,27 +194,30 @@ export function parseArgs(argv) {
   let images = true;
   let reroll = true; // self-correct by default — opt out with --no-reroll
   let threshold = 0.12, maxAttempts = 2, metric = 'coverage';
+  let backend = 'gpt-image', nanoScript = DEFAULT_NANO_SCRIPT;
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--no-images') images = false;
     else if (a === '--no-reroll') reroll = false;
     else if (a === '--reroll') reroll = true;
     else if (a === '--skill-dir') skillDir = argv[++i];
+    else if (a === '--backend') backend = argv[++i];
+    else if (a === '--nano-script') nanoScript = argv[++i];
     else if (a === '--threshold') threshold = Number(argv[++i]);
     else if (a === '--max-attempts') maxAttempts = Number(argv[++i]);
     else if (a === '--metric') metric = argv[++i];
     else positional.push(a);
   }
   const [specPath, outDir] = positional;
-  return { specPath, outDir, skillDir, images, reroll, threshold, maxAttempts, metric };
+  return { specPath, outDir, skillDir, images, reroll, threshold, maxAttempts, metric, backend, nanoScript };
 }
 
 // Wires the REAL gpt-image adapter (spawnSync bash gen.sh) and real fs writes. Importing the module
 // (e.g. from tests) is side-effect-free — only a direct invocation runs main().
 function main() {
-  const { specPath, outDir, skillDir, images, reroll, threshold, maxAttempts, metric } = parseArgs(process.argv.slice(2));
+  const { specPath, outDir, skillDir, images, reroll, threshold, maxAttempts, metric, backend, nanoScript } = parseArgs(process.argv.slice(2));
   if (!specPath || !outDir) {
-    console.error('usage: node taste/scripts/brandmint.mjs <brand-spec.json> <outDir> [--no-images] [--no-reroll] [--skill-dir <path>] [--threshold N] [--max-attempts N] [--metric coverage|accentPresence]');
+    console.error('usage: node taste/scripts/brandmint.mjs <brand-spec.json> <outDir> [--no-images] [--no-reroll] [--backend gpt-image|nanobanana] [--skill-dir <path>] [--nano-script <path>] [--threshold N] [--max-attempts N] [--metric coverage|accentPresence]');
     process.exit(2);
   }
 
@@ -222,10 +229,26 @@ function main() {
     process.exit(2);
   }
 
-  const { generateImage } = makeGptImage({
-    skillDir,
-    runner: (argv) => child_process.spawnSync('bash', argv, { stdio: 'inherit' }),
-  });
+  // Render backend: gpt-image-2 (ChatGPT session, default — no key) or nanobanana (Gemini 3 Pro Image,
+  // needs GEMINI_API_KEY in the env, renders at 2K + supports -i references).
+  let generateImage;
+  if (backend === 'nanobanana') {
+    if (images && !process.env.GEMINI_API_KEY) {
+      console.error('✖ --backend nanobanana needs GEMINI_API_KEY in the environment');
+      process.exit(2);
+    }
+    const nano = makeNanoBanana({
+      scriptPath: nanoScript,
+      runner: (argv) => child_process.spawnSync('python3', argv, { stdio: 'inherit' }),
+    });
+    generateImage = (o) => nano.generateImage({ ...o, size: '2K' });
+    console.log('  (backend: nanobanana · Gemini 3 Pro Image · 2K)');
+  } else {
+    ({ generateImage } = makeGptImage({
+      skillDir,
+      runner: (argv) => child_process.spawnSync('bash', argv, { stdio: 'inherit' }),
+    }));
+  }
   const writeFile = (p, c) => fs.writeFileSync(p, c);
   const mkdir = (p) => fs.mkdirSync(p, { recursive: true });
   const log = (m) => console.log(m);
