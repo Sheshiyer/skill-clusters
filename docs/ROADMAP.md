@@ -68,6 +68,24 @@ social-media · extra-languages · media-gen · documents · growth-sales-cro`.
 
 ---
 
+## Brandmint — lessons from the first brand genesis (Fitcheck)
+
+Running a real brand end-to-end (**waves 0-8**) through the engine surfaced what worked and what's missing. Full retrospective: **[LESSONS-FITCHECK-RUN.md](./LESSONS-FITCHECK-RUN.md)**.
+
+**Shipped into the engine:**
+- **Mission-grounded prompts** — `planImageArtifacts` now grounds renders in `identity.mission` + the new `visual_tokens.logo_brief` + `visual_tokens.art_direction` (anti-cues), so a render reflects the *product*, not a literal reading of the name (the "Fitcheck → fitness" drift). *(PR #103 + schema.)*
+- **Multi-backend rendering** — `brandmint --backend gpt-image|nanobanana`; **Nano Banana Pro** (Gemini 3 Pro Image) is the recommended quality lane. *(PR #104.)*
+
+**Three gates the engine still needs (next cycle):**
+
+| Pri | Gate | Why (from the run) |
+|---|---|---|
+| **B1** | **Name-validation gate** — domain + trademark + App-Store + competitor-collision check at the *start* of genesis | "Fitcheck" is meaning-perfect but commercially DOA (exact-name Shopify incumbent + a saturated namespace) — found *after* building the brand |
+| **B2** | **Semantic visual-QA** — a brief-match (vision-judge) score gating render acceptance, alongside palette coverage | the fitness-drift logo *passed* the palette-coverage reroll while being off-concept |
+| **B3** | **Reference-anchored campaigns** — a brand character/model source so the whole asset set shares one identity | a contact-sheet `-i` reference held one model across the hero + every product tile |
+
+---
+
 ## Cross-cutting conventions
 
 - **Naming:** `<cluster>-orchestrator` / `<cluster>-core`; spokes keep their canonical names.

@@ -27,5 +27,5 @@ Brand-spec ✓ · taste prototype ✓ · spec-kit build contract (20 tasks → c
 - **Gated on your accounts / spend:** the live render backend (AWS GPU, ~$1–2/hr), PostHog, explee + Composio (GTM), Hermes/Paperclip (founder loop), a domain, and the snow-gloves C-suite (the portfolio lift).
 
 ## What's next (no-spend) vs (live)
-- *No-spend:* wire rerank into taste-resolve; brandmint multi-brand + asset-pack; taste corpus eval; snow-gloves agent scaffolds.
+- *No-spend:* the three brandmint gates from the [Fitcheck run retrospective](LESSONS-FITCHECK-RUN.md) — **name-validation** (B1), **semantic visual-QA beyond palette** (B2), **reference-anchored campaigns** (B3); plus snow-gloves agent scaffolds + taste corpus eval.
 - *Live (gated):* launch the AWS try-on backend → fire a real render (#17); provision PostHog/domain/explee/Hermes → Phases 5–7 (measure → distribute → go live).
