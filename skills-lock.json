@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "skills": {
+    "comfyui-api": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/comfyui-api/SKILL.md",
+      "computedHash": "cbaa85659a4214ac87929d769a6298d48aee7b2d7a1d58f016866a173920e7b8"
+    },
+    "comfyui-character-gen": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/comfyui-character-gen/SKILL.md",
+      "computedHash": "45ab0ffcc5560d4d5971fb948fd460d9fac5fbdc88ff125b38b91e9a62640367"
+    },
+    "comfyui-inventory": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/comfyui-inventory/SKILL.md",
+      "computedHash": "42db9d0c3d4a02a34bbc127aceefefda26f78f2e67835ed423e79f71accb1484"
+    },
+    "comfyui-lora-training": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/comfyui-lora-training/SKILL.md",
+      "computedHash": "22c43e5d40babdca14c6dfb87d2c1d390dd7edaaeb2e6278695109270911a035"
+    },
+    "comfyui-prompt-engineer": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/comfyui-prompt-engineer/SKILL.md",
+      "computedHash": "793d557899b2a4e67223f3f4663f5ff516c34c4b3feb63961d5dc7b4580bc18d"
+    },
+    "comfyui-prompt-interview": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/comfyui-prompt-interview/SKILL.md",
+      "computedHash": "fbeec932ff24732f24376b475939aa6db5b06e0b4700cfedfa4d88a80756650d"
+    },
+    "comfyui-research": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/comfyui-research/SKILL.md",
+      "computedHash": "3f23234278e64f8f23319d17d5b9ab5c168f9331f6bbdc532cd9a6b0acf6d4ad"
+    },
+    "comfyui-troubleshooter": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/comfyui-troubleshooter/SKILL.md",
+      "computedHash": "622ba86ef473fee7b685d3a64fde24ba4490eab746238dd773ba2d80473235ff"
+    },
+    "comfyui-video-pipeline": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/comfyui-video-pipeline/SKILL.md",
+      "computedHash": "27e7cc6c68d82299def0b9cf3c0e2804e4fc8ebf06624fc1f7d470e375af0539"
+    },
+    "comfyui-video-production": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/comfyui-video-production/SKILL.md",
+      "computedHash": "5c46623aa4195586b29bfc193b577b70096d24d45aaa0a6726c6899ccf044d6f"
+    },
+    "comfyui-voice-pipeline": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/comfyui-voice-pipeline/SKILL.md",
+      "computedHash": "da3c6eb3de8a49aec86ea07ab7594f805f077b77ebbc4458f6a27bd93d3fd75f"
+    },
+    "comfyui-workflow-builder": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/comfyui-workflow-builder/SKILL.md",
+      "computedHash": "711b2aef12e3537dde5620ca551954c730338a45520bb296b98cea4142e2762e"
+    },
+    "project-manager": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/project-manager/SKILL.md",
+      "computedHash": "ccfdbe827c3a84d510f3271caa926fb49ca9e81b71cae01a69ba5752554b9561"
+    },
+    "video-assembly": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/video-assembly/SKILL.md",
+      "computedHash": "62cd06e6821625ec8790e9d0c6ff7f040b3ab5d5d728da9e77a073c96b4e2c45"
+    },
+    "video-publisher": {
+      "source": "mckruz/comfyui-expert",
+      "sourceType": "github",
+      "skillPath": "skills/video-publisher/SKILL.md",
+      "computedHash": "cc8eb297841b26253a806e82521e2e287fdfb5bd3848a2e0b92aea04be29ae3f"
+    }
+  }
+}

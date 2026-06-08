@@ -1,0 +1,69 @@
+{
+  "brand": "fitcheck",
+  "identity": {
+    "name": "Fitcheck",
+    "tagline": "Let every shopper become your product model",
+    "mission": "Fitcheck is a done-for-you AI virtual try-on launch service for Shopify fashion brands."
+  },
+  "positioning": {
+    "category": "technology",
+    "differentiation": "Done-for-you AI virtual try-on launch service: Personalized demo renders used as outbound hook; Pilot widget on selected best-selling SKUs; 48-hour launch promise from approval to live; Shopify-first workflow, not API/manual export; Revenue/ROI framing instead of AI novelty framing",
+    "target_market": "Founder / CEO of Shopify Fashion Brand — Fashion, Activewear, Swimwear, Plus-size, Sustainable fashion"
+  },
+  "voice_tokens": {
+    "tone": [
+      "direct",
+      "confident",
+      "pragmatic",
+      "fast-moving",
+      "proof-seeking"
+    ],
+    "vocabulary": [],
+    "dos": [
+      "lead with outcomes/ROI"
+    ],
+    "donts": [
+      "overhype the AI"
+    ]
+  },
+  "visual_tokens": {
+    "palette": [
+      "#FF6B35",
+      "#1A1A2E",
+      "#16213E"
+    ],
+    "type": {
+      "heading": "bold sans-serif",
+      "body": "clean sans-serif"
+    },
+    "motion": "purposeful, fast",
+    "imagery": "authentic photography, flat illustration, bold"
+  },
+  "persona": {
+    "who": "Founder / CEO of Shopify Fashion Brand (10-50 employees)",
+    "pains": [
+      "Returns are killing margin due to fit uncertainty",
+      "Customers hesitate because photos don't show their body type",
+      "Need something easy to test, not a six-month project",
+      "Lost product-page conversions and add-to-cart opportunities"
+    ],
+    "gains": [
+      "Reduce fit-related returns by 15-25%",
+      "Increase add-to-cart rate by 20-40%",
+      "Launch a 'wow' buying moment without a months-long technical project",
+      "Differentiate from competitors with richer shopping experience"
+    ]
+  },
+  "taste_seed": {
+    "aesthetic": "bold, sage/hero",
+    "references": []
+  },
+  "assets": [
+    {
+      "id": "product-marketing-context.md",
+      "kind": "reference",
+      "path": "./reference/product-marketing-context.md",
+      "origin": "user_provided"
+    }
+  ]
+}
