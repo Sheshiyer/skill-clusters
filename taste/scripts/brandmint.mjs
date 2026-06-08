@@ -57,11 +57,24 @@ export function buildTextArtifacts(spec) {
 export function planImageArtifacts(spec) {
   const name = spec.identity?.name || spec.brand;
   const tagline = spec.identity?.tagline || '';
+  const mission = spec.identity?.mission || '';
   const category = spec.positioning?.category || 'brand';
   const palette = spec.visual_tokens?.palette || [];
   const heading = spec.visual_tokens?.type?.heading || 'bold sans-serif';
   const body = spec.visual_tokens?.type?.body || 'clean sans-serif';
   const imagery = spec.visual_tokens?.imagery || 'bold, authentic';
+  const logoBrief = spec.visual_tokens?.logo_brief || '';
+  const artDir = spec.visual_tokens?.art_direction || '';
+
+  // Ground the visuals in what the brand DOES (the mission) and any explicit art direction, so a render
+  // reflects the PRODUCT — not a literal reading of the name (which is how "Fitcheck" drifted athletic).
+  // The logo reuses the brand-system's existing concept brief when one is supplied. All three are
+  // OPTIONAL fields → under-specified specs are unaffected.
+  const product = mission ? ` The product: ${mission}` : '';
+  const direction = artDir ? ` Art direction: ${artDir}` : '';
+  const logoForm = logoBrief
+    ? `Follow this concept exactly: ${logoBrief}`
+    : 'Bold sans-serif logotype, confident and minimal, with an optional simple geometric mark.';
 
   return [
     {
@@ -69,14 +82,14 @@ export function planImageArtifacts(spec) {
       file: 'images/brand-board.png',
       refs: [],
       prompt:
-        `A clean, modern brand identity board for "${name}" — ${tagline}. Show: the brand name "${name}" as a bold sans-serif wordmark; a color palette strip with these exact swatches labelled with their hex codes ${palette.join(', ')}; a type specimen (${heading} headings, ${body} body); and a few small imagery swatches in the style of ${imagery}. Flat, professional, organised on a light background with generous whitespace. No device mockups, no people — just the identity system, like an Awwwards-grade brand guidelines page.`,
+        `A clean, modern brand identity board for "${name}" — ${tagline}.${product} Show: the brand name "${name}" as a bold sans-serif wordmark; a color palette strip with these exact swatches labelled with their hex codes ${palette.join(', ')}; a type specimen (${heading} headings, ${body} body); and a few small imagery swatches in the style of ${imagery}.${direction} Flat, professional, organised on a light background with generous whitespace. No device mockups, no people — just the identity system, like an Awwwards-grade brand guidelines page.`,
     },
     {
       name: 'logo-concept',
       file: 'images/logo-concept.png',
       refs: [],
       prompt:
-        `A single polished logo / wordmark concept for "${name}", a ${category}. Bold sans-serif logotype, confident and minimal, with an optional simple geometric mark. Primary brand colour ${palette[0] || '#FF6B35'} on a ${palette[1] || '#1A1A2E'} dark background, plus a light-background variant beside it. Vector-clean, high contrast, centred, generous negative space. No tagline, no UI, no photography — just the logo/wordmark, like a logo presentation tile.`,
+        `A single polished logo / wordmark concept for "${name}", a ${category}.${product} ${logoForm} Primary brand colour ${palette[0] || '#FF6B35'} on a ${palette[1] || '#1A1A2E'} dark background, plus a light-background variant beside it.${direction} Vector-clean, high contrast, centred, generous negative space. No tagline, no UI, no photography — just the logo/wordmark, like a logo presentation tile.`,
     },
   ];
 }
