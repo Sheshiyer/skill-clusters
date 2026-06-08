@@ -54,9 +54,12 @@ export function makeNoesis({ stores = {} } = {}) {
 
   // Append a vector to one namespace's lane. meta is copied defensively so a later caller mutation
   // can't reach back into stored state (mirrors design-memory.add). Read-then-write whole rows.
-  function add(namespace, id, vector, meta = {}) {
+  // `{ upsert }` (default false → append, unchanged) replaces any existing same-id row first, so a
+  // stable-id writer (e.g. registerKit's brand:version) re-writes idempotently instead of duplicating.
+  function add(namespace, id, vector, meta = {}, { upsert = false } = {}) {
     const store = laneFor(namespace);
-    const rows = store.get(namespace);
+    let rows = store.get(namespace);
+    if (upsert) rows = rows.filter((r) => r.id !== id);
     rows.push({ id, vector, meta: { ...meta } });
     store.set(namespace, rows);
     return { id };

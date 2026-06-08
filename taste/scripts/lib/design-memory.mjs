@@ -58,8 +58,11 @@ export function makeMemoryStore() {
 export function makeDesignMemory({ store = makeMemoryStore() } = {}) {
   // Append a vector to a brand's lane. meta is copied defensively so a later caller mutation can't
   // reach back into stored state. The store owns persistence; we only ever read-then-write whole rows.
-  function add(brand, id, vector, meta = {}) {
-    const rows = store.get(brand);
+  // `{ upsert }` (default false → append, unchanged) first drops any existing same-id row, so a
+  // stable-id writer re-writes idempotently instead of accumulating duplicates.
+  function add(brand, id, vector, meta = {}, { upsert = false } = {}) {
+    let rows = store.get(brand);
+    if (upsert) rows = rows.filter((r) => r.id !== id);
     rows.push({ id, vector, meta: { ...meta } });
     store.set(brand, rows);
     return { id };
