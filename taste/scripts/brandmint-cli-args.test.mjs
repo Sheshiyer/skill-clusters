@@ -56,3 +56,16 @@ test('parseArgs: missing positionals come back undefined (main() enforces usage)
   assert.equal(o.specPath, undefined);
   assert.equal(o.outDir, undefined);
 });
+
+test('parseArgs: backend defaults to gpt-image', () => {
+  assert.equal(parseArgs(['s', 'o']).backend, 'gpt-image');
+});
+
+test('parseArgs: --backend nanobanana selects the Gemini lane', () => {
+  assert.equal(parseArgs(['s', 'o', '--backend', 'nanobanana']).backend, 'nanobanana');
+});
+
+test('parseArgs: --nano-script overrides the default generate.py path', () => {
+  const o = parseArgs(['s', 'o', '--nano-script', '/x/generate.py']);
+  assert.equal(o.nanoScript, '/x/generate.py');
+});
