@@ -15,6 +15,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 import * as nim from './lib/nim.mjs';
+import { variableContract } from './lib/variable-contract.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const WING = path.resolve(__dirname, '..');
@@ -76,6 +77,7 @@ const directive = `Make it feel **${classification.category || 'on-corpus'}** â€
 const brief = {
   request, brand: brandName || null, classification, suggested_cluster: cluster, directive,
   exemplars: top.map((t) => ({ title: t.r.title, url: t.r.url, code_url: t.r.code_url, tags: t.r.tags, axes: t.r.taste_schema, score: +t.score.toFixed(3), brand_fit: +t.sBrand.toFixed(3) })),
+  ...variableContract({ classification, cluster, directive }), // the canonical variable contract taste PRODUCES (cambium hand-off)
 };
 
 if (asJson) { console.log(JSON.stringify(brief, null, 2)); process.exit(0); }
