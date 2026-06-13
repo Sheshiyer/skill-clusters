@@ -17,3 +17,6 @@ taste/feedback/*.jsonl
 taste/eval/*.jsonl
 taste/worker/.proxy.env
 taste/worker/.wrangler/
+
+# generated skill run-artifacts (notebooklm exports, prefilled templates)
+skills/**/outputs/

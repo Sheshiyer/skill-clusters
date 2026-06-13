@@ -217,7 +217,11 @@
         "crewai",
         "computer-use-agents",
         "composition-patterns",
-        "claude-api"
+        "claude-api",
+        "daily-priority-planner",
+        "mvp-roadmap-orchestrator",
+        "project-management-execution-coach",
+        "smart-goal-coach"
       ]
     },
     {
@@ -246,7 +250,8 @@
         "accesslint-scan",
         "fix-review",
         "simplify-code",
-        "clean-code"
+        "clean-code",
+        "five-whys-root-cause-analyzer"
       ]
     },
     {
@@ -559,7 +564,35 @@
         "micro-saas-launcher",
         "notion-template-business",
         "product-manager",
-        "segment-cdp"
+        "segment-cdp",
+        "adaptability-coach",
+        "business-foundations-audit",
+        "business-network-expansion",
+        "career-advancement-planner",
+        "career-transition-roadmap",
+        "concept-to-realworld-application-coach",
+        "core-values-designer",
+        "corporate-communication-coach",
+        "creativity-innovation-work-coach",
+        "interview-prep-coach",
+        "job-search-strategy",
+        "leadership-development-coach",
+        "mental-health-workplace-conversation",
+        "mission-vision-refiner",
+        "performance-feedback-writer",
+        "portfolio-builder",
+        "professional-development-curator",
+        "professional-networking-playbook",
+        "public-image-presentation-advisor",
+        "recognition-rewards-system-designer",
+        "remote-productivity-coach",
+        "resilience-during-tough-periods",
+        "resume-enhancer",
+        "skill-development-planner",
+        "team-building-strategist",
+        "work-life-balance-planner",
+        "workplace-conflict-resolver",
+        "workplace-culture-onboarding"
       ]
     },
     {
@@ -584,7 +617,8 @@
         "discord",
         "social-intake-orchestrator",
         "x-bookmark-opportunity-skill",
-        "ai-content-pipeline"
+        "ai-content-pipeline",
+        "arcplume"
       ]
     },
     {
@@ -705,7 +739,9 @@
         "ui-ux-pro-max",
         "stitch-design-taste",
         "openbrand",
-        "canvas-design"
+        "canvas-design",
+        "brandmint",
+        "safvr-brand-design-guardrails"
       ]
     },
     {
@@ -753,7 +789,24 @@
         "free-tool-strategy",
         "product-marketing-context",
         "avoid-ai-writing",
-        "zapier-make-patterns"
+        "zapier-make-patterns",
+        "audience-segmentation-generator",
+        "brand-story-builder",
+        "content-marketing-leadgen",
+        "engagement-question-writer",
+        "fomo-copy-generator",
+        "headline-generator",
+        "listicle-idea-generator",
+        "marketing-plan-generator",
+        "newsletter-pas-writer",
+        "open-loop-social-writer",
+        "personal-brand-strategy",
+        "product-launch-strategy",
+        "startup-idea-generator",
+        "twitter-thread-aida-writer",
+        "unmet-needs-analyzer",
+        "viral-campaign-ideator",
+        "writing-editor-proofreader"
       ]
     },
     {
@@ -811,7 +864,18 @@
         "competitor-teardown",
         "app-store-optimization",
         "app-store-screenshots",
-        "aso-appstore-screenshots"
+        "aso-appstore-screenshots",
+        "channel-prioritization-planner",
+        "elevator-pitch-generator",
+        "negotiation-skills-coach",
+        "passive-income-planner",
+        "persuasion-strategy-coach",
+        "pricing-strategy-optimizer",
+        "real-estate-investment-evaluator",
+        "referral-program-designer",
+        "sales-funnel-designer",
+        "specialization-vs-diversification-advisor",
+        "value-proposition-crafter"
       ]
     },
     {
@@ -887,6 +951,18 @@
         "conducty-vault-graph",
         "conducty-verify",
         "conducty-worktrees"
+      ]
+    },
+    {
+      "title": "Explee — Search · Enrichment · AI Agents · AutoGTM",
+      "description": "Route an Explee task to the right product workflow — company/people search, email enrichment, pre-built or custom AI agent runs, AutoGTM pipelines, and cookie/API-key auth fallback. USE WHEN a user asks to operate Explee product APIs or build an Explee-powered GTM workflow.",
+      "skills": [
+        "explee-master-orchestrator",
+        "explee-product-search",
+        "explee-product-enrichment",
+        "explee-product-autogtm",
+        "explee-product-ai-agents",
+        "explee-api-cookie-access"
       ]
     }
   ]

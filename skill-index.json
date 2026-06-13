@@ -9,12 +9,12 @@
   "pointer": "~/.agents/skill-clusters",
   "archive": "~/.agents/skills-archive",
   "counts": {
-    "total_indexed": 720,
-    "clusters": 40,
+    "total_indexed": 790,
+    "clusters": 41,
     "active-hub": 54,
-    "active-spoke": 428,
-    "deferred-hub": 26,
-    "deferred-spoke": 137,
+    "active-spoke": 452,
+    "deferred-hub": 27,
+    "deferred-spoke": 182,
     "archived": 75
   },
   "clusters": {
@@ -79,14 +79,14 @@
       "title": "Ai Agents Meta (from ECC)",
       "orchestrator": "ai-agents-meta-orchestrator",
       "core": "ai-agents-meta-core",
-      "spokeCount": 53
+      "spokeCount": 57
     },
     "quality-eval": {
       "tier": "active",
       "title": "Quality Eval (from ECC)",
       "orchestrator": "quality-eval-orchestrator",
       "core": "quality-eval-core",
-      "spokeCount": 21
+      "spokeCount": 22
     },
     "frontend-web": {
       "tier": "active",
@@ -177,14 +177,14 @@
       "title": "Business Content (from ECC)",
       "orchestrator": "business-content-orchestrator",
       "core": "business-content-core",
-      "spokeCount": 22
+      "spokeCount": 50
     },
     "social-media": {
       "tier": "deferred",
       "title": "Social Media (from ECC)",
       "orchestrator": "social-media-orchestrator",
       "core": "social-media-core",
-      "spokeCount": 17
+      "spokeCount": 18
     },
     "agentic-ops": {
       "tier": "active",
@@ -233,7 +233,7 @@
       "title": "Design (from library)",
       "orchestrator": "design-orchestrator",
       "core": "design-core",
-      "spokeCount": 9
+      "spokeCount": 11
     },
     "growth-seo": {
       "tier": "active",
@@ -247,7 +247,7 @@
       "title": "Growth Content (from library)",
       "orchestrator": "growth-content-orchestrator",
       "core": "growth-content-core",
-      "spokeCount": 15
+      "spokeCount": 32
     },
     "git-pr-ops": {
       "tier": "active",
@@ -268,7 +268,7 @@
       "title": "Growth Sales Cro (from library)",
       "orchestrator": "growth-sales-cro-orchestrator",
       "core": "growth-sales-cro-core",
-      "spokeCount": 24
+      "spokeCount": 35
     },
     "media-gen": {
       "tier": "deferred",
@@ -297,6 +297,13 @@
       "orchestrator": "conductor-orchestrator",
       "core": "conductor-core",
       "spokeCount": 19
+    },
+    "explee-master": {
+      "tier": "deferred",
+      "title": "Explee — Search · Enrichment · AI Agents · AutoGTM",
+      "orchestrator": "explee-master-orchestrator",
+      "core": "explee-master-core",
+      "spokeCount": 4
     }
   },
   "skills": {
@@ -1758,6 +1765,42 @@
       "path": "~/.agents/skill-clusters/skills/claude-api/SKILL.md",
       "activate": null
     },
+    "daily-priority-planner": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/daily-priority-planner/SKILL.md",
+      "activate": null
+    },
+    "mvp-roadmap-orchestrator": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mvp-roadmap-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "project-management-execution-coach": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/project-management-execution-coach/SKILL.md",
+      "activate": null
+    },
+    "smart-goal-coach": {
+      "cluster": "ai-agents-meta",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/smart-goal-coach/SKILL.md",
+      "activate": null
+    },
     "quality-eval-orchestrator": {
       "cluster": "quality-eval",
       "tier": "active",
@@ -1963,6 +2006,15 @@
       "status": "active-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/clean-code/SKILL.md",
+      "activate": null
+    },
+    "five-whys-root-cause-analyzer": {
+      "cluster": "quality-eval",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/five-whys-root-cause-analyzer/SKILL.md",
       "activate": null
     },
     "frontend-web-orchestrator": {
@@ -4080,6 +4132,258 @@
       "path": "~/.agents/skill-clusters/skills/segment-cdp/SKILL.md",
       "activate": "node scripts/tier.mjs --activate business-content --apply"
     },
+    "adaptability-coach": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/adaptability-coach/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "business-foundations-audit": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/business-foundations-audit/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "business-network-expansion": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/business-network-expansion/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "career-advancement-planner": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/career-advancement-planner/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "career-transition-roadmap": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/career-transition-roadmap/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "concept-to-realworld-application-coach": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/concept-to-realworld-application-coach/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "core-values-designer": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/core-values-designer/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "corporate-communication-coach": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/corporate-communication-coach/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "creativity-innovation-work-coach": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/creativity-innovation-work-coach/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "interview-prep-coach": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/interview-prep-coach/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "job-search-strategy": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/job-search-strategy/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "leadership-development-coach": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/leadership-development-coach/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "mental-health-workplace-conversation": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mental-health-workplace-conversation/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "mission-vision-refiner": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/mission-vision-refiner/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "performance-feedback-writer": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/performance-feedback-writer/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "portfolio-builder": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/portfolio-builder/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "professional-development-curator": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/professional-development-curator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "professional-networking-playbook": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/professional-networking-playbook/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "public-image-presentation-advisor": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/public-image-presentation-advisor/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "recognition-rewards-system-designer": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/recognition-rewards-system-designer/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "remote-productivity-coach": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/remote-productivity-coach/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "resilience-during-tough-periods": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/resilience-during-tough-periods/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "resume-enhancer": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/resume-enhancer/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "skill-development-planner": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/skill-development-planner/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "team-building-strategist": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/team-building-strategist/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "work-life-balance-planner": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/work-life-balance-planner/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "workplace-conflict-resolver": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/workplace-conflict-resolver/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
+    "workplace-culture-onboarding": {
+      "cluster": "business-content",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/workplace-culture-onboarding/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate business-content --apply"
+    },
     "social-media-orchestrator": {
       "cluster": "social-media",
       "tier": "deferred",
@@ -4249,6 +4553,15 @@
       "status": "deferred-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/ai-content-pipeline/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate social-media --apply"
+    },
+    "arcplume": {
+      "cluster": "social-media",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/arcplume/SKILL.md",
       "activate": "node scripts/tier.mjs --activate social-media --apply"
     },
     "agentic-ops-orchestrator": {
@@ -4962,6 +5275,24 @@
       "path": "~/.agents/skill-clusters/skills/canvas-design/SKILL.md",
       "activate": null
     },
+    "brandmint": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/brandmint/SKILL.md",
+      "activate": null
+    },
+    "safvr-brand-design-guardrails": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/safvr-brand-design-guardrails/SKILL.md",
+      "activate": null
+    },
     "growth-seo-orchestrator": {
       "cluster": "growth-seo",
       "tier": "active",
@@ -5284,6 +5615,159 @@
       "status": "active-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/zapier-make-patterns/SKILL.md",
+      "activate": null
+    },
+    "audience-segmentation-generator": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/audience-segmentation-generator/SKILL.md",
+      "activate": null
+    },
+    "brand-story-builder": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/brand-story-builder/SKILL.md",
+      "activate": null
+    },
+    "content-marketing-leadgen": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/content-marketing-leadgen/SKILL.md",
+      "activate": null
+    },
+    "engagement-question-writer": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/engagement-question-writer/SKILL.md",
+      "activate": null
+    },
+    "fomo-copy-generator": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/fomo-copy-generator/SKILL.md",
+      "activate": null
+    },
+    "headline-generator": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/headline-generator/SKILL.md",
+      "activate": null
+    },
+    "listicle-idea-generator": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/listicle-idea-generator/SKILL.md",
+      "activate": null
+    },
+    "marketing-plan-generator": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/marketing-plan-generator/SKILL.md",
+      "activate": null
+    },
+    "newsletter-pas-writer": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/newsletter-pas-writer/SKILL.md",
+      "activate": null
+    },
+    "open-loop-social-writer": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/open-loop-social-writer/SKILL.md",
+      "activate": null
+    },
+    "personal-brand-strategy": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/personal-brand-strategy/SKILL.md",
+      "activate": null
+    },
+    "product-launch-strategy": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/product-launch-strategy/SKILL.md",
+      "activate": null
+    },
+    "startup-idea-generator": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/startup-idea-generator/SKILL.md",
+      "activate": null
+    },
+    "twitter-thread-aida-writer": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/twitter-thread-aida-writer/SKILL.md",
+      "activate": null
+    },
+    "unmet-needs-analyzer": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/unmet-needs-analyzer/SKILL.md",
+      "activate": null
+    },
+    "viral-campaign-ideator": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/viral-campaign-ideator/SKILL.md",
+      "activate": null
+    },
+    "writing-editor-proofreader": {
+      "cluster": "growth-content",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/writing-editor-proofreader/SKILL.md",
       "activate": null
     },
     "git-pr-ops-orchestrator": {
@@ -5644,6 +6128,105 @@
       "status": "deferred-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/aso-appstore-screenshots/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "channel-prioritization-planner": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/channel-prioritization-planner/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "elevator-pitch-generator": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/elevator-pitch-generator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "negotiation-skills-coach": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/negotiation-skills-coach/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "passive-income-planner": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/passive-income-planner/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "persuasion-strategy-coach": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/persuasion-strategy-coach/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "pricing-strategy-optimizer": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/pricing-strategy-optimizer/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "real-estate-investment-evaluator": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/real-estate-investment-evaluator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "referral-program-designer": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/referral-program-designer/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "sales-funnel-designer": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/sales-funnel-designer/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "specialization-vs-diversification-advisor": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/specialization-vs-diversification-advisor/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "value-proposition-crafter": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/value-proposition-crafter/SKILL.md",
       "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
     },
     "media-gen-orchestrator": {
@@ -6104,6 +6687,60 @@
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/conducty-worktrees/SKILL.md",
       "activate": null
+    },
+    "explee-master-orchestrator": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "hub",
+      "status": "deferred-hub",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-master-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-product-search": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-product-search/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-product-enrichment": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-product-enrichment/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-product-autogtm": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-product-autogtm/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-product-ai-agents": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-product-ai-agents/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-api-cookie-access": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-api-cookie-access/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
     },
     "agent-orchestration": {
       "cluster": null,
