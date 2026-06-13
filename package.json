@@ -13,6 +13,10 @@
     "tier": "node scripts/tier.mjs --list",
     "tier:apply": "node scripts/tier.mjs --apply",
     "tier:all": "node scripts/tier.mjs --all --apply",
+    "import:craft": "node scripts/import-craft-skills.mjs",
+    "import:craft:apply": "node scripts/import-craft-skills.mjs --apply",
+    "prune:archive": "node scripts/prune-archive.mjs",
+    "prune:archive:apply": "node scripts/prune-archive.mjs --apply",
     "footer": "node scripts/add-spoke-footer.mjs",
     "index": "node scripts/gen-index.mjs",
     "audit-refs": "node scripts/audit-refs.mjs"

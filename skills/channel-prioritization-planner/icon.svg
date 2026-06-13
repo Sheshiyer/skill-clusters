@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="channel-prioritization-planner icon">
+  <rect x="8" y="8" width="112" height="112" rx="24" fill="#D1FAE5"/>
+  <rect x="20" y="20" width="88" height="88" rx="18" fill="white" stroke="#059669" stroke-width="4"/>
+  <circle cx="64" cy="46" r="10" fill="#059669" opacity="0.9"/>
+  <text x="64" y="84" text-anchor="middle" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="28" font-weight="700" fill="#059669">CP</text>
+</svg>
