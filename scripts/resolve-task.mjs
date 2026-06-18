@@ -171,7 +171,40 @@ function validate(t, kw) {
   return out;
 }
 
-const plan = tasks.map((t) => ({ ...t, ...validate(t, resolve(t)) }));
+function inferVariableContract(t, resolved) {
+  const text = `${t.desc} ${t.paths.join(' ')}`.toLowerCase();
+  const section =
+    /\bhero\b/.test(text) ? 'hero' :
+    /\bpricing\b/.test(text) ? 'pricing' :
+    /\bproof|case stud|testimonial\b/.test(text) ? 'proof' :
+    /\bcta|signup|sign-up|form\b/.test(text) ? 'cta' :
+    /\bapi|endpoint|route\b/.test(text) ? 'api' :
+    'general';
+  const archetype = text.match(/\b(luxury-editorial|saas-ai|brutalist|cinematic|minimalist|playful)\b/)?.[1] || null;
+  const assets = [];
+  if (/\bhero\b/.test(text)) assets.push('hero_media');
+  if (/\blogo|wordmark\b/.test(text)) assets.push('logo');
+  if (/\bscreenshot|ui shot|interface\b/.test(text)) assets.push('ui_screenshot');
+  if (/\bpricing\b/.test(text)) assets.push('pricing_table');
+  if (/\bvideo|motion|animation\b/.test(text)) assets.push('motion_clip');
+  const slots = [];
+  if (section === 'hero') slots.push('hero_headline', 'hero_subcopy', 'cta_primary');
+  if (section === 'pricing') slots.push('pricing_headline', 'pricing_summary');
+  if (section === 'proof') slots.push('proof_headline', 'proof_points');
+  if (section === 'cta') slots.push('cta_headline', 'cta_primary');
+  return {
+    scope: resolved.cluster || null,
+    section_type: section,
+    brand_archetype: archetype,
+    asset_requirements: assets,
+    copy_slots: slots,
+  };
+}
+
+const plan = tasks.map((t) => {
+  const resolved = validate(t, resolve(t));
+  return { ...t, ...resolved, contract: inferVariableContract(t, resolved) };
+});
 const touched = [...new Set(plan.map((p) => p.cluster).filter(Boolean))];
 const activate = [...new Set(plan.filter((p) => p.activate).map((p) => p.cluster))];
 const unresolved = plan.filter((p) => !p.cluster || p.confidence < 0.34);
