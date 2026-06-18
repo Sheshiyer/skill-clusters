@@ -9,6 +9,7 @@
 //   node scripts/ship-battery.mjs [--dir <path>] [--json] [--warn-only]
 //
 //   --dir <path>   project to gate (default: cwd)
+//   --contract <path> validate a Cambium variable-contract pack before shipping
 //   --warn-only    run everything, report, but exit 0 regardless (preview the gate)
 //   --json         machine-readable result
 //
@@ -32,6 +33,7 @@ const argv = process.argv.slice(2);
 const asJson = argv.includes('--json');
 const warnOnly = argv.includes('--warn-only');
 const dir = path.resolve((() => { const i = argv.indexOf('--dir'); return i >= 0 ? argv[i + 1] : '.'; })());
+const contractPath = (() => { const i = argv.indexOf('--contract'); return i >= 0 ? argv[i + 1] : null; })();
 
 const has = (p) => fs.existsSync(path.join(dir, p));
 const pkg = has('package.json') ? JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8')) : null;
@@ -59,6 +61,27 @@ if (has('skills.sh.json')) {
   add('structural', 'skip', 'not a skills repo (no skills.sh.json)', false);
 }
 
+// 1b. Cambium variable contract — when provided, the ship gate validates the richer downstream
+// planning surface instead of reducing "on-brand" to a prose-only check.
+if (contractPath) {
+  const required = ['brand_system', 'copy_system', 'visual_system', 'asset_plan', 'section_plan', 'interaction_plan', 'acceptance_checks'];
+  try {
+    const full = path.resolve(dir, contractPath);
+    const contract = JSON.parse(fs.readFileSync(full, 'utf8'));
+    const missing = required.filter((group) => !(group in contract));
+    const emptyPlans = ['asset_plan', 'section_plan', 'interaction_plan', 'acceptance_checks'].filter((group) => {
+      const value = contract[group];
+      return value == null || (Array.isArray(value) && value.length === 0) || (typeof value === 'object' && !Array.isArray(value) && Object.keys(value).length === 0);
+    });
+    const failures = [...missing, ...emptyPlans.filter((group) => !missing.includes(group)).map((group) => `${group} empty`)];
+    add('variable-contract', failures.length ? 'fail' : 'pass', failures.length ? `missing/empty: ${failures.join(', ')}` : `validated ${required.length} contract group(s)`, true);
+  } catch (e) {
+    add('variable-contract', 'fail', `could not read contract: ${e.message}`, true);
+  }
+} else {
+  add('variable-contract', 'skip', 'no --contract file provided', false);
+}
+
 // 2. secrets — split: high-precision real-credential formats are REQUIRED (near-zero false
 // positives); the broad inline-assignment heuristic trips on example/docs code, so it is ADVISORY
 // and placeholder-filtered. A docs-heavy skills repo must not be blocked by `api_key="your-key"`.
@@ -73,7 +96,7 @@ if (has('skills.sh.json')) {
   const INLINE = /\b(secret|password|passwd|api[_-]?key|token)\s*[:=]\s*['"]([^'"\n]{8,})['"]/i;
   const PLACEHOLDER = /your|example|placeholder|changeme|x{3,}|<.*>|\.\.\.|\$\{|process\.env|os\.environ|getenv|import\.meta|redacted|dummy|sample|test|fake|todo|abc123|0{4,}|here|insert|my[_-]?(key|token|secret)/i;
   let files = [];
-  try { files = execSync('git ls-files', { cwd: dir, encoding: 'utf8' }).split('\n').filter(Boolean); }
+  try { files = execSync('git ls-files', { cwd: dir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).split('\n').filter(Boolean); }
   catch { files = []; }
   const real = [], heur = [];
   for (const f of files) {
@@ -146,7 +169,7 @@ for (const [gate, script, fallback] of [
 // 7. gitclean — advisory only
 {
   let dirty = '';
-  try { dirty = execSync('git status --porcelain', { cwd: dir, encoding: 'utf8' }).trim(); } catch {}
+  try { dirty = execSync('git status --porcelain', { cwd: dir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch {}
   add('gitclean', dirty ? 'warn' : 'pass', dirty ? `${dirty.split('\n').length} uncommitted path(s)` : 'clean tree', false);
 }
 
