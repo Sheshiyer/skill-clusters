@@ -9,10 +9,10 @@
   "pointer": "~/.agents/skill-clusters",
   "archive": "~/.agents/skills-archive",
   "counts": {
-    "total_indexed": 790,
+    "total_indexed": 791,
     "clusters": 41,
     "active-hub": 54,
-    "active-spoke": 452,
+    "active-spoke": 453,
     "deferred-hub": 27,
     "deferred-spoke": 182,
     "archived": 75
@@ -233,7 +233,7 @@
       "title": "Design (from library)",
       "orchestrator": "design-orchestrator",
       "core": "design-core",
-      "spokeCount": 11
+      "spokeCount": 12
     },
     "growth-seo": {
       "tier": "active",
@@ -5291,6 +5291,15 @@
       "status": "active-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/safvr-brand-design-guardrails/SKILL.md",
+      "activate": null
+    },
+    "brand-skin-composer": {
+      "cluster": "design",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/brand-skin-composer/SKILL.md",
       "activate": null
     },
     "growth-seo-orchestrator": {
