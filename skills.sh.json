@@ -838,7 +838,7 @@
     },
     {
       "title": "Growth Sales Cro (from library)",
-      "description": "Route a growth, sales, or conversion-rate-optimization task to the right skill among 24 specialists — page/form/popup/signup/onboarding/paywall CRO, A/B testing, analytics, pricing, paid ads, RevOps, churn, referrals, sales collateral, pitch decks, competitor/customer research, and app-store optimization. USE WHEN a user wants to lift conversions, grow revenue, or close more deals but hasn't named the specific funnel stage or lever.",
+      "description": "Route a growth, sales, or conversion-rate-optimization task to the right skill among 36 specialists — page/form/popup/signup/onboarding/paywall CRO, A/B testing, analytics, pricing, paid ads, RevOps, lead databases, churn, referrals, sales collateral, pitch decks, competitor/customer research, and app-store optimization. USE WHEN a user wants to lift conversions, grow revenue, enrich leads, or close more deals but hasn't named the specific funnel stage or lever.",
       "skills": [
         "growth-sales-cro-orchestrator",
         "growth-sales-cro-core",
@@ -861,6 +861,7 @@
         "customer-research",
         "company-research",
         "lead-research-assistant",
+        "getleads-mcp",
         "competitor-alternatives",
         "competitor-teardown",
         "app-store-optimization",

@@ -9,12 +9,12 @@
   "pointer": "~/.agents/skill-clusters",
   "archive": "~/.agents/skills-archive",
   "counts": {
-    "total_indexed": 799,
+    "total_indexed": 800,
     "clusters": 41,
     "active-hub": 54,
     "active-spoke": 453,
     "deferred-hub": 27,
-    "deferred-spoke": 190,
+    "deferred-spoke": 191,
     "archived": 75
   },
   "clusters": {
@@ -268,7 +268,7 @@
       "title": "Growth Sales Cro (from library)",
       "orchestrator": "growth-sales-cro-orchestrator",
       "core": "growth-sales-cro-core",
-      "spokeCount": 35
+      "spokeCount": 36
     },
     "media-gen": {
       "tier": "deferred",
@@ -6092,6 +6092,15 @@
       "status": "deferred-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/lead-research-assistant/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
+    "getleads-mcp": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/getleads-mcp/SKILL.md",
       "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
     },
     "competitor-alternatives": {
