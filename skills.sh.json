@@ -881,7 +881,7 @@
     },
     {
       "title": "Media Gen (from library)",
-      "description": "Route a media-generation task to the right tool among 11 specialists — image generation (GPT Image 2, Nano Banana 2, OpenAI Images), image enhancement, image-to-3D, AI video direction, FFmpeg processing, frame extraction, and GIF search/authoring. USE WHEN a user wants to generate, edit, upscale, convert, or assemble an image, 3D model, video, or GIF but hasn't named the specific tool or backend.",
+      "description": "Route a media-generation task to the right tool among 14 specialists — image generation (GPT Image 2, Nano Banana 2, OpenAI Images), image enhancement, image-to-3D, AI video direction, anime storytelling workflows, FFmpeg processing, frame extraction, and GIF search/authoring. USE WHEN a user wants to generate, edit, upscale, convert, or assemble an image, 3D model, video, or GIF but hasn't named the specific tool or backend.",
       "skills": [
         "media-gen-orchestrator",
         "media-gen-core",
@@ -897,7 +897,8 @@
         "gifgrep",
         "slack-gif-creator",
         "imagen",
-        "seo-image-gen"
+        "seo-image-gen",
+        "ai-anime-storytelling-workflow"
       ]
     },
     {
@@ -963,7 +964,14 @@
         "explee-product-enrichment",
         "explee-product-autogtm",
         "explee-product-ai-agents",
-        "explee-api-cookie-access"
+        "explee-api-cookie-access",
+        "explee-orchestrator",
+        "explee-search",
+        "explee-enrichment",
+        "explee-agents",
+        "explee-autogtm",
+        "explee-api-core",
+        "explee-auth-cookie"
       ]
     }
   ]

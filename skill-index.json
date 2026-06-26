@@ -1,61 +1,61 @@
 {
   "$comment": "Canonical skill resolution map for the harness/hooks/PAI. Regenerate with: node scripts/gen-index.mjs",
   "resolutionOrder": [
-    "1. active-hub  \u2192 already enumerated; invoke directly",
-    "2. active-spoke \u2192 Read its `path` on demand, or invoke its cluster orchestrator",
-    "3. deferred-*  \u2192 run its `activate` command to enumerate the cluster, then invoke",
-    "4. archived    \u2192 run its `restore` command, or Read its `path` directly"
+    "1. active-hub  → already enumerated; invoke directly",
+    "2. active-spoke → Read its `path` on demand, or invoke its cluster orchestrator",
+    "3. deferred-*  → run its `activate` command to enumerate the cluster, then invoke",
+    "4. archived    → run its `restore` command, or Read its `path` directly"
   ],
   "pointer": "~/.agents/skill-clusters",
   "archive": "~/.agents/skills-archive",
   "counts": {
-    "total_indexed": 791,
+    "total_indexed": 799,
     "clusters": 41,
     "active-hub": 54,
     "active-spoke": 453,
     "deferred-hub": 27,
-    "deferred-spoke": 182,
+    "deferred-spoke": 190,
     "archived": 75
   },
   "clusters": {
     "creative-frontend": {
       "tier": "active",
-      "title": "Creative Frontend \u2014 Astro \u00b7 GSAP \u00b7 Remotion",
+      "title": "Creative Frontend — Astro · GSAP · Remotion",
       "orchestrator": "creative-frontend-orchestrator",
       "core": "creative-frontend-core",
       "spokeCount": 13
     },
     "tauri": {
       "tier": "active",
-      "title": "Tauri \u2014 cross-platform desktop & mobile (Rust + web)",
+      "title": "Tauri — cross-platform desktop & mobile (Rust + web)",
       "orchestrator": "tauri-orchestrator",
       "core": "tauri-core",
       "spokeCount": 40
     },
     "expo": {
       "tier": "active",
-      "title": "Expo \u2014 React Native toolchain",
+      "title": "Expo — React Native toolchain",
       "orchestrator": "expo-orchestrator",
       "core": "expo-core",
       "spokeCount": 9
     },
     "react-native": {
       "tier": "active",
-      "title": "React Native \u2014 UI & interaction craft",
+      "title": "React Native — UI & interaction craft",
       "orchestrator": "react-native-orchestrator",
       "core": "react-native-core",
       "spokeCount": 4
     },
     "astro": {
       "tier": "active",
-      "title": "Astro \u2014 static-first sites (islands, content, SSR)",
+      "title": "Astro — static-first sites (islands, content, SSR)",
       "orchestrator": "astro-orchestrator",
       "core": "astro-core",
       "spokeCount": 2
     },
     "raycast": {
       "tier": "active",
-      "title": "Raycast \u2014 extensions, AI tools, Store publishing",
+      "title": "Raycast — extensions, AI tools, Store publishing",
       "orchestrator": "raycast-orchestrator",
       "core": "raycast-core",
       "spokeCount": 4
@@ -209,7 +209,7 @@
     },
     "electron": {
       "tier": "active",
-      "title": "Electron \u2014 desktop apps (Chromium + Node)",
+      "title": "Electron — desktop apps (Chromium + Node)",
       "orchestrator": "electron-orchestrator",
       "core": "electron-core",
       "spokeCount": 4
@@ -275,7 +275,7 @@
       "title": "Media Gen (from library)",
       "orchestrator": "media-gen-orchestrator",
       "core": "media-gen-core",
-      "spokeCount": 13
+      "spokeCount": 14
     },
     "documents": {
       "tier": "deferred",
@@ -293,17 +293,17 @@
     },
     "conductor": {
       "tier": "active",
-      "title": "Conductor \u2014 closed-loop spec-driven orchestration",
+      "title": "Conductor — closed-loop spec-driven orchestration",
       "orchestrator": "conductor-orchestrator",
       "core": "conductor-core",
       "spokeCount": 19
     },
     "explee-master": {
       "tier": "deferred",
-      "title": "Explee \u2014 Search \u00b7 Enrichment \u00b7 AI Agents \u00b7 AutoGTM",
+      "title": "Explee — Search · Enrichment · AI Agents · AutoGTM",
       "orchestrator": "explee-master-orchestrator",
       "core": "explee-master-core",
-      "spokeCount": 4
+      "spokeCount": 12
     }
   },
   "skills": {
@@ -6373,6 +6373,15 @@
       "path": "~/.agents/skill-clusters/skills/seo-image-gen/SKILL.md",
       "activate": "node scripts/tier.mjs --activate media-gen --apply"
     },
+    "ai-anime-storytelling-workflow": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ai-anime-storytelling-workflow/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
     "documents-orchestrator": {
       "cluster": "documents",
       "tier": "deferred",
@@ -6749,6 +6758,69 @@
       "status": "deferred-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/explee-api-cookie-access/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-orchestrator": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-search": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-search/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-enrichment": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-enrichment/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-agents": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-agents/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-autogtm": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-autogtm/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-api-core": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-api-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-auth-cookie": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-auth-cookie/SKILL.md",
       "activate": "node scripts/tier.mjs --activate explee-master --apply"
     },
     "agent-orchestration": {
@@ -7425,78 +7497,6 @@
       "enumerated": false,
       "path": "~/.agents/skills-archive/weather",
       "restore": "node scripts/archive-library.mjs --restore --apply"
-    },
-    "explee-agents": {
-      "cluster": "explee-master",
-      "tier": "deferred",
-      "role": "spoke",
-      "status": "deferred-spoke",
-      "enumerated": false,
-      "path": "/Volumes/madara/2026/twc-vault/01-Projects/thoughtseed/explee-skills/skills/explee-agents/SKILL.md",
-      "activate": "node scripts/tier.mjs --activate explee-master --apply"
-    },
-    "explee-api-core": {
-      "cluster": "explee-master",
-      "tier": "deferred",
-      "role": "spoke",
-      "status": "deferred-spoke",
-      "enumerated": false,
-      "path": "/Volumes/madara/2026/twc-vault/01-Projects/thoughtseed/explee-skills/skills/explee-api-core/SKILL.md",
-      "activate": "node scripts/tier.mjs --activate explee-master --apply"
-    },
-    "explee-auth-cookie": {
-      "cluster": "explee-master",
-      "tier": "deferred",
-      "role": "spoke",
-      "status": "deferred-spoke",
-      "enumerated": false,
-      "path": "/Volumes/madara/2026/twc-vault/01-Projects/thoughtseed/explee-skills/skills/explee-auth-cookie/SKILL.md",
-      "activate": "node scripts/tier.mjs --activate explee-master --apply"
-    },
-    "explee-autogtm": {
-      "cluster": "explee-master",
-      "tier": "deferred",
-      "role": "spoke",
-      "status": "deferred-spoke",
-      "enumerated": false,
-      "path": "/Volumes/madara/2026/twc-vault/01-Projects/thoughtseed/explee-skills/skills/explee-autogtm/SKILL.md",
-      "activate": "node scripts/tier.mjs --activate explee-master --apply"
-    },
-    "explee-enrichment": {
-      "cluster": "explee-master",
-      "tier": "deferred",
-      "role": "spoke",
-      "status": "deferred-spoke",
-      "enumerated": false,
-      "path": "/Volumes/madara/2026/twc-vault/01-Projects/thoughtseed/explee-skills/skills/explee-enrichment/SKILL.md",
-      "activate": "node scripts/tier.mjs --activate explee-master --apply"
-    },
-    "explee-orchestrator": {
-      "cluster": "explee-master",
-      "tier": "deferred",
-      "role": "spoke",
-      "status": "deferred-spoke",
-      "enumerated": false,
-      "path": "/Volumes/madara/2026/twc-vault/01-Projects/thoughtseed/explee-skills/skills/explee-orchestrator/SKILL.md",
-      "activate": "node scripts/tier.mjs --activate explee-master --apply"
-    },
-    "explee-search": {
-      "cluster": "explee-master",
-      "tier": "deferred",
-      "role": "spoke",
-      "status": "deferred-spoke",
-      "enumerated": false,
-      "path": "/Volumes/madara/2026/twc-vault/01-Projects/thoughtseed/explee-skills/skills/explee-search/SKILL.md",
-      "activate": "node scripts/tier.mjs --activate explee-master --apply"
-    },
-    "ai-anime-storytelling-workflow": {
-      "cluster": "media-gen",
-      "tier": "deferred",
-      "role": "spoke",
-      "status": "deferred-spoke",
-      "enumerated": false,
-      "path": "~/.craft-agent/workspaces/my-workspace/skills/ai-anime-storytelling-workflow/SKILL.md",
-      "activate": "node scripts/tier.mjs --activate media-gen --apply"
     }
   }
 }

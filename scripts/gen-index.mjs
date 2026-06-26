@@ -28,13 +28,16 @@ const ARCHIVE = '~/.agents/skills-archive';
 const skills = {};
 const clusters = {};
 for (const g of man.groupings || []) {
-  const orch = (g.skills || []).find((s) => s.endsWith('-orchestrator'));
+  const groupSkills = g.skills || [];
+  const orch = groupSkills.find((s) => s.endsWith('-orchestrator'));
   if (!orch) continue;
   const handle = orch.replace(/-orchestrator$/, '');
   const tier = tierOf(handle);
-  clusters[handle] = { tier, title: g.title, orchestrator: orch, core: `${handle}-core`, spokeCount: (g.skills || []).length - 2 };
-  for (const s of g.skills || []) {
-    const isHub = s === orch || s === `${handle}-core`;
+  const core = groupSkills.find((s) => s === `${handle}-core`);
+  const hubCount = 1 + (core ? 1 : 0);
+  clusters[handle] = { tier, title: g.title, orchestrator: orch, core: core || `${handle}-core`, spokeCount: groupSkills.length - hubCount };
+  for (const s of groupSkills) {
+    const isHub = s === orch || s === core;
     const status = `${tier}-${isHub ? 'hub' : 'spoke'}`;
     // first cluster wins for shared skills; prefer the one whose handle prefixes the name
     if (!skills[s] || s.startsWith(handle + '-') || s === handle) {

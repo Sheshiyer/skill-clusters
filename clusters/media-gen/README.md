@@ -5,7 +5,7 @@
 <div align="center">
 
 [![tier](https://img.shields.io/badge/tier-deferred-64748b?style=plastic)](../../profiles.json)
-[![spokes](https://img.shields.io/badge/spokes-13-22c55e?style=plastic)](#skills)
+[![spokes](https://img.shields.io/badge/spokes-14-22c55e?style=plastic)](#skills)
 [![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
 [![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
@@ -31,7 +31,7 @@ graph LR
   classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-_…and 3 more in the table below._
+_…and 4 more in the table below._
 
 ## Skills
 
@@ -52,6 +52,7 @@ _…and 3 more in the table below._
 | `slack-gif-creator` | spoke | ⤵ on-demand |
 | `imagen` | spoke | ⤵ on-demand |
 | `seo-image-gen` | spoke | ⤵ on-demand |
+| `ai-anime-storytelling-workflow` | spoke | ⤵ on-demand |
 
 ## Tier & loading
 
