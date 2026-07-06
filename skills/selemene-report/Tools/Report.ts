@@ -101,13 +101,14 @@ async function generateDeterministic(
   return generateDeterministicImpl(type, outputDir, payload, resolveConfig());
 }
 
-async function generateWitness(
+export async function generateWitnessImpl(
   mode: string,
   subjectsPath: string,
   level: string,
-  outputDir: string
+  outputDir: string,
+  config: { tsUrl: string; apiKey?: string },
+  fetcher: Fetcher = fetch
 ): Promise<{ artifactPath: string }> {
-  const config = resolveConfig();
   const subjects = JSON.parse(fs.readFileSync(subjectsPath, "utf-8"));
   const payload = {
     report_level: level,
@@ -126,7 +127,7 @@ async function generateWitness(
   };
   if (config.apiKey) headers["Authorization"] = `Bearer ${config.apiKey}`;
 
-  const res = await fetch(endpoint, {
+  const res = await fetcher(endpoint, {
     method: "POST",
     headers,
     body: JSON.stringify(payload),
@@ -154,6 +155,15 @@ async function generateWitness(
   fs.writeFileSync(artifactPath, reading.assembled ?? reading.markdown ?? "", "utf-8");
 
   return { artifactPath };
+}
+
+async function generateWitness(
+  mode: string,
+  subjectsPath: string,
+  level: string,
+  outputDir: string
+): Promise<{ artifactPath: string }> {
+  return generateWitnessImpl(mode, subjectsPath, level, outputDir, resolveConfig());
 }
 
 async function main(): Promise<void> {
