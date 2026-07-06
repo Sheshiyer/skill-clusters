@@ -5,7 +5,8 @@
   "type": "module",
   "main": "Tools/Report.ts",
   "scripts": {
-    "test": "bun test Tools/**/*.test.ts"
+    "test": "bun test Tools/**/*.test.ts",
+    "report": "bun run Tools/Report.ts"
   },
   "dependencies": {},
   "devDependencies": {
