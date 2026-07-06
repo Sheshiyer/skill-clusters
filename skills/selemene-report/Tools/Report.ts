@@ -12,6 +12,13 @@ import { renderMarkdownReport } from "./lib/reports.ts";
 
 type ReportType = "birth" | "compatibility" | "transit" | "witness";
 
+export interface Fetcher {
+  (
+    url: string,
+    init: { method: string; headers: Record<string, string>; body: string }
+  ): Promise<Response>;
+}
+
 const USAGE = `
 Usage:
   bun run Tools/Report.ts birth "Name" "ISO_DATETIME" "Location" [--output-dir DIR] [--format text|html|json|pdf]
@@ -39,21 +46,21 @@ function nowTimestamp(): string {
   return `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}-${String(d.getHours()).padStart(2, "0")}${String(d.getMinutes()).padStart(2, "0")}${String(d.getSeconds()).padStart(2, "0")}`;
 }
 
-async function generateDeterministic(
+export async function generateDeterministicImpl(
   type: "birth" | "compatibility" | "transit",
   outputDir: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  payload: Record<string, any>
+  payload: Record<string, any>,
+  config: { rustUrl: string; apiKey?: string },
+  fetcher: Fetcher = fetch
 ): Promise<{ artifactPath: string; extension: string }> {
-  const config = resolveConfig();
-  // Prefer the Rust report endpoint directly; the bridge CLI is used to keep tool defs fresh.
   const endpoint = `${config.rustUrl}/api/reports/${type}`;
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
   };
   if (config.apiKey) headers["Authorization"] = `Bearer ${config.apiKey}`;
 
-  const res = await fetch(endpoint, {
+  const res = await fetcher(endpoint, {
     method: "POST",
     headers,
     body: JSON.stringify(payload),
@@ -83,6 +90,15 @@ async function generateDeterministic(
   fs.writeFileSync(artifactPath, content, "utf-8");
 
   return { artifactPath, extension };
+}
+
+async function generateDeterministic(
+  type: "birth" | "compatibility" | "transit",
+  outputDir: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  payload: Record<string, any>
+): Promise<{ artifactPath: string; extension: string }> {
+  return generateDeterministicImpl(type, outputDir, payload, resolveConfig());
 }
 
 async function generateWitness(
@@ -251,7 +267,9 @@ async function main(): Promise<void> {
   console.log(JSON.stringify({ artifact_path: artifactPath, manifest_path: manifestPath, prompt: witnessPromptFor(type) }, null, 2));
 }
 
-main().catch((e) => {
-  console.error(e instanceof Error ? e.message : String(e));
-  process.exit(1);
-});
+if (import.meta.main) {
+  main().catch((e) => {
+    console.error(e instanceof Error ? e.message : String(e));
+    process.exit(1);
+  });
+}
