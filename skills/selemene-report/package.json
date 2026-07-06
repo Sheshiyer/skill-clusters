@@ -1,0 +1,14 @@
+{
+  "name": "@selemene/report-skill",
+  "version": "1.0.0",
+  "description": "Selemene Engine report generation skill for coding-agent slash-commands",
+  "type": "module",
+  "main": "Tools/Report.ts",
+  "scripts": {
+    "test": "bun test Tools/**/*.test.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/bun": "^1.1.0"
+  }
+}
