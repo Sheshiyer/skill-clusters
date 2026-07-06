@@ -153,9 +153,55 @@ Before claiming a report was generated:
 
 ---
 
-### Endpoint assumptions
+### Running the backend
 
-- Rust deterministic reports: `POST {rustUrl}/api/v1/workflows/{birth-report|compatibility-report|transit-report}/execute` (verified against `crates/noesis-api/src/lib.rs`; the repo does not expose `/api/reports/*`).
+Start the Rust API server from the Selemene Engine repo:
+
+```bash
+cd /Volumes/madara/2026/twc-vault/01-Projects/tryambakam-noesis/Selemene-engine
+export RUST_ENV=development
+export CF_DEV_BYPASS_TOKEN=selemene-local-test
+export ENABLE_SWAGGER_UI=true
+cargo run -p noesis-api --bin noesis-server
+```
+
+Notes:
+- The crate is `noesis-api` and the binary name is `noesis-server` (`cargo run -p noesis-api` alone is ambiguous because the crate also ships helper binaries).
+- Default bind address is `0.0.0.0:8080`.
+- `CF_DEV_BYPASS_TOKEN` + `x-noesis-dev-auth` header bypasses auth in development only; production requires a valid JWT or `X-API-Key`.
+- `ENABLE_SWAGGER_UI=true` exposes `/api/openapi.json` and `/api/docs`.
+- Without `DATABASE_URL`, auth endpoints are unavailable but health checks and workflow execution via dev bypass still work.
+
+Verify health:
+
+```bash
+curl -i http://localhost:8080/health/live
+```
+
+Expected: `HTTP/1.1 200 OK` with JSON body containing `status`, `version`, `uptime_seconds`, `engines_loaded`, and `workflows_loaded`.
+
+## Endpoint assumptions
+
+- Rust deterministic reports: `POST {rustUrl}/api/v1/workflows/{birth-blueprint|daily-practice|decision-support|self-inquiry|creative-expression|full-spectrum}/execute`.
+  - The actual running server exposes these workflow IDs: `birth-blueprint`, `daily-practice`, `decision-support`, `self-inquiry`, `creative-expression`, `full-spectrum`.
+  - There is **no** `birth-report`, `compatibility-report`, or `transit-report` workflow; the repo also does not expose dedicated `/api/reports/*` routes.
+  - Request body shape is `EngineInput`:
+    ```json
+    {
+      "birth_data": {
+        "name": "Ada",
+        "date": "1815-12-10",
+        "time": "15:00",
+        "latitude": 51.5074,
+        "longitude": -0.1278,
+        "timezone": "Europe/London"
+      },
+      "options": {}
+    }
+    ```
+    - `current_time` and `precision` are optional (defaults apply).
+    - `location` may be used for geo-only engines but chart workflows primarily read `birth_data`.
+- Generic workflow execution: `POST {rustUrl}/api/v1/workflows/{workflow_id}/execute` with the same `EngineInput` body.
 - TS witness pipeline: `POST {tsUrl}/witness/generate` (to be confirmed against a running TS server in Task 10).
 
 If your Selemene deployment uses different routes, update `Tools/Report.ts` before using.
