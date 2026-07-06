@@ -166,8 +166,16 @@ async function generateWitness(
   return generateWitnessImpl(mode, subjectsPath, level, outputDir, resolveConfig());
 }
 
-async function main(): Promise<void> {
+export interface ParsedArgs {
+  type: ReportType;
+  outputDir: string;
+  values: Record<string, string | string[] | undefined>;
+  positionals: string[];
+}
+
+export function parseReportArgs(args: string[]): ParsedArgs {
   const { positionals, values } = parseArgs({
+    args,
     allowPositionals: true,
     options: {
       "output-dir": { type: "string" },
@@ -183,8 +191,7 @@ async function main(): Promise<void> {
   });
 
   if (positionals.length < 1) {
-    console.error(USAGE);
-    process.exit(1);
+    throw new Error(USAGE);
   }
 
   const type = assertType(positionals[0]);
@@ -192,6 +199,14 @@ async function main(): Promise<void> {
     (values["output-dir"] as string | undefined) ??
     process.env.SELEMENE_OUTPUT_DIR ??
     "./selemene-reports";
+
+  return { type, outputDir, values, positionals };
+}
+
+async function main(): Promise<void> {
+  const { type, outputDir, values, positionals } = parseReportArgs(
+    process.argv.slice(2)
+  );
   fs.mkdirSync(outputDir, { recursive: true });
 
   let artifactPath: string;
