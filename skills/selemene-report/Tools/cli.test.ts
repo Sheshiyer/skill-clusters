@@ -38,4 +38,15 @@ describe("parseReportArgs", () => {
   it("throws on unknown report type", () => {
     expect(() => parseReportArgs(["unknown"])).toThrow("Unknown report type");
   });
+
+  it("parses --dry-run without invoking backend", () => {
+    const parsed = parseReportArgs([
+      "birth",
+      "Ada",
+      "1990-01-15T10:30:00+05:30",
+      "Bangalore",
+      "--dry-run",
+    ]);
+    expect(parsed.values["dry-run"]).toBe(true);
+  });
 });

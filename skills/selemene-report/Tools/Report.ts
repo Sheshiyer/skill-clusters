@@ -267,6 +267,7 @@ export function parseReportArgs(args: string[]): ParsedArgs {
       mode: { type: "string" },
       subjects: { type: "string" },
       level: { type: "string" },
+      "dry-run": { type: "boolean" },
     },
   });
 
@@ -287,6 +288,24 @@ async function main(): Promise<void> {
   const { type, outputDir, values, positionals } = parseReportArgs(
     process.argv.slice(2)
   );
+
+  if (values["dry-run"]) {
+    console.log(
+      JSON.stringify(
+        {
+          dry_run: true,
+          type,
+          output_dir: outputDir,
+          values,
+          positionals,
+        },
+        null,
+        2
+      )
+    );
+    return;
+  }
+
   fs.mkdirSync(outputDir, { recursive: true });
 
   let artifactPath: string;
