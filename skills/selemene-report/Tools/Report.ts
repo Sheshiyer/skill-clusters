@@ -8,9 +8,19 @@ import fs from "node:fs";
 import { resolveConfig } from "./lib/resolve-config.ts";
 import { writeManifest } from "./lib/write-manifest.ts";
 import { witnessPromptFor } from "./lib/prompts.ts";
-import { renderMarkdownReport } from "./lib/reports.ts";
+import {
+  renderMarkdownReport,
+  renderWorkflowMarkdownReport,
+} from "./lib/reports.ts";
+import {
+  buildDeterministicEngineInput,
+  deterministicWorkflowId,
+  subjectNameFromPayload,
+  type EngineInput,
+} from "./lib/engine-input.ts";
 
 type ReportType = "birth" | "compatibility" | "transit" | "witness";
+type DeterministicType = "birth" | "compatibility" | "transit";
 
 export interface Fetcher {
   (
@@ -46,19 +56,27 @@ function nowTimestamp(): string {
   return `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}-${String(d.getHours()).padStart(2, "0")}${String(d.getMinutes()).padStart(2, "0")}${String(d.getSeconds()).padStart(2, "0")}`;
 }
 
+export interface DeterministicConfig {
+  rustUrl: string;
+  apiKey?: string;
+  devBypassToken?: string;
+}
+
 export async function generateDeterministicImpl(
-  type: "birth" | "compatibility" | "transit",
+  type: DeterministicType,
   outputDir: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   payload: Record<string, any>,
-  config: { rustUrl: string; apiKey?: string },
+  config: DeterministicConfig,
   fetcher: Fetcher = fetch
 ): Promise<{ artifactPath: string; extension: string }> {
-  const endpoint = `${config.rustUrl}/api/v1/workflows/${type}-report/execute`;
+  const workflowId = deterministicWorkflowId(type);
+  const endpoint = `${config.rustUrl}/api/v1/workflows/${workflowId}/execute`;
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
   };
   if (config.apiKey) headers["Authorization"] = `Bearer ${config.apiKey}`;
+  if (config.devBypassToken) headers["x-noesis-dev-auth"] = config.devBypassToken;
 
   const res = await fetcher(endpoint, {
     method: "POST",
@@ -75,7 +93,7 @@ export async function generateDeterministicImpl(
   const extension = payload.format === "json" ? "json" : "md";
   const timestamp = nowTimestamp();
   const nameSlug = slugify(
-    report.subject_name ?? payload.name ?? `selemene-${type}`
+    report.subject_name ?? subjectNameFromPayload(type, payload) ?? `selemene-${type}`
   );
   const artifactPath = path.join(
     outputDir,
@@ -86,19 +104,24 @@ export async function generateDeterministicImpl(
   const content =
     extension === "json"
       ? JSON.stringify(report, null, 2)
-      : renderMarkdownReport(report, type);
+      : renderWorkflowMarkdownReport(report, type, subjectNameFromPayload(type, payload));
   fs.writeFileSync(artifactPath, content, "utf-8");
 
   return { artifactPath, extension };
 }
 
 async function generateDeterministic(
-  type: "birth" | "compatibility" | "transit",
+  type: DeterministicType,
   outputDir: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   payload: Record<string, any>
 ): Promise<{ artifactPath: string; extension: string }> {
-  return generateDeterministicImpl(type, outputDir, payload, resolveConfig());
+  const base = resolveConfig();
+  return generateDeterministicImpl(type, outputDir, payload, {
+    rustUrl: base.rustUrl,
+    apiKey: base.apiKey,
+    devBypassToken: process.env.CF_DEV_BYPASS_TOKEN,
+  });
 }
 
 export async function generateWitnessImpl(
@@ -166,7 +189,11 @@ async function generateWitness(
   level: string,
   outputDir: string
 ): Promise<{ artifactPath: string }> {
-  return generateWitnessImpl(mode, subjectsPath, level, outputDir, resolveConfig());
+  const base = resolveConfig();
+  return generateWitnessImpl(mode, subjectsPath, level, outputDir, {
+    tsUrl: base.tsUrl,
+    apiKey: base.apiKey,
+  });
 }
 
 export interface ParsedArgs {
@@ -220,12 +247,9 @@ async function main(): Promise<void> {
       if (!name || !datetime || !location) {
         throw new Error(`birth requires name, datetime, location\n${USAGE}`);
       }
-      const { artifactPath: ap } = await generateDeterministic("birth", outputDir, {
-        name,
-        datetime,
-        location,
-        format: values.format ?? "text",
-      });
+      const payload = buildDeterministicEngineInput("birth", { name, datetime, location });
+      (payload as Record<string, unknown>).format = values.format ?? "text";
+      const { artifactPath: ap } = await generateDeterministic("birth", outputDir, payload);
       artifactPath = ap;
       break;
     }
@@ -237,13 +261,14 @@ async function main(): Promise<void> {
           `compatibility requires --person1 and --person2 each with name, datetime, location\n${USAGE}`
         );
       }
+      const payload = buildDeterministicEngineInput("compatibility", {
+        person1: { name: p1[0], datetime: p1[1], location: p1[2] },
+        person2: { name: p2[0], datetime: p2[1], location: p2[2] },
+      });
       const { artifactPath: ap } = await generateDeterministic(
         "compatibility",
         outputDir,
-        {
-          person1: { name: p1[0], datetime: p1[1], location: p1[2] },
-          person2: { name: p2[0], datetime: p2[1], location: p2[2] },
-        }
+        payload
       );
       artifactPath = ap;
       break;
@@ -255,13 +280,14 @@ async function main(): Promise<void> {
           `transit requires name, datetime, location, --from, --to\n${USAGE}`
         );
       }
-      const { artifactPath: ap } = await generateDeterministic("transit", outputDir, {
+      const payload = buildDeterministicEngineInput("transit", {
         name,
         datetime,
         location,
         from_date: values.from,
         to_date: values.to,
       });
+      const { artifactPath: ap } = await generateDeterministic("transit", outputDir, payload);
       artifactPath = ap;
       break;
     }

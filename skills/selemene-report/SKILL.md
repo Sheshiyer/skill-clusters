@@ -101,8 +101,11 @@ It also respects a local `.selemenerc.json` if present, reusing the bridge confi
 1. **Parse intent** — first positional argument chooses one of `birth`, `compatibility`, `transit`, `witness`.
 2. **Validate inputs** — require birth datetime + location for deterministic reports; require `--subjects` JSON for witness.
 3. **Resolve backend**
-   - Deterministic: call `npx @selemene/bridge generate` first if tool definitions are stale, then `POST` to the relevant Rust OpenAPI workflow endpoint (`/api/v1/workflows/birth-report/execute`, `/api/v1/workflows/compatibility-report/execute`, `/api/v1/workflows/transit-report/execute`). The actual Selemene repo does not expose dedicated `/api/reports/*` routes; deterministic reports are produced by executing the corresponding workflows.
-    - Witness: the `packages/witness-pipeline` package is a TypeScript library (not an HTTP server). The running `ts-engines` server exposes generic engine endpoints (`/engines/:id/calculate`), not a dedicated witness endpoint. The live equivalent for assembled witness readings is the Rust `POST /api/v1/assets/generate` endpoint.
+   - Deterministic: `POST {rustUrl}/api/v1/workflows/{workflow_id}/execute` with an `EngineInput` body. There are no dedicated `/api/reports/*` routes. The skill maps the CLI report type to an existing workflow ID:
+     - `birth` → `birth-blueprint`
+     - `compatibility` → `full-spectrum` (carries a second subject in `options.partner_birth_data` + `relationship_context`)
+     - `transit` → `daily-practice` (sets `current_time` to `--from` and `options.transit_window_end` to `--to`)
+   - Witness: the `packages/witness-pipeline` package is a TypeScript library (not an HTTP server). The running `ts-engines` server exposes generic engine endpoints (`/engines/:id/calculate`), not a dedicated witness endpoint. The live equivalent for assembled witness readings is the Rust `POST /api/v1/assets/generate` endpoint.
 4. **Write artifacts** — always emit:
    - `{output_dir}/manifest.json`
    - `{output_dir}/{report_type}-{slug}-{timestamp}.{ext}`
@@ -204,9 +207,13 @@ Expected: `HTTP/1.1 200 OK` with JSON body containing `status`, `engines`, `upti
 
 ## Endpoint assumptions
 
-- Rust deterministic reports: `POST {rustUrl}/api/v1/workflows/{birth-blueprint|daily-practice|decision-support|self-inquiry|creative-expression|full-spectrum}/execute`.
+- Rust deterministic reports: `POST {rustUrl}/api/v1/workflows/{workflow_id}/execute` with an `EngineInput` body.
   - The actual running server exposes these workflow IDs: `birth-blueprint`, `daily-practice`, `decision-support`, `self-inquiry`, `creative-expression`, `full-spectrum`.
   - There is **no** `birth-report`, `compatibility-report`, or `transit-report` workflow; the repo also does not expose dedicated `/api/reports/*` routes.
+  - The CLI maps report types to workflows:
+    - `birth` → `birth-blueprint`
+    - `compatibility` → `full-spectrum`
+    - `transit` → `daily-practice`
   - Request body shape is `EngineInput`:
     ```json
     {
@@ -223,9 +230,12 @@ Expected: `HTTP/1.1 200 OK` with JSON body containing `status`, `engines`, `upti
     ```
     - `current_time` and `precision` are optional (defaults apply).
     - `location` may be used for geo-only engines but chart workflows primarily read `birth_data`.
+    - For `compatibility`, `options.partner_birth_data` carries the second person and `options.relationship_context.type` is `"compatibility"`.
+    - For `transit`, `current_time` is set to `--from` and `options.transit_window_end` is set to `--to`.
 - Generic workflow execution: `POST {rustUrl}/api/v1/workflows/{workflow_id}/execute` with the same `EngineInput` body.
 - TS witness pipeline: there is no `POST {tsUrl}/witness/generate` on the running `ts-engines` server. The only TS HTTP surface is `ts-engines`, which exposes `GET /health`, `/engines`, `/engines/:id/info`, and `POST /engines/:id/calculate`. The witness-pipeline package is a library (`IntegratedReadingOrchestrator`).
 - Live witness / premium-asset endpoint: `POST {rustUrl}/api/v1/assets/generate` returns an `AssetGenerateResponse` with `assembled` text.
+- Dev auth: when `CF_DEV_BYPASS_TOKEN` is set, the CLI sends it as the `x-noesis-dev-auth` header. In production, use `SELEMENE_API_KEY` (sent as `Authorization: Bearer ...`) or an `X-API-Key` header configured in your deployment.
 
 If your Selemene deployment uses different routes, update `Tools/Report.ts` before using.
 
