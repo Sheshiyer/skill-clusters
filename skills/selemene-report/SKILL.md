@@ -102,7 +102,7 @@ It also respects a local `.selemenerc.json` if present, reusing the bridge confi
 2. **Validate inputs** — require birth datetime + location for deterministic reports; require `--subjects` JSON for witness.
 3. **Resolve backend**
    - Deterministic: call `npx @selemene/bridge generate` first if tool definitions are stale, then `POST` to the relevant Rust OpenAPI workflow endpoint (`/api/v1/workflows/birth-report/execute`, `/api/v1/workflows/compatibility-report/execute`, `/api/v1/workflows/transit-report/execute`). The actual Selemene repo does not expose dedicated `/api/reports/*` routes; deterministic reports are produced by executing the corresponding workflows.
-    - Witness: call the existing witness-pipeline entry point (see `packages/witness-pipeline/scripts/` for available scripts) with the subjects file and mode.
+    - Witness: the `packages/witness-pipeline` package is a TypeScript library (not an HTTP server). The running `ts-engines` server exposes generic engine endpoints (`/engines/:id/calculate`), not a dedicated witness endpoint. The live equivalent for assembled witness readings is the Rust `POST /api/v1/assets/generate` endpoint.
 4. **Write artifacts** — always emit:
    - `{output_dir}/manifest.json`
    - `{output_dir}/{report_type}-{slug}-{timestamp}.{ext}`
@@ -180,6 +180,28 @@ curl -i http://localhost:8080/health/live
 
 Expected: `HTTP/1.1 200 OK` with JSON body containing `status`, `version`, `uptime_seconds`, `engines_loaded`, and `workflows_loaded`.
 
+### TypeScript engines server
+
+Start the TypeScript engine server from the Selemene Engine repo:
+
+```bash
+cd /Volumes/madara/2026/twc-vault/01-Projects/tryambakam-noesis/Selemene-engine/ts-engines
+bun run dev
+```
+
+Notes:
+- Default bind address is `0.0.0.0:3001`.
+- This is a generic Elysia API for the TS consciousness engines (`tarot`, `i-ching`, `enneagram`, `sacred-geometry`, `sigil-forge`, `raaga`).
+- It does **not** expose `/witness/generate`; witness-pipeline is a local library.
+
+Verify health:
+
+```bash
+curl -i http://localhost:3001/health
+```
+
+Expected: `HTTP/1.1 200 OK` with JSON body containing `status`, `engines`, `uptime_ms`, and `version`.
+
 ## Endpoint assumptions
 
 - Rust deterministic reports: `POST {rustUrl}/api/v1/workflows/{birth-blueprint|daily-practice|decision-support|self-inquiry|creative-expression|full-spectrum}/execute`.
@@ -202,7 +224,8 @@ Expected: `HTTP/1.1 200 OK` with JSON body containing `status`, `version`, `upti
     - `current_time` and `precision` are optional (defaults apply).
     - `location` may be used for geo-only engines but chart workflows primarily read `birth_data`.
 - Generic workflow execution: `POST {rustUrl}/api/v1/workflows/{workflow_id}/execute` with the same `EngineInput` body.
-- TS witness pipeline: `POST {tsUrl}/witness/generate` (to be confirmed against a running TS server in Task 10).
+- TS witness pipeline: there is no `POST {tsUrl}/witness/generate` on the running `ts-engines` server. The only TS HTTP surface is `ts-engines`, which exposes `GET /health`, `/engines`, `/engines/:id/info`, and `POST /engines/:id/calculate`. The witness-pipeline package is a library (`IntegratedReadingOrchestrator`).
+- Live witness / premium-asset endpoint: `POST {rustUrl}/api/v1/assets/generate` returns an `AssetGenerateResponse` with `assembled` text.
 
 If your Selemene deployment uses different routes, update `Tools/Report.ts` before using.
 

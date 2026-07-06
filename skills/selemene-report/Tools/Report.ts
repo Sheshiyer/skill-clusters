@@ -121,6 +121,9 @@ export async function generateWitnessImpl(
     },
   };
 
+  // NOTE (Task 10): the running ts-engines server exposes /engines/:id/calculate,
+  // not /witness/generate. The witness-pipeline package is a library, not an HTTP server.
+  // The live equivalent for assembled witness readings is the Rust /api/v1/assets/generate endpoint.
   const endpoint = `${config.tsUrl}/witness/generate`;
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
