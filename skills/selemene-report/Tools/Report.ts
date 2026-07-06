@@ -54,7 +54,7 @@ export async function generateDeterministicImpl(
   config: { rustUrl: string; apiKey?: string },
   fetcher: Fetcher = fetch
 ): Promise<{ artifactPath: string; extension: string }> {
-  const endpoint = `${config.rustUrl}/api/reports/${type}`;
+  const endpoint = `${config.rustUrl}/api/v1/workflows/${type}-report/execute`;
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
   };

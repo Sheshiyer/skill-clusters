@@ -101,8 +101,8 @@ It also respects a local `.selemenerc.json` if present, reusing the bridge confi
 1. **Parse intent** — first positional argument chooses one of `birth`, `compatibility`, `transit`, `witness`.
 2. **Validate inputs** — require birth datetime + location for deterministic reports; require `--subjects` JSON for witness.
 3. **Resolve backend**
-   - Deterministic: call `npx @selemene/bridge generate` first if tool definitions are stale, then `POST` to the relevant Rust OpenAPI report endpoint (`/api/reports/birth`, `/api/reports/compatibility`, `/api/reports/transit`).
-   - Witness: call the existing witness-pipeline entry point (see `packages/witness-pipeline/scripts/` for available scripts) with the subjects file and mode.
+   - Deterministic: call `npx @selemene/bridge generate` first if tool definitions are stale, then `POST` to the relevant Rust OpenAPI workflow endpoint (`/api/v1/workflows/birth-report/execute`, `/api/v1/workflows/compatibility-report/execute`, `/api/v1/workflows/transit-report/execute`). The actual Selemene repo does not expose dedicated `/api/reports/*` routes; deterministic reports are produced by executing the corresponding workflows.
+    - Witness: call the existing witness-pipeline entry point (see `packages/witness-pipeline/scripts/` for available scripts) with the subjects file and mode.
 4. **Write artifacts** — always emit:
    - `{output_dir}/manifest.json`
    - `{output_dir}/{report_type}-{slug}-{timestamp}.{ext}`
@@ -152,6 +152,13 @@ Before claiming a report was generated:
 - [ ] The returned path is absolute and readable.
 
 ---
+
+### Endpoint assumptions
+
+- Rust deterministic reports: `POST {rustUrl}/api/v1/workflows/{birth-report|compatibility-report|transit-report}/execute` (verified against `crates/noesis-api/src/lib.rs`; the repo does not expose `/api/reports/*`).
+- TS witness pipeline: `POST {tsUrl}/witness/generate` (to be confirmed against a running TS server in Task 10).
+
+If your Selemene deployment uses different routes, update `Tools/Report.ts` before using.
 
 ## Design notes
 
