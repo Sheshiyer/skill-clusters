@@ -124,34 +124,83 @@ async function generateDeterministic(
   });
 }
 
+export interface WitnessSubject {
+  role?: string;
+  name?: string;
+  birth_date?: string;
+  birth_time?: string;
+  birth_time_confidence?: string;
+  birth_location_query?: string;
+  normalized_location?: {
+    display_name: string;
+    latitude: number;
+    longitude: number;
+    timezone: string;
+    provider?: string;
+    confidence?: string;
+  };
+}
+
+export interface WitnessConfig {
+  rustUrl: string;
+  apiKey?: string;
+  devBypassToken?: string;
+}
+
+function mapWitnessMode(mode: string): string {
+  // Rust /api/v1/assets/generate accepts mode strings such as
+  // "integrated-reading" (solo) and "composite-dyad" (dyadic).
+  switch (mode) {
+    case "solo":
+      return "integrated-reading";
+    case "dyadic":
+      return "composite-dyad";
+    default:
+      return mode;
+  }
+}
+
+function validateWitnessSubjects(subjects: WitnessSubject[]): void {
+  if (!Array.isArray(subjects) || subjects.length === 0) {
+    throw new Error("witness requires at least one subject in subjects.json");
+  }
+  for (const subject of subjects) {
+    if (!subject.normalized_location) {
+      throw new Error(
+        `Subject ${subject.name ?? "(unknown)"} is missing normalized_location. ` +
+          "The Rust /api/v1/assets/generate endpoint requires every subject to include " +
+          "a normalized_location object with display_name, latitude, longitude, and timezone."
+      );
+    }
+  }
+}
+
 export async function generateWitnessImpl(
   mode: string,
   subjectsPath: string,
   level: string,
   outputDir: string,
-  config: { tsUrl: string; apiKey?: string },
+  config: WitnessConfig,
   fetcher: Fetcher = fetch
 ): Promise<{ artifactPath: string }> {
-  const subjects = JSON.parse(fs.readFileSync(subjectsPath, "utf-8"));
+  const subjects: WitnessSubject[] = JSON.parse(fs.readFileSync(subjectsPath, "utf-8"));
+  validateWitnessSubjects(subjects);
+
   const payload = {
+    mode: mapWitnessMode(mode),
     report_level: level,
-    report_mode: mode,
     subjects,
-    output: {
-      format: "markdown",
-      include_rubric: true,
-      include_pattern_extraction: true,
-    },
   };
 
-  // NOTE (Task 10): the running ts-engines server exposes /engines/:id/calculate,
-  // not /witness/generate. The witness-pipeline package is a library, not an HTTP server.
-  // The live equivalent for assembled witness readings is the Rust /api/v1/assets/generate endpoint.
-  const endpoint = `${config.tsUrl}/witness/generate`;
+  // Live assembled witness readings are produced by the Rust
+  // POST /api/v1/assets/generate endpoint. ts-engines exposes only generic
+  // /engines/:id/calculate and has no /witness/generate route.
+  const endpoint = `${config.rustUrl}/api/v1/assets/generate`;
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
   };
   if (config.apiKey) headers["Authorization"] = `Bearer ${config.apiKey}`;
+  if (config.devBypassToken) headers["x-noesis-dev-auth"] = config.devBypassToken;
 
   const res = await fetcher(endpoint, {
     method: "POST",
@@ -160,13 +209,13 @@ export async function generateWitnessImpl(
   });
   if (!res.ok) {
     const body = await res.text();
-    throw new Error(`Witness pipeline returned ${res.status}: ${body}`);
+    throw new Error(`Witness backend returned ${res.status}: ${body}`);
   }
   const reading = await res.json();
 
   const timestamp = nowTimestamp();
   const subjectNames = Array.isArray(subjects)
-    ? subjects.map((s: { name?: string }) => s.name).filter(Boolean)
+    ? subjects.map((s) => s.name).filter(Boolean)
     : [];
   const nameSlug =
     subjectNames.length > 0
@@ -191,8 +240,9 @@ async function generateWitness(
 ): Promise<{ artifactPath: string }> {
   const base = resolveConfig();
   return generateWitnessImpl(mode, subjectsPath, level, outputDir, {
-    tsUrl: base.tsUrl,
+    rustUrl: base.rustUrl,
     apiKey: base.apiKey,
+    devBypassToken: process.env.CF_DEV_BYPASS_TOKEN,
   });
 }
 

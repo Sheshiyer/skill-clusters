@@ -68,7 +68,7 @@ The skill accepts a command string and resolves the report type from the first p
   [--level L1|L2|L3|L4|L5] [--output-dir ./selemene-reports]
 ```
 
-`subjects.json` matches the existing `ReportSubjectInput` shape from `packages/witness-pipeline/src/intake/types.ts`:
+`subjects.json` matches the rich `ReportSubjectInput` shape from `packages/witness-pipeline/src/intake/types.ts`. The live Rust endpoint requires every subject to carry a `normalized_location`:
 
 ```json
 [
@@ -78,7 +78,15 @@ The skill accepts a command string and resolves the report type from the first p
     "birth_date": "1990-01-15",
     "birth_time": "10:30",
     "birth_time_confidence": "exact",
-    "birth_location_query": "Bangalore"
+    "birth_location_query": "Bangalore",
+    "normalized_location": {
+      "display_name": "Bengaluru, Karnataka, India",
+      "latitude": 12.9716,
+      "longitude": 77.5946,
+      "timezone": "Asia/Kolkata",
+      "provider": "manual",
+      "confidence": "manual"
+    }
   }
 ]
 ```
@@ -90,6 +98,7 @@ The skill reads the same environment the bridge CLI uses:
 - `SELEMENE_RUST_URL` (default: `http://localhost:8080`)
 - `SELEMENE_TS_URL` (default: `http://localhost:3001`)
 - `SELEMENE_API_KEY` (optional)
+- `CF_DEV_BYPASS_TOKEN` (optional, sent as `x-noesis-dev-auth` for local development bypass)
 - `SELEMENE_OUTPUT_DIR` (default: `./selemene-reports`)
 
 It also respects a local `.selemenerc.json` if present, reusing the bridge config file format.
@@ -105,7 +114,7 @@ It also respects a local `.selemenerc.json` if present, reusing the bridge confi
      - `birth` → `birth-blueprint`
      - `compatibility` → `full-spectrum` (carries a second subject in `options.partner_birth_data` + `relationship_context`)
      - `transit` → `daily-practice` (sets `current_time` to `--from` and `options.transit_window_end` to `--to`)
-   - Witness: the `packages/witness-pipeline` package is a TypeScript library (not an HTTP server). The running `ts-engines` server exposes generic engine endpoints (`/engines/:id/calculate`), not a dedicated witness endpoint. The live equivalent for assembled witness readings is the Rust `POST /api/v1/assets/generate` endpoint.
+   - Witness: the `packages/witness-pipeline` package is a TypeScript library (not an HTTP server). The running `ts-engines` server exposes generic engine endpoints (`/engines/:id/calculate`), not a dedicated witness endpoint. The live equivalent for assembled witness readings is the Rust `POST /api/v1/assets/generate` endpoint. The CLI maps `--mode solo` to mode `"integrated-reading"` and `--mode dyadic` to mode `"composite-dyad"`.
 4. **Write artifacts** — always emit:
    - `{output_dir}/manifest.json`
    - `{output_dir}/{report_type}-{slug}-{timestamp}.{ext}`
@@ -234,7 +243,31 @@ Expected: `HTTP/1.1 200 OK` with JSON body containing `status`, `engines`, `upti
     - For `transit`, `current_time` is set to `--from` and `options.transit_window_end` is set to `--to`.
 - Generic workflow execution: `POST {rustUrl}/api/v1/workflows/{workflow_id}/execute` with the same `EngineInput` body.
 - TS witness pipeline: there is no `POST {tsUrl}/witness/generate` on the running `ts-engines` server. The only TS HTTP surface is `ts-engines`, which exposes `GET /health`, `/engines`, `/engines/:id/info`, and `POST /engines/:id/calculate`. The witness-pipeline package is a library (`IntegratedReadingOrchestrator`).
-- Live witness / premium-asset endpoint: `POST {rustUrl}/api/v1/assets/generate` returns an `AssetGenerateResponse` with `assembled` text.
+- Live witness / premium-asset endpoint: `POST {rustUrl}/api/v1/assets/generate` returns an `AssetGenerateResponse` with `assembled` text. Request body:
+  ```json
+  {
+    "mode": "integrated-reading",
+    "report_level": "L3",
+    "subjects": [
+      {
+        "role": "primary",
+        "name": "Name",
+        "birth_date": "1990-01-15",
+        "birth_time": "10:30",
+        "birth_time_confidence": "exact",
+        "birth_location_query": "Bangalore",
+        "normalized_location": {
+          "display_name": "Bengaluru, Karnataka, India",
+          "latitude": 12.9716,
+          "longitude": 77.5946,
+          "timezone": "Asia/Kolkata",
+          "provider": "manual",
+          "confidence": "manual"
+        }
+      }
+    ]
+  }
+  ```
 - Dev auth: when `CF_DEV_BYPASS_TOKEN` is set, the CLI sends it as the `x-noesis-dev-auth` header. In production, use `SELEMENE_API_KEY` (sent as `Authorization: Bearer ...`) or an `X-API-Key` header configured in your deployment.
 
 If your Selemene deployment uses different routes, update `Tools/Report.ts` before using.
