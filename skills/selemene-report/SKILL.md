@@ -272,6 +272,51 @@ Expected: `HTTP/1.1 200 OK` with JSON body containing `status`, `engines`, `upti
 
 If your Selemene deployment uses different routes, update `Tools/Report.ts` before using.
 
+## Testing
+
+Run the unit-test suite from the skill directory:
+
+```bash
+cd ~/.agents/skill-clusters/skills/selemene-report
+bun test
+```
+
+Run a live smoke test against the Rust server after starting it:
+
+```bash
+SELEMENE_RUST_URL=http://localhost:8080 \
+  CF_DEV_BYPASS_TOKEN=selemene-local-test \
+  bun run report birth "Ada" "1815-12-10T15:00:00+00:00" "London" \
+  --output-dir ./tmp-reports
+```
+
+Run a dry-run to validate CLI parsing without contacting any backend:
+
+```bash
+bun run report birth "Ada" "1990-01-15T10:30:00+05:30" "Bangalore" --dry-run
+```
+
+### Endpoint assumptions
+
+Final wired paths after Tasks 8-13:
+
+- Rust deterministic workflows: `POST {rustUrl}/api/v1/workflows/{workflow_id}/execute`
+  - `birth` → `birth-blueprint`
+  - `compatibility` → `full-spectrum`
+  - `transit` → `daily-practice`
+- Rust witness / premium-asset endpoint: `POST {rustUrl}/api/v1/assets/generate`
+
+No dedicated `/api/reports/*` routes or `POST {tsUrl}/witness/generate` HTTP route exist in the running Selemene Engine; the witness-pipeline package is a local TypeScript library and the live assembled reading is produced by the Rust assets endpoint.
+
+### Authentication
+
+The CLI supports two authentication paths:
+
+- `CF_DEV_BYPASS_TOKEN` environment variable → sent as `x-noesis-dev-auth` header. Use this for local development only; it is enabled by the Rust server in development mode when `CF_DEV_BYPASS_TOKEN` is set.
+- `SELEMENE_API_KEY` environment variable → sent as `Authorization: Bearer {SELEMENE_API_KEY}`. Use this for production or any deployment that expects API-key auth.
+
+`Tools/lib/resolve-config.ts` reads `SELEMENE_API_KEY` from env or `.selemenerc.json`. `Tools/Report.ts` reads `CF_DEV_BYPASS_TOKEN` directly from the environment because it is a dev-mode bypass, not a persistent config value.
+
 ## Design notes
 
 - **Hub-and-spoke citizenship.** This skill is an `active-spoke` under the `selemene` cluster. It is enumerated only if the cluster is active; otherwise it resolves on demand via `~/.agents/skill-clusters/skills/selemene-report/SKILL.md`.
