@@ -964,6 +964,15 @@
         "explee-product-ai-agents",
         "explee-api-cookie-access"
       ]
+    },
+    {
+      "title": "Selemene — Engine reports and witness readings",
+      "description": "Hub-and-spoke cluster for Selemene Engine report generation. The orchestrator routes between deterministic birth/compatibility/transit reports (via the @selemene/bridge CLI and the Rust noesis-vedic-api report generator) and narrative witness readings (via packages/witness-pipeline). selemene-core holds the shared surface decision matrix, the bridge CLI contract, and the output manifest format.",
+      "skills": [
+        "selemene-orchestrator",
+        "selemene-core",
+        "selemene-report"
+      ]
     }
   ]
 }
