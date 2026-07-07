@@ -9,7 +9,7 @@
 
 [![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=plastic&color=blue)](LICENSE)
 [![Clusters](https://img.shields.io/badge/clusters-41-8b5cf6?style=plastic)](#cluster-catalog)
-[![Skills](https://img.shields.io/badge/skills_indexed-724-22c55e?style=plastic)](skill-index.json)
+[![Skills](https://img.shields.io/badge/skills_indexed-725-22c55e?style=plastic)](skill-index.json)
 [![Enumerated](https://img.shields.io/badge/startup_cost-54_hubs-0ea5e9?style=plastic)](#context-debloat--active--deferred-tiers)
 [![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 [![Stars](https://img.shields.io/github/stars/Sheshiyer/skill-clusters?style=plastic&logo=github)](https://github.com/Sheshiyer/skill-clusters/stargazers)
@@ -19,7 +19,7 @@
 
 <div align="center">
 
-**724 agent skills, organized into 41 hub-and-spoke _clusters_, wired into a closed delivery loop.**
+**725 agent skills, organized into 41 hub-and-spoke _clusters_, wired into a closed delivery loop.**
 A fuzzy request — _"ship this Tauri app", "make a promo video", "run the next GitHub wave"_ — is
 **triaged → resolved to the right cluster → executed → gated → and fed back**, while only **54 router
 skills** ever touch a CLI's startup context.
@@ -62,7 +62,7 @@ contract in **[`docs/CONDUCTOR-INTEGRATION.md`](docs/CONDUCTOR-INTEGRATION.md)**
 
 ## How a cluster works
 
-Individual skills are powerful but **flat** — an agent has to already know *which* of 724 skills to reach
+Individual skills are powerful but **flat** — an agent has to already know *which* of 725 skills to reach
 for. A **cluster** adds the missing layer:
 
 1. **`<name>-orchestrator`** — an intent **router**: classifies a fuzzy request and points at the right spoke.
@@ -78,7 +78,7 @@ needs them. Pattern proven by [`explee-skills`](https://github.com/Sheshiyer/exp
 ## Cluster catalog
 
 <!-- readme-gen:start:catalog -->
-**41 clusters · 724 indexed skills.** Each links to its own full page. `source` = how it was created:
+**41 clusters · 725 indexed skills.** Each links to its own full page. `source` = how it was created:
 `extract` (re-clustered from ECC), `author` (written here), `curate` (community skills, vetted),
 `vendor` (a whole loop adopted, MIT).
 
@@ -154,7 +154,7 @@ cluster — the index — and spokes load **on demand**.
 | **active** | orchestrator + core only → **54 enumerated hubs** | 27 clusters |
 | **deferred** | **0** until activated | 14 clusters |
 
-**Result: 724 indexed → 54 enumerated at startup (−93%).** Spokes aren't registered as skills; an
+**Result: 725 indexed → 54 enumerated at startup (−93%).** Spokes aren't registered as skills; an
 orchestrator routes to one and the agent `Read`s it on demand from
 `~/.agents/skill-clusters/skills/<name>/SKILL.md` (a non-scanned pointer the deployer creates).
 

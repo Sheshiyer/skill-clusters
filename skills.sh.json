@@ -3,7 +3,7 @@
   "notGrouped": "bottom",
   "groupings": [
     {
-      "title": "Creative Frontend — Astro · GSAP · Remotion",
+      "title": "Creative Frontend \u2014 Astro \u00b7 GSAP \u00b7 Remotion",
       "description": "Hub-and-spoke cluster for animated, content-driven Astro sites and programmatic video. The orchestrator routes between in-browser animation (GSAP ScrollTrigger, Anime.js, web-motion-library) over an Astro substrate and render-time video (Remotion), with a shared core holding the in-browser-vs-video decision matrix, reduced-motion baseline, performance budget, and Astro hydration boundaries.",
       "skills": [
         "creative-frontend-orchestrator",
@@ -24,8 +24,8 @@
       ]
     },
     {
-      "title": "Tauri — cross-platform desktop & mobile (Rust + web)",
-      "description": "Flagship cluster: 40 Tauri v2 specialists behind one router. The orchestrator places a task on the lifecycle×concern map (scaffold, configure, IPC/Rust↔frontend bridge, windows/chrome, sidecars, plugins, build/sign/distribute, debug/test, migrate) and delegates; tauri-core holds the shared security model — capabilities → permissions → scopes, the IPC trust boundary, CSP, and the process/runtime model — plus the per-platform distribution matrix.",
+      "title": "Tauri \u2014 cross-platform desktop & mobile (Rust + web)",
+      "description": "Flagship cluster: 40 Tauri v2 specialists behind one router. The orchestrator places a task on the lifecycle\u00d7concern map (scaffold, configure, IPC/Rust\u2194frontend bridge, windows/chrome, sidecars, plugins, build/sign/distribute, debug/test, migrate) and delegates; tauri-core holds the shared security model \u2014 capabilities \u2192 permissions \u2192 scopes, the IPC trust boundary, CSP, and the process/runtime model \u2014 plus the per-platform distribution matrix.",
       "skills": [
         "tauri-orchestrator",
         "tauri-core",
@@ -72,8 +72,8 @@
       ]
     },
     {
-      "title": "Expo — React Native toolchain",
-      "description": "Hub-and-spoke cluster for the Expo toolchain. The orchestrator routes by app lifecycle (dev client + styling, Expo Router UI, in-app API routes, native modules, EAS build/submit/update, SDK upgrades); expo-core holds the platform model — EAS, app config + config plugins, the Expo Go ↔ dev-client ↔ prebuild/CNG ↔ bare spectrum, and SDK version policy. Pairs with the react-native cluster for UI/interaction craft.",
+      "title": "Expo \u2014 React Native toolchain",
+      "description": "Hub-and-spoke cluster for the Expo toolchain. The orchestrator routes by app lifecycle (dev client + styling, Expo Router UI, in-app API routes, native modules, EAS build/submit/update, SDK upgrades); expo-core holds the platform model \u2014 EAS, app config + config plugins, the Expo Go \u2194 dev-client \u2194 prebuild/CNG \u2194 bare spectrum, and SDK version policy. Pairs with the react-native cluster for UI/interaction craft.",
       "skills": [
         "expo-orchestrator",
         "expo-core",
@@ -89,8 +89,8 @@
       ]
     },
     {
-      "title": "React Native — UI & interaction craft",
-      "description": "Hub-and-spoke cluster for toolchain-agnostic React Native UI and interaction: styling, navigation, Reanimated animation, gestures/haptics, screen design, and data fetching. The orchestrator routes by craft; react-native-core holds the runtime model — New Architecture (Fabric/TurboModules/JSI/bridgeless), the Reanimated + Gesture Handler stack, platform differences, and performance. Toolchain/build/ship lives in the expo cluster; native SwiftUI in native-ios.",
+      "title": "React Native \u2014 UI & interaction craft",
+      "description": "Hub-and-spoke cluster for toolchain-agnostic React Native UI and interaction: styling, navigation, Reanimated animation, gestures/haptics, screen design, and data fetching. The orchestrator routes by craft; react-native-core holds the runtime model \u2014 New Architecture (Fabric/TurboModules/JSI/bridgeless), the Reanimated + Gesture Handler stack, platform differences, and performance. Toolchain/build/ship lives in the expo cluster; native SwiftUI in native-ios.",
       "skills": [
         "react-native-orchestrator",
         "react-native-core",
@@ -101,8 +101,8 @@
       ]
     },
     {
-      "title": "Astro — static-first sites (islands, content, SSR)",
-      "description": "Hub-and-spoke cluster for the Astro framework (not the animation layer). The orchestrator picks the rendering strategy — static (SSG) / on-demand SSR / hybrid + server islands — and routes; astro-core holds that decision plus the Content Layer & collections model, hydration directives, astro:env/sessions/actions conventions, and SSR adapter selection. astro-framework (shared with creative-frontend) is the deep implementation; astro-wiki-publisher ships docs/wiki/press-kit sites. For motion on an Astro page, see the creative-frontend cluster.",
+      "title": "Astro \u2014 static-first sites (islands, content, SSR)",
+      "description": "Hub-and-spoke cluster for the Astro framework (not the animation layer). The orchestrator picks the rendering strategy \u2014 static (SSG) / on-demand SSR / hybrid + server islands \u2014 and routes; astro-core holds that decision plus the Content Layer & collections model, hydration directives, astro:env/sessions/actions conventions, and SSR adapter selection. astro-framework (shared with creative-frontend) is the deep implementation; astro-wiki-publisher ships docs/wiki/press-kit sites. For motion on an Astro page, see the creative-frontend cluster.",
       "skills": [
         "astro-orchestrator",
         "astro-core",
@@ -111,8 +111,8 @@
       ]
     },
     {
-      "title": "Raycast — extensions, AI tools, Store publishing",
-      "description": "Hub-and-spoke cluster for Raycast. The orchestrator separates the four jobs people mean by 'Raycast' — build an extension/command, make it AI-callable (tools the Raycast AI calls), publish to the Store, or design a Raycast-aesthetic app — and routes; raycast-core holds the extension model (command types, package.json manifest, @raycast/api UI/navigation, data hooks, build/publish). Includes two authored spokes (raycast-ai-extensions, raycast-store-publishing) that fill the AI and publishing gaps.",
+      "title": "Raycast \u2014 extensions, AI tools, Store publishing",
+      "description": "Hub-and-spoke cluster for Raycast. The orchestrator separates the four jobs people mean by 'Raycast' \u2014 build an extension/command, make it AI-callable (tools the Raycast AI calls), publish to the Store, or design a Raycast-aesthetic app \u2014 and routes; raycast-core holds the extension model (command types, package.json manifest, @raycast/api UI/navigation, data hooks, build/publish). Includes two authored spokes (raycast-ai-extensions, raycast-store-publishing) that fill the AI and publishing gaps.",
       "skills": [
         "raycast-orchestrator",
         "raycast-core",
@@ -124,7 +124,7 @@
     },
     {
       "title": "Rust (from ECC)",
-      "description": "Route a Rust task to the right skill — idiomatic patterns (ownership, errors, traits, concurrency, crate layout) versus testing (unit, integration, async, property-based, mocking, coverage, TDD). USE WHEN a user is writing, reviewing, refactoring, or testing Rust but hasn't named the specific concern.",
+      "description": "Route a Rust task to the right skill \u2014 idiomatic patterns (ownership, errors, traits, concurrency, crate layout) versus testing (unit, integration, async, property-based, mocking, coverage, TDD). USE WHEN a user is writing, reviewing, refactoring, or testing Rust but hasn't named the specific concern.",
       "skills": [
         "rust-orchestrator",
         "rust-core",
@@ -135,7 +135,7 @@
     },
     {
       "title": "Native Ios (from ECC)",
-      "description": "Route a native Apple-platform task to the right skill among the iOS specialists — Swift 6.2 concurrency, SwiftUI architecture, actor persistence, protocol-based DI/testing, on-device FoundationModels, Liquid Glass design, and icon assets. USE WHEN a user is building, modernizing, or shipping a native iOS/macOS app in Swift but hasn't named the specific concern.",
+      "description": "Route a native Apple-platform task to the right skill among the iOS specialists \u2014 Swift 6.2 concurrency, SwiftUI architecture, actor persistence, protocol-based DI/testing, on-device FoundationModels, Liquid Glass design, and icon assets. USE WHEN a user is building, modernizing, or shipping a native iOS/macOS app in Swift but hasn't named the specific concern.",
       "skills": [
         "native-ios-orchestrator",
         "native-ios-core",
@@ -161,7 +161,7 @@
     },
     {
       "title": "Ai Agents Meta (from ECC)",
-      "description": "Route an AI-agent engineering task to the right skill among 14 meta specialists — planning a multi-session build, decomposing a plan into an agent chain, orchestrating a squad, running an autonomous loop, auditing/debugging the agent stack, optimizing prompts, and controlling token/cost budget. USE WHEN a user is designing, building, operating, or hardening an LLM-agent system but hasn't named the specific concern.",
+      "description": "Route an AI-agent engineering task to the right skill among 14 meta specialists \u2014 planning a multi-session build, decomposing a plan into an agent chain, orchestrating a squad, running an autonomous loop, auditing/debugging the agent stack, optimizing prompts, and controlling token/cost budget. USE WHEN a user is designing, building, operating, or hardening an LLM-agent system but hasn't named the specific concern.",
       "skills": [
         "ai-agents-meta-orchestrator",
         "ai-agents-meta-core",
@@ -226,7 +226,7 @@
     },
     {
       "title": "Quality Eval (from ECC)",
-      "description": "Route a quality/testing/evaluation task to the right skill among 12 specialists — eval-driven development, head-to-head agent benchmarking, TDD, the verification gate, E2E (web + Windows desktop), AI-regression and browser QA, error-handling design, performance baselines, write-time linting, and production-readiness audits. USE WHEN a user wants to test, verify, evaluate, benchmark, or harden code or an agent but hasn't named the specific gate.",
+      "description": "Route a quality/testing/evaluation task to the right skill among 12 specialists \u2014 eval-driven development, head-to-head agent benchmarking, TDD, the verification gate, E2E (web + Windows desktop), AI-regression and browser QA, error-handling design, performance baselines, write-time linting, and production-readiness audits. USE WHEN a user wants to test, verify, evaluate, benchmark, or harden code or an agent but hasn't named the specific gate.",
       "skills": [
         "quality-eval-orchestrator",
         "quality-eval-core",
@@ -256,7 +256,7 @@
     },
     {
       "title": "Frontend Web (from ECC)",
-      "description": "Route a web-UI task to the right skill among 18 frontend specialists — framework choice (React/Next, Vue/Nuxt, Angular), build tooling (Vite, Turbopack, Bun), motion, accessibility, design direction, and component conversion. USE WHEN building, reviewing, or shipping a web interface but the specific framework or concern hasn't been named yet.",
+      "description": "Route a web-UI task to the right skill among 18 frontend specialists \u2014 framework choice (React/Next, Vue/Nuxt, Angular), build tooling (Vite, Turbopack, Bun), motion, accessibility, design direction, and component conversion. USE WHEN building, reviewing, or shipping a web interface but the specific framework or concern hasn't been named yet.",
       "skills": [
         "frontend-web-orchestrator",
         "frontend-web-core",
@@ -301,7 +301,7 @@
     },
     {
       "title": "Python Backend (from ECC)",
-      "description": "Route a Python backend task to the right specialist — idiomatic Python, pytest/TDD, the Django stack (patterns, TDD, security, Celery, verification), FastAPI services, and the ML lane (PyTorch, recsys pipelines, MLE workflow). USE WHEN building, testing, securing, or shipping a Python web/ML backend but the specific framework or concern hasn't been named yet.",
+      "description": "Route a Python backend task to the right specialist \u2014 idiomatic Python, pytest/TDD, the Django stack (patterns, TDD, security, Celery, verification), FastAPI services, and the ML lane (PyTorch, recsys pipelines, MLE workflow). USE WHEN building, testing, securing, or shipping a Python web/ML backend but the specific framework or concern hasn't been named yet.",
       "skills": [
         "python-backend-orchestrator",
         "python-backend-core",
@@ -326,7 +326,7 @@
     },
     {
       "title": "Jvm (from ECC)",
-      "description": "Route a JVM task to the right skill among 16 specialists — Kotlin language/coroutines/Exposed/Ktor, Java coding standards, the Spring Boot stack (patterns, TDD, security, verification), the Quarkus stack (patterns, TDD, security, verification), JPA/Hibernate, and Compose Multiplatform UI. USE WHEN a user is building, testing, securing, or shipping a Kotlin or Java service but hasn't named the framework or the specific concern.",
+      "description": "Route a JVM task to the right skill among 16 specialists \u2014 Kotlin language/coroutines/Exposed/Ktor, Java coding standards, the Spring Boot stack (patterns, TDD, security, verification), the Quarkus stack (patterns, TDD, security, verification), JPA/Hibernate, and Compose Multiplatform UI. USE WHEN a user is building, testing, securing, or shipping a Kotlin or Java service but hasn't named the framework or the specific concern.",
       "skills": [
         "jvm-orchestrator",
         "jvm-core",
@@ -350,7 +350,7 @@
     },
     {
       "title": "Php Laravel (from ECC)",
-      "description": "Route a PHP/Laravel task to the right specialist — architecture patterns (controllers → services → actions, Eloquent, queues), test-driven development with Pest/PHPUnit, the pre-PR/pre-deploy verification loop, security hardening (authz, validation, CSRF, uploads), and package discovery. USE WHEN a user is building, testing, hardening, or shipping a Laravel app but hasn't named the specific concern.",
+      "description": "Route a PHP/Laravel task to the right specialist \u2014 architecture patterns (controllers \u2192 services \u2192 actions, Eloquent, queues), test-driven development with Pest/PHPUnit, the pre-PR/pre-deploy verification loop, security hardening (authz, validation, CSRF, uploads), and package discovery. USE WHEN a user is building, testing, hardening, or shipping a Laravel app but hasn't named the specific concern.",
       "skills": [
         "php-laravel-orchestrator",
         "php-laravel-core",
@@ -363,7 +363,7 @@
     },
     {
       "title": "Systems Languages (from ECC)",
-      "description": "Route a systems-language task to the right skill among 7 specialists — Go (patterns, testing), C++ (Core Guidelines coding standards, GoogleTest/CTest testing), and Perl (modern 5.36+ patterns, Test2 testing, taint/injection security). USE WHEN a user is writing, reviewing, testing, or hardening Go, C++, or Perl code but hasn't named the language axis or the specific concern.",
+      "description": "Route a systems-language task to the right skill among 7 specialists \u2014 Go (patterns, testing), C++ (Core Guidelines coding standards, GoogleTest/CTest testing), and Perl (modern 5.36+ patterns, Test2 testing, taint/injection security). USE WHEN a user is writing, reviewing, testing, or hardening Go, C++, or Perl code but hasn't named the language axis or the specific concern.",
       "skills": [
         "systems-languages-orchestrator",
         "systems-languages-core",
@@ -378,7 +378,7 @@
     },
     {
       "title": "Mobile Flutter (from ECC)",
-      "description": "Route a Flutter/Dart (and Android/KMP) task to the right specialist — idiomatic patterns, the state-management decision, navigation/networking/codegen wiring, clean-architecture module boundaries, and the review/ship checklist. USE WHEN building, structuring, reviewing, or hardening a Flutter or Kotlin-Multiplatform mobile app but the specific concern hasn't been named.",
+      "description": "Route a Flutter/Dart (and Android/KMP) task to the right specialist \u2014 idiomatic patterns, the state-management decision, navigation/networking/codegen wiring, clean-architecture module boundaries, and the review/ship checklist. USE WHEN building, structuring, reviewing, or hardening a Flutter or Kotlin-Multiplatform mobile app but the specific concern hasn't been named.",
       "skills": [
         "mobile-flutter-orchestrator",
         "mobile-flutter-core",
@@ -389,7 +389,7 @@
     },
     {
       "title": "Backend Architecture (from ECC)",
-      "description": "Route a backend task to the right skill among 8 server-side specialists — architecture boundaries (hexagonal/ports-and-adapters), REST API design, HTTP connector building, NestJS structure, MCP servers, deployment/CI-CD, and decision records. USE WHEN a user is designing, building, integrating, or shipping a backend service but hasn't named the specific concern.",
+      "description": "Route a backend task to the right skill among 8 server-side specialists \u2014 architecture boundaries (hexagonal/ports-and-adapters), REST API design, HTTP connector building, NestJS structure, MCP servers, deployment/CI-CD, and decision records. USE WHEN a user is designing, building, integrating, or shipping a backend service but hasn't named the specific concern.",
       "skills": [
         "backend-architecture-orchestrator",
         "backend-architecture-core",
@@ -405,7 +405,7 @@
     },
     {
       "title": "Databases Data (from ECC)",
-      "description": "Route a database/data task to the right skill among the data-layer specialists — PostgreSQL, MySQL/MariaDB, the Prisma ORM, Redis, ClickHouse analytics, cross-engine migrations, and high-throughput ingestion/ETL. USE WHEN a user is designing, querying, optimizing, migrating, or moving data but hasn't named the specific engine or concern.",
+      "description": "Route a database/data task to the right skill among the data-layer specialists \u2014 PostgreSQL, MySQL/MariaDB, the Prisma ORM, Redis, ClickHouse analytics, cross-engine migrations, and high-throughput ingestion/ETL. USE WHEN a user is designing, querying, optimizing, migrating, or moving data but hasn't named the specific engine or concern.",
       "skills": [
         "databases-data-orchestrator",
         "databases-data-core",
@@ -437,7 +437,7 @@
     },
     {
       "title": "Devops Infra (from ECC)",
-      "description": "Route a DevOps / infrastructure task to the right specialist among 13 — container & compose patterns, self-hosting clusters, post-deploy canary checks, reproducible dev environments, enterprise network-device diagnostics (Cisco IOS, BGP, interfaces, config validation, Netmiko SSH), and homelab networking (setup, VLANs, Pi-hole DNS, WireGuard VPN). USE WHEN a user is provisioning, diagnosing, segmenting, or shipping infrastructure but hasn't named the specific layer or tool.",
+      "description": "Route a DevOps / infrastructure task to the right specialist among 13 \u2014 container & compose patterns, self-hosting clusters, post-deploy canary checks, reproducible dev environments, enterprise network-device diagnostics (Cisco IOS, BGP, interfaces, config validation, Netmiko SSH), and homelab networking (setup, VLANs, Pi-hole DNS, WireGuard VPN). USE WHEN a user is provisioning, diagnosing, segmenting, or shipping infrastructure but hasn't named the specific layer or tool.",
       "skills": [
         "devops-infra-orchestrator",
         "devops-infra-core",
@@ -467,7 +467,7 @@
     },
     {
       "title": "Security (from ECC)",
-      "description": "Route a security task to the right skill among six specialists — defensive code review, offensive/bounty vulnerability hunting, agent-config (.claude) auditing, source-asset & embedded-dependency scanning, a pre-action fact-forcing gate, and destructive-operation safety locks. USE WHEN a user wants to secure, audit, harden, or attack a codebase or an agent setup but hasn't named the specific concern.",
+      "description": "Route a security task to the right skill among six specialists \u2014 defensive code review, offensive/bounty vulnerability hunting, agent-config (.claude) auditing, source-asset & embedded-dependency scanning, a pre-action fact-forcing gate, and destructive-operation safety locks. USE WHEN a user wants to secure, audit, harden, or attack a codebase or an agent setup but hasn't named the specific concern.",
       "skills": [
         "security-orchestrator",
         "security-core",
@@ -488,7 +488,7 @@
     },
     {
       "title": "Healthcare (from ECC)",
-      "description": "Route a healthcare-software task to the right skill among four clinical specialists — PHI/PII privacy & access control, EMR/EHR encounter workflows, the CDSS safety engine (drug interactions, dose, NEWS2), and the patient-safety eval harness that gates deploys. USE WHEN building, reviewing, or shipping a clinical/health app but the specific concern (privacy vs. workflow vs. decision-support vs. release gate) hasn't been named.",
+      "description": "Route a healthcare-software task to the right skill among four clinical specialists \u2014 PHI/PII privacy & access control, EMR/EHR encounter workflows, the CDSS safety engine (drug interactions, dose, NEWS2), and the patient-safety eval harness that gates deploys. USE WHEN building, reviewing, or shipping a clinical/health app but the specific concern (privacy vs. workflow vs. decision-support vs. release gate) hasn't been named.",
       "skills": [
         "healthcare-orchestrator",
         "healthcare-core",
@@ -501,7 +501,7 @@
     },
     {
       "title": "Research Knowledge (from ECC)",
-      "description": "Route a research or knowledge task to the right skill among 12 specialists — current-web research, neural discovery, multi-source cited synthesis, systematic literature review, scholarly evaluation, biomedical/patent/genomic databases, codebase onboarding, guided code tours, live docs lookup, and persistent project memory. USE WHEN a user wants to research, investigate, review the literature, look something up, or understand a codebase but hasn't named the specific tool.",
+      "description": "Route a research or knowledge task to the right skill among 12 specialists \u2014 current-web research, neural discovery, multi-source cited synthesis, systematic literature review, scholarly evaluation, biomedical/patent/genomic databases, codebase onboarding, guided code tours, live docs lookup, and persistent project memory. USE WHEN a user wants to research, investigate, review the literature, look something up, or understand a codebase but hasn't named the specific tool.",
       "skills": [
         "research-knowledge-orchestrator",
         "research-knowledge-core",
@@ -539,7 +539,7 @@
     },
     {
       "title": "Business Content (from ECC)",
-      "description": "Route a business-content task to the right skill among 10 specialists — voice profiling, long-form articles, multi-platform content systems, SEO, market/competitor research, launch campaigns, investor decks/memos, investor outreach, lead intelligence, and social-graph ranking. USE WHEN a user is writing, marketing, fundraising, or doing outbound for a product or company but hasn't named the specific concern.",
+      "description": "Route a business-content task to the right skill among 10 specialists \u2014 voice profiling, long-form articles, multi-platform content systems, SEO, market/competitor research, launch campaigns, investor decks/memos, investor outreach, lead intelligence, and social-graph ranking. USE WHEN a user is writing, marketing, fundraising, or doing outbound for a product or company but hasn't named the specific concern.",
       "skills": [
         "business-content-orchestrator",
         "business-content-core",
@@ -597,7 +597,7 @@
     },
     {
       "title": "Social Media (from ECC)",
-      "description": "Route a social-media task to the right skill among 8 specialists — making the asset (image/video/audio via fal.ai, explainer animation via Manim, demo capture, video editing, video understanding), adapting copy per platform, and publishing/scheduling to X and 13 networks. USE WHEN a user wants to create, adapt, schedule, or publish social content but hasn't named the specific tool or platform.",
+      "description": "Route a social-media task to the right skill among 8 specialists \u2014 making the asset (image/video/audio via fal.ai, explainer animation via Manim, demo capture, video editing, video understanding), adapting copy per platform, and publishing/scheduling to X and 13 networks. USE WHEN a user wants to create, adapt, schedule, or publish social content but hasn't named the specific tool or platform.",
       "skills": [
         "social-media-orchestrator",
         "social-media-core",
@@ -617,13 +617,12 @@
         "discord",
         "social-intake-orchestrator",
         "x-bookmark-opportunity-skill",
-        "ai-content-pipeline",
-        "arcplume"
+        "ai-content-pipeline"
       ]
     },
     {
       "title": "Agentic Ops (from ECC)",
-      "description": "Route a real-world operations task to the right skill among 16 agentic-ops specialists — email, messages, GitHub, Jira, Google Workspace, project flow, unified notifications, terminal/CI, knowledge base, customer + finance billing, automation audit, workspace-surface audit, social connections, and dashboards. USE WHEN an agent must operate, triage, or prove work on a live external surface (inbox, repo, tracker, billing, docs) but the user hasn't named the specific skill.",
+      "description": "Route a real-world operations task to the right skill among 16 agentic-ops specialists \u2014 email, messages, GitHub, Jira, Google Workspace, project flow, unified notifications, terminal/CI, knowledge base, customer + finance billing, automation audit, workspace-surface audit, social connections, and dashboards. USE WHEN an agent must operate, triage, or prove work on a live external surface (inbox, repo, tracker, billing, docs) but the user hasn't named the specific skill.",
       "skills": [
         "agentic-ops-orchestrator",
         "agentic-ops-core",
@@ -657,7 +656,7 @@
     },
     {
       "title": "Supply Chain (from ECC)",
-      "description": "Route a supply-chain task to the right specialist among 8 — demand & inventory planning, production scheduling, quality/non-conformance, carrier relationships, logistics exceptions, customs & trade compliance, returns/reverse logistics, and energy procurement. USE WHEN a user is planning, sourcing, making, moving, clearing, or returning goods but hasn't named the specific function.",
+      "description": "Route a supply-chain task to the right specialist among 8 \u2014 demand & inventory planning, production scheduling, quality/non-conformance, carrier relationships, logistics exceptions, customs & trade compliance, returns/reverse logistics, and energy procurement. USE WHEN a user is planning, sourcing, making, moving, clearing, or returning goods but hasn't named the specific function.",
       "skills": [
         "supply-chain-orchestrator",
         "supply-chain-core",
@@ -673,7 +672,7 @@
     },
     {
       "title": "Blockchain Web3 (from ECC)",
-      "description": "Route a blockchain/web3 task to the right specialist among six — Solidity AMM security, autonomous trading-agent security, EVM token-decimal correctness, Node Keccak-256 hashing, prediction-market oracle research, and the cross-cutting market/agent risk review. USE WHEN a user is building, auditing, or wiring an EVM contract, a crypto trading agent, or a prediction-market workflow but hasn't named the specific concern.",
+      "description": "Route a blockchain/web3 task to the right specialist among six \u2014 Solidity AMM security, autonomous trading-agent security, EVM token-decimal correctness, Node Keccak-256 hashing, prediction-market oracle research, and the cross-cutting market/agent risk review. USE WHEN a user is building, auditing, or wiring an EVM contract, a crypto trading agent, or a prediction-market workflow but hasn't named the specific concern.",
       "skills": [
         "blockchain-web3-orchestrator",
         "blockchain-web3-core",
@@ -686,8 +685,8 @@
       ]
     },
     {
-      "title": "Electron — desktop apps (Chromium + Node)",
-      "description": "Hub-and-spoke cluster for Electron desktop apps. The orchestrator routes by process × concern (main/renderer IPC, the security checklist, packaging/signing/notarization, auto-update); electron-core holds the defining model — the main/renderer/preload split and the context-isolation security boundary (renderer untrusted, main holds Node/OS power).",
+      "title": "Electron \u2014 desktop apps (Chromium + Node)",
+      "description": "Hub-and-spoke cluster for Electron desktop apps. The orchestrator routes by process \u00d7 concern (main/renderer IPC, the security checklist, packaging/signing/notarization, auto-update); electron-core holds the defining model \u2014 the main/renderer/preload split and the context-isolation security boundary (renderer untrusted, main holds Node/OS power).",
       "skills": [
         "electron-orchestrator",
         "electron-core",
@@ -699,7 +698,7 @@
     },
     {
       "title": "Cloudflare (from library)",
-      "description": "Route a Cloudflare task to the right spoke among the platform specialists — Workers and Pages compute, the wrangler CLI and binding/config model, storage (KV, R2, D1), Durable Objects for stateful coordination, the Agents SDK and Sandbox SDK, transactional email, and deploy/auth debugging. USE WHEN a user is building, configuring, or shipping something on Cloudflare's edge but hasn't named the specific service.",
+      "description": "Route a Cloudflare task to the right spoke among the platform specialists \u2014 Workers and Pages compute, the wrangler CLI and binding/config model, storage (KV, R2, D1), Durable Objects for stateful coordination, the Agents SDK and Sandbox SDK, transactional email, and deploy/auth debugging. USE WHEN a user is building, configuring, or shipping something on Cloudflare's edge but hasn't named the specific service.",
       "skills": [
         "cloudflare-orchestrator",
         "cloudflare-core",
@@ -716,7 +715,7 @@
     },
     {
       "title": "Supabase (from library)",
-      "description": "Route a Supabase task to the right skill among three specialists — full-stack feature build (Auth, Storage, Realtime, Edge Functions, RLS schema design), live-doc-verified product guidance with the security checklist and CLI/MCP workflow, and Postgres performance/query optimization. USE WHEN a user is building on, securing, or tuning Supabase but hasn't named whether the concern is feature-building, current-API correctness, or database performance.",
+      "description": "Route a Supabase task to the right skill among three specialists \u2014 full-stack feature build (Auth, Storage, Realtime, Edge Functions, RLS schema design), live-doc-verified product guidance with the security checklist and CLI/MCP workflow, and Postgres performance/query optimization. USE WHEN a user is building on, securing, or tuning Supabase but hasn't named whether the concern is feature-building, current-API correctness, or database performance.",
       "skills": [
         "supabase-orchestrator",
         "supabase-core",
@@ -727,7 +726,7 @@
     },
     {
       "title": "Design (from library)",
-      "description": "Route a UI/visual-design task to the right skill among 9 design specialists — research-first methodology, the design-intelligence database, concrete style systems, senior engineering rules, spec emitters, design-agent workflows, theming, static art, and brand extraction. USE WHEN a user is designing, styling, redesigning, or polishing an interface, artifact, or brand surface but hasn't named the specific skill or approach.",
+      "description": "Route a UI/visual-design task to the right skill among 9 design specialists \u2014 research-first methodology, the design-intelligence database, concrete style systems, senior engineering rules, spec emitters, design-agent workflows, theming, static art, and brand extraction. USE WHEN a user is designing, styling, redesigning, or polishing an interface, artifact, or brand surface but hasn't named the specific skill or approach.",
       "skills": [
         "design-orchestrator",
         "design-core",
@@ -747,7 +746,7 @@
     },
     {
       "title": "Growth Seo (from library)",
-      "description": "Route an SEO/growth task to the right skill among 8 search specialists — intent research, content briefs, site architecture, schema/structured data, programmatic pages at scale, technical audits, AI-search (AEO/GEO) optimization, and Google's official guidance. USE WHEN a user wants to rank, get found, fix SEO, plan content, or show up in AI answers but hasn't named the specific concern.",
+      "description": "Route an SEO/growth task to the right skill among 8 search specialists \u2014 intent research, content briefs, site architecture, schema/structured data, programmatic pages at scale, technical audits, AI-search (AEO/GEO) optimization, and Google's official guidance. USE WHEN a user wants to rank, get found, fix SEO, plan content, or show up in AI answers but hasn't named the specific concern.",
       "skills": [
         "growth-seo-orchestrator",
         "growth-seo-core",
@@ -772,7 +771,7 @@
     },
     {
       "title": "Growth Content (from library)",
-      "description": "Route a growth/marketing task to the right skill among 13 demand-generation specialists — content strategy, long-form writing, conversion copy and editing, cold and lifecycle email, paid ad creative, lead magnets and free tools, marketing psychology, the idea bank, and launch planning. USE WHEN a user wants to plan, write, convert, or amplify marketing content but hasn't named the specific concern.",
+      "description": "Route a growth/marketing task to the right skill among 13 demand-generation specialists \u2014 content strategy, long-form writing, conversion copy and editing, cold and lifecycle email, paid ad creative, lead magnets and free tools, marketing psychology, the idea bank, and launch planning. USE WHEN a user wants to plan, write, convert, or amplify marketing content but hasn't named the specific concern.",
       "skills": [
         "growth-content-orchestrator",
         "growth-content-core",
@@ -812,7 +811,7 @@
     },
     {
       "title": "Git Pr Ops (from library)",
-      "description": "Route a GitHub PR/issue task to the right skill among the git-pr-ops specialists — read-only review, finding-resolution + safe push, deterministic squash merge, raw gh CLI queries, autonomous issue-to-PR fixing, and repo status / next-wave planning. USE WHEN a user is reviewing, preparing, merging, or shipping work through GitHub PRs and issues but hasn't named the specific step.",
+      "description": "Route a GitHub PR/issue task to the right skill among the git-pr-ops specialists \u2014 read-only review, finding-resolution + safe push, deterministic squash merge, raw gh CLI queries, autonomous issue-to-PR fixing, and repo status / next-wave planning. USE WHEN a user is reviewing, preparing, merging, or shipping work through GitHub PRs and issues but hasn't named the specific step.",
       "skills": [
         "git-pr-ops-orchestrator",
         "git-pr-ops-core",
@@ -826,7 +825,7 @@
     },
     {
       "title": "Browser Automation (from library)",
-      "description": "Route a browser / UI automation task to the right driver among the cluster's specialists — debug-first headless Chromium, local-webapp Playwright testing, native macOS UI capture and control, and the interactive-TTY harness that supervises them. USE WHEN a user wants to drive, screenshot, scrape, test, or verify a web page or desktop UI but hasn't named which engine or session model to use.",
+      "description": "Route a browser / UI automation task to the right driver among the cluster's specialists \u2014 debug-first headless Chromium, local-webapp Playwright testing, native macOS UI capture and control, and the interactive-TTY harness that supervises them. USE WHEN a user wants to drive, screenshot, scrape, test, or verify a web page or desktop UI but hasn't named which engine or session model to use.",
       "skills": [
         "browser-automation-orchestrator",
         "browser-automation-core",
@@ -838,7 +837,7 @@
     },
     {
       "title": "Growth Sales Cro (from library)",
-      "description": "Route a growth, sales, or conversion-rate-optimization task to the right skill among 24 specialists — page/form/popup/signup/onboarding/paywall CRO, A/B testing, analytics, pricing, paid ads, RevOps, churn, referrals, sales collateral, pitch decks, competitor/customer research, and app-store optimization. USE WHEN a user wants to lift conversions, grow revenue, or close more deals but hasn't named the specific funnel stage or lever.",
+      "description": "Route a growth, sales, or conversion-rate-optimization task to the right skill among 36 specialists \u2014 page/form/popup/signup/onboarding/paywall CRO, A/B testing, analytics, pricing, paid ads, RevOps, lead databases, churn, referrals, sales collateral, pitch decks, competitor/customer research, and app-store optimization. USE WHEN a user wants to lift conversions, grow revenue, enrich leads, or close more deals but hasn't named the specific funnel stage or lever.",
       "skills": [
         "growth-sales-cro-orchestrator",
         "growth-sales-cro-core",
@@ -861,6 +860,7 @@
         "customer-research",
         "company-research",
         "lead-research-assistant",
+        "getleads-mcp",
         "competitor-alternatives",
         "competitor-teardown",
         "app-store-optimization",
@@ -881,7 +881,7 @@
     },
     {
       "title": "Media Gen (from library)",
-      "description": "Route a media-generation task to the right tool among 14 specialists — image generation (GPT Image 2, Nano Banana 2, OpenAI Images), image enhancement, image-to-3D, AI video direction, anime storytelling workflows, FFmpeg processing, frame extraction, and GIF search/authoring. USE WHEN a user wants to generate, edit, upscale, convert, or assemble an image, 3D model, video, or GIF but hasn't named the specific tool or backend.",
+      "description": "Route a media-generation task to the right tool among 14 specialists \u2014 image generation (GPT Image 2, Nano Banana 2, OpenAI Images), image enhancement, image-to-3D, AI video direction, anime storytelling workflows, FFmpeg processing, frame extraction, and GIF search/authoring. USE WHEN a user wants to generate, edit, upscale, convert, or assemble an image, 3D model, video, or GIF but hasn't named the specific tool or backend.",
       "skills": [
         "media-gen-orchestrator",
         "media-gen-core",
@@ -898,12 +898,13 @@
         "slack-gif-creator",
         "imagen",
         "seo-image-gen",
-        "ai-anime-storytelling-workflow"
+        "ai-anime-storytelling-workflow",
+        "arcplume"
       ]
     },
     {
       "title": "Documents (from library)",
-      "description": "Route a document task to the right skill among the documents specialists — office formats (DOCX/PDF/PPTX/XLSX), docs sites, changelogs, OCR extraction, natural-language PDF edits, NotebookLM, and diagram authoring. USE WHEN a user wants to create, edit, extract from, convert, or publish a document but hasn't named the specific tool or format.",
+      "description": "Route a document task to the right skill among the documents specialists \u2014 office formats (DOCX/PDF/PPTX/XLSX), docs sites, changelogs, OCR extraction, natural-language PDF edits, NotebookLM, and diagram authoring. USE WHEN a user wants to create, edit, extract from, convert, or publish a document but hasn't named the specific tool or format.",
       "skills": [
         "documents-orchestrator",
         "documents-core",
@@ -921,7 +922,7 @@
     },
     {
       "title": "Extra Languages (from library)",
-      "description": "Route a long-tail language / runtime / chain-platform task to the right specialist when it falls outside the major-language clusters (rust, jvm, python-backend, systems-languages). Today the kept specialist is Solana on-chain + dApp development. USE WHEN a user is building in a niche or platform-specific stack — e.g. a Solana program, wallet flow, or transaction pipeline — but hasn't named the exact concern, or you need to decide whether the work belongs here versus a major-language cluster.",
+      "description": "Route a long-tail language / runtime / chain-platform task to the right specialist when it falls outside the major-language clusters (rust, jvm, python-backend, systems-languages). Today the kept specialist is Solana on-chain + dApp development. USE WHEN a user is building in a niche or platform-specific stack \u2014 e.g. a Solana program, wallet flow, or transaction pipeline \u2014 but hasn't named the exact concern, or you need to decide whether the work belongs here versus a major-language cluster.",
       "skills": [
         "extra-languages-orchestrator",
         "extra-languages-core",
@@ -929,8 +930,8 @@
       ]
     },
     {
-      "title": "Conductor — closed-loop spec-driven orchestration",
-      "description": "The conductor wing: runs conducty's closed loop (shape → plan → trace → execute → verify → improve → review → ship) but dispatches each task to the right skill-cluster via the resolver, activating deferred clusters on demand. Integrates PAI (triage + fail-closed gates), spec-kit (specs), and skill-clusters (the capability resolver). Orchestrator + core enumerate; the 19 conducty-* loop skills load on demand. Vendored from robertbarclayy/conducty (MIT).",
+      "title": "Conductor \u2014 closed-loop spec-driven orchestration",
+      "description": "The conductor wing: runs conducty's closed loop (shape \u2192 plan \u2192 trace \u2192 execute \u2192 verify \u2192 improve \u2192 review \u2192 ship) but dispatches each task to the right skill-cluster via the resolver, activating deferred clusters on demand. Integrates PAI (triage + fail-closed gates), spec-kit (specs), and skill-clusters (the capability resolver). Orchestrator + core enumerate; the 19 conducty-* loop skills load on demand. Vendored from robertbarclayy/conducty (MIT).",
       "skills": [
         "conductor-orchestrator",
         "conductor-core",
@@ -956,8 +957,8 @@
       ]
     },
     {
-      "title": "Explee — Search · Enrichment · AI Agents · AutoGTM",
-      "description": "Route an Explee task to the right product workflow — company/people search, email enrichment, pre-built or custom AI agent runs, AutoGTM pipelines, and cookie/API-key auth fallback. USE WHEN a user asks to operate Explee product APIs or build an Explee-powered GTM workflow.",
+      "title": "Explee \u2014 Search \u00b7 Enrichment \u00b7 AI Agents \u00b7 AutoGTM",
+      "description": "Route an Explee task to the right product workflow \u2014 company/people search, email enrichment, pre-built or custom AI agent runs, AutoGTM pipelines, and cookie/API-key auth fallback. USE WHEN a user asks to operate Explee product APIs or build an Explee-powered GTM workflow.",
       "skills": [
         "explee-master-orchestrator",
         "explee-product-search",
@@ -972,6 +973,15 @@
         "explee-autogtm",
         "explee-api-core",
         "explee-auth-cookie"
+      ]
+    },
+    {
+      "title": "Selemene \u2014 Engine reports and witness readings",
+      "description": "Hub-and-spoke cluster for Selemene Engine report generation. The orchestrator routes between deterministic birth/compatibility/transit reports (via the @selemene/bridge CLI and the Rust noesis-vedic-api report generator) and narrative witness readings (via packages/witness-pipeline). selemene-core holds the shared surface decision matrix, the bridge CLI contract, and the output manifest format.",
+      "skills": [
+        "selemene-orchestrator",
+        "selemene-core",
+        "selemene-report"
       ]
     }
   ]
