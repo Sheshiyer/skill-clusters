@@ -35,7 +35,7 @@ const EXPLEE = [
 
 const CLUSTER_FOR = {
   'adaptability-coach': 'business-content',
-  'arcplume': 'social-media',
+  'arcplume': 'media-gen',
   'audience-segmentation-generator': 'growth-content',
   'brand-story-builder': 'growth-content',
   'brandmint': 'design',
