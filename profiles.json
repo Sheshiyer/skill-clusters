@@ -28,7 +28,8 @@
       "rust",
       "security",
       "supabase",
-      "tauri"
+      "tauri",
+      "selemene"
     ],
     "deferred": [
       "php-laravel",
