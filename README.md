@@ -8,8 +8,8 @@
 <div align="center">
 
 [![License](https://img.shields.io/github/license/Sheshiyer/skill-clusters?style=plastic&color=blue)](LICENSE)
-[![Clusters](https://img.shields.io/badge/clusters-40-8b5cf6?style=plastic)](#cluster-catalog)
-[![Skills](https://img.shields.io/badge/skills_indexed-716-22c55e?style=plastic)](skill-index.json)
+[![Clusters](https://img.shields.io/badge/clusters-41-8b5cf6?style=plastic)](#cluster-catalog)
+[![Skills](https://img.shields.io/badge/skills_indexed-725-22c55e?style=plastic)](skill-index.json)
 [![Enumerated](https://img.shields.io/badge/startup_cost-54_hubs-0ea5e9?style=plastic)](#context-debloat--active--deferred-tiers)
 [![skills.sh](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 [![Stars](https://img.shields.io/github/stars/Sheshiyer/skill-clusters?style=plastic&logo=github)](https://github.com/Sheshiyer/skill-clusters/stargazers)
@@ -19,7 +19,7 @@
 
 <div align="center">
 
-**716 agent skills, organized into 40 hub-and-spoke _clusters_, wired into a closed delivery loop.**
+**725 agent skills, organized into 41 hub-and-spoke _clusters_, wired into a closed delivery loop.**
 A fuzzy request — _"ship this Tauri app", "make a promo video", "run the next GitHub wave"_ — is
 **triaged → resolved to the right cluster → executed → gated → and fed back**, while only **54 router
 skills** ever touch a CLI's startup context.
@@ -52,7 +52,7 @@ graph LR
 | **PAI** triage + gates | _when / how much / enforce_ | hooks (`SkillClusterResolver`), fail-closed batteries |
 | **spec-kit** | the spec — structure of _what_ | `tasks.md` = the machine-parseable queue |
 | **conducty** | the loop — orchestrate + close | the `conductor` cluster (19 vendored loop skills) |
-| **skill-clusters** ⭐ | _which capability runs each task_ | `skill-index.json` + `resolve-task.mjs` + 40 hub orchestrators |
+| **skill-clusters** ⭐ | _which capability runs each task_ | `skill-index.json` + `resolve-task.mjs` + 41 hub orchestrators |
 
 The fourth organ — **the resolver** — is the one none of the other three has. It turns a task with no
 skill binding into a validated `<cluster>-orchestrator` dispatch, phantom-proof against the index. Full
@@ -62,7 +62,7 @@ contract in **[`docs/CONDUCTOR-INTEGRATION.md`](docs/CONDUCTOR-INTEGRATION.md)**
 
 ## How a cluster works
 
-Individual skills are powerful but **flat** — an agent has to already know *which* of 716 skills to reach
+Individual skills are powerful but **flat** — an agent has to already know *which* of 725 skills to reach
 for. A **cluster** adds the missing layer:
 
 1. **`<name>-orchestrator`** — an intent **router**: classifies a fuzzy request and points at the right spoke.
@@ -78,7 +78,7 @@ needs them. Pattern proven by [`explee-skills`](https://github.com/Sheshiyer/exp
 ## Cluster catalog
 
 <!-- readme-gen:start:catalog -->
-**40 clusters · 716 indexed skills.** Each links to its own full page. `source` = how it was created:
+**41 clusters · 725 indexed skills.** Each links to its own full page. `source` = how it was created:
 `extract` (re-clustered from ECC), `author` (written here), `curate` (community skills, vetted),
 `vendor` (a whole loop adopted, MIT).
 
@@ -121,8 +121,9 @@ Re-clustered from [affaan-m/ECC](https://github.com/affaan-m/ECC)'s 251 flat ski
 | [**documents**](clusters/documents) | PDF/doc pipelines | — | curate |
 | [**extra-languages**](clusters/extra-languages) | Long-tail language skills | — | extract + curate |
 | [**growth-sales-cro**](clusters/growth-sales-cro) | Sales, CRO, funnels | — | author |
+| [**explee-master**](clusters/explee-master) | Search, enrichment, AI agents, AutoGTM | — | author + import |
 
-*Deferred clusters (off by default): `php-laravel · jvm · systems-languages · mobile-flutter · healthcare · supply-chain · blockchain-web3 · business-content · social-media · extra-languages · media-gen · documents · growth-sales-cro`. Activate any with `node scripts/tier.mjs --activate <cluster> --apply`.*
+*Deferred clusters (off by default): `php-laravel · jvm · systems-languages · mobile-flutter · healthcare · supply-chain · blockchain-web3 · business-content · social-media · extra-languages · media-gen · documents · growth-sales-cro · explee-master`. Activate any with `node scripts/tier.mjs --activate <cluster> --apply`.*
 <!-- readme-gen:end:catalog -->
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=2,12,20&height=2" width="100%" />
@@ -151,9 +152,9 @@ cluster — the index — and spokes load **on demand**.
 | Tier | Startup cost | Count |
 |---|---|--:|
 | **active** | orchestrator + core only → **54 enumerated hubs** | 27 clusters |
-| **deferred** | **0** until activated | 13 clusters |
+| **deferred** | **0** until activated | 14 clusters |
 
-**Result: 716 indexed → 54 enumerated at startup (−92%).** Spokes aren't registered as skills; an
+**Result: 725 indexed → 54 enumerated at startup (−93%).** Spokes aren't registered as skills; an
 orchestrator routes to one and the agent `Read`s it on demand from
 `~/.agents/skill-clusters/skills/<name>/SKILL.md` (a non-scanned pointer the deployer creates).
 
@@ -192,6 +193,11 @@ symlink, so there's exactly one copy and no drift:
 ./scripts/link-agents.sh --apply    # symlink (originals backed up to ~/.agents/skills.backup)
 ./scripts/link-agents.sh --unlink --apply   # restore
 ```
+
+Imported skills are made portable by copying their `SKILL.md` and lightweight references into
+`skills/<id>/`, adding the id to `skills.sh.json`, and recording provenance in `origin:` frontmatter.
+Do not commit absolute symlinks to local source workspaces; large optional media stays represented by
+text manifests unless a cluster explicitly needs the binaries.
 
 ## Install (skills.sh)
 

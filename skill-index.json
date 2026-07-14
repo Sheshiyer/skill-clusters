@@ -9,12 +9,12 @@
   "pointer": "~/.agents/skill-clusters",
   "archive": "~/.agents/skills-archive",
   "counts": {
-    "total_indexed": 791,
-    "clusters": 41,
-    "active-hub": 54,
-    "active-spoke": 453,
+    "total_indexed": 803,
+    "clusters": 42,
+    "active-hub": 56,
+    "active-spoke": 454,
     "deferred-hub": 27,
-    "deferred-spoke": 182,
+    "deferred-spoke": 191,
     "archived": 75
   },
   "clusters": {
@@ -184,7 +184,7 @@
       "title": "Social Media (from ECC)",
       "orchestrator": "social-media-orchestrator",
       "core": "social-media-core",
-      "spokeCount": 18
+      "spokeCount": 17
     },
     "agentic-ops": {
       "tier": "active",
@@ -268,14 +268,14 @@
       "title": "Growth Sales Cro (from library)",
       "orchestrator": "growth-sales-cro-orchestrator",
       "core": "growth-sales-cro-core",
-      "spokeCount": 35
+      "spokeCount": 36
     },
     "media-gen": {
       "tier": "deferred",
       "title": "Media Gen (from library)",
       "orchestrator": "media-gen-orchestrator",
       "core": "media-gen-core",
-      "spokeCount": 13
+      "spokeCount": 15
     },
     "documents": {
       "tier": "deferred",
@@ -303,7 +303,14 @@
       "title": "Explee — Search · Enrichment · AI Agents · AutoGTM",
       "orchestrator": "explee-master-orchestrator",
       "core": "explee-master-core",
-      "spokeCount": 4
+      "spokeCount": 12
+    },
+    "selemene": {
+      "tier": "active",
+      "title": "Selemene — Engine reports and witness readings",
+      "orchestrator": "selemene-orchestrator",
+      "core": "selemene-core",
+      "spokeCount": 1
     }
   },
   "skills": {
@@ -4555,15 +4562,6 @@
       "path": "~/.agents/skill-clusters/skills/ai-content-pipeline/SKILL.md",
       "activate": "node scripts/tier.mjs --activate social-media --apply"
     },
-    "arcplume": {
-      "cluster": "social-media",
-      "tier": "deferred",
-      "role": "spoke",
-      "status": "deferred-spoke",
-      "enumerated": false,
-      "path": "~/.agents/skill-clusters/skills/arcplume/SKILL.md",
-      "activate": "node scripts/tier.mjs --activate social-media --apply"
-    },
     "agentic-ops-orchestrator": {
       "cluster": "agentic-ops",
       "tier": "active",
@@ -6094,6 +6092,15 @@
       "path": "~/.agents/skill-clusters/skills/lead-research-assistant/SKILL.md",
       "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
     },
+    "getleads-mcp": {
+      "cluster": "growth-sales-cro",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/getleads-mcp/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate growth-sales-cro --apply"
+    },
     "competitor-alternatives": {
       "cluster": "growth-sales-cro",
       "tier": "deferred",
@@ -6371,6 +6378,24 @@
       "status": "deferred-spoke",
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/seo-image-gen/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "ai-anime-storytelling-workflow": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/ai-anime-storytelling-workflow/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate media-gen --apply"
+    },
+    "arcplume": {
+      "cluster": "media-gen",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/arcplume/SKILL.md",
       "activate": "node scripts/tier.mjs --activate media-gen --apply"
     },
     "documents-orchestrator": {
@@ -6750,6 +6775,96 @@
       "enumerated": false,
       "path": "~/.agents/skill-clusters/skills/explee-api-cookie-access/SKILL.md",
       "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-orchestrator": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-orchestrator/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-search": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-search/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-enrichment": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-enrichment/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-agents": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-agents/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-autogtm": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-autogtm/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-api-core": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-api-core/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "explee-auth-cookie": {
+      "cluster": "explee-master",
+      "tier": "deferred",
+      "role": "spoke",
+      "status": "deferred-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/explee-auth-cookie/SKILL.md",
+      "activate": "node scripts/tier.mjs --activate explee-master --apply"
+    },
+    "selemene-orchestrator": {
+      "cluster": "selemene",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/selemene-orchestrator/SKILL.md",
+      "activate": null
+    },
+    "selemene-core": {
+      "cluster": "selemene",
+      "tier": "active",
+      "role": "hub",
+      "status": "active-hub",
+      "enumerated": true,
+      "path": "~/.agents/skill-clusters/skills/selemene-core/SKILL.md",
+      "activate": null
+    },
+    "selemene-report": {
+      "cluster": "selemene",
+      "tier": "active",
+      "role": "spoke",
+      "status": "active-spoke",
+      "enumerated": false,
+      "path": "~/.agents/skill-clusters/skills/selemene-report/SKILL.md",
+      "activate": null
     },
     "agent-orchestration": {
       "cluster": null,

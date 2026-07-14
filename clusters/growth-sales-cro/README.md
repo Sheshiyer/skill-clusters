@@ -5,13 +5,13 @@
 <div align="center">
 
 [![tier](https://img.shields.io/badge/tier-deferred-64748b?style=plastic)](../../profiles.json)
-[![spokes](https://img.shields.io/badge/spokes-24-22c55e?style=plastic)](#skills)
+[![spokes](https://img.shields.io/badge/spokes-36-22c55e?style=plastic)](#skills)
 [![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
 [![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
 </div>
 
-> The single entry point for moving a number — conversions, activation, revenue, retention, or closed deals. It places a task on the **funnel stage × lever** map and routes to one of 24 specialists, with the shared funnel and the **baseline → hypothesis → test → decide** measurement loop kept in `growth-sales-cro-core`.
+> The single entry point for moving a number — conversions, activation, revenue, retention, enriched pipeline, or closed deals. It places a task on the **funnel stage × lever** map and routes to one of 36 specialists, with the shared funnel and the **baseline → hypothesis → test → decide** measurement loop kept in `growth-sales-cro-core`.
 
 ## Hub-and-spoke
 
@@ -31,7 +31,7 @@ graph LR
   classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-_…and 14 more in the table below._
+_…and 26 more in the table below._
 
 ## Skills
 
@@ -56,6 +56,7 @@ _…and 14 more in the table below._
 | `sales-enablement` | spoke | ⤵ on-demand |
 | `pitchdeck-skill` | spoke | ⤵ on-demand |
 | `lead-research-assistant` | spoke | ⤵ on-demand |
+| `getleads-mcp` | spoke | ⤵ on-demand |
 | `customer-research` | spoke | ⤵ on-demand |
 | `company-research` | spoke | ⤵ on-demand |
 | `competitor-alternatives` | spoke | ⤵ on-demand |
@@ -63,6 +64,17 @@ _…and 14 more in the table below._
 | `app-store-optimization` | spoke | ⤵ on-demand |
 | `app-store-screenshots` | spoke | ⤵ on-demand |
 | `aso-appstore-screenshots` | spoke | ⤵ on-demand |
+| `channel-prioritization-planner` | spoke | ⤵ on-demand |
+| `elevator-pitch-generator` | spoke | ⤵ on-demand |
+| `negotiation-skills-coach` | spoke | ⤵ on-demand |
+| `passive-income-planner` | spoke | ⤵ on-demand |
+| `persuasion-strategy-coach` | spoke | ⤵ on-demand |
+| `pricing-strategy-optimizer` | spoke | ⤵ on-demand |
+| `real-estate-investment-evaluator` | spoke | ⤵ on-demand |
+| `referral-program-designer` | spoke | ⤵ on-demand |
+| `sales-funnel-designer` | spoke | ⤵ on-demand |
+| `specialization-vs-diversification-advisor` | spoke | ⤵ on-demand |
+| `value-proposition-crafter` | spoke | ⤵ on-demand |
 
 ## Tier & loading
 
