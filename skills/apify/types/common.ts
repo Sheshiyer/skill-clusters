@@ -13,6 +13,22 @@ export interface PaginationOptions {
 }
 
 /**
+ * Dataset read options
+ */
+export interface DatasetOptions {
+  /** Skip the first N items */
+  offset?: number
+  /** Maximum number of items to return */
+  limit?: number
+  /** Return only these fields */
+  fields?: string[]
+  /** Exclude these fields */
+  omit?: string[]
+  /** Return cleaned dataset items */
+  clean?: boolean
+}
+
+/**
  * Date range filter options
  */
 export interface DateRangeOptions {
@@ -112,10 +128,18 @@ export interface BusinessInfo {
 export interface ActorRunOptions {
   /** Memory allocation in MB (128, 256, 512, 1024, 2048, 4096, 8192) */
   memory?: number
-  /** Timeout in seconds */
+  /** Maximum Actor runtime in seconds */
   timeout?: number
   /** Build tag or number to use */
   build?: string
+  /** Maximum charged dataset items for pay-per-result Actors */
+  maxItems?: number
+  /** Maximum whole-run charge in USD for pay-per-event Actors */
+  maxTotalChargeUsd?: number
+  /** Restart the Actor automatically when supported */
+  restartOnError?: boolean
+  /** Maximum client-side wait in seconds */
+  waitSecs?: number
 }
 
 /**

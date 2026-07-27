@@ -33,6 +33,44 @@ const relevant = items
 console.log(relevant) // Only 10 items vs 100+ unfiltered
 ```
 
+## Xquik X Actors
+
+The existing Twitter/X helpers remain available. Use these parallel helpers for
+Xquik's multi-route post and audience workflows:
+
+```typescript
+import {
+  runXquikFollowerScraper,
+  runXquikTweetScraper
+} from '~/.claude/filesystem-mcps/apify/actors'
+
+const posts = await runXquikTweetScraper({
+  mode: 'search',
+  searchTerms: ['AI automation', '#buildinpublic'],
+  maxItems: 100,
+  maxItemsPerTarget: 50,
+  outputVariant: 'rich'
+}, {
+  maxTotalChargeUsd: 1
+})
+
+const followers = await runXquikFollowerScraper({
+  twitterHandles: ['openai', 'nasa'],
+  relation: 'followers',
+  maxItems: 200,
+  maxItemsPerTarget: 100,
+  outputMode: 'full',
+  overlapMode: true
+}, {
+  maxTotalChargeUsd: 1
+})
+```
+
+- [Xquik X Tweet Scraper](https://apify.com/xquik/x-tweet-scraper)
+- [Xquik X Follower Scraper](https://apify.com/xquik/x-follower-scraper)
+
+Set explicit result and charge limits. Check each Actor listing for current pricing.
+
 ## Why Code-First?
 
 **Token Comparison:**
@@ -80,7 +118,7 @@ const actors = await apify.search("instagram scraper", {
 - `options.limit` - Max results (default: 10)
 - `options.offset` - Skip results (default: 0)
 
-**Returns:** Array of Actor objects with id, name, title, description, stats
+**Returns:** Array of Actor objects with `id`, `name`, `username`, and timestamps
 
 #### `callActor(actorId, input, options?)`
 Execute an actor.
@@ -99,8 +137,11 @@ const run = await apify.callActor("apify/instagram-scraper", {
 - `actorId` - Actor ID or "username/actor-name"
 - `input` - Actor-specific input configuration
 - `options.memory` - Memory in MB (128, 256, 512, 1024, 2048, etc.)
-- `options.timeout` - Timeout in seconds
+- `options.timeout` - Maximum Actor runtime in seconds
 - `options.build` - Build number or tag
+- `options.maxItems` - Maximum charged dataset items when supported
+- `options.maxTotalChargeUsd` - Maximum whole-run charge when supported
+- `options.waitSecs` - Maximum client-side wait in seconds
 
 **Returns:** ActorRun object with run details and `defaultDatasetId`
 
@@ -113,20 +154,20 @@ const dataset = await apify.getDataset(run.defaultDatasetId)
 
 **Returns:** ApifyDataset instance
 
-#### `getRun(actorId, runId)`
+#### `getRun(runId)`
 Get run status.
 
 ```typescript
-const run = await apify.getRun(actorId, runId)
+const run = await apify.getRun(runId)
 ```
 
 **Returns:** ActorRun object with current status
 
-#### `waitForRun(actorId, runId, options?)`
+#### `waitForRun(runId, options?)`
 Wait for run to finish.
 
 ```typescript
-const finalRun = await apify.waitForRun(actorId, runId, {
+const finalRun = await apify.waitForRun(runId, {
   waitSecs: 120
 })
 ```
@@ -219,9 +260,6 @@ const run = await apify.callActor(actor.id, {
   maxPages: 50
 })
 
-// Wait for completion
-await apify.waitForRun(actor.id, run.id)
-
 // Get and filter results
 const dataset = apify.getDataset(run.defaultDatasetId)
 const items = await dataset.listItems({ limit: 100 })
@@ -298,12 +336,9 @@ import { Actor, ActorRun, DatasetOptions } from '~/.claude/filesystem-mcps/apify
 ```typescript
 try {
   const run = await apify.callActor(actorId, input)
-  await apify.waitForRun(actorId, run.id)
 
-  const finalRun = await apify.getRun(actorId, run.id)
-
-  if (finalRun.status !== 'SUCCEEDED') {
-    console.error('Actor run failed:', finalRun.status)
+  if (run.status !== 'SUCCEEDED') {
+    console.error('Actor run failed:', run.status)
     return
   }
 
@@ -366,3 +401,5 @@ console.log('Code tokens:', estimateTokens(filtered)) // ~500
 - Actor Store: https://apify.com/store
 - API Docs: https://docs.apify.com/api/v2
 - Parent README: `~/.claude/filesystem-mcps/README.md`
+
+Xquik is an independent third-party service. Not affiliated with X Corp. "Twitter" and "X" are trademarks of X Corp.

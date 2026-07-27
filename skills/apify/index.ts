@@ -6,12 +6,17 @@
  */
 
 import { ApifyClient } from 'apify-client'
+import type { ActorRun as ApifyActorRun } from 'apify-client'
+import type { ActorRunOptions, DatasetOptions } from './types'
+
+export type { ActorRun } from 'apify-client'
+export type { ActorRunOptions, DatasetOptions } from './types'
 
 export interface Actor {
   id: string
   name: string
   username: string
-  title: string
+  title?: string
   description?: string
   createdAt?: string
   modifiedAt?: string
@@ -19,28 +24,6 @@ export interface Actor {
     totalRuns?: number
     lastRunStartedAt?: string
   }
-}
-
-export interface ActorRun {
-  id: string
-  actorId: string
-  status: 'READY' | 'RUNNING' | 'SUCCEEDED' | 'FAILED' | 'TIMED-OUT' | 'ABORTED'
-  startedAt: string
-  finishedAt?: string
-  defaultDatasetId: string
-  defaultKeyValueStoreId: string
-  buildNumber?: string
-  exitCode?: number
-  containerUrl?: string
-  output?: any
-}
-
-export interface DatasetOptions {
-  offset?: number
-  limit?: number
-  fields?: string[]
-  omit?: string[]
-  clean?: boolean
 }
 
 /**
@@ -77,22 +60,21 @@ export class Apify {
       offset: options?.offset ?? 0
     })
 
-    // Filter client-side by query
-    // Match if ANY word in query appears in actor fields
-    const queryWords = query.toLowerCase().split(/\s+/)
-    const filtered = items.filter((actor: any) => {
-      const name = (actor.name || '').toLowerCase()
-      const title = (actor.title || '').toLowerCase()
-      const description = (actor.description || '').toLowerCase()
-      const username = (actor.username || '').toLowerCase()
-      const searchText = `${name} ${title} ${description} ${username}`
+    const queryWords = query.toLowerCase().trim().split(/\s+/).filter(Boolean)
+    const filtered = queryWords.length === 0
+      ? items
+      : items.filter((actor) => {
+          const searchText = `${actor.name} ${actor.username}`.toLowerCase()
+          return queryWords.every(word => searchText.includes(word))
+        })
 
-      // Match if any query word is found
-      return queryWords.some(word => searchText.includes(word))
-    })
-
-    // Return requested number of matches
-    return filtered.slice(0, options?.limit ?? 10) as Actor[]
+    return filtered.slice(0, options?.limit ?? 10).map(actor => ({
+      id: actor.id,
+      name: actor.name,
+      username: actor.username,
+      createdAt: actor.createdAt.toISOString(),
+      modifiedAt: actor.modifiedAt.toISOString()
+    }))
   }
 
   /**
@@ -105,20 +87,18 @@ export class Apify {
    */
   async callActor(
     actorId: string,
-    input: any,
-    options?: {
-      memory?: number    // Memory in MB (128, 256, 512, 1024, etc.)
-      timeout?: number   // Timeout in seconds
-      build?: string     // Build number or tag
-    }
-  ): Promise<ActorRun> {
-    const run = await this.client.actor(actorId).call(input, {
+    input: unknown,
+    options?: ActorRunOptions
+  ): Promise<ApifyActorRun> {
+    return this.client.actor(actorId).call(input, {
       memory: options?.memory,
       timeout: options?.timeout,
-      build: options?.build
+      build: options?.build,
+      maxItems: options?.maxItems,
+      maxTotalChargeUsd: options?.maxTotalChargeUsd,
+      restartOnError: options?.restartOnError,
+      waitSecs: options?.waitSecs
     })
-
-    return run as ActorRun
   }
 
   /**
@@ -137,9 +117,12 @@ export class Apify {
    * @param runId - Run ID
    * @returns Run information
    */
-  async getRun(runId: string): Promise<ActorRun> {
+  async getRun(runId: string): Promise<ApifyActorRun> {
     const run = await this.client.run(runId).get()
-    return run as ActorRun
+    if (!run) {
+      throw new Error(`Actor run not found: ${runId}`)
+    }
+    return run
   }
 
   /**
@@ -154,11 +137,11 @@ export class Apify {
     options?: {
       waitSecs?: number
     }
-  ): Promise<ActorRun> {
+  ): Promise<ApifyActorRun> {
     const run = await this.client.run(runId).waitForFinish({
       waitSecs: options?.waitSecs
     })
-    return run as ActorRun
+    return run
   }
 }
 

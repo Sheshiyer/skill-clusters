@@ -24,8 +24,7 @@ async function main() {
     console.log(`   Found ${actors.length} actors:`)
     actors.forEach((actor, i) => {
       console.log(`   ${i + 1}. ${actor.username}/${actor.name}`)
-      console.log(`      ${actor.title}`)
-      console.log(`      Stats: ${actor.stats.runs.total} runs, ${actor.stats.users.total} users\n`)
+      console.log(`      ${actor.title ?? actor.name}\n`)
     })
 
     // Select the most popular actor
@@ -64,9 +63,9 @@ async function main() {
     //
     // // Step 3: Wait for completion
     // console.log('3. Waiting for actor run to complete...')
-    // await apify.waitForRun(selectedActor.id, run.id, { waitSecs: 300 })
+    // await apify.waitForRun(run.id, { waitSecs: 300 })
     //
-    // const finalRun = await apify.getRun(selectedActor.id, run.id)
+    // const finalRun = await apify.getRun(run.id)
     // console.log(`   Final status: ${finalRun.status}`)
     //
     // if (finalRun.status !== 'SUCCEEDED') {
