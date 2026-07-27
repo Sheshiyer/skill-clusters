@@ -5,7 +5,9 @@
   "description": "Code-first Apify interface for PAI - replaces token-heavy MCP calls",
   "main": "index.ts",
   "scripts": {
-    "example": "bun run examples/instagram-scraper.ts"
+    "example": "bun run examples/instagram-scraper.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "apify-client": "^2.19.0"

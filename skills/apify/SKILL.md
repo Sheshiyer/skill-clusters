@@ -1,8 +1,8 @@
 ---
 name: apify
 cluster: research-knowledge
-version: 1.0.0
-description: Social media scraping, business data, e-commerce via Apify actors. USE WHEN Twitter, Instagram, LinkedIn, TikTok, YouTube, Facebook, Google Maps, Amazon scraping.
+version: 1.1.0
+description: Social media scraping, business data, e-commerce via Apify actors. USE WHEN X posts, X audiences, Twitter, Instagram, LinkedIn, TikTok, YouTube, Facebook, Google Maps, Amazon scraping.
 context: fork
 ---
 
@@ -35,7 +35,7 @@ If this directory exists, load and apply any PREFERENCES.md, configurations, or 
 
 # Apify - Social Media & Web Scraping
 
-Direct TypeScript access to 9 popular Apify actors with 99% token savings.
+Direct TypeScript access to curated Apify Actors with in-code filtering.
 
 ## 🔌 File-Based MCP
 
@@ -47,11 +47,14 @@ This skill is a **file-based MCP** - a code-first API wrapper that replaces toke
 
 ## 🎯 Overview
 
-Direct TypeScript access to the 9 most popular Apify actors without MCP overhead. Filter and transform data in code BEFORE it reaches the model context.
+Direct TypeScript access to curated Apify Actors without MCP overhead. Filter and transform data in code BEFORE it reaches the model context.
 
 ## 📊 Available Actors
 
-### Social Media (5 platforms)
+### Social Media
+- **Twitter/X** - Existing profile, post, and search helpers
+- **[X posts (Xquik)](https://apify.com/xquik/x-tweet-scraper)** - Search, timelines, threads, replies, quotes, and post lookups
+- **[X audiences (Xquik)](https://apify.com/xquik/x-follower-scraper)** - Followers, following, lists, communities, and audience overlap
 - **Instagram** (145k users, 4.60★) - Profiles, posts, hashtags, comments
 - **LinkedIn** (26k users, 4.10★) - Profiles, jobs, posts
 - **TikTok** (90k users, 4.61★) - Profiles, videos, hashtags, comments
@@ -149,6 +152,41 @@ const viral = videos
   .sort((a, b) => b.playCount - a.playCount)
   .slice(0, 20)
 ```
+
+**Xquik - Search posts and compare audiences:**
+```typescript
+import {
+  runXquikFollowerScraper,
+  runXquikTweetScraper
+} from '~/.Codex/skills/Apify/actors'
+
+const posts = await runXquikTweetScraper({
+  mode: 'search',
+  searchTerms: ['AI automation', '#buildinpublic'],
+  maxItems: 100,
+  maxItemsPerTarget: 50,
+  outputVariant: 'rich'
+}, {
+  maxTotalChargeUsd: 1
+})
+
+const audience = await runXquikFollowerScraper({
+  twitterHandles: ['openai', 'nasa'],
+  relation: 'followers',
+  maxItems: 200,
+  maxItemsPerTarget: 100,
+  outputMode: 'full',
+  overlapMode: true
+}, {
+  maxTotalChargeUsd: 1
+})
+
+// Filter before returning data to model context.
+const recentPosts = posts.slice(0, 10)
+const sharedProfiles = audience.filter(profile => profile.overlapCount === 2)
+```
+
+Set explicit result and charge limits. Check each Actor listing for current pricing.
 
 ### Lead Generation (Business Intelligence)
 
@@ -422,6 +460,11 @@ const top = profile.latestPosts
 - `scrapeFacebookGroups(input)` - Group posts
 - `scrapeFacebookComments(input)` - Post comments
 
+#### Xquik X Actors
+- `runXquikTweetScraper(input, options)` - Run all supported post, search, timeline, thread, and engagement routes
+- `runXquikFollowerScraper(input, options)` - Collect followers, following, lists, communities, and overlap data
+- Keep the existing Twitter/X helpers when they better match the task
+
 ### Business & Lead Generation
 
 #### Google Maps
@@ -452,9 +495,12 @@ APIFY_TOKEN=apify_api_xxxxx...
 **Actor Run Options:**
 ```typescript
 {
-  memory: 2048,    // MB: 128, 256, 512, 1024, 2048, 4096, 8192
-  timeout: 300,    // seconds
-  build: 'latest'  // or specific build number
+  memory: 2048,             // Actor memory in MB
+  timeout: 300,             // Actor runtime in seconds
+  build: 'latest',          // or a specific build number
+  maxItems: 100,            // charged item cap when supported
+  maxTotalChargeUsd: 1,     // whole-run charge cap when supported
+  waitSecs: 300             // client-side wait limit
 }
 ```
 
@@ -481,3 +527,5 @@ APIFY_TOKEN=apify_api_xxxxx...
 ---
 
 **Remember: Filter data in code BEFORE returning to model context. This is where the 99% token savings happen!**
+
+Xquik is an independent third-party service. Not affiliated with X Corp. "Twitter" and "X" are trademarks of X Corp.

@@ -75,7 +75,7 @@ const run = await apify.callActor(actors[0].id, {
 })
 
 // Wait for completion
-await apify.waitForRun(actors[0].id, run.id)
+await apify.waitForRun(run.id)
 
 // Get dataset
 const dataset = apify.getDataset(run.defaultDatasetId)

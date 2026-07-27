@@ -50,6 +50,8 @@ Review commonly used actors for updates:
 |-------|---------|-----------|
 | apify/instagram-scraper | Instagram posts/profiles | Schema changes |
 | apify/twitter-scraper | Twitter/X data | API changes |
+| [xquik/x-tweet-scraper](https://apify.com/xquik/x-tweet-scraper) | X posts and conversations | Routes, output modes, schema changes |
+| [xquik/x-follower-scraper](https://apify.com/xquik/x-follower-scraper) | X audiences and relationships | Relations, overlap, schema changes |
 | apify/google-maps-scraper | Business data | New fields |
 | apify/web-scraper | General scraping | New options |
 
@@ -70,19 +72,23 @@ If new critical functionality found:
 
 ### 5. Update Actor Registry
 
-Maintain list of tested actors:
+Maintain evidence for schema reviews and approved runtime checks:
 
-| Actor | Last Tested | Status |
-|-------|-------------|--------|
-| instagram-scraper | 2026-01 | Working |
-| twitter-scraper | 2026-01 | Working |
-| google-maps | 2026-01 | Working |
+| Actor | Last Evidence | Status |
+|-------|---------------|--------|
+| instagram-scraper | 2026-01 runtime | Working |
+| twitter-scraper | 2026-01 runtime | Working |
+| xquik/x-tweet-scraper | 2026-07 schema | Schema checked; runtime not run |
+| xquik/x-follower-scraper | 2026-07 schema | Schema checked; runtime not run |
+| google-maps | 2026-01 runtime | Working |
 
 ## Version Tracking
 
 ```
 # Last sync: 2026-01-03
 # Apify API: v2
-# Tested actors: 10+
-# Known issues: None
+# Run the local typecheck and unit tests before publishing.
+# Obtain approval before any paid Actor run.
 ```
+
+Xquik is an independent third-party service. Not affiliated with X Corp. "Twitter" and "X" are trademarks of X Corp.
