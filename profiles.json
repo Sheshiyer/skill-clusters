@@ -48,5 +48,10 @@
       "growth-sales-cro",
       "explee-master"
     ]
-  }
+  },
+  "$comment_preserve": "Enumerated links that are deliberately outside the cluster system and must survive tier.mjs. Without this they appear in `toRemove` and are de-enumerated on the next --apply: _MOTIONSKIN is a hand-made alias to the `motionskin` spoke and carries a SKILL.md, so it is how the harness surfaces that skill; selemene-cheatsheet.md is a document, not a skill directory. Neither is data loss (both targets live in the repo) but both are silent breakage.",
+  "preserve": [
+    "_MOTIONSKIN",
+    "selemene-cheatsheet.md"
+  ]
 }

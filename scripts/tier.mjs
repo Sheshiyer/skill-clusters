@@ -106,7 +106,11 @@ if (fs.existsSync(AGENTS)) {
   }
 }
 const toAdd = [...target].filter((s) => !current.has(s));
-const toRemove = [...current].filter((s) => !target.has(s));
+// Links declared in profiles.json `preserve` are deliberately outside the cluster
+// system (hand-made aliases, docs). Without this they land in toRemove and are
+// silently de-enumerated on the next --apply.
+const preserve = new Set(JSON.parse(fs.readFileSync(path.join(REPO, 'profiles.json'), 'utf8')).preserve || []);
+const toRemove = [...current].filter((s) => !target.has(s) && !preserve.has(s));
 
 const run = (label, fn) => { if (APPLY) fn(); else console.log(`  [dry-run] ${label}`); };
 
