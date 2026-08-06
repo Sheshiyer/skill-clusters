@@ -32,7 +32,12 @@ for (const g of man.groupings || []) {
   if (!orch) continue;
   const handle = orch.replace(/-orchestrator$/, '');
   const tier = tierOf(handle);
-  clusters[handle] = { tier, title: g.title, orchestrator: orch, core: `${handle}-core`, spokeCount: (g.skills || []).length - 2 };
+  // origin: who wrote this cluster. Declared per-grouping in skills.sh.json, never
+  // inferred here — "authored" is what makes a skill publishable as our own work, so
+  // it has to be an explicit claim rather than a guess from a name. Absent → unknown.
+  const origin = g.origin || 'unknown';
+  const originSource = g.originSource || null;
+  clusters[handle] = { tier, origin, originSource, title: g.title, orchestrator: orch, core: `${handle}-core`, spokeCount: (g.skills || []).length - 2 };
   for (const s of g.skills || []) {
     const isHub = s === orch || s === `${handle}-core`;
     const status = `${tier}-${isHub ? 'hub' : 'spoke'}`;
@@ -40,6 +45,7 @@ for (const g of man.groupings || []) {
     if (!skills[s] || s.startsWith(handle + '-') || s === handle) {
       skills[s] = {
         cluster: handle, tier, role: isHub ? 'hub' : 'spoke', status,
+        origin, originSource,
         enumerated: status === 'active-hub',
         path: `${POINTER}/skills/${s}/SKILL.md`,
         activate: tier === 'deferred' ? `node scripts/tier.mjs --activate ${handle} --apply` : null,
@@ -50,11 +56,14 @@ for (const g of man.groupings || []) {
 // archived-only skills (not in any cluster)
 for (const name of archived) {
   if (skills[name]) continue; // already resolved via a cluster (its original was archived)
-  skills[name] = { cluster: null, tier: 'archived', role: null, status: 'archived', enumerated: false, path: `${ARCHIVE}/${name}`, restore: `node scripts/archive-library.mjs --restore --apply` };
+  // Archived skills left no cluster behind to claim provenance for them.
+  skills[name] = { cluster: null, tier: 'archived', role: null, status: 'archived', origin: 'unknown', originSource: null, enumerated: false, path: `${ARCHIVE}/${name}`, restore: `node scripts/archive-library.mjs --restore --apply` };
 }
 
 const counts = { total_indexed: Object.keys(skills).length, clusters: Object.keys(clusters).length };
 for (const s of Object.values(skills)) counts[s.status] = (counts[s.status] || 0) + 1;
+const byOrigin = {};
+for (const s of Object.values(skills)) byOrigin[s.origin] = (byOrigin[s.origin] || 0) + 1;
 
 const index = {
   $comment: 'Canonical skill resolution map for the harness/hooks/PAI. Regenerate with: node scripts/gen-index.mjs',
@@ -66,6 +75,10 @@ const index = {
   ],
   pointer: POINTER,
   archive: ARCHIVE,
+  origins: {
+    $comment: 'authored = Thoughtseed wrote it, and it can be published as our own work. imported = brought in from an external collection (originSource names it). unknown = no evidence either way; do not claim authorship of these.',
+    counts: byOrigin,
+  },
   counts,
   clusters,
   skills,

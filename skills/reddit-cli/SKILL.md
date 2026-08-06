@@ -1,7 +1,7 @@
 ---
 name: reddit-cli
 description: Reddit publishing and research workflow wrapper for a local reddit-cli command surface. Use when asked to read subreddit/user/thread content, monitor inbox/mentions, or publish posts/comments with explicit confirmation and safety controls.
-cluster: social-media
+cluster: cli
 version: 1.0.0
 ---
 

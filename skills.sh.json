@@ -21,7 +21,8 @@
         "awwwards-ui-skills",
         "awwwards-landing-page",
         "awwwards-animations"
-      ]
+      ],
+      "origin": "unknown"
     },
     {
       "title": "Tauri — cross-platform desktop & mobile (Rust + web)",
@@ -69,7 +70,8 @@
         "testing-tauri-apps",
         "updating-tauri-dependencies",
         "migrating-tauri-apps"
-      ]
+      ],
+      "origin": "unknown"
     },
     {
       "title": "Expo — React Native toolchain",
@@ -86,7 +88,8 @@
         "expo-deployment",
         "upgrading-expo",
         "native-data-fetching"
-      ]
+      ],
+      "origin": "unknown"
     },
     {
       "title": "React Native — UI & interaction craft",
@@ -98,7 +101,8 @@
         "mobile-touch",
         "sleek-design-mobile-apps",
         "native-data-fetching"
-      ]
+      ],
+      "origin": "unknown"
     },
     {
       "title": "Astro — static-first sites (islands, content, SSR)",
@@ -108,7 +112,8 @@
         "astro-core",
         "astro-framework",
         "astro-wiki-publisher"
-      ]
+      ],
+      "origin": "unknown"
     },
     {
       "title": "Raycast — extensions, AI tools, Store publishing",
@@ -120,7 +125,8 @@
         "raycast-ui-skills",
         "raycast-ai-extensions",
         "raycast-store-publishing"
-      ]
+      ],
+      "origin": "unknown"
     },
     {
       "title": "Rust (from ECC)",
@@ -131,7 +137,9 @@
         "rust-patterns",
         "rust-testing",
         "rust-coding-skill"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Native Ios (from ECC)",
@@ -157,7 +165,9 @@
         "swiftui-performance-audit",
         "swiftui-ui-patterns",
         "swiftui-view-refactor"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Ai Agents Meta (from ECC)",
@@ -222,7 +232,9 @@
         "mvp-roadmap-orchestrator",
         "project-management-execution-coach",
         "smart-goal-coach"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Quality Eval (from ECC)",
@@ -252,7 +264,9 @@
         "simplify-code",
         "clean-code",
         "five-whys-root-cause-analyzer"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Frontend Web (from ECC)",
@@ -297,7 +311,9 @@
         "vercel-react-view-transitions",
         "browser-extension-builder",
         "clerk-auth"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Python Backend (from ECC)",
@@ -322,7 +338,9 @@
         "hubspot-integration",
         "skill-rails-upgrade",
         "slack-bot-builder"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Jvm (from ECC)",
@@ -346,7 +364,9 @@
         "quarkus-security",
         "jpa-patterns",
         "compose-multiplatform-patterns"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Php Laravel (from ECC)",
@@ -359,7 +379,9 @@
         "laravel-verification",
         "laravel-security",
         "laravel-plugin-discovery"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Systems Languages (from ECC)",
@@ -374,7 +396,9 @@
         "perl-patterns",
         "perl-testing",
         "perl-security"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Mobile Flutter (from ECC)",
@@ -385,7 +409,9 @@
         "dart-flutter-patterns",
         "flutter-dart-code-review",
         "android-clean-architecture"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Backend Architecture (from ECC)",
@@ -401,7 +427,9 @@
         "hexagonal-architecture",
         "architecture-decision-records",
         "deployment-patterns"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Databases Data (from ECC)",
@@ -433,7 +461,9 @@
         "dbos-typescript",
         "neon-postgres",
         "networkx"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Devops Infra (from ECC)",
@@ -463,7 +493,9 @@
         "terraform-skill",
         "upstash-qstash",
         "voice-ai-development"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Security (from ECC)",
@@ -484,7 +516,9 @@
         "promptinjection",
         "annualreports",
         "secupdates"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Healthcare (from ECC)",
@@ -497,7 +531,9 @@
         "healthcare-emr-patterns",
         "healthcare-eval-harness",
         "claude-ally-health"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Research Knowledge (from ECC)",
@@ -535,7 +571,9 @@
         "obsidian-cli",
         "obsidian-markdown",
         "sympy"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Business Content (from ECC)",
@@ -593,7 +631,9 @@
         "work-life-balance-planner",
         "workplace-conflict-resolver",
         "workplace-culture-onboarding"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Social Media (from ECC)",
@@ -612,14 +652,14 @@
         "social-content",
         "twitter-automation",
         "bird-cli",
-        "gram-cli",
-        "reddit-cli",
         "discord",
         "social-intake-orchestrator",
         "x-bookmark-opportunity-skill",
         "ai-content-pipeline",
         "arcplume"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Agentic Ops (from ECC)",
@@ -653,7 +693,9 @@
         "coding-agent",
         "model-usage",
         "gemini"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Supply Chain (from ECC)",
@@ -669,7 +711,9 @@
         "production-scheduling",
         "quality-nonconformance",
         "returns-reverse-logistics"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Blockchain Web3 (from ECC)",
@@ -683,7 +727,9 @@
         "prediction-market-oracle-research",
         "prediction-market-risk-review",
         "nodejs-keccak256"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "ecc"
     },
     {
       "title": "Electron — desktop apps (Chromium + Node)",
@@ -695,7 +741,8 @@
         "electron-security",
         "electron-builder-packaging",
         "electron-auto-update"
-      ]
+      ],
+      "origin": "unknown"
     },
     {
       "title": "Cloudflare (from library)",
@@ -712,7 +759,9 @@
         "sandbox-sdk",
         "agents-sdk",
         "r2-notebooklm-artifact-portal"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "library"
     },
     {
       "title": "Supabase (from library)",
@@ -723,7 +772,9 @@
         "supabase",
         "supabase-developer",
         "supabase-postgres-best-practices"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "library"
     },
     {
       "title": "Design (from library)",
@@ -741,8 +792,13 @@
         "openbrand",
         "canvas-design",
         "brandmint",
-        "safvr-brand-design-guardrails"
-      ]
+        "safvr-brand-design-guardrails",
+        "motionskin",
+        "scroll-world",
+        "grokfilm"
+      ],
+      "origin": "imported",
+      "originSource": "library"
     },
     {
       "title": "Growth Seo (from library)",
@@ -767,7 +823,9 @@
         "seo-plan",
         "seo-sitemap",
         "seo-technical"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "library"
     },
     {
       "title": "Growth Content (from library)",
@@ -807,7 +865,9 @@
         "unmet-needs-analyzer",
         "viral-campaign-ideator",
         "writing-editor-proofreader"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "library"
     },
     {
       "title": "Git Pr Ops (from library)",
@@ -821,7 +881,9 @@
         "prepare-pr",
         "review-pr",
         "github-next-wave-orchestrator"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "library"
     },
     {
       "title": "Browser Automation (from library)",
@@ -833,7 +895,9 @@
         "peekaboo",
         "webapp-testing",
         "tmux"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "library"
     },
     {
       "title": "Growth Sales Cro (from library)",
@@ -876,7 +940,9 @@
         "sales-funnel-designer",
         "specialization-vs-diversification-advisor",
         "value-proposition-crafter"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "library"
     },
     {
       "title": "Media Gen (from library)",
@@ -896,8 +962,11 @@
         "gifgrep",
         "slack-gif-creator",
         "imagen",
-        "seo-image-gen"
-      ]
+        "seo-image-gen",
+        "make-headshot-suite"
+      ],
+      "origin": "imported",
+      "originSource": "library"
     },
     {
       "title": "Documents (from library)",
@@ -915,7 +984,9 @@
         "mermaid-to-gif",
         "readme",
         "screenshots"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "library"
     },
     {
       "title": "Extra Languages (from library)",
@@ -924,7 +995,9 @@
         "extra-languages-orchestrator",
         "extra-languages-core",
         "solana-dev"
-      ]
+      ],
+      "origin": "imported",
+      "originSource": "library"
     },
     {
       "title": "Conductor — closed-loop spec-driven orchestration",
@@ -951,7 +1024,9 @@
         "conducty-vault-graph",
         "conducty-verify",
         "conducty-worktrees"
-      ]
+      ],
+      "origin": "authored",
+      "originSource": "thoughtseed"
     },
     {
       "title": "Explee — Search · Enrichment · AI Agents · AutoGTM",
@@ -963,7 +1038,9 @@
         "explee-product-autogtm",
         "explee-product-ai-agents",
         "explee-api-cookie-access"
-      ]
+      ],
+      "origin": "authored",
+      "originSource": "thoughtseed"
     },
     {
       "title": "Selemene — Engine reports and witness readings",
@@ -971,8 +1048,23 @@
       "skills": [
         "selemene-orchestrator",
         "selemene-core",
-        "selemene-report"
-      ]
+        "selemene-report",
+        "selemene-notebooklm"
+      ],
+      "origin": "authored",
+      "originSource": "thoughtseed"
+    },
+    {
+      "title": "CLI — Thoughtseed internal operator utilities",
+      "description": "Route a task to the right Thoughtseed-internal command-line tool: Instagram operations via gram-cli, Reddit read/publish via reddit-cli. A tool-type cluster, not a domain one — its members share that Thoughtseed wrote and maintains them and that they run from a terminal. USE WHEN a task needs one of Thoughtseed's own CLI tools, or when checking whether an internal tool already covers a job before building a new one.",
+      "skills": [
+        "cli-orchestrator",
+        "cli-core",
+        "gram-cli",
+        "reddit-cli"
+      ],
+      "origin": "authored",
+      "originSource": "thoughtseed"
     }
   ]
 }

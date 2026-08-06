@@ -7,6 +7,7 @@
       "astro",
       "backend-architecture",
       "browser-automation",
+      "cli",
       "cloudflare",
       "conductor",
       "creative-frontend",
@@ -27,9 +28,9 @@
       "research-knowledge",
       "rust",
       "security",
+      "selemene",
       "supabase",
-      "tauri",
-      "selemene"
+      "tauri"
     ],
     "deferred": [
       "php-laravel",

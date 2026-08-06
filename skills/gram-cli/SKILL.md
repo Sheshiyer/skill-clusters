@@ -1,7 +1,7 @@
 ---
 name: gram-cli
 description: Instagram operations through the gram/glam CLI for login/cookie auth, profile post downloads, stories/highlights capture, and account checks. Use when asked to read or download Instagram content, verify gram-cli auth, or run publication asset collection flows from gram-cli.
-cluster: social-media
+cluster: cli
 version: 1.0.0
 ---
 
