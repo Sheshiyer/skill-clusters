@@ -36,7 +36,7 @@ before you pick a tool, because the choice locks which spoke can touch the file 
 Additional documents spokes folded in from the antigravity-awesome-skills library (MIT). Route to these the same way — load on demand by reading their `SKILL.md`.
 
 **Author project docs**
-- Write an absurdly thorough `README.md` after deep codebase exploration (tech stack, getting-started, architecture, env vars, scripts, testing, deployment, troubleshooting) → `readme`
+- Write a visually rich, landing-page-style `README.md` after deep codebase exploration (capsule hero, badges, architecture, health scorecard, optional NotebookLM intelligence, update markers) → `readme`
 
 **Rendered marketing artifacts**
 - Capture true-retina (2x) marketing screenshots of an app with Playwright — discover routes/features from the codebase, handle login, then shoot each view (Product Hunt / social / landing / docs) → `screenshots` *(one-way render gate: produces PNGs you cannot edit back into the app)*

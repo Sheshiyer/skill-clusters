@@ -1,0 +1,2448 @@
+{
+  "source": "https://grokfilm.app/#index",
+  "origin": "TETSUO CORP / AgenC Cin\u00e9matique \u2014 Vol. 01",
+  "license_note": "Technique catalogue mirrored for local operator use; attribute GrokFilm / Tetsuo Corp when shipping public work.",
+  "fetched": "2026-08-04",
+  "count": 300,
+  "fields": [
+    "name",
+    "definition",
+    "category",
+    "difficulty",
+    "mood",
+    "slug",
+    "video?"
+  ],
+  "prompt_template": "Cinematic film still using the {name} technique. {definition_first_sentence} Moody, dramatic lighting, film grain, 35mm aesthetic.",
+  "techniques": [
+    {
+      "name": "Aerial Shot",
+      "definition": "An aerial shot is a shot taken from an elevated vantage point, such as a helicopter, drone, or crane. It's used to establish a scene, show vast landscapes, or follow action from above. Aerial shots provide a sense of scale and geography that can't be achieved from ground level, making them essential for epic scenes and establishing sequences.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "aerial-shot",
+      "video": "media/aerial-shot.mp4"
+    },
+    {
+      "name": "Bird's Eye View",
+      "definition": "A bird's eye view shot is taken from directly overhead, looking straight down. This extreme overhead angle creates a god-like perspective where the audience views characters and scenes from above. It's often used to show patterns, establish spatial relationships, or create a sense of detachment from the action below.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "bird-s-eye-view",
+      "video": "media/bird-s-eye-view.mp4"
+    },
+    {
+      "name": "Close-Up Shot",
+      "definition": "A close-up shot tightly frames a person or object, filling the frame with the subject's face or a specific detail. Close-ups are essential for capturing emotional nuances, reactions, and important details that would be lost in wider shots. They create intimacy between the audience and the subject, making viewers feel connected to the character's emotional state.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "close-up-shot",
+      "video": "media/close-up-shot.mp4"
+    },
+    {
+      "name": "Dutch Angle",
+      "definition": "A Dutch angle, also known as a canted angle or oblique angle, is achieved by tilting the camera on its roll axis. This creates a sense of unease, disorientation, or psychological instability. The technique was popularized in German Expressionist cinema and is often used in horror, thriller, and psychological drama to suggest that something is wrong or off-balance.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Horror",
+      "slug": "dutch-angle",
+      "video": "media/dutch-angle.mp4"
+    },
+    {
+      "name": "Dolly Shot",
+      "definition": "A dolly shot is a smooth camera movement achieved by mounting the camera on a wheeled platform called a dolly, which moves along tracks. Unlike a zoom, a dolly physically moves the camera through space, creating natural perspective changes as objects pass by. Dolly shots are used to follow characters, reveal information gradually, or create emotional engagement.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "dolly-shot",
+      "video": "media/dolly-shot.mp4"
+    },
+    {
+      "name": "Establishing Shot",
+      "definition": "An establishing shot is typically the first shot of a new scene, designed to show the audience where the action is taking place. It's usually a wide or long shot that establishes the geography, time of day, and mood of the location. Establishing shots provide context and help orient viewers before cutting to closer shots of the action.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "establishing-shot",
+      "video": "media/establishing-shot.mp4"
+    },
+    {
+      "name": "Extreme Close-Up",
+      "definition": "An extreme close-up (ECU) is an intensely tight shot that focuses on a specific detail, such as eyes, lips, or hands. This shot magnifies details to create powerful emotional impact, reveal hidden information, or heighten tension. In horror films, ECUs of wide eyes or trembling hands can communicate fear more effectively than wider shots.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "extreme-close-up",
+      "video": "media/extreme-close-up.mp4"
+    },
+    {
+      "name": "Extreme Long Shot",
+      "definition": "An extreme long shot (ELS) shows subjects from a great distance, making them appear small within a vast environment. This shot type emphasizes setting over character, often used to show landscapes, cities, or epic battles. It can convey themes of isolation, insignificance, or the grandeur of nature compared to human presence.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "extreme-long-shot",
+      "video": "media/extreme-long-shot.mp4"
+    },
+    {
+      "name": "Eye-Level Shot",
+      "definition": "An eye-level shot positions the camera at the subject's eye height, creating a neutral, natural perspective. This is the most common camera angle because it mimics how we normally view the world. Eye-level shots don't suggest any power imbalance and help audiences identify with characters by presenting them as equals.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Documentary",
+      "slug": "eye-level-shot",
+      "video": "media/eye-level-shot.mp4"
+    },
+    {
+      "name": "Handheld Shot",
+      "definition": "A handheld shot is captured with a camera held by the operator rather than mounted on a tripod or stabilizer. The resulting footage has a natural shake and movement that creates immediacy, energy, and documentary-style realism. Handheld work is common in action sequences, horror films, and Cinema V\u00e9rit\u00e9 works where raw authenticity is desired.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Documentary",
+      "slug": "handheld-shot",
+      "video": "media/handheld-shot.mp4"
+    },
+    {
+      "name": "Head-On Shot",
+      "definition": "A head-on shot positions the camera so that the action moves directly toward it. Whether it's a character walking, a car driving, or something being thrown, the subject approaches the lens head-on. This technique increases audience participation and is particularly effective in 3D films where objects appear to breach the screen.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "head-on-shot",
+      "video": "media/head-on-shot.mp4"
+    },
+    {
+      "name": "Helicopter Shot",
+      "definition": "A helicopter shot is a sweeping aerial shot typically taken from a helicopter, allowing the camera to weave through landscapes, follow vehicles, or capture dramatic overhead perspectives. These shots create a sense of epic scale and freedom of movement that's difficult to achieve with other methods. Often used as establishing shots in big-budget productions.",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "helicopter-shot",
+      "video": "media/helicopter-shot.mp4"
+    },
+    {
+      "name": "High Angle Shot",
+      "definition": "A high angle shot looks down on the subject from above, making them appear smaller, weaker, or more vulnerable. This camera position is the opposite of a low angle shot and is often used to show a character's emotional state of inferiority, defeat, or helplessness. It can also be used to give the audience a comprehensive view of a scene.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "high-angle-shot",
+      "video": "media/high-angle-shot.mp4"
+    },
+    {
+      "name": "Insert Shot",
+      "definition": "An insert shot is a close-up of an object or detail filmed separately from the main action and edited into the scene. These shots draw attention to important narrative elements like a ticking clock, a letter being read, or a weapon being concealed. Insert shots provide crucial information without breaking the flow of dialogue or action.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "insert-shot",
+      "video": "media/insert-shot.mp4"
+    },
+    {
+      "name": "Long Shot",
+      "definition": "A long shot (LS), also known as a full shot or wide shot, shows the entire human body in frame while including significant portions of the surrounding environment. This shot balances character and setting, showing how subjects interact with their world. Long shots establish spatial relationships and are often used at the beginning of scenes.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "long-shot"
+    },
+    {
+      "name": "Low Angle Shot",
+      "definition": "A low angle shot is filmed from below the subject, looking upward. This perspective makes the subject appear larger, more powerful, dominant, or threatening. Low angle shots are commonly used to establish heroic characters, imposing villains, or towering architecture. They create psychological impact by forcing viewers to look up at the subject.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "low-angle-shot"
+    },
+    {
+      "name": "Master Shot",
+      "definition": "A master shot is a continuous take that captures an entire scene from beginning to end, usually in a wide shot. This footage serves as the foundation for editing, providing a complete reference of the action. Directors typically shoot the master first, then capture closer angles and cutaways that will be intercut during post-production.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "master-shot"
+    },
+    {
+      "name": "Medium Shot",
+      "definition": "A medium shot (MS) frames the subject from approximately the waist up, balancing intimacy with environmental context. This versatile shot type is the workhorse of filmmaking, used extensively in dialogue scenes and interviews. It's close enough to capture facial expressions but wide enough to show body language and some surroundings.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "medium-shot"
+    },
+    {
+      "name": "Over-the-Shoulder Shot",
+      "definition": "An over-the-shoulder shot (OTS) is filmed from behind one character, looking over their shoulder at another person. This shot type establishes spatial relationships between characters and is fundamental to dialogue scenes. By showing part of one character while focusing on another, OTS shots create a sense of connection and conversation.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "over-the-shoulder-shot"
+    },
+    {
+      "name": "Overhead Shot",
+      "definition": "An overhead shot positions the camera directly above the action, looking straight down at approximately 90 degrees. This angle removes horizon lines and creates abstract, map-like compositions. Overhead shots are useful for showing table arrangements, choreography, crime scenes, or any situation where the spatial layout is important.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "overhead-shot"
+    },
+    {
+      "name": "Pan Shot",
+      "definition": "A pan shot involves horizontal rotation of the camera on a fixed axis, scanning across a scene from left to right or right to left. Pans can follow action, reveal information gradually, or connect two subjects within a single shot. The speed of a pan affects its mood\u2014slow pans feel contemplative while fast pans create energy or disorientation.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "pan-shot"
+    },
+    {
+      "name": "P.O.V. Shot",
+      "definition": "A point-of-view (POV) shot shows exactly what a character sees from their perspective. This subjective camera technique puts the audience directly in the character's position, creating identification and immersion. POV shots are often combined with reaction shots to establish whose perspective we're seeing. Common in horror films to create suspense.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Horror",
+      "slug": "p-o-v-shot"
+    },
+    {
+      "name": "Rack Focus",
+      "definition": "Rack focus is an in-camera technique where the focus shifts between subjects at different distances within the same shot. By pulling focus from background to foreground (or vice versa), filmmakers can direct attention, reveal information, or show relationships between elements. This technique maintains the continuous take while changing visual emphasis.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "rack-focus"
+    },
+    {
+      "name": "Slow Motion",
+      "definition": "Slow motion is achieved by filming at a higher frame rate than the playback rate, making action appear slower than real time. Standard film runs at 24fps; shooting at 48fps and playing back at 24fps creates 2x slow motion. This technique emphasizes important moments, reveals details invisible at normal speed, and adds dreamlike or dramatic quality.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "slow-motion"
+    },
+    {
+      "name": "Steadicam Shot",
+      "definition": "A Steadicam shot uses a stabilizing mount worn by the camera operator, allowing smooth, floating camera movement while walking or running. Invented by Garrett Brown in the 1970s, this technology revolutionized filmmaking by enabling long, continuous takes through complex environments. Famous examples include the Overlook Hotel hallways in The Shining.",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "steadicam-shot",
+      "video": "media/steadicam-shot.mp4"
+    },
+    {
+      "name": "Tracking Shot",
+      "definition": "A tracking shot moves the camera alongside the subject, maintaining consistent framing as they move through space. The camera typically travels on tracks parallel to the action, though the term is sometimes used broadly for any moving camera shot. Tracking shots create engagement and energy by moving with characters through their environment.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "tracking-shot"
+    },
+    {
+      "name": "Vertigo Effect",
+      "definition": "The Vertigo effect, also known as dolly zoom or Hitchcock zoom, combines simultaneous dollying and zooming in opposite directions. As the camera moves forward, the lens zooms out (or vice versa), keeping the subject the same size while the background dramatically distorts. This creates a disorienting sense of warping space, famously used in Vertigo and Jaws.",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "vertigo-effect"
+    },
+    {
+      "name": "Crane Shot",
+      "definition": "A crane shot uses a mechanical arm (crane or jib) to move the camera vertically, horizontally, or in sweeping arcs. Cranes enable dramatic reveals, soaring movements, and impossible angles that ground-based equipment can't achieve. The camera might start at ground level and rise high above the action, or swoop down from an overhead position.",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "crane-shot"
+    },
+    {
+      "name": "One-er (Oner)",
+      "definition": "A 'one-er' or 'oner' is a scene captured in a single continuous take without cuts. These shots require extensive choreography of actors, camera, and crew, creating immersive real-time experiences. Famous examples include the opening of Touch of Evil, the hallway fight in Oldboy, and the seemingly single-shot film 1917.",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "one-er-oner"
+    },
+    {
+      "name": "Three-Point Lighting",
+      "definition": "Three-point lighting is the standard lighting setup used in film and photography, consisting of a key light, fill light, and backlight. The key provides main illumination, the fill softens shadows, and the backlight separates the subject from the background. This foundational technique creates dimensional, professional-looking images.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "three-point-lighting"
+    },
+    {
+      "name": "Key Light",
+      "definition": "The key light is the primary and brightest light source in a scene, establishing the main illumination and shadow patterns. Its position, intensity, and quality determine the overall look of the lighting setup. The key light is typically placed at an angle to the subject, creating dimensional shadows that reveal form and texture.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "key-light"
+    },
+    {
+      "name": "High-Key Lighting",
+      "definition": "High-key lighting creates bright, evenly-lit scenes with minimal shadows and low contrast. This cheerful, optimistic lighting style is common in comedies, musicals, sitcoms, and commercials. Multiple fill lights reduce shadows while soft sources prevent harsh contrasts. High-key lighting conveys positivity, cleanliness, and accessibility.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Romantic",
+      "slug": "high-key-lighting"
+    },
+    {
+      "name": "Low-Key Lighting",
+      "definition": "Low-key lighting creates high contrast images with dominant shadows and limited fill. This dramatic approach emphasizes shadows, mystery, and tension, fundamental to film noir and horror genres. By allowing large areas of darkness, low-key lighting creates mood, hides information, and focuses attention on selectively lit elements.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "low-key-lighting"
+    },
+    {
+      "name": "Chiaroscuro",
+      "definition": "Chiaroscuro is an Italian term meaning 'light-dark,' referring to the bold contrast between light and shadow in visual arts. Originating in Renaissance painting with masters like Caravaggio, this technique creates dramatic, three-dimensional images. In cinema, chiaroscuro lighting became essential to German Expressionism and film noir aesthetics.",
+      "category": "Lighting",
+      "difficulty": "Advanced",
+      "mood": "Dramatic",
+      "slug": "chiaroscuro",
+      "video": "media/chiaroscuro.mp4"
+    },
+    {
+      "name": "Rembrandt Lighting",
+      "definition": "Rembrandt lighting is a portrait technique creating a small, inverted triangle of light on the shadowed side of the face, just below the eye. Named after the Dutch painter who favored this look, it's achieved by positioning the key light high and to one side. This classic technique adds depth and dimension while maintaining a natural appearance.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "rembrandt-lighting"
+    },
+    {
+      "name": "Silhouette",
+      "definition": "A silhouette shows the subject as a dark shape against a brighter background, concealing features while revealing outline. Created by backlighting without front fill, silhouettes are powerful for dramatic reveals, anonymous figures, or abstract compositions. This technique can convey mystery, threat, or striking visual contrast.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "silhouette"
+    },
+    {
+      "name": "Golden Hour",
+      "definition": "Golden hour refers to the period shortly after sunrise or before sunset when sunlight is warm, soft, and diffused. The low sun angle creates long shadows and a golden glow that's flattering for portraits and landscapes. Cinematographers prize this light for its romantic, magical quality, though the brief window requires careful planning.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "golden-hour"
+    },
+    {
+      "name": "Blue Hour",
+      "definition": "Blue hour occurs during twilight before sunrise or after sunset when the sky takes on deep blue tones. This ethereal light creates moody, contemplative atmospheres distinct from the warmth of golden hour. The cool tones work well for melancholy, mystery, or supernatural sequences, offering a natural alternative to artificial blue lighting.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "blue-hour"
+    },
+    {
+      "name": "Practical Lighting",
+      "definition": "Practical lighting uses visible light sources within the scene\u2014lamps, candles, neon signs, television screens\u2014as functional elements of the exposure. Rather than hiding lighting equipment, practicals become part of the mise-en-sc\u00e8ne. Cinematographers often augment practicals with hidden film lights while maintaining the appearance that practicals provide all illumination.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "practical-lighting"
+    },
+    {
+      "name": "Hard Light",
+      "definition": "Hard light comes from small or distant sources, creating sharp, clearly defined shadows with abrupt transitions between light and dark. Direct sunlight and focused spotlights produce hard light. This quality emphasizes texture, creates dramatic contrast, and can feel harsh or unforgiving. Hard light is common in noir, western, and thriller genres.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "hard-light"
+    },
+    {
+      "name": "Soft Light",
+      "definition": "Soft light emanates from large or diffused sources, creating gradual shadow transitions and gentle illumination. Overcast skies, bounced light, and diffusion materials produce soft light. This flattering quality minimizes skin imperfections, reduces harsh contrasts, and creates comfortable, naturalistic looks common in romantic and comedic films.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "soft-light"
+    },
+    {
+      "name": "Uplighting",
+      "definition": "Uplighting positions the light source below the subject's face, casting unusual shadows upward. Because we rarely experience light from below in nature, this creates an unsettling, unnatural effect often associated with horror, villainy, or supernatural elements. The classic 'flashlight under the chin' campfire effect demonstrates this principle.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Horror",
+      "slug": "uplighting"
+    },
+    {
+      "name": "Side Lighting",
+      "definition": "Side lighting positions the source at 90 degrees to the subject, illuminating half the face while leaving the other half in shadow. This dramatic approach emphasizes texture, reveals surface details, and creates bold contrast. Side lighting can suggest duality, internal conflict, or moral ambiguity through its literal division of light and dark.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "side-lighting"
+    },
+    {
+      "name": "Lens Flare",
+      "definition": "Lens flare occurs when bright light enters the lens and scatters internally, creating streaks, circles, or haze in the image. Once considered a technical flaw to avoid, flare is now often embraced for its organic, atmospheric quality. Anamorphic lenses produce distinctive horizontal flares. J.J. Abrams famously (or infamously) uses extensive lens flare.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "lens-flare"
+    },
+    {
+      "name": "Butterfly Lighting",
+      "definition": "Butterfly lighting positions the key light directly above and in front of the subject, creating a symmetrical shadow beneath the nose resembling a butterfly. Also called Paramount lighting, this glamorous technique was standard for Hollywood studio portraits. It emphasizes cheekbones, creates even facial illumination, and produces a sophisticated, flattering look.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Romantic",
+      "slug": "butterfly-lighting"
+    },
+    {
+      "name": "Cross-Cutting",
+      "definition": "Cross-cutting, also known as parallel editing, alternates between two or more simultaneous storylines, creating tension by showing events happening at the same time in different locations. This technique implies simultaneity and builds suspense, often used for chase sequences, last-minute rescues, or to draw thematic connections between separate events.",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "cross-cutting",
+      "video": "media/cross-cutting.mp4"
+    },
+    {
+      "name": "Jump Cut",
+      "definition": "A jump cut is an abrupt transition that breaks continuous action, creating a jarring discontinuity within a scene. Unlike seamless continuity editing, jump cuts draw attention to the edit itself. This technique can compress time, create energy, convey psychological states, or serve as stylistic signature. Jean-Luc Godard popularized jump cuts in Breathless.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "jump-cut"
+    },
+    {
+      "name": "Match Cut",
+      "definition": "A match cut transitions between shots by matching visual elements\u2014shapes, colors, movement, or composition\u2014that link two otherwise unrelated scenes. This elegant technique creates visual continuity while jumping across time or space. The famous bone-to-satellite cut in 2001: A Space Odyssey exemplifies how match cuts can span millennia.",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "match-cut"
+    },
+    {
+      "name": "Dissolve",
+      "definition": "A dissolve is a gradual transition where one image fades out as another fades in, with both briefly visible simultaneously. This technique suggests passage of time, change of location, or thematic connection between scenes. The length of the dissolve affects its feeling\u2014quick dissolves suggest brief time jumps while long dissolves feel more dreamlike.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "dissolve"
+    },
+    {
+      "name": "Fade In/Out",
+      "definition": "A fade is a gradual transition from or to a solid color, typically black. Fade-ins usually open scenes or films while fade-outs close them, the darkness suggesting beginnings, endings, or significant time passage. Fades to white can suggest dreamlike states or death. The duration of fades significantly affects their emotional weight.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "fade-in-out"
+    },
+    {
+      "name": "Montage",
+      "definition": "A montage is a sequence of brief shots edited together to compress time, convey information, or create meaning through juxtaposition. Training montages show character development; travel montages establish journey. Soviet filmmakers like Eisenstein developed montage theory, arguing that meaning emerges from the collision of images rather than their individual content.",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "montage"
+    },
+    {
+      "name": "L-Cut",
+      "definition": "An L-cut extends audio from the outgoing shot under the incoming picture, so sound precedes the visual transition. This technique creates smooth continuity, as dialogue or sound effects from one scene bleed into the next. L-cuts help maintain flow and can create ironic contrasts between what's heard and what's seen.",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "l-cut"
+    },
+    {
+      "name": "J-Cut",
+      "definition": "A J-cut introduces audio from the incoming scene before the visual transition, so we hear the next shot before we see it. This technique creates anticipation and smooth transitions, as sound prepares the audience for what's coming. J-cuts are particularly effective for dialogue transitions between scenes.",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "j-cut"
+    },
+    {
+      "name": "Smash Cut",
+      "definition": "A smash cut is an abrupt, jarring transition from one scene to another contrasting scene, often used for comedic effect or to create dramatic irony. A character might insist 'I would never do that,' immediately followed by a smash cut to them doing exactly that. The technique emphasizes the sudden shift.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Action",
+      "slug": "smash-cut"
+    },
+    {
+      "name": "Long Take",
+      "definition": "A long take is an extended shot lasting significantly longer than average edit rhythm, building tension through sustained real-time presentation. Long takes immerse viewers in unbroken reality, showcase performances and choreography, and create distinct rhythm. Directors like Tarkovsky and Cuar\u00f3n are known for their extended takes.",
+      "category": "Editing",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "long-take"
+    },
+    {
+      "name": "Freeze Frame",
+      "definition": "A freeze frame holds on a single frame, stopping motion while time continues. This technique emphasizes moments, creates dramatic pauses, or signals endings. The final freeze frame has become a classic ending device, from The 400 Blows to Rocky. Freeze frames can also introduce characters or punctuate action.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "freeze-frame"
+    },
+    {
+      "name": "Split Screen",
+      "definition": "Split screen divides the frame to show multiple images simultaneously, often two or more related events. This technique can show both sides of a phone conversation, parallel actions, or contrasting scenes. Split screen declares its artifice openly, creating dynamic compositions that compare or connect multiple elements.",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "split-screen"
+    },
+    {
+      "name": "Rule of Thirds",
+      "definition": "The rule of thirds divides the frame into a 3x3 grid, placing key elements along the lines or at their intersections rather than center frame. This guideline creates dynamic, visually pleasing compositions that leave room for movement and context. While not absolute, the rule of thirds provides a foundation for balanced framing.",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "rule-of-thirds",
+      "video": "media/rule-of-thirds.mp4"
+    },
+    {
+      "name": "Symmetry",
+      "definition": "Symmetrical composition creates balance by mirroring elements on either side of a central axis. This formal approach suggests order, stability, and control. Directors like Kubrick and Anderson use symmetry extensively, creating distinctive visual styles that feel precise and intentional. Perfect symmetry can also feel artificial or oppressive.",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "symmetry"
+    },
+    {
+      "name": "Leading Lines",
+      "definition": "Leading lines are compositional elements\u2014roads, fences, architectural features, shadows\u2014that guide the viewer's eye toward the main subject or through the frame. These visual pathways create depth, direct attention, and add dynamism to static images. Effective use of leading lines draws viewers into the scene.",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "leading-lines"
+    },
+    {
+      "name": "Framing Within Frame",
+      "definition": "Framing within the frame uses elements in the scene\u2014doorways, windows, arches, foliage\u2014to create a secondary frame around the subject. This technique adds depth, focuses attention, and can suggest themes of observation, entrapment, or separation. The internal frame provides context while isolating the subject.",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "framing-within-frame"
+    },
+    {
+      "name": "Negative Space",
+      "definition": "Negative space is the empty area surrounding the main subject. Strategic use of negative space emphasizes isolation, contemplation, or significance. Rather than filling the frame, leaving 'empty' areas creates visual breathing room and can be as expressive as the subject itself. Negative space is fundamental to minimalist composition.",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "negative-space"
+    },
+    {
+      "name": "Shallow Focus",
+      "definition": "Shallow focus uses a narrow depth of field to isolate subjects by rendering backgrounds and foregrounds blurry. This technique directs attention to specific elements, creates intimacy, and produces aesthetically pleasing bokeh. Shallow focus is common in close-ups and dialogue scenes where environmental detail would distract.",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Romantic",
+      "slug": "shallow-focus"
+    },
+    {
+      "name": "Deep Focus",
+      "definition": "Deep focus maintains sharp focus from foreground to background, allowing all elements to be clearly visible simultaneously. This technique enables complex staging where multiple planes of action occur, as in Citizen Kane. Deep focus respects spatial relationships and lets viewers choose where to look rather than having focus direct them.",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Documentary",
+      "slug": "deep-focus"
+    },
+    {
+      "name": "Mise-en-Sc\u00e8ne",
+      "definition": "Mise-en-sc\u00e8ne, French for 'putting in the scene,' encompasses everything within the frame: set design, lighting, costumes, props, makeup, and actor positioning. This holistic approach treats each frame as a carefully composed image where every visible element contributes to meaning. Directors known for mise-en-sc\u00e8ne include Kubrick, Wes Anderson, and Wong Kar-wai.",
+      "category": "Composition",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "mise-en-scene",
+      "video": "media/mise-en-scene.mp4"
+    },
+    {
+      "name": "Golden Ratio",
+      "definition": "The golden ratio (approximately 1.618:1) is a mathematical proportion found throughout nature and classical art, considered inherently pleasing to human perception. Some cinematographers compose shots according to golden ratio spirals or grids. Whether scientifically valid or not, the concept provides compositional guidelines similar to rule of thirds.",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "golden-ratio"
+    },
+    {
+      "name": "Diegetic Sound",
+      "definition": "Diegetic sound originates from sources within the film's world\u2014characters talking, cars passing, music from radios. Characters can hear diegetic sounds. This 'actual' sound creates realism and grounds the audience in the story world. The distinction between diegetic and non-diegetic sound is fundamental to film sound design.",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "diegetic-sound"
+    },
+    {
+      "name": "Non-Diegetic Sound",
+      "definition": "Non-diegetic sound comes from outside the story world\u2014film scores, narration, sound effects added for emphasis. Characters cannot hear non-diegetic elements; they exist only for the audience. This includes most film music, which manipulates emotion without characters being aware of orchestras following them.",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "non-diegetic-sound"
+    },
+    {
+      "name": "Foley",
+      "definition": "Foley is the reproduction of everyday sound effects performed in sync with picture during post-production. Named after sound pioneer Jack Foley, this craft creates footsteps, cloth movement, door closes, and countless other sounds that enhance realism. Foley artists watch footage and perform actions using various props.",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "foley"
+    },
+    {
+      "name": "Sound Bridge",
+      "definition": "A sound bridge uses audio to connect two scenes, either by carrying sound from the outgoing scene into the next or by introducing incoming audio before the visual cut. This technique smooths transitions and creates continuity. Sound bridges can also create ironic commentary when audio contradicts visuals.",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "sound-bridge"
+    },
+    {
+      "name": "Leitmotif",
+      "definition": "A leitmotif is a recurring musical theme associated with a particular character, place, idea, or emotion. Wagner developed this operatic technique, now standard in film scoring. Darth Vader's Imperial March, the Jaws theme, and Hedwig's Theme from Harry Potter are famous leitmotifs that trigger immediate recognition.",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "leitmotif"
+    },
+    {
+      "name": "Stinger",
+      "definition": "A stinger is a short, sharp musical accent that punctuates a moment\u2014a sudden revelation, jump scare, or dramatic beat. These brief bursts of sound create emphasis and startle reactions. Horror films rely heavily on stingers for shock moments, though overuse can feel manipulative.",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Horror",
+      "slug": "stinger"
+    },
+    {
+      "name": "Silence",
+      "definition": "Strategic silence\u2014the deliberate absence of sound\u2014can be as powerful as any audio element. Silence creates tension, emphasizes subsequent sounds, suggests isolation or death, and provides contrast. In a medium defined by audiovisual experience, removing audio draws attention to its absence and the visuals it accompanies.",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "silence"
+    },
+    {
+      "name": "Flashback",
+      "definition": "A flashback interrupts the present timeline to show events from the past, providing backstory, explaining motivation, or revealing secrets. This narrative device can be triggered by character memory, objects, or direct transition. Flashbacks require clear visual or audio cues so audiences understand the temporal shift.",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "flashback"
+    },
+    {
+      "name": "MacGuffin",
+      "definition": "A MacGuffin is a plot device that motivates characters and drives the story but has little intrinsic importance. Alfred Hitchcock coined the term for objects everyone pursues\u2014secret documents, mysterious briefcases, glowing contents\u2014whose specific nature doesn't matter. What matters is that characters want it intensely.",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "macguffin"
+    },
+    {
+      "name": "Red Herring",
+      "definition": "A red herring is a misleading element designed to divert attention from the true solution or significant plot point. Mystery and thriller films use red herrings to maintain suspense and surprise. The seemingly obvious suspect who turns out to be innocent is a classic red herring.",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "red-herring"
+    },
+    {
+      "name": "Foreshadowing",
+      "definition": "Foreshadowing plants hints about future events, creating anticipation and making later developments feel earned rather than arbitrary. Effective foreshadowing is subtle enough to be overlooked initially but obvious in retrospect. Visual elements, dialogue, and symbols can all foreshadow coming events.",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "foreshadowing"
+    },
+    {
+      "name": "Dramatic Irony",
+      "definition": "Dramatic irony occurs when the audience knows something characters don't, creating tension from the gap between knowledge levels. Watching characters walk toward danger we're aware of, or make decisions based on information we know is false, creates unique suspense. Hitchcock distinguished this from surprise.",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "dramatic-irony"
+    },
+    {
+      "name": "Breaking Fourth Wall",
+      "definition": "Breaking the fourth wall occurs when characters acknowledge the audience or the fact that they're in a film, violating the conventional separation between story world and viewers. This technique creates intimacy, comedy, or commentary on the filmmaking process. Ferris Bueller and Deadpool famously address viewers directly.",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "breaking-fourth-wall"
+    },
+    {
+      "name": "Unreliable Narrator",
+      "definition": "An unreliable narrator is a character whose account of events can't be trusted due to limited knowledge, psychological instability, or deliberate deception. This technique creates mystery about what actually happened and requires audiences to read between the lines. Fight Club and The Usual Suspects feature famous unreliable narrators.",
+      "category": "Story",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "unreliable-narrator"
+    },
+    {
+      "name": "In Medias Res",
+      "definition": "In medias res, Latin for 'in the middle of things,' begins a story in the midst of action rather than at the chronological beginning. This hook immediately engages audiences before backfilling context. Many films open with exciting sequences before explaining how characters arrived at that moment.",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "in-medias-res"
+    },
+    {
+      "name": "Cliffhanger",
+      "definition": "A cliffhanger ends a story or episode at a moment of suspense, with major questions unresolved. Named for literal cliff-hanging perils in serials, cliffhangers create anticipation for what comes next. They're essential to serialized storytelling and franchise filmmaking that wants audiences returning.",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Action",
+      "slug": "cliffhanger"
+    },
+    {
+      "name": "CGI",
+      "definition": "Computer-Generated Imagery (CGI) creates visual elements digitally, from subtle enhancements to entire fantasy worlds. Modern blockbusters rely heavily on CGI for creatures, environments, and impossible action. The technology has evolved from obvious early attempts to seamless integration that's invisible to audiences.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "cgi"
+    },
+    {
+      "name": "Practical Effects",
+      "definition": "Practical effects are achieved physically on set without digital manipulation\u2014makeup, prosthetics, pyrotechnics, mechanical creatures, miniatures. Many filmmakers prefer practicals for their tangible presence and real interaction with actors. The best modern films often combine practical foundations with digital enhancement.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "practical-effects"
+    },
+    {
+      "name": "Green Screen",
+      "definition": "Green screen (or blue screen) photography films subjects against a bright, uniform colored backdrop that can be replaced with any image in post-production. This chroma key technique enables placing actors in any environment. The solid color allows clean separation of foreground subjects from the background.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "green-screen"
+    },
+    {
+      "name": "Motion Capture",
+      "definition": "Motion capture (mocap) records actors' movements using markers or suits, translating their performance to digital characters. This technology enables realistic animation of fantastical creatures performed by human actors\u2014Gollum, Caesar from Planet of the Apes, Thanos. Performance capture extends this to facial expressions.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "motion-capture"
+    },
+    {
+      "name": "Stop Motion",
+      "definition": "Stop motion animation photographs physical objects (puppets, clay, models) frame by frame, moving them incrementally between exposures to create the illusion of movement. This painstaking technique produces a distinctive tactile quality impossible to replicate digitally. Studios like Laika and Aardman continue this tradition.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "stop-motion"
+    },
+    {
+      "name": "Color Grading",
+      "definition": "Color grading adjusts the colors, contrast, and overall look of footage in post-production. This powerful process can create specific moods, visual styles, or period looks. Modern digital color grading offers unprecedented control, allowing colorists to paint images, isolate elements, and transform footage completely.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "color-grading"
+    },
+    {
+      "name": "Desaturation",
+      "definition": "Desaturation reduces the intensity of colors, moving images toward monochrome. Partial desaturation creates stylized looks (Saving Private Ryan's bleached aesthetic), while full desaturation produces black and white. This technique can suggest memory, depression, post-apocalyptic worlds, or artistic stylization.",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "desaturation"
+    },
+    {
+      "name": "Sepia Tone",
+      "definition": "Sepia tone applies warm brown coloring that mimics aged photographs, instantly suggesting historical periods or nostalgic memory. This simple color treatment has become shorthand for 'the past.' While effective, its overuse has made sepia somewhat clich\u00e9d for flashbacks.",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Nostalgic",
+      "slug": "sepia-tone"
+    },
+    {
+      "name": "Film Grain",
+      "definition": "Film grain is the visible texture created by silver halide particles in photographic film. Digital filmmakers often add artificial grain to achieve organic, cinematic quality that pure digital footage lacks. Grain adds life and texture, connecting images to cinema's analog heritage.",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Nostalgic",
+      "slug": "film-grain"
+    },
+    {
+      "name": "Bokeh",
+      "definition": "Bokeh describes the aesthetic quality of out-of-focus areas, particularly the rendering of light points as circular or shaped blurs. Good bokeh is smooth and pleasing; nervous bokeh has harsh edges. Anamorphic lenses produce oval bokeh. The quality depends on lens design and aperture.",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "bokeh"
+    },
+    {
+      "name": "Film Noir",
+      "definition": "Film noir emerged in 1940s-50s America, featuring crime dramas with cynical antiheroes, femme fatales, and distinctive high-contrast black and white photography. Influenced by German Expressionism and hard-boiled fiction, noir created a dark, morally ambiguous world of shadows and rain-slicked streets.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Dramatic",
+      "slug": "film-noir"
+    },
+    {
+      "name": "German Expressionism",
+      "definition": "German Expressionism was a 1920s film movement using distorted sets, extreme lighting, and exaggerated performances to externalize psychological states. Films like The Cabinet of Dr. Caligari and Nosferatu created nightmarish worlds reflecting post-war German anxiety. Its visual style influenced horror and noir for decades.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "german-expressionism"
+    },
+    {
+      "name": "Cinema V\u00e9rit\u00e9",
+      "definition": "Cinema V\u00e9rit\u00e9 ('film truth') is a documentary style emphasizing naturalism and minimal filmmaker intervention. Using handheld cameras, natural lighting, and non-actors, this approach captures reality as it unfolds. The technique influenced fiction filmmaking, inspiring realistic aesthetics in drama and indie films.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Documentary",
+      "slug": "cinema-verite"
+    },
+    {
+      "name": "French New Wave",
+      "definition": "The French New Wave of the late 1950s-60s revolutionized cinema through radical techniques\u2014jump cuts, hand-held cameras, location shooting, self-reflexivity, and rejection of classical conventions. Directors like Godard, Truffaut, and Resnais challenged filmmaking rules while celebrating Hollywood genre films.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "french-new-wave"
+    },
+    {
+      "name": "Surrealism",
+      "definition": "Surrealism in cinema embraces illogical, dreamlike imagery drawn from the subconscious mind. Beginning with Bu\u00f1uel's Un Chien Andalou, surrealist films reject narrative logic for psychological truth. Directors like Lynch, Jodorowsky, and early Bu\u00f1uel create worlds governed by dream logic rather than reality.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "surrealism"
+    },
+    {
+      "name": "Found Footage",
+      "definition": "Found footage films present their content as discovered recordings\u2014home videos, security footage, documentary material\u2014for heightened realism. The Blair Witch Project and Paranormal Activity popularized this horror subgenre. The format's 'reality' makes supernatural events more unsettling.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "found-footage"
+    },
+    {
+      "name": "Spaghetti Western",
+      "definition": "Spaghetti Westerns were Italian-produced Westerns of the 1960s-70s, typically filmed in Spain. Sergio Leone's Dollars trilogy defined the subgenre's style: long silences, extreme close-ups, Ennio Morricone scores, and moral ambiguity. These films revitalized and subverted American Western conventions.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "spaghetti-western"
+    },
+    {
+      "name": "Tilt Shot",
+      "definition": "A tilt shot rotates the camera vertically on a fixed axis, moving up or down to reveal information or follow action. Unlike panning (horizontal), tilting scans vertically\u2014from feet to face, from ground to sky. This technique reveals scale, follows ascending/descending movement, or creates dramatic reveals.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "tilt-shot"
+    },
+    {
+      "name": "Whip Pan",
+      "definition": "A whip pan is an extremely fast pan that blurs the image between positions, creating a jarring transition effect. This technique energizes action sequences, suggests the passage of time, or connects separate locations with kinetic force. The blur itself becomes part of the visual style.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "whip-pan"
+    },
+    {
+      "name": "Two-Shot",
+      "definition": "A two-shot frames two subjects in the same composition, typically showing their relationship and interaction. This shot type is fundamental to dialogue scenes, allowing audiences to see both characters' reactions simultaneously. The composition within a two-shot\u2014who's higher, centered, closer\u2014conveys power dynamics.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "two-shot"
+    },
+    {
+      "name": "Three-Shot",
+      "definition": "A three-shot captures three subjects in frame simultaneously, establishing group dynamics and relationships. More complex than two-shots, three-shots require careful composition to balance attention among subjects. They're common in ensemble films and scenes requiring group interaction.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "three-shot"
+    },
+    {
+      "name": "Cowboy Shot",
+      "definition": "A cowboy shot frames the subject from mid-thigh up, named for its prevalence in Westerns where holstered guns needed to be visible. This medium-long shot balances body language visibility with environmental context, making it useful for any scene requiring gesture or stance emphasis.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "cowboy-shot"
+    },
+    {
+      "name": "Medium Close-Up",
+      "definition": "A medium close-up (MCU) frames the subject from approximately mid-chest up, tighter than a medium shot but wider than a close-up. This versatile framing captures facial expressions while showing some body language. MCUs are common in dialogue scenes and interviews.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "medium-close-up"
+    },
+    {
+      "name": "Choker Shot",
+      "definition": "A choker shot frames the subject very tightly from just below the lips to just above the eyebrows, filling the frame with the face while excluding chin and forehead. More intense than a close-up, chokers focus almost entirely on eyes and expression for maximum emotional impact.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "choker-shot"
+    },
+    {
+      "name": "Canted Frame",
+      "definition": "A canted frame, similar to the Dutch angle, tilts the entire composition to create visual tension. While often used interchangeably with Dutch angle, canted frame emphasizes the resulting visual imbalance rather than the camera movement that creates it. The technique suggests psychological or physical instability.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Horror",
+      "slug": "canted-frame"
+    },
+    {
+      "name": "Zoom Shot",
+      "definition": "A zoom shot uses the camera lens to magnify or reduce the apparent size of subjects without physically moving the camera. Unlike a dolly, zooms compress or expand space artificially. This creates a different visual effect\u2014subjects grow or shrink while background perspective remains constant.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "zoom-shot"
+    },
+    {
+      "name": "Push In",
+      "definition": "A push in slowly moves the camera toward the subject, drawing viewers deeper into the scene or character's emotional state. This technique builds intensity, focuses attention, and creates engagement. The speed of the push affects the mood\u2014slow pushes feel contemplative while fast pushes feel urgent.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "push-in"
+    },
+    {
+      "name": "Pull Out",
+      "definition": "A pull out moves the camera away from the subject, revealing more environment or context. This technique can diminish characters against their surroundings, show isolation, or provide closure by literally distancing from the action. Pull outs are common at scene endings.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "pull-out"
+    },
+    {
+      "name": "360-Degree Shot",
+      "definition": "A 360-degree shot circles completely around the subject, often used to convey disorientation, time passage, or emotional intensity. The continuous rotation creates a dynamic, immersive effect. Famous examples include the pottery scene in Ghost and various romantic culminations.",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Romantic",
+      "slug": "360-degree-shot"
+    },
+    {
+      "name": "Static Shot",
+      "definition": "A static shot holds the camera completely still, letting action unfold within a fixed frame. This restrained approach emphasizes composition and performance over camera movement. Directors like Ozu and Wes Anderson use static shots to create distinctive visual styles.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "static-shot"
+    },
+    {
+      "name": "Crash Zoom",
+      "definition": "A crash zoom is a rapid zoom in or out that creates sudden dramatic impact. This jarring technique was popularized in 1970s martial arts films and Tarantino's work. Unlike smooth zooms, crash zooms draw attention to themselves, creating energy and emphasis.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "crash-zoom"
+    },
+    {
+      "name": "Snorricam",
+      "definition": "A Snorricam mounts the camera to the actor's body, keeping them static in frame while the background moves. This creates a disorienting effect where the character remains stable but the world seems to rotate around them\u2014perfect for depicting drugged states, panic, or tunnel vision.",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "snorricam"
+    },
+    {
+      "name": "Locked-Down Shot",
+      "definition": "A locked-down shot keeps the camera absolutely fixed in position, often used for visual effects compositing where multiple exposures must align perfectly. Beyond technical necessity, locked-down shots create meditative stillness, allowing time and action to flow within an unchanging frame.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "locked-down-shot"
+    },
+    {
+      "name": "Worm's Eye View",
+      "definition": "A worm's eye view positions the camera at ground level looking upward, more extreme than a typical low angle. This perspective makes subjects tower dramatically, distorts architecture, and creates unusual compositions that feel surreal or threatening.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "worm-s-eye-view"
+    },
+    {
+      "name": "Impossible Shot",
+      "definition": "An impossible shot creates perspectives that couldn't exist in physical reality, often achieved through digital effects or clever editing. The camera might pass through solid objects, exist in impossible spaces, or maintain continuity across physical barriers. These shots create dreamlike or supernatural effects.",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "impossible-shot"
+    },
+    {
+      "name": "Fill Light",
+      "definition": "Fill light is secondary illumination used to soften shadows created by the key light. Positioned opposite the key, fill light controls the contrast ratio\u2014more fill creates softer, flatter images while less fill increases drama through shadow. The fill determines how much shadow detail is visible.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "fill-light"
+    },
+    {
+      "name": "Backlight",
+      "definition": "Backlight comes from behind the subject, creating a rim of light around edges that separates them from the background. Also called rim light or hair light, this technique adds depth and dimension. Strong backlighting can create silhouettes or halos.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "backlight"
+    },
+    {
+      "name": "Bounce Light",
+      "definition": "Bounce light is illumination reflected off a surface\u2014walls, ceilings, reflectors\u2014rather than hitting subjects directly. This technique creates soft, natural-looking light by enlarging the apparent source size. Bounce light is less controllable but more flattering than direct illumination.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "bounce-light"
+    },
+    {
+      "name": "Cross Lighting",
+      "definition": "Cross lighting positions two light sources at opposing angles, creating a split effect where each side of the subject is lit by a different source. This technique can suggest duality, conflict, or complex emotional states through its divided illumination.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "cross-lighting"
+    },
+    {
+      "name": "Kicker Light",
+      "definition": "A kicker is a backlight placed to the side rather than directly behind, adding a bright edge to one side of the subject. Kickers enhance separation from background and add dimensionality. They're often used in addition to standard three-point setups.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "kicker-light"
+    },
+    {
+      "name": "Motivated Lighting",
+      "definition": "Motivated lighting appears to come from realistic sources within the scene\u2014windows, lamps, fires, screens. Even when augmented by film lights, the direction and quality match what the practical source would produce. This approach enhances believability and grounds lighting choices.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "motivated-lighting"
+    },
+    {
+      "name": "Ambient Light",
+      "definition": "Ambient light is the existing illumination in a location before any film lighting is added\u2014sunlight, moonlight, streetlights, room lighting. Some cinematographers work primarily with ambient light for naturalistic results. Others reshape it dramatically with additional sources.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Documentary",
+      "slug": "ambient-light"
+    },
+    {
+      "name": "Available Light",
+      "definition": "Available light cinematography uses only existing light sources without adding film lighting. This documentary approach creates authenticity but limits control. Available light can be supplemented with reflectors or flags without adding artificial sources.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Documentary",
+      "slug": "available-light"
+    },
+    {
+      "name": "Split Lighting",
+      "definition": "Split lighting divides the face exactly in half, with one side fully lit and the other in complete shadow. More extreme than Rembrandt lighting, this dramatic technique creates strong visual impact and can suggest duality or moral ambiguity.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "split-lighting"
+    },
+    {
+      "name": "Loop Lighting",
+      "definition": "Loop lighting positions the key light slightly to the side and above, creating a small shadow of the nose that angles downward toward the corner of the mouth. Named for the loop-shaped shadow, this portrait technique is flattering and less dramatic than Rembrandt lighting.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "loop-lighting"
+    },
+    {
+      "name": "Broad Lighting",
+      "definition": "Broad lighting illuminates the side of the face turned toward the camera, making faces appear wider. This technique is less common for dramatic work but can be used to de-emphasize narrow faces or create specific psychological effects.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "broad-lighting"
+    },
+    {
+      "name": "Short Lighting",
+      "definition": "Short lighting illuminates the side of the face turned away from camera, leaving the broader camera-facing side in shadow. This slimming technique adds dimension and drama, commonly used in portraits and dramatic lighting setups.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "short-lighting"
+    },
+    {
+      "name": "Color Temperature",
+      "definition": "Color temperature measures the hue of light sources on a scale from warm (oranges/reds around 2700K) to cool (blues around 6500K+). Mixing color temperatures creates contrast\u2014warm practicals against cool daylight, for instance. White balance determines which temperature appears neutral.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "color-temperature"
+    },
+    {
+      "name": "Day for Night",
+      "definition": "Day for night is a technique for simulating nighttime while shooting during the day, using filters, underexposure, and color timing. This approach avoids expensive night shoots but rarely convinces modern audiences. Digital tools have replaced traditional day-for-night methods.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "day-for-night"
+    },
+    {
+      "name": "Night for Night",
+      "definition": "Night for night shoots actual night scenes at night, capturing authentic darkness, city lights, and nocturnal atmosphere impossible to replicate during the day. This expensive approach requires powerful lighting but delivers superior results compared to day-for-night techniques.",
+      "category": "Lighting",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "night-for-night"
+    },
+    {
+      "name": "Dappled Light",
+      "definition": "Dappled light filters through foliage, blinds, or perforated materials, creating patterns of light and shadow on subjects. This organic, natural-looking light adds visual interest and movement. It suggests outdoor environments, specific times of day, or emotional states.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "dappled-light"
+    },
+    {
+      "name": "Edge Light",
+      "definition": "Edge light, similar to backlight or rim light, specifically traces the outline of subjects to create visual separation from backgrounds. Multiple edge lights can create complex rim patterns. The technique prevents subjects from visually blending into dark backgrounds.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "edge-light"
+    },
+    {
+      "name": "Eye Light",
+      "definition": "Eye light is a small source positioned to create catchlights\u2014reflections\u2014in the eyes, adding life and sparkle to subjects. Without eye lights, eyes can appear dead or lifeless. The shape and position of catchlights become recognizable signatures.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "eye-light"
+    },
+    {
+      "name": "Gobo Lighting",
+      "definition": "Gobo (go between) lighting places patterns or shapes between the light source and subject, casting shadows of windows, venetian blinds, tree branches, or abstract patterns. This technique adds texture and implies off-screen environments without building full sets.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "gobo-lighting"
+    },
+    {
+      "name": "Continuity Editing",
+      "definition": "Continuity editing creates seamless transitions that maintain spatial and temporal coherence, making cuts invisible to audiences. This classical Hollywood style prioritizes clear storytelling over stylistic expression. Rules include the 180-degree rule, match on action, and eyeline matches.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "continuity-editing"
+    },
+    {
+      "name": "180-Degree Rule",
+      "definition": "The 180-degree rule establishes an imaginary line (the axis) between characters, requiring the camera to stay on one side to maintain consistent screen direction. Crossing the line can disorient viewers by flipping the apparent left-right positions of characters.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "180-degree-rule"
+    },
+    {
+      "name": "30-Degree Rule",
+      "definition": "The 30-degree rule states that consecutive shots of the same subject should change camera angle by at least 30 degrees to avoid jarring jump cuts. Smaller angle changes feel like errors rather than intentional cuts.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "30-degree-rule",
+      "video": "media/30-degree-rule.mp4"
+    },
+    {
+      "name": "Match on Action",
+      "definition": "Match on action cuts during continuous movement, using the motion to mask the transition between shots. By cutting when a hand reaches for a doorknob or a person stands up, editors create seamless cuts that maintain flow and energy.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "match-on-action"
+    },
+    {
+      "name": "Eyeline Match",
+      "definition": "An eyeline match cuts from a character looking at something to what they're seeing, establishing point of view and spatial relationships. The audience understands that the second shot represents the character's focus. This fundamental technique structures subjective cinema.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "eyeline-match"
+    },
+    {
+      "name": "Cutting on Look",
+      "definition": "Cutting on look edits based on where characters direct their gaze, creating visual logic that guides audiences through scenes. When characters look off-screen, cuts to what they see feel natural and motivated. This technique is fundamental to classical editing.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "cutting-on-look"
+    },
+    {
+      "name": "Reaction Shot",
+      "definition": "A reaction shot shows a character responding to something\u2014events, dialogue, revelations. These shots give audiences emotional cues about how to interpret scenes. A well-timed reaction shot can create comedy, drama, or irony depending on context.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "reaction-shot"
+    },
+    {
+      "name": "Cutaway",
+      "definition": "A cutaway temporarily shifts away from the main action to show related elements\u2014objects, environments, other characters. Cutaways provide information, allow time compression, cover edits, or create thematic connections. They're essential tools for managing coverage.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "cutaway"
+    },
+    {
+      "name": "Cut-In",
+      "definition": "A cut-in moves closer to show detail within the main action, such as cutting from a medium shot to a close-up of hands. Unlike cutaways (which show different subjects), cut-ins show the same subject at different scales.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "cut-in"
+    },
+    {
+      "name": "Wipe",
+      "definition": "A wipe transition replaces one image with another using a visible line or shape moving across the frame. Star Wars popularized wipes for their retro, serial-adventure feel. The direction and shape of wipes can vary from simple horizontal to elaborate patterns.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "wipe"
+    },
+    {
+      "name": "Iris",
+      "definition": "An iris transition uses a circular or shaped mask that opens (iris in) or closes (iris out) to reveal or conceal the image. Common in silent cinema, iris transitions now appear as stylistic homages or in children's entertainment.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "iris"
+    },
+    {
+      "name": "Soviet Montage",
+      "definition": "Soviet Montage theory, developed by Eisenstein and others, argues that meaning emerges from the collision of juxtaposed images rather than their individual content. Editing becomes the filmmaker's primary tool\u2014the arrangement of shots creates concepts greater than their sum.",
+      "category": "Editing",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "soviet-montage"
+    },
+    {
+      "name": "Intellectual Montage",
+      "definition": "Intellectual montage juxtaposes images to create abstract ideas or metaphors that don't exist in either shot alone. Eisenstein used this to communicate political and philosophical concepts\u2014cutting between a massacre and slaughterhouse footage creates commentary.",
+      "category": "Editing",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "intellectual-montage"
+    },
+    {
+      "name": "Metric Montage",
+      "definition": "Metric montage cuts at fixed intervals regardless of content, creating rhythm through absolute timing. The mechanical precision creates tension as viewers anticipate cuts. This technique subordinates content to pure editing rhythm.",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "metric-montage"
+    },
+    {
+      "name": "Rhythmic Montage",
+      "definition": "Rhythmic montage varies cutting pace according to internal movement within shots rather than fixed intervals. Action-heavy shots might be shorter while static shots hold longer, creating organic editorial rhythm that responds to content.",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "rhythmic-montage"
+    },
+    {
+      "name": "Invisible Cut",
+      "definition": "An invisible cut disguises the edit within movement, similar objects, or darkness so audiences don't perceive the transition. Films like 1917 and Birdman use invisible cuts to simulate continuous takes. The technique requires precise choreography.",
+      "category": "Editing",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "invisible-cut"
+    },
+    {
+      "name": "Time-Lapse",
+      "definition": "Time-lapse captures images at intervals and plays them back at normal speed, compressing hours, days, or longer into seconds. Clouds race, flowers bloom, cities transform from day to night. This technique reveals processes invisible at normal speed.",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Documentary",
+      "slug": "time-lapse",
+      "video": "media/time-lapse.mp4"
+    },
+    {
+      "name": "Fast Motion",
+      "definition": "Fast motion speeds up action by either filming at fewer frames per second than playback rate or digitally accelerating footage. This technique can create comedy, show supernatural speed, or compress mundane activities. It's the opposite of slow motion.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Action",
+      "slug": "fast-motion"
+    },
+    {
+      "name": "Reverse Motion",
+      "definition": "Reverse motion plays footage backward, creating surreal effects where water flows upward, broken objects reassemble, and people walk backwards. This technique can be comedic, magical, or disorienting depending on context and content.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "reverse-motion"
+    },
+    {
+      "name": "Parallel Editing",
+      "definition": "Parallel editing intercuts between two or more scenes happening simultaneously, building tension through comparison and anticipation. D.W. Griffith pioneered this technique for last-minute rescue sequences. The technique implies simultaneity through juxtaposition.",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "parallel-editing"
+    },
+    {
+      "name": "Depth of Field",
+      "definition": "Depth of field is the range of distance that appears acceptably sharp in an image. Shallow depth of field isolates subjects while deep depth keeps everything sharp. Lens aperture, focal length, and subject distance all affect depth of field.",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "depth-of-field"
+    },
+    {
+      "name": "Foreground Interest",
+      "definition": "Foreground interest places objects or elements in the front of the frame to add depth and visual layers. These elements frame subjects, guide the eye, and create three-dimensional compositions. Shooting through foreground objects is a common technique.",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "foreground-interest"
+    },
+    {
+      "name": "Balancing Elements",
+      "definition": "Balancing elements arranges visual weight so compositions feel stable and complete. A large subject on one side might be balanced by smaller elements or negative space on the other. Intentionally unbalanced compositions create tension.",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "balancing-elements"
+    },
+    {
+      "name": "Diagonal Lines",
+      "definition": "Diagonal lines create dynamic compositions suggesting movement, energy, or instability. Unlike horizontal (calm) or vertical (power) lines, diagonals feel active and unstable. Action scenes often emphasize diagonals through camera angles and staging.",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Action",
+      "slug": "diagonal-lines"
+    },
+    {
+      "name": "Triangular Composition",
+      "definition": "Triangular composition arranges subjects in pyramid shapes, creating stable, powerful compositions used in classical painting and photography. Three subjects naturally form triangles. Single subjects can create implied triangles through posture.",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "triangular-composition"
+    },
+    {
+      "name": "Centered Composition",
+      "definition": "Centered composition places the main subject at the exact center of the frame. While the rule of thirds suggests avoiding center framing, centered compositions create symmetry, formality, and confrontational directness. Kubrick and Anderson favor this approach.",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "centered-composition"
+    },
+    {
+      "name": "Headroom",
+      "definition": "Headroom is the space between a subject's head and the top of the frame. Too much headroom feels unbalanced while too little feels cramped. Proper headroom varies with shot size\u2014tighter shots typically have less headroom.",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "headroom"
+    },
+    {
+      "name": "Lead Room",
+      "definition": "Lead room (or nose room) is space in front of a moving or looking subject. Characters walking left need space on the left to move into; characters looking right need space on the right. This convention feels natural because it shows where attention is directed.",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "lead-room"
+    },
+    {
+      "name": "Visual Weight",
+      "definition": "Visual weight is the perceived heaviness of elements based on size, color, contrast, complexity, and position. Larger, brighter, more detailed elements feel heavier. Compositions balance visual weight to feel complete or intentionally unbalanced.",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "visual-weight"
+    },
+    {
+      "name": "Repetition and Pattern",
+      "definition": "Repetition and pattern use recurring visual elements\u2014shapes, colors, lines\u2014to create rhythm and unity. Breaking established patterns draws attention. Architecture and crowd scenes offer natural opportunities for pattern-based compositions.",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "repetition-and-pattern"
+    },
+    {
+      "name": "Figure-Ground Relationship",
+      "definition": "Figure-ground relationship is the visual distinction between subjects (figures) and their surroundings (ground). Clear separation helps audiences instantly identify important elements. Cinematographers manipulate focus, lighting, and color to control this relationship.",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "figure-ground-relationship"
+    },
+    {
+      "name": "Contrast",
+      "definition": "Visual contrast\u2014differences in light/dark, color, size, shape\u2014creates visual interest and directs attention. High contrast images are bold and dramatic while low contrast feels subtle and soft. Contrast can be literal (lighting) or conceptual (juxtaposition).",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "contrast"
+    },
+    {
+      "name": "Ambient Sound",
+      "definition": "Ambient sound is the environmental audio present in any location\u2014room tone, outdoor atmosphere, traffic hum, wind. This sonic bed provides realism and prevents dead silence between dialogue. Every location has unique ambient characteristics.",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Documentary",
+      "slug": "ambient-sound"
+    },
+    {
+      "name": "Room Tone",
+      "definition": "Room tone is the specific ambient sound of an interior space when 'silent'\u2014air conditioning, electrical hum, structural resonance. Recording room tone during production is essential for seamless audio editing, as true silence sounds unnatural.",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Documentary",
+      "slug": "room-tone"
+    },
+    {
+      "name": "Sound Effects (SFX)",
+      "definition": "Sound effects are audio elements other than dialogue and music\u2014explosions, footsteps, doors, vehicles, weather. SFX can be recorded live (production sound), recreated (Foley), or sourced from libraries. Effective sound design builds immersive sonic worlds.",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "sound-effects-sfx"
+    },
+    {
+      "name": "Walla",
+      "definition": "Walla is the background murmur of crowd scenes\u2014indistinct conversation, ambient human noise. Walla artists perform this unintelligible group speech in post-production. The name allegedly comes from actors repeating 'walla walla' to simulate chatter.",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "walla"
+    },
+    {
+      "name": "ADR (Automated Dialogue Replacement)",
+      "definition": "ADR (also called looping) re-records dialogue in post-production, either to replace unusable production sound or add lines. Actors watch themselves and perform in sync with picture. Well-executed ADR is indistinguishable from production audio.",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "adr-automated-dialogue-replacement"
+    },
+    {
+      "name": "Score",
+      "definition": "The score is original music composed specifically for a film, designed to support narrative and emotional arcs. Unlike needle drops (existing songs), scores are created to fit precisely with picture. Composers work with directors to develop musical themes.",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "score"
+    },
+    {
+      "name": "Needle Drop",
+      "definition": "A needle drop is the use of pre-existing recorded music in a film, as if dropping a needle on a record. Licensed songs carry existing associations and nostalgia. Directors like Tarantino and Scorsese are known for curated soundtrack selections.",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "needle-drop"
+    },
+    {
+      "name": "Mickey Mousing",
+      "definition": "Mickey Mousing synchronizes music precisely with on-screen action, like cartoon scores that mimic every movement. While effective for comedy and animation, obvious mickey mousing in dramatic films can feel corny. Subtle rhythmic connection is more common.",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "mickey-mousing"
+    },
+    {
+      "name": "Sound Motif",
+      "definition": "A sound motif is a recurring audio element associated with specific characters, places, or ideas\u2014similar to musical leitmotifs but using non-musical sounds. The sound of a heartbeat, specific ringtone, or animal cry can become meaningful through repetition.",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "sound-motif"
+    },
+    {
+      "name": "Audio Transition",
+      "definition": "Audio transitions use sound to bridge edits\u2014preceding audio from the incoming scene, extending outgoing audio, or using shared sounds that belong to both scenes. These techniques smooth cuts and create continuity beyond visual matching.",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "audio-transition"
+    },
+    {
+      "name": "Acousmatic Sound",
+      "definition": "Acousmatic sound is heard without seeing its source, creating mystery about origin. Horror films use off-screen sounds to generate fear. The technique can be suspenseful (what's making that noise?) or simply practical (sounds exist beyond frame edges).",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "acousmatic-sound"
+    },
+    {
+      "name": "Sonic Worldbuilding",
+      "definition": "Sonic worldbuilding creates cohesive, distinctive sound environments for fictional settings. The sounds of alien planets, fantasy realms, or future cities establish place through audio. Ben Burtt's Star Wars sound design exemplifies this approach.",
+      "category": "Sound",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "sonic-worldbuilding"
+    },
+    {
+      "name": "Audio Ducking",
+      "definition": "Audio ducking automatically lowers background audio levels when dialogue plays, ensuring speech remains clear above music or effects. This mixing technique maintains dynamic soundscapes without sacrificing intelligibility.",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "audio-ducking"
+    },
+    {
+      "name": "Flashforward",
+      "definition": "A flashforward interrupts the present to show future events, creating anticipation or revealing outcomes before explaining how they occur. This technique can spoil surprises intentionally to create dramatic irony or generate questions about how events will unfold.",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "flashforward"
+    },
+    {
+      "name": "Non-Linear Narrative",
+      "definition": "Non-linear narrative presents events out of chronological order\u2014through flashbacks, flashforwards, parallel timelines, or fractured structure. Films like Pulp Fiction, Memento, and Eternal Sunshine use non-linearity for thematic effect and audience engagement.",
+      "category": "Story",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "non-linear-narrative"
+    },
+    {
+      "name": "Parallel Storylines",
+      "definition": "Parallel storylines follow multiple narratives simultaneously, eventually converging or remaining separate. This structure allows comparison between characters, creates suspense through cross-cutting, and expands story scope. Ensemble films often employ parallel narratives.",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "parallel-storylines"
+    },
+    {
+      "name": "Frame Narrative",
+      "definition": "A frame narrative nests one story within another, typically with a character in the outer story telling or experiencing the inner one. The frame provides context, commentary, or unreliability. Many classic tales use frame structures.",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "frame-narrative"
+    },
+    {
+      "name": "Voiceover Narration",
+      "definition": "Voiceover narration adds a character's spoken commentary over images, providing internal thoughts, exposition, or ironic counterpoint to visuals. Voiceover can clarify complex information, establish tone, or create intimacy through direct audience address.",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "voiceover-narration"
+    },
+    {
+      "name": "Deus Ex Machina",
+      "definition": "Deus ex machina (god from the machine) is a sudden, unexpected resolution to an impossible situation\u2014divine intervention, coincidence, or previously unestablished elements. Generally considered weak storytelling, it can be used intentionally for comedic or genre purposes.",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "deus-ex-machina"
+    },
+    {
+      "name": "Plant and Payoff",
+      "definition": "Plant and payoff establishes elements early (the plant) that become significant later (the payoff). Effective setups feel natural initially and satisfying when they return. Chekhov's Gun is the famous formulation: if you show a gun in act one, it must fire by act three.",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "plant-and-payoff"
+    },
+    {
+      "name": "Three-Act Structure",
+      "definition": "Three-act structure divides stories into setup (act one), confrontation (act two), and resolution (act three). This classical model establishes situation and characters, develops conflict, and provides climax and conclusion. Most mainstream films follow this template.",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "three-act-structure"
+    },
+    {
+      "name": "Inciting Incident",
+      "definition": "The inciting incident is the event that disrupts the protagonist's normal life and sets the main story in motion. This turning point occurs in the first act, forcing characters to respond. Without an inciting incident, there's no narrative momentum.",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "inciting-incident"
+    },
+    {
+      "name": "Character Arc",
+      "definition": "A character arc is the transformation a character undergoes throughout a story\u2014from flawed to redeemed, naive to wise, cowardly to brave. This internal journey parallels external plot. Static characters (who don't change) can work but require other forms of interest.",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "character-arc"
+    },
+    {
+      "name": "Subplot",
+      "definition": "A subplot is a secondary storyline that runs alongside the main plot, providing contrast, deepening themes, or developing supporting characters. Effective subplots connect thematically to the main narrative while offering variation in tone or perspective.",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "subplot"
+    },
+    {
+      "name": "Motif",
+      "definition": "A motif is a recurring element\u2014image, object, phrase, idea\u2014that develops meaning through repetition. Water might represent rebirth; birds might symbolize freedom. Motifs create texture and thematic depth, rewarding attentive viewing.",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "motif"
+    },
+    {
+      "name": "Symbolism",
+      "definition": "Symbolism uses concrete objects, characters, or images to represent abstract ideas or concepts beyond their literal meaning. A rose might symbolize love or mortality; light versus dark suggests good versus evil. Symbols create layered meaning.",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "symbolism",
+      "video": "media/symbolism.mp4"
+    },
+    {
+      "name": "Matte Painting",
+      "definition": "Matte painting extends sets or creates environments by combining live-action footage with painted (now digital) backdrops. This technique enables grand vistas, historical settings, and fantasy worlds impossible or impractical to build. Digital tools have replaced traditional glass paintings.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "matte-painting"
+    },
+    {
+      "name": "Miniatures",
+      "definition": "Miniatures are scaled-down models photographed to appear full-size, used for buildings, vehicles, landscapes, and destruction effects. While CGI has replaced many miniature applications, some filmmakers still prefer their physical authenticity. The technique requires careful matching of scale and lighting.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "miniatures"
+    },
+    {
+      "name": "Forced Perspective",
+      "definition": "Forced perspective manipulates spatial perception by positioning objects at different distances from the camera while composing them to appear adjacent. This creates illusions of size\u2014hobbits appear small, giants appear large\u2014without digital effects.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "forced-perspective"
+    },
+    {
+      "name": "Rotoscoping",
+      "definition": "Rotoscoping traces over live-action footage frame by frame, either for animation or visual effects isolation. Animators create realistic movement; VFX artists isolate elements for compositing. The technique is labor-intensive but enables precise control.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "rotoscoping"
+    },
+    {
+      "name": "Wire Work",
+      "definition": "Wire work suspends performers on cables for flying, floating, or gravity-defying stunts. Common in martial arts, superhero, and fantasy films, wires are digitally removed in post-production. The technique enables elaborate physical performances impossible otherwise.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "wire-work"
+    },
+    {
+      "name": "Prosthetic Makeup",
+      "definition": "Prosthetic makeup applies sculptured pieces to actors, transforming appearance through age makeup, creature designs, injury effects, or character transformations. This practical technique creates tangible results that interact naturally with performers and environments.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "prosthetic-makeup"
+    },
+    {
+      "name": "Squibs",
+      "definition": "Squibs are small explosive charges used to simulate bullet impacts, creating bloody hits by detonating blood bags worn under costumes. This practical effect creates realistic, interactive results. Safety protocols govern their use on set.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "squibs"
+    },
+    {
+      "name": "Split Diopter",
+      "definition": "A split diopter is a lens attachment allowing simultaneous focus on foreground and background subjects that would normally be in different focus planes. This creates deep focus effects impossible with standard lenses but produces a visible sharp/soft line.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "split-diopter"
+    },
+    {
+      "name": "Lens Distortion",
+      "definition": "Lens distortion is the warping of straight lines toward frame edges, characteristic of wide-angle lenses. While often corrected, cinematographers sometimes embrace distortion for stylistic effect. Anamorphic lenses produce distinctive horizontal stretching.",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "lens-distortion"
+    },
+    {
+      "name": "Aspect Ratio",
+      "definition": "Aspect ratio is the proportional relationship between image width and height\u20141.33:1 (Academy), 1.85:1 (widescreen), 2.39:1 (Cinemascope). Different ratios create different compositional possibilities and emotional effects. Some films vary aspect ratio for storytelling.",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "aspect-ratio"
+    },
+    {
+      "name": "IMAX",
+      "definition": "IMAX is a large-format film system using bigger negatives for higher resolution and immersive presentation. IMAX cameras are larger but produce exceptional image quality. Directors like Nolan shoot key sequences in IMAX for maximum visual impact.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "imax"
+    },
+    {
+      "name": "Anamorphic",
+      "definition": "Anamorphic photography uses special lenses that squeeze a wide image onto standard film, then unsqueeze it for projection. This creates the distinctive widescreen look with oval bokeh, horizontal lens flares, and subtle distortion beloved by cinematographers.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "anamorphic"
+    },
+    {
+      "name": "Morphing",
+      "definition": "Morphing digitally transforms one image into another through fluid transition, seamlessly blending features. Popularized in the 1990s (Terminator 2, Michael Jackson's Black or White), morphing creates otherworldly transformations impossible practically.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "morphing"
+    },
+    {
+      "name": "Digital De-aging",
+      "definition": "Digital de-aging uses CGI to make actors appear younger, recreating their earlier appearances through digital manipulation. This technology enables actors to play characters across decades. Films like The Irishman and Marvel projects use extensive de-aging.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "digital-de-aging"
+    },
+    {
+      "name": "Virtual Production",
+      "definition": "Virtual production uses real-time rendering on LED walls to create in-camera environments, replacing green screens with actual backgrounds that respond to camera movement. The Mandalorian pioneered this technique, combining practical presence with digital flexibility.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "virtual-production"
+    },
+    {
+      "name": "Italian Neorealism",
+      "definition": "Italian Neorealism emerged post-WWII, shooting on location with non-actors to capture authentic working-class stories. Films like Bicycle Thieves and Rome, Open City rejected studio artifice for documentary-influenced realism. This movement influenced global cinema's embrace of real locations.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Documentary",
+      "slug": "italian-neorealism"
+    },
+    {
+      "name": "Dogme 95",
+      "definition": "Dogme 95 was a Danish filmmaking movement led by Lars von Trier and Thomas Vinterberg, promoting strict rules: location shooting, handheld cameras, no artificial lighting, and direct sound. These Vows of Chastity aimed to purify cinema from Hollywood artifice.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Documentary",
+      "slug": "dogme-95"
+    },
+    {
+      "name": "Mumblecore",
+      "definition": "Mumblecore describes micro-budget independent films featuring naturalistic dialogue, non-professional actors, and relationship-focused stories. Filmmakers like the Duplass brothers and Joe Swanberg created intimate, improvisational works using digital cameras.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Documentary",
+      "slug": "mumblecore"
+    },
+    {
+      "name": "Giallo",
+      "definition": "Giallo is an Italian thriller subgenre featuring stylized violence, elaborate murder mysteries, and vivid visual design. Directors like Argento and Bava created dreamlike horror combining brutal killings with operatic aesthetics. The name comes from yellow-covered Italian pulp novels.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "giallo"
+    },
+    {
+      "name": "Blaxploitation",
+      "definition": "Blaxploitation films of the 1970s featured Black actors in genre films targeted at urban audiences, including Shaft, Super Fly, and Foxy Brown. While criticized for stereotypes, these films provided rare opportunities for Black filmmakers and actors.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "blaxploitation"
+    },
+    {
+      "name": "Mockumentary",
+      "definition": "Mockumentary uses documentary techniques\u2014interviews, handheld footage, archival style\u2014for fictional, often comedic purposes. This form parodies documentary conventions while creating believable fictional worlds. This Is Spinal Tap and The Office exemplify the approach.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Documentary",
+      "slug": "mockumentary"
+    },
+    {
+      "name": "Poetic Realism",
+      "definition": "Poetic Realism was a 1930s French movement combining realistic working-class settings with lyrical, fatalistic romanticism. Directors like Carn\u00e9 and Renoir created atmospheric melodramas where doomed characters sought beauty amid poverty.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Romantic",
+      "slug": "poetic-realism"
+    },
+    {
+      "name": "Slow Cinema",
+      "definition": "Slow cinema embraces extended takes, minimal dialogue, and contemplative pacing that allows viewers to absorb environments and internal states. Directors like Tarkovsky, B\u00e9la Tarr, and Tsai Ming-liang create meditative works demanding patience.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "slow-cinema"
+    },
+    {
+      "name": "Hyperlink Cinema",
+      "definition": "Hyperlink cinema weaves multiple storylines that intersect and connect, named for web hyperlinks' interconnected structure. Films like Crash, Babel, and Magnolia use this mosaic approach to explore themes across diverse characters.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "hyperlink-cinema"
+    },
+    {
+      "name": "Elevated Horror",
+      "definition": "Elevated horror describes prestige horror films that use genre conventions to explore serious themes, emphasizing atmosphere and psychology over jump scares. Films like Hereditary, The Babadook, and Get Out exemplify this critical-darling approach.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "elevated-horror"
+    },
+    {
+      "name": "Maximalism",
+      "definition": "Maximalism embraces visual excess\u2014elaborate production design, dense compositions, saturated colors, and overwhelming detail. Baz Luhrmann and Terry Gilliam create maximalist worlds opposing minimalist restraint with sensory abundance.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "maximalism"
+    },
+    {
+      "name": "Minimalism",
+      "definition": "Minimalism strips away excess, using sparse dialogue, restrained camera work, simple settings, and subtle performances. This approach focuses attention through absence rather than addition. Bresson, Ozu, and Kelly Reichardt work in minimalist modes.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "minimalism"
+    },
+    {
+      "name": "Exploitation Film",
+      "definition": "Exploitation films emphasize sensational content\u2014sex, violence, taboo subjects\u2014over artistic merit, marketed through lurid advertising. These low-budget productions include subgenres like splatter, sexploitation, and women-in-prison films.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "exploitation-film"
+    },
+    {
+      "name": "Arthouse",
+      "definition": "Arthouse refers to films prioritizing artistic vision over commercial appeal, typically shown in independent theaters. These works may be experimental, foreign, documentary, or simply outside mainstream genres. The term connotes cultural prestige and niche audiences.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "arthouse"
+    },
+    {
+      "name": "Neo-Noir",
+      "definition": "Neo-noir updates film noir's visual style and themes for contemporary settings, maintaining high contrast, cynical antiheroes, and morally ambiguous narratives. Films like Chinatown, Blade Runner, and Drive honor noir traditions in modern contexts.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "neo-noir"
+    },
+    {
+      "name": "Wuxia",
+      "definition": "Wuxia is a Chinese genre featuring martial arts heroes in ancient settings, emphasizing honor, justice, and elaborate choreography. Wire-enhanced fighting creates gravity-defying action. Crouching Tiger, Hidden Dragon brought wuxia to international audiences.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "wuxia"
+    },
+    {
+      "name": "Amber Phosphor CRT",
+      "definition": "The amber phosphor CRT aesthetic recreates the warm orange-amber glow of 1980s monochrome computer monitors like the Amdek 310A or Zenith amber displays. Unlike the green IBM 5151, amber monitors were marketed as easier on the eyes. Key visual elements include visible horizontal scanlines, curved glass reflections, phosphor glow with ghosting/afterimage effects, and 80x25 character grids displaying DOS-era bitmap fonts. This retro computing look evokes early personal computing, hacker culture, and technological nostalgia.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Nostalgic",
+      "slug": "amber-phosphor-crt"
+    },
+    {
+      "name": "Arc Shot",
+      "definition": "An arc shot follows a curved camera path around the subject, creating dynamic emphasis and visual interest. The camera moves in a semi-circular motion while keeping the subject centered, adding energy to static scenes and revealing different angles of characters or objects during pivotal moments.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "arc-shot"
+    },
+    {
+      "name": "Boom Shot",
+      "definition": "A boom shot uses a vertical lift or drop on a boom arm to create dramatic reveals or descents. The camera moves straight up or down, differing from crane shots which can combine vertical and horizontal movement. Boom shots are effective for descending into scenes or rising to reveal scope.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "boom-shot"
+    },
+    {
+      "name": "Dolly-In",
+      "definition": "A dolly-in physically moves the camera forward toward the subject, creating a sense of approaching, intensifying focus, or emotional engagement. Unlike a zoom, the dolly-in maintains natural perspective as the camera travels through space, making viewers feel drawn into the scene.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "dolly-in"
+    },
+    {
+      "name": "Dolly-Out",
+      "definition": "A dolly-out moves the camera backward away from the subject, revealing more environment or creating emotional distance. This retreat can signify isolation, ending, or the growing scale of a scene. The physical movement maintains natural perspective unlike optical zoom-outs.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "dolly-out"
+    },
+    {
+      "name": "Dolly Zoom",
+      "definition": "The dolly zoom, also called zolly or Vertigo effect, simultaneously dollies and zooms in opposite directions, creating a disorienting depth distortion where the subject stays the same size but the background appears to stretch or compress. Hitchcock pioneered this unsettling technique in Vertigo.",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "dolly-zoom",
+      "video": "media/dolly-zoom.mp4"
+    },
+    {
+      "name": "Follow Shot",
+      "definition": "A follow shot tracks the subject laterally or from behind as they move through a scene, pursuing them through space. This technique maintains continuous connection with moving characters, creating immersion as viewers travel alongside the action rather than observing from a fixed position.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "follow-shot"
+    },
+    {
+      "name": "Jib Shot",
+      "definition": "A jib shot uses an arm-mounted camera for sweeping arc movements, combining vertical and horizontal motion in fluid curves. Jibs are smaller than cranes and allow precise, controlled movements ideal for dynamic reveals, dramatic swoops, and following action in confined spaces.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "jib-shot"
+    },
+    {
+      "name": "Pedestal Shot",
+      "definition": "A pedestal shot moves the camera straight up or down without tilting, as if rising or lowering on an elevator. Unlike tilts which angle the camera, pedestal moves maintain the same viewing angle while changing height, useful for revealing tall subjects or descending to details.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "pedestal-shot"
+    },
+    {
+      "name": "Smooth Tracking Shot",
+      "definition": "A smooth tracking shot follows the subject fluidly without jerks or shakiness, gliding alongside movement with perfect stability. Whether using dollies, sliders, gimbals, or Steadicam, the goal is invisible camera movement that feels natural and keeps focus on the subject's journey.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "smooth-tracking-shot"
+    },
+    {
+      "name": "American Shot",
+      "definition": "The American shot, also called 3/4 shot or medium-long shot, frames subjects from approximately mid-thigh up. Developed in Hollywood westerns to show holstered guns while maintaining facial expressions, this framing balances body language with character emotion, ideal for action and group dynamics.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Action",
+      "slug": "american-shot"
+    },
+    {
+      "name": "Full Shot",
+      "definition": "A full shot frames the entire human body from head to toe, showing the complete figure within the environment. This framing reveals body language, costume, and physical action while maintaining enough distance to establish spatial context and character relationships.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "full-shot"
+    },
+    {
+      "name": "Head Shot",
+      "definition": "A head shot frames the subject from shoulders up, focusing on facial features in a portrait-style composition. Common in interviews, auditions, and character introductions, this tight framing emphasizes performance and expression while eliminating environmental distractions.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "head-shot"
+    },
+    {
+      "name": "Italian Shot",
+      "definition": "The Italian shot is an extreme close-up focusing only on the eyes, named for its prominence in Sergio Leone's Spaghetti Westerns. This intensely tight framing captures micro-expressions and creates powerful tension during standoffs or emotional peaks, making eyes the entire frame.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "italian-shot"
+    },
+    {
+      "name": "Profile Shot",
+      "definition": "A profile shot captures the subject from the side, showing the face in pure profile silhouette. This classical framing emphasizes facial contours, creates elegant compositions, and can establish character relationships when two profiles face each other or look in the same direction.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "profile-shot"
+    },
+    {
+      "name": "Reverse Angle",
+      "definition": "A reverse angle cuts to the opposite viewpoint in a scene, typically showing what a character was looking at or switching between conversation participants. This fundamental editing technique maintains spatial relationships while providing visual variety and coverage.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "reverse-angle"
+    },
+    {
+      "name": "Shot-Reverse-Shot",
+      "definition": "Shot-reverse-shot is a sequence alternating between two characters, typically during dialogue, showing each person's reactions to the other. This fundamental technique of narrative filmmaking creates conversational rhythm and allows editors to control pacing and emotional emphasis.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "shot-reverse-shot"
+    },
+    {
+      "name": "Trunk Shot",
+      "definition": "A trunk shot frames the scene from inside a car trunk looking up at characters, creating an unusual low-angle perspective associated with crime films. Popularized by Quentin Tarantino, this distinctive angle places viewers in a vulnerable position, often revealing captives or bodies.",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "trunk-shot"
+    },
+    {
+      "name": "Wide Shot",
+      "definition": "A wide shot captures the full scene including substantial environment around the subjects, establishing spatial relationships and context. Wider than a long shot, this framing emphasizes setting over character, useful for landscapes, architecture, and epic battle sequences.",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "wide-shot"
+    },
+    {
+      "name": "Accent Light",
+      "definition": "An accent light focuses illumination on a specific area or object for emphasis, drawing viewer attention to important props, details, or features. This targeted lighting separates key elements from the background and creates visual hierarchy within the frame.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "accent-light"
+    },
+    {
+      "name": "Cucoloris",
+      "definition": "A cucoloris (or cookie) is a board with irregular holes that creates patterned shadows when light passes through it. Used to simulate window blinds, tree branches, or abstract patterns, cookies add texture and visual interest to otherwise flat surfaces and backgrounds.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "cucoloris"
+    },
+    {
+      "name": "Diffusion",
+      "definition": "Diffusion softens harsh light by passing it through translucent material like silk, muslin, or frosted filters. This technique reduces sharp shadows, minimizes skin imperfections, and creates gentle, flattering illumination commonly used in beauty, romance, and dream sequences.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "diffusion"
+    },
+    {
+      "name": "Firelight",
+      "definition": "Firelight creates warm, flickering orange illumination that dances across subjects, evoking campfires, candles, or hearths. This practical lighting effect suggests intimacy, survival, storytelling moments, and primitive settings, with its characteristic movement adding life to scenes.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "firelight"
+    },
+    {
+      "name": "Frontal Lighting",
+      "definition": "Frontal lighting positions the main light source directly in front of the subject, aligned with the camera. This flat, shadowless illumination eliminates depth and dimension, creating even exposure useful for beauty shots, fashion, and deliberately stylized flat aesthetics.",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "frontal-lighting"
+    },
+    {
+      "name": "Hair Light",
+      "definition": "A hair light, also called back light or separation light, illuminates the subject's hair and shoulders from behind to create a rim of light that separates them from the background. This halo effect adds depth, dimension, and a polished professional quality to portraits.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "hair-light"
+    },
+    {
+      "name": "Mood Lighting",
+      "definition": "Mood lighting prioritizes emotional atmosphere over realistic illumination, using color, intensity, and placement to evoke specific feelings. Whether romantic candlelight, tense shadows, or ethereal glows, mood lighting manipulates viewer emotions through deliberate lighting choices.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "mood-lighting"
+    },
+    {
+      "name": "Neon Lighting",
+      "definition": "Neon lighting uses vibrant, glowing tubes or LED equivalents to create bold, saturated color environments. Associated with urban nightlife, cyberpunk aesthetics, and modern noir, neon's electric pinks, blues, and purples create striking, stylized atmospheres with high visual impact.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "neon-lighting"
+    },
+    {
+      "name": "Rim Lighting",
+      "definition": "Rim lighting places light sources behind subjects to illuminate their edges and outline, creating a glowing border that separates them from the background. This dramatic technique emphasizes silhouettes, adds production value, and creates angelic or heroic visual associations.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "rim-lighting"
+    },
+    {
+      "name": "Top Lighting",
+      "definition": "Top lighting positions the main light source directly overhead, casting shadows downward on the face and body. This dramatic angle creates skull-like shadows under eyes and nose, useful for horror, villains, interrogation scenes, and oppressive atmospheres.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "top-lighting"
+    },
+    {
+      "name": "Underwater Lighting",
+      "definition": "Underwater lighting creates the distinctive blue-green, diffused illumination of subaquatic environments. Light refracts and scatters through water, producing caustic patterns, reduced visibility, and ethereal quality that transforms ordinary scenes into mysterious aquatic worlds.",
+      "category": "Lighting",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "underwater-lighting"
+    },
+    {
+      "name": "Volumetric Lighting",
+      "definition": "Volumetric lighting makes light beams visible as they pass through atmosphere containing fog, dust, smoke, or haze. These god rays or light shafts create dramatic depth, spiritual atmosphere, and three-dimensional illumination that sculpts space with visible light.",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "volumetric-lighting"
+    },
+    {
+      "name": "Anamorphic Flares",
+      "definition": "Anamorphic flares are horizontal streaks of light caused by bright sources hitting anamorphic lenses. These distinctive blue or orange streaks across the frame have become associated with cinematic production value, adding stylized glamour and sci-fi aesthetics to images.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "anamorphic-flares"
+    },
+    {
+      "name": "Bloom Effect",
+      "definition": "Bloom creates a soft glow around bright areas where light appears to bleed beyond its boundaries. This overbright halation effect simulates how eyes and cameras perceive intense light sources, adding dreamy, ethereal, or heavenly qualities to illuminated areas.",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "bloom-effect"
+    },
+    {
+      "name": "Chromatic Aberration",
+      "definition": "Chromatic aberration produces color fringing at high-contrast edges, where red-green or blue-yellow halos appear due to lens imperfections. Once considered a flaw, this effect is now deliberately added for vintage, lo-fi, or psychedelic aesthetics.",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "chromatic-aberration"
+    },
+    {
+      "name": "Color Correction",
+      "definition": "Color correction adjusts footage to achieve accurate, consistent color representation, fixing white balance issues, matching shots, and ensuring skin tones appear natural. This technical process precedes creative color grading and establishes a neutral baseline for further stylization.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "color-correction"
+    },
+    {
+      "name": "Crossfade",
+      "definition": "A crossfade smoothly blends two shots by simultaneously fading one out while fading the next in, creating a momentary overlap. This gentle transition suggests the passage of time, connects related scenes, or creates dreamy, ethereal connections between images.",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "crossfade"
+    },
+    {
+      "name": "Glow Effect",
+      "definition": "A glow effect adds soft luminosity around bright objects, lights, or highlights, creating an ethereal, magical quality. Used for supernatural elements, heavenly visions, and romantic atmospheres, glow suggests otherworldly radiance and visual warmth.",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "glow-effect"
+    },
+    {
+      "name": "HDR Effect",
+      "definition": "HDR (High Dynamic Range) effect maximizes detail in both highlights and shadows simultaneously, creating images with expanded tonal range. This technique reveals detail in bright skies and dark shadows that would normally be lost, producing hyper-detailed, sometimes surreal results.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "hdr-effect"
+    },
+    {
+      "name": "Loop Animation",
+      "definition": "Loop animation creates seamlessly repeating motion that cycles infinitely without visible start or end points. Used for backgrounds, ambient elements, and hypnotic effects, perfect loops require careful planning to ensure the end frame transitions invisibly to the beginning.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "loop-animation"
+    },
+    {
+      "name": "Motion Blur",
+      "definition": "Motion blur adds realistic streaking to moving elements, simulating how cameras capture movement during exposure. This effect conveys speed, urgency, and kinetic energy while smoothing animation and making fast motion feel natural rather than strobing.",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Action",
+      "slug": "motion-blur"
+    },
+    {
+      "name": "Parallax Effect",
+      "definition": "Parallax creates depth by moving visual layers at different speeds\u2014distant elements move slowly while closer ones move quickly. This 2.5D technique transforms flat images into dimensional environments, adding cinematic depth to photographs and creating immersive scrolling effects.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "parallax-effect",
+      "video": "media/parallax-effect.mp4"
+    },
+    {
+      "name": "Particle Effects",
+      "definition": "Particle effects simulate collections of small elements like sparks, rain, snow, dust, embers, or magical energy. These dynamic systems add environmental atmosphere, magical elements, and physical phenomena that bring scenes to life with natural or fantastical motion.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "particle-effects"
+    },
+    {
+      "name": "Reflections",
+      "definition": "Reflections capture mirror-like surfaces showing the environment, adding realism, depth, and visual complexity to scenes. Whether in water, glass, chrome, or wet pavement, accurate reflections ground images in physical reality and double visual information.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "reflections"
+    },
+    {
+      "name": "Refractions",
+      "definition": "Refractions show light bending as it passes through transparent materials like glass, water, or crystals, distorting the view behind them. This optical effect adds scientific accuracy, magical qualities, and visual interest to translucent objects and liquid surfaces.",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "refractions"
+    },
+    {
+      "name": "Vignette",
+      "definition": "A vignette darkens or desaturates the edges of the frame, drawing viewer focus toward the brighter center. This classic photographic effect, originally a lens artifact, creates intimate focus, vintage aesthetics, and natural eye-line guidance within compositions.",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "vignette",
+      "video": "media/vignette.mp4"
+    },
+    {
+      "name": "Vintage Film Look",
+      "definition": "The vintage film look recreates characteristics of aged analog footage including grain, scratches, light leaks, color fading, and gate weave. This nostalgic aesthetic evokes specific eras, adds warmth and texture, and suggests memory or historical footage.",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Nostalgic",
+      "slug": "vintage-film-look",
+      "video": "media/vintage-film-look.mp4"
+    },
+    {
+      "name": "White Balance",
+      "definition": "White balance adjusts color temperature to ensure neutral whites under different lighting conditions. Correcting for warm tungsten or cool daylight prevents unwanted color casts, while deliberate white balance shifts can create warm or cold emotional atmospheres.",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "white-balance"
+    },
+    {
+      "name": "Silent Slapstick",
+      "definition": "Silent slapstick is the physical-comedy language of Chaplin, Keaton and Lloyd: wide, locked-off frames that keep the whole body and the whole gag visible. Undercranked motion, iris transitions, intertitles and pantomime acting replace dialogue entirely. The style prizes choreography, props and peril staged in real space.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Nostalgic",
+      "slug": "silent-slapstick"
+    },
+    {
+      "name": "Screwball Comedy",
+      "definition": "Screwball comedy is the fast-talking romantic style of 1930s and 40s Hollywood \u2014 overlapping dialogue, battle-of-the-sexes plots and impeccable art-deco interiors. Photography is bright, glossy high-key black-and-white with elegant medium two-shots that keep sparring couples locked in the same frame.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Romantic",
+      "slug": "screwball-comedy"
+    },
+    {
+      "name": "Technicolor Musical",
+      "definition": "The Technicolor musical is the saturated three-strip look of golden-age Hollywood song-and-dance pictures. Candy-coloured soundstage sets, crane choreography and hard, even lighting make every hue vibrate at maximum intensity. The frame is wide, symmetrical and built around movement.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Romantic",
+      "slug": "technicolor-musical"
+    },
+    {
+      "name": "New Hollywood",
+      "definition": "New Hollywood is the American cinema of the late 1960s and 70s: naturalistic light, zoom lenses, real locations and morally ambiguous antiheroes. Grainy Eastmancolor stock, loose handheld coverage and downbeat endings replaced studio gloss with documentary-inflected realism.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "new-hollywood"
+    },
+    {
+      "name": "Conspiracy Thriller",
+      "definition": "The 70s conspiracy thriller frames its characters as small figures dwarfed by architecture \u2014 long-lens shots across plazas, atriums and parking garages that imply constant surveillance. Muted colours, available light and telephoto compression build institutional paranoia into the composition itself.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "conspiracy-thriller"
+    },
+    {
+      "name": "Grindhouse",
+      "definition": "Grindhouse recreates the battered look of 1970s exploitation double features: scratched emulsion, missing frames, burnt-out reel changes and oversaturated, badly timed colour. The style is deliberately trashy \u2014 lurid subject matter, snap zooms and jagged cuts worn like badges of honour.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "grindhouse"
+    },
+    {
+      "name": "Gothic Horror",
+      "definition": "Gothic horror is the candlelit castle style of Universal and Hammer: fog-drenched graveyards, crumbling manors, velvet capes and lightning against painted skies. Rich, theatrical colour, deep shadows and romantic production design make dread feel opulent rather than gritty.",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Horror",
+      "slug": "gothic-horror",
+      "video": "media/gothic-horror.mp4"
+    },
+    {
+      "name": "Body Horror",
+      "definition": "Body horror stages the transformation, mutation or betrayal of flesh itself, in the tradition of Cronenberg and Carpenter. Clinical framing and unflinching macro detail meet practical prosthetics, latex and slime, with cold fluorescent or medical lighting that leaves nowhere to hide.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "body-horror"
+    },
+    {
+      "name": "J-Horror",
+      "definition": "J-horror is the Japanese ghost-film style of the late 1990s: pale spirits with long black hair, cursed technology and moisture everywhere. The palette is drained toward grey-green, interiors are dim and ordinary, and horror accumulates through stillness, negative space and glimpses at the edge of frame.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "j-horror",
+      "video": "media/j-horror.mp4"
+    },
+    {
+      "name": "Southern Gothic",
+      "definition": "Southern Gothic soaks decaying plantations, kudzu, revival tents and swampland in humid golden haze. Sweat, rust and rot texture every surface while beauty and menace share the frame \u2014 long magic-hour exteriors against interiors lit by single practical lamps.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "southern-gothic"
+    },
+    {
+      "name": "Film Soleil",
+      "definition": "Film soleil is noir relocated to blinding sunlight \u2014 desert highways, motel pools and mirrored aviators instead of rain and neon. Overexposed whites, hard black shadows and heat shimmer make daylight itself feel hostile and morally bleached.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "film-soleil"
+    },
+    {
+      "name": "Acid Western",
+      "definition": "The acid western warps frontier iconography into hallucination: sun-flared landscapes, anachronistic drifters and death treated as psychedelic ritual. Expect high-contrast monochrome or bleached colour, extreme wide lenses and dream logic replacing plot logic.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "acid-western"
+    },
+    {
+      "name": "Neo-Western",
+      "definition": "The neo-western transplants frontier morality into the present day \u2014 pickup trucks instead of horses, border country instead of open range. Vast anamorphic landscapes dwarf laconic characters, with natural magic-hour light and long silences doing the storytelling.",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "neo-western",
+      "video": "media/neo-western.mp4"
+    },
+    {
+      "name": "Samurai Cinema",
+      "definition": "Samurai cinema is the jidaigeki style of Kurosawa and Kobayashi: telephoto battle coverage, weather as drama \u2014 driving rain, dust, wind \u2014 and rigorous geometric blocking. Duels are held in long, tense stillness broken by a single decisive cut.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "samurai-cinema"
+    },
+    {
+      "name": "Heroic Bloodshed",
+      "definition": "Heroic bloodshed is the Hong Kong action-melodrama style of John Woo: two-gun standoffs, doves, slow-motion dives and brotherhood pushed to operatic extremes. Muzzle flashes bloom in smoky warehouses while intercut close-ups turn gunfights into emotional arias.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Action",
+      "slug": "heroic-bloodshed"
+    },
+    {
+      "name": "Kaiju Cinema",
+      "definition": "Kaiju cinema stages giant monsters against miniature cities in the Toho tradition. Low angles from street level sell impossible scale, searchlights rake smoke-filled night skies, and suitmation texture \u2014 rubber, sparks, collapsing model buildings \u2014 gives destruction a handmade weight.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "kaiju-cinema"
+    },
+    {
+      "name": "Bollywood Masala",
+      "definition": "Masala style blends romance, action and musical spectacle in one saturated package: costume changes mid-song, monsoon-soaked embraces, hundreds of synchronized dancers and crane shots that swirl around the leads. Colour is pushed to festival intensity and emotion is played at full volume.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Romantic",
+      "slug": "bollywood-masala"
+    },
+    {
+      "name": "Cin\u00e9ma du Look",
+      "definition": "Cin\u00e9ma du look is the glossy 1980s French style of Besson and Beineix \u2014 youth, speed and doomed romance rendered in high-style images. Neon and primary colours slick wet streets, metro tunnels and brutalist interiors, with fashion-editorial composition prized over realism.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "cinema-du-look"
+    },
+    {
+      "name": "Magical Realism",
+      "definition": "Magical realism treats the impossible as mundane: levitations, ghosts and miracles photographed with the same calm naturalism as breakfast. Warm practical light, unhurried camera moves and matter-of-fact staging let wonder infiltrate the everyday without fanfare.",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "magical-realism"
+    },
+    {
+      "name": "Afrofuturism",
+      "definition": "Afrofuturism fuses African aesthetics, diasporic history and speculative technology \u2014 chrome and cowrie shells, ancestral pattern and starship geometry in one frame. Rich melanin-forward lighting, regal costume design and cosmic colour palettes build futures rooted in heritage.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "afrofuturism"
+    },
+    {
+      "name": "Cyberpunk",
+      "definition": "Cyberpunk is high tech against low life: rain-slick megacity streets, holographic advertising, neon kanji and chrome prosthetics. Smoky shafts of light, teal-and-magenta glow and perpetual night render corporate dystopia as seductive spectacle.",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "cyberpunk"
+    },
+    {
+      "name": "Synthwave Retrowave",
+      "definition": "Synthwave is the 1980s that never existed: gridded horizons, chrome text, VHS scanlines and a striped setting sun. Magenta-and-cyan gradients, sports-car silhouettes and analog glow render nostalgia as pure electric colour.",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Nostalgic",
+      "slug": "synthwave-retrowave"
+    },
+    {
+      "name": "Steampunk",
+      "definition": "Steampunk retrofits the future with Victorian machinery \u2014 brass goggles, airships, clockwork limbs and gaslit laboratories wreathed in steam. Warm tungsten and firelight play over copper, leather and rivets, giving fantasy technology a tactile, hand-built glow.",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "steampunk"
+    },
+    {
+      "name": "Space Opera",
+      "definition": "Space opera is mythic adventure at galactic scale: vast capital ships crossing the frame, binary sunsets, throne rooms and cantina ensembles. Monumental production design, sweeping orchestral pacing and painterly nebula light favour grandeur over hard science.",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "space-opera"
+    },
+    {
+      "name": "Painterly Anime Pastoral",
+      "definition": "The painterly anime pastoral, in the Studio Ghibli tradition, renders countryside light in gouache washes \u2014 cumulus towers, wind through grass, cluttered kitchens glowing at dusk. Compositions breathe with gentle detail and the resting beats between actions.",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "painterly-anime-pastoral"
+    },
+    {
+      "name": "Stop-Motion Aesthetic",
+      "definition": "The stop-motion aesthetic embraces the handmade: felt, clay and armature puppets animated frame by frame with visible fingerprints and slightly imperfect motion. Miniature depth of field and tungsten-warm practical sets give every scene a diorama intimacy.",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Nostalgic",
+      "slug": "stop-motion-aesthetic"
+    },
+    {
+      "name": "Coming-of-Age Indie",
+      "definition": "The coming-of-age indie look is soft natural light through bedroom curtains, bicycles at dusk, and 16mm-style grain over pastel suburbia. Handheld intimacy, sun flares and end-of-summer melancholy frame small moments as monumental.",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Nostalgic",
+      "slug": "coming-of-age-indie"
+    },
+    {
+      "name": "Nordic Noir",
+      "definition": "Nordic noir is the Scandinavian crime aesthetic: flat grey daylight, desaturated blues, knitwear and rain over concrete and fjord. Wide, still compositions hold bleak landscapes and unreadable faces, letting silence and cold negative space carry the tension.",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "nordic-noir"
+    }
+  ]
+}

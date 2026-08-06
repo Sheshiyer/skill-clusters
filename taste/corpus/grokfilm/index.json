@@ -1,0 +1,2105 @@
+{
+  "count": 300,
+  "techniques": [
+    {
+      "name": "Aerial Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "aerial-shot"
+    },
+    {
+      "name": "Bird's Eye View",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "bird-s-eye-view"
+    },
+    {
+      "name": "Close-Up Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "close-up-shot"
+    },
+    {
+      "name": "Dutch Angle",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Horror",
+      "slug": "dutch-angle"
+    },
+    {
+      "name": "Dolly Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "dolly-shot"
+    },
+    {
+      "name": "Establishing Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "establishing-shot"
+    },
+    {
+      "name": "Extreme Close-Up",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "extreme-close-up"
+    },
+    {
+      "name": "Extreme Long Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "extreme-long-shot"
+    },
+    {
+      "name": "Eye-Level Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Documentary",
+      "slug": "eye-level-shot"
+    },
+    {
+      "name": "Handheld Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Documentary",
+      "slug": "handheld-shot"
+    },
+    {
+      "name": "Head-On Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "head-on-shot"
+    },
+    {
+      "name": "Helicopter Shot",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "helicopter-shot"
+    },
+    {
+      "name": "High Angle Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "high-angle-shot"
+    },
+    {
+      "name": "Insert Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "insert-shot"
+    },
+    {
+      "name": "Long Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "long-shot"
+    },
+    {
+      "name": "Low Angle Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "low-angle-shot"
+    },
+    {
+      "name": "Master Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "master-shot"
+    },
+    {
+      "name": "Medium Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "medium-shot"
+    },
+    {
+      "name": "Over-the-Shoulder Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "over-the-shoulder-shot"
+    },
+    {
+      "name": "Overhead Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "overhead-shot"
+    },
+    {
+      "name": "Pan Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "pan-shot"
+    },
+    {
+      "name": "P.O.V. Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Horror",
+      "slug": "p-o-v-shot"
+    },
+    {
+      "name": "Rack Focus",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "rack-focus"
+    },
+    {
+      "name": "Slow Motion",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "slow-motion"
+    },
+    {
+      "name": "Steadicam Shot",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "steadicam-shot"
+    },
+    {
+      "name": "Tracking Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "tracking-shot"
+    },
+    {
+      "name": "Vertigo Effect",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "vertigo-effect"
+    },
+    {
+      "name": "Crane Shot",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "crane-shot"
+    },
+    {
+      "name": "One-er (Oner)",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "one-er-oner"
+    },
+    {
+      "name": "Three-Point Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "three-point-lighting"
+    },
+    {
+      "name": "Key Light",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "key-light"
+    },
+    {
+      "name": "High-Key Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Romantic",
+      "slug": "high-key-lighting"
+    },
+    {
+      "name": "Low-Key Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "low-key-lighting"
+    },
+    {
+      "name": "Chiaroscuro",
+      "category": "Lighting",
+      "difficulty": "Advanced",
+      "mood": "Dramatic",
+      "slug": "chiaroscuro"
+    },
+    {
+      "name": "Rembrandt Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "rembrandt-lighting"
+    },
+    {
+      "name": "Silhouette",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "silhouette"
+    },
+    {
+      "name": "Golden Hour",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "golden-hour"
+    },
+    {
+      "name": "Blue Hour",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "blue-hour"
+    },
+    {
+      "name": "Practical Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "practical-lighting"
+    },
+    {
+      "name": "Hard Light",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "hard-light"
+    },
+    {
+      "name": "Soft Light",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "soft-light"
+    },
+    {
+      "name": "Uplighting",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Horror",
+      "slug": "uplighting"
+    },
+    {
+      "name": "Side Lighting",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "side-lighting"
+    },
+    {
+      "name": "Lens Flare",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "lens-flare"
+    },
+    {
+      "name": "Butterfly Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Romantic",
+      "slug": "butterfly-lighting"
+    },
+    {
+      "name": "Cross-Cutting",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "cross-cutting"
+    },
+    {
+      "name": "Jump Cut",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "jump-cut"
+    },
+    {
+      "name": "Match Cut",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "match-cut"
+    },
+    {
+      "name": "Dissolve",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "dissolve"
+    },
+    {
+      "name": "Fade In/Out",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "fade-in-out"
+    },
+    {
+      "name": "Montage",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "montage"
+    },
+    {
+      "name": "L-Cut",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "l-cut"
+    },
+    {
+      "name": "J-Cut",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "j-cut"
+    },
+    {
+      "name": "Smash Cut",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Action",
+      "slug": "smash-cut"
+    },
+    {
+      "name": "Long Take",
+      "category": "Editing",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "long-take"
+    },
+    {
+      "name": "Freeze Frame",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "freeze-frame"
+    },
+    {
+      "name": "Split Screen",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "split-screen"
+    },
+    {
+      "name": "Rule of Thirds",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "rule-of-thirds"
+    },
+    {
+      "name": "Symmetry",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "symmetry"
+    },
+    {
+      "name": "Leading Lines",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "leading-lines"
+    },
+    {
+      "name": "Framing Within Frame",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "framing-within-frame"
+    },
+    {
+      "name": "Negative Space",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "negative-space"
+    },
+    {
+      "name": "Shallow Focus",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Romantic",
+      "slug": "shallow-focus"
+    },
+    {
+      "name": "Deep Focus",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Documentary",
+      "slug": "deep-focus"
+    },
+    {
+      "name": "Mise-en-Sc\u00e8ne",
+      "category": "Composition",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "mise-en-scene"
+    },
+    {
+      "name": "Golden Ratio",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "golden-ratio"
+    },
+    {
+      "name": "Diegetic Sound",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "diegetic-sound"
+    },
+    {
+      "name": "Non-Diegetic Sound",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "non-diegetic-sound"
+    },
+    {
+      "name": "Foley",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "foley"
+    },
+    {
+      "name": "Sound Bridge",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "sound-bridge"
+    },
+    {
+      "name": "Leitmotif",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "leitmotif"
+    },
+    {
+      "name": "Stinger",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Horror",
+      "slug": "stinger"
+    },
+    {
+      "name": "Silence",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "silence"
+    },
+    {
+      "name": "Flashback",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "flashback"
+    },
+    {
+      "name": "MacGuffin",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "macguffin"
+    },
+    {
+      "name": "Red Herring",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "red-herring"
+    },
+    {
+      "name": "Foreshadowing",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "foreshadowing"
+    },
+    {
+      "name": "Dramatic Irony",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "dramatic-irony"
+    },
+    {
+      "name": "Breaking Fourth Wall",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "breaking-fourth-wall"
+    },
+    {
+      "name": "Unreliable Narrator",
+      "category": "Story",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "unreliable-narrator"
+    },
+    {
+      "name": "In Medias Res",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "in-medias-res"
+    },
+    {
+      "name": "Cliffhanger",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Action",
+      "slug": "cliffhanger"
+    },
+    {
+      "name": "CGI",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "cgi"
+    },
+    {
+      "name": "Practical Effects",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "practical-effects"
+    },
+    {
+      "name": "Green Screen",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "green-screen"
+    },
+    {
+      "name": "Motion Capture",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "motion-capture"
+    },
+    {
+      "name": "Stop Motion",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "stop-motion"
+    },
+    {
+      "name": "Color Grading",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "color-grading"
+    },
+    {
+      "name": "Desaturation",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "desaturation"
+    },
+    {
+      "name": "Sepia Tone",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Nostalgic",
+      "slug": "sepia-tone"
+    },
+    {
+      "name": "Film Grain",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Nostalgic",
+      "slug": "film-grain"
+    },
+    {
+      "name": "Bokeh",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "bokeh"
+    },
+    {
+      "name": "Film Noir",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Dramatic",
+      "slug": "film-noir"
+    },
+    {
+      "name": "German Expressionism",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "german-expressionism"
+    },
+    {
+      "name": "Cinema V\u00e9rit\u00e9",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Documentary",
+      "slug": "cinema-verite"
+    },
+    {
+      "name": "French New Wave",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "french-new-wave"
+    },
+    {
+      "name": "Surrealism",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "surrealism"
+    },
+    {
+      "name": "Found Footage",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "found-footage"
+    },
+    {
+      "name": "Spaghetti Western",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "spaghetti-western"
+    },
+    {
+      "name": "Tilt Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "tilt-shot"
+    },
+    {
+      "name": "Whip Pan",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "whip-pan"
+    },
+    {
+      "name": "Two-Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "two-shot"
+    },
+    {
+      "name": "Three-Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "three-shot"
+    },
+    {
+      "name": "Cowboy Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "cowboy-shot"
+    },
+    {
+      "name": "Medium Close-Up",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "medium-close-up"
+    },
+    {
+      "name": "Choker Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "choker-shot"
+    },
+    {
+      "name": "Canted Frame",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Horror",
+      "slug": "canted-frame"
+    },
+    {
+      "name": "Zoom Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "zoom-shot"
+    },
+    {
+      "name": "Push In",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "push-in"
+    },
+    {
+      "name": "Pull Out",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "pull-out"
+    },
+    {
+      "name": "360-Degree Shot",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Romantic",
+      "slug": "360-degree-shot"
+    },
+    {
+      "name": "Static Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "static-shot"
+    },
+    {
+      "name": "Crash Zoom",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "crash-zoom"
+    },
+    {
+      "name": "Snorricam",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "snorricam"
+    },
+    {
+      "name": "Locked-Down Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "locked-down-shot"
+    },
+    {
+      "name": "Worm's Eye View",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "worm-s-eye-view"
+    },
+    {
+      "name": "Impossible Shot",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "impossible-shot"
+    },
+    {
+      "name": "Fill Light",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "fill-light"
+    },
+    {
+      "name": "Backlight",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "backlight"
+    },
+    {
+      "name": "Bounce Light",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "bounce-light"
+    },
+    {
+      "name": "Cross Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "cross-lighting"
+    },
+    {
+      "name": "Kicker Light",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "kicker-light"
+    },
+    {
+      "name": "Motivated Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "motivated-lighting"
+    },
+    {
+      "name": "Ambient Light",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Documentary",
+      "slug": "ambient-light"
+    },
+    {
+      "name": "Available Light",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Documentary",
+      "slug": "available-light"
+    },
+    {
+      "name": "Split Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "split-lighting"
+    },
+    {
+      "name": "Loop Lighting",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "loop-lighting"
+    },
+    {
+      "name": "Broad Lighting",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "broad-lighting"
+    },
+    {
+      "name": "Short Lighting",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "short-lighting"
+    },
+    {
+      "name": "Color Temperature",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "color-temperature"
+    },
+    {
+      "name": "Day for Night",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "day-for-night"
+    },
+    {
+      "name": "Night for Night",
+      "category": "Lighting",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "night-for-night"
+    },
+    {
+      "name": "Dappled Light",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "dappled-light"
+    },
+    {
+      "name": "Edge Light",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "edge-light"
+    },
+    {
+      "name": "Eye Light",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "eye-light"
+    },
+    {
+      "name": "Gobo Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "gobo-lighting"
+    },
+    {
+      "name": "Continuity Editing",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "continuity-editing"
+    },
+    {
+      "name": "180-Degree Rule",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "180-degree-rule"
+    },
+    {
+      "name": "30-Degree Rule",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "30-degree-rule"
+    },
+    {
+      "name": "Match on Action",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "match-on-action"
+    },
+    {
+      "name": "Eyeline Match",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "eyeline-match"
+    },
+    {
+      "name": "Cutting on Look",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "cutting-on-look"
+    },
+    {
+      "name": "Reaction Shot",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "reaction-shot"
+    },
+    {
+      "name": "Cutaway",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "cutaway"
+    },
+    {
+      "name": "Cut-In",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "cut-in"
+    },
+    {
+      "name": "Wipe",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "wipe"
+    },
+    {
+      "name": "Iris",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "iris"
+    },
+    {
+      "name": "Soviet Montage",
+      "category": "Editing",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "soviet-montage"
+    },
+    {
+      "name": "Intellectual Montage",
+      "category": "Editing",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "intellectual-montage"
+    },
+    {
+      "name": "Metric Montage",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "metric-montage"
+    },
+    {
+      "name": "Rhythmic Montage",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "rhythmic-montage"
+    },
+    {
+      "name": "Invisible Cut",
+      "category": "Editing",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "invisible-cut"
+    },
+    {
+      "name": "Time-Lapse",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Documentary",
+      "slug": "time-lapse"
+    },
+    {
+      "name": "Fast Motion",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Action",
+      "slug": "fast-motion"
+    },
+    {
+      "name": "Reverse Motion",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "reverse-motion"
+    },
+    {
+      "name": "Parallel Editing",
+      "category": "Editing",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "parallel-editing"
+    },
+    {
+      "name": "Depth of Field",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "depth-of-field"
+    },
+    {
+      "name": "Foreground Interest",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "foreground-interest"
+    },
+    {
+      "name": "Balancing Elements",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "balancing-elements"
+    },
+    {
+      "name": "Diagonal Lines",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Action",
+      "slug": "diagonal-lines"
+    },
+    {
+      "name": "Triangular Composition",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "triangular-composition"
+    },
+    {
+      "name": "Centered Composition",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "centered-composition"
+    },
+    {
+      "name": "Headroom",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "headroom"
+    },
+    {
+      "name": "Lead Room",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "lead-room"
+    },
+    {
+      "name": "Visual Weight",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "visual-weight"
+    },
+    {
+      "name": "Repetition and Pattern",
+      "category": "Composition",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "repetition-and-pattern"
+    },
+    {
+      "name": "Figure-Ground Relationship",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "figure-ground-relationship"
+    },
+    {
+      "name": "Contrast",
+      "category": "Composition",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "contrast"
+    },
+    {
+      "name": "Ambient Sound",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Documentary",
+      "slug": "ambient-sound"
+    },
+    {
+      "name": "Room Tone",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Documentary",
+      "slug": "room-tone"
+    },
+    {
+      "name": "Sound Effects (SFX)",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "sound-effects-sfx"
+    },
+    {
+      "name": "Walla",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "walla"
+    },
+    {
+      "name": "ADR (Automated Dialogue Replacement)",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "adr-automated-dialogue-replacement"
+    },
+    {
+      "name": "Score",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "score"
+    },
+    {
+      "name": "Needle Drop",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "needle-drop"
+    },
+    {
+      "name": "Mickey Mousing",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "mickey-mousing"
+    },
+    {
+      "name": "Sound Motif",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "sound-motif"
+    },
+    {
+      "name": "Audio Transition",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "audio-transition"
+    },
+    {
+      "name": "Acousmatic Sound",
+      "category": "Sound",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "acousmatic-sound"
+    },
+    {
+      "name": "Sonic Worldbuilding",
+      "category": "Sound",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "sonic-worldbuilding"
+    },
+    {
+      "name": "Audio Ducking",
+      "category": "Sound",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "audio-ducking"
+    },
+    {
+      "name": "Flashforward",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "flashforward"
+    },
+    {
+      "name": "Non-Linear Narrative",
+      "category": "Story",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "non-linear-narrative"
+    },
+    {
+      "name": "Parallel Storylines",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "parallel-storylines"
+    },
+    {
+      "name": "Frame Narrative",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "frame-narrative"
+    },
+    {
+      "name": "Voiceover Narration",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "voiceover-narration"
+    },
+    {
+      "name": "Deus Ex Machina",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "deus-ex-machina"
+    },
+    {
+      "name": "Plant and Payoff",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "plant-and-payoff"
+    },
+    {
+      "name": "Three-Act Structure",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "three-act-structure"
+    },
+    {
+      "name": "Inciting Incident",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "inciting-incident"
+    },
+    {
+      "name": "Character Arc",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "character-arc"
+    },
+    {
+      "name": "Subplot",
+      "category": "Story",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "subplot"
+    },
+    {
+      "name": "Motif",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "motif"
+    },
+    {
+      "name": "Symbolism",
+      "category": "Story",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "symbolism"
+    },
+    {
+      "name": "Matte Painting",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "matte-painting"
+    },
+    {
+      "name": "Miniatures",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "miniatures"
+    },
+    {
+      "name": "Forced Perspective",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "forced-perspective"
+    },
+    {
+      "name": "Rotoscoping",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "rotoscoping"
+    },
+    {
+      "name": "Wire Work",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "wire-work"
+    },
+    {
+      "name": "Prosthetic Makeup",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "prosthetic-makeup"
+    },
+    {
+      "name": "Squibs",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "squibs"
+    },
+    {
+      "name": "Split Diopter",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "split-diopter"
+    },
+    {
+      "name": "Lens Distortion",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "lens-distortion"
+    },
+    {
+      "name": "Aspect Ratio",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "aspect-ratio"
+    },
+    {
+      "name": "IMAX",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "imax"
+    },
+    {
+      "name": "Anamorphic",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "anamorphic"
+    },
+    {
+      "name": "Morphing",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "morphing"
+    },
+    {
+      "name": "Digital De-aging",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "digital-de-aging"
+    },
+    {
+      "name": "Virtual Production",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Cinematic",
+      "slug": "virtual-production"
+    },
+    {
+      "name": "Italian Neorealism",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Documentary",
+      "slug": "italian-neorealism"
+    },
+    {
+      "name": "Dogme 95",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Documentary",
+      "slug": "dogme-95"
+    },
+    {
+      "name": "Mumblecore",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Documentary",
+      "slug": "mumblecore"
+    },
+    {
+      "name": "Giallo",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "giallo"
+    },
+    {
+      "name": "Blaxploitation",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "blaxploitation"
+    },
+    {
+      "name": "Mockumentary",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Documentary",
+      "slug": "mockumentary"
+    },
+    {
+      "name": "Poetic Realism",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Romantic",
+      "slug": "poetic-realism"
+    },
+    {
+      "name": "Slow Cinema",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "slow-cinema"
+    },
+    {
+      "name": "Hyperlink Cinema",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "hyperlink-cinema"
+    },
+    {
+      "name": "Elevated Horror",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "elevated-horror"
+    },
+    {
+      "name": "Maximalism",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "maximalism"
+    },
+    {
+      "name": "Minimalism",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "minimalism"
+    },
+    {
+      "name": "Exploitation Film",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "exploitation-film"
+    },
+    {
+      "name": "Arthouse",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "arthouse"
+    },
+    {
+      "name": "Neo-Noir",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "neo-noir"
+    },
+    {
+      "name": "Wuxia",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "wuxia"
+    },
+    {
+      "name": "Amber Phosphor CRT",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Nostalgic",
+      "slug": "amber-phosphor-crt"
+    },
+    {
+      "name": "Arc Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "arc-shot"
+    },
+    {
+      "name": "Boom Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "boom-shot"
+    },
+    {
+      "name": "Dolly-In",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "dolly-in"
+    },
+    {
+      "name": "Dolly-Out",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "dolly-out"
+    },
+    {
+      "name": "Dolly Zoom",
+      "category": "Camera",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "dolly-zoom"
+    },
+    {
+      "name": "Follow Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "follow-shot"
+    },
+    {
+      "name": "Jib Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "jib-shot"
+    },
+    {
+      "name": "Pedestal Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "pedestal-shot"
+    },
+    {
+      "name": "Smooth Tracking Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "smooth-tracking-shot"
+    },
+    {
+      "name": "American Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Action",
+      "slug": "american-shot"
+    },
+    {
+      "name": "Full Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "full-shot"
+    },
+    {
+      "name": "Head Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "head-shot"
+    },
+    {
+      "name": "Italian Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "italian-shot"
+    },
+    {
+      "name": "Profile Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "profile-shot"
+    },
+    {
+      "name": "Reverse Angle",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "reverse-angle"
+    },
+    {
+      "name": "Shot-Reverse-Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "shot-reverse-shot"
+    },
+    {
+      "name": "Trunk Shot",
+      "category": "Camera",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "trunk-shot"
+    },
+    {
+      "name": "Wide Shot",
+      "category": "Camera",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "wide-shot"
+    },
+    {
+      "name": "Accent Light",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "accent-light"
+    },
+    {
+      "name": "Cucoloris",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "cucoloris"
+    },
+    {
+      "name": "Diffusion",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "diffusion"
+    },
+    {
+      "name": "Firelight",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "firelight"
+    },
+    {
+      "name": "Frontal Lighting",
+      "category": "Lighting",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "frontal-lighting"
+    },
+    {
+      "name": "Hair Light",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "hair-light"
+    },
+    {
+      "name": "Mood Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "mood-lighting"
+    },
+    {
+      "name": "Neon Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "neon-lighting"
+    },
+    {
+      "name": "Rim Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "rim-lighting"
+    },
+    {
+      "name": "Top Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "top-lighting"
+    },
+    {
+      "name": "Underwater Lighting",
+      "category": "Lighting",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "underwater-lighting"
+    },
+    {
+      "name": "Volumetric Lighting",
+      "category": "Lighting",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "volumetric-lighting"
+    },
+    {
+      "name": "Anamorphic Flares",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "anamorphic-flares"
+    },
+    {
+      "name": "Bloom Effect",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "bloom-effect"
+    },
+    {
+      "name": "Chromatic Aberration",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "chromatic-aberration"
+    },
+    {
+      "name": "Color Correction",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "color-correction"
+    },
+    {
+      "name": "Crossfade",
+      "category": "Editing",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "crossfade"
+    },
+    {
+      "name": "Glow Effect",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "glow-effect"
+    },
+    {
+      "name": "HDR Effect",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "hdr-effect"
+    },
+    {
+      "name": "Loop Animation",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "loop-animation"
+    },
+    {
+      "name": "Motion Blur",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Action",
+      "slug": "motion-blur"
+    },
+    {
+      "name": "Parallax Effect",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "parallax-effect"
+    },
+    {
+      "name": "Particle Effects",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "particle-effects"
+    },
+    {
+      "name": "Reflections",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "reflections"
+    },
+    {
+      "name": "Refractions",
+      "category": "Effects",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "refractions"
+    },
+    {
+      "name": "Vignette",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "vignette"
+    },
+    {
+      "name": "Vintage Film Look",
+      "category": "Effects",
+      "difficulty": "Intermediate",
+      "mood": "Nostalgic",
+      "slug": "vintage-film-look"
+    },
+    {
+      "name": "White Balance",
+      "category": "Effects",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "white-balance"
+    },
+    {
+      "name": "Silent Slapstick",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Nostalgic",
+      "slug": "silent-slapstick"
+    },
+    {
+      "name": "Screwball Comedy",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Romantic",
+      "slug": "screwball-comedy"
+    },
+    {
+      "name": "Technicolor Musical",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Romantic",
+      "slug": "technicolor-musical"
+    },
+    {
+      "name": "New Hollywood",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Cinematic",
+      "slug": "new-hollywood"
+    },
+    {
+      "name": "Conspiracy Thriller",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "conspiracy-thriller"
+    },
+    {
+      "name": "Grindhouse",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "grindhouse"
+    },
+    {
+      "name": "Gothic Horror",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Horror",
+      "slug": "gothic-horror"
+    },
+    {
+      "name": "Body Horror",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Horror",
+      "slug": "body-horror"
+    },
+    {
+      "name": "J-Horror",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Horror",
+      "slug": "j-horror"
+    },
+    {
+      "name": "Southern Gothic",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "southern-gothic"
+    },
+    {
+      "name": "Film Soleil",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "film-soleil"
+    },
+    {
+      "name": "Acid Western",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "acid-western"
+    },
+    {
+      "name": "Neo-Western",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "neo-western"
+    },
+    {
+      "name": "Samurai Cinema",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Dramatic",
+      "slug": "samurai-cinema"
+    },
+    {
+      "name": "Heroic Bloodshed",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Action",
+      "slug": "heroic-bloodshed"
+    },
+    {
+      "name": "Kaiju Cinema",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Action",
+      "slug": "kaiju-cinema"
+    },
+    {
+      "name": "Bollywood Masala",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Romantic",
+      "slug": "bollywood-masala"
+    },
+    {
+      "name": "Cin\u00e9ma du Look",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "cinema-du-look"
+    },
+    {
+      "name": "Magical Realism",
+      "category": "Genre",
+      "difficulty": "Advanced",
+      "mood": "Artistic",
+      "slug": "magical-realism"
+    },
+    {
+      "name": "Afrofuturism",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Artistic",
+      "slug": "afrofuturism"
+    },
+    {
+      "name": "Cyberpunk",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "cyberpunk"
+    },
+    {
+      "name": "Synthwave Retrowave",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Nostalgic",
+      "slug": "synthwave-retrowave"
+    },
+    {
+      "name": "Steampunk",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Artistic",
+      "slug": "steampunk"
+    },
+    {
+      "name": "Space Opera",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Cinematic",
+      "slug": "space-opera"
+    },
+    {
+      "name": "Painterly Anime Pastoral",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Romantic",
+      "slug": "painterly-anime-pastoral"
+    },
+    {
+      "name": "Stop-Motion Aesthetic",
+      "category": "Genre",
+      "difficulty": "Intermediate",
+      "mood": "Nostalgic",
+      "slug": "stop-motion-aesthetic"
+    },
+    {
+      "name": "Coming-of-Age Indie",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Nostalgic",
+      "slug": "coming-of-age-indie"
+    },
+    {
+      "name": "Nordic Noir",
+      "category": "Genre",
+      "difficulty": "Basic",
+      "mood": "Dramatic",
+      "slug": "nordic-noir"
+    }
+  ]
+}

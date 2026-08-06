@@ -1,0 +1,4 @@
+interface:
+  display_name: "Make Headshot Suite"
+  short_description: "Generate a polished nine-look headshot suite"
+  default_prompt: "Use $make-headshot-suite to generate 9 professional headshots from 2-3 person photos placed in assets/person-reference-images, saving outputs to ~/Documents."

@@ -1,0 +1,200 @@
+{
+  "$comment": "Named delivery workflows. skills[] MUST resolve in skill-index.json (phantom-proof). agents_skills[] are ~/.agents/skills extras (CLIs, craft) not yet clustered. search_queries[] drive local search-skills.mjs + optional npx skills find for gaps.",
+  "version": 2,
+  "diagram": "~/.agents/skill-clusters/docs/website-delivery-workflow.html",
+  "search": {
+    "local": "node ~/.agents/skill-clusters/scripts/search-skills.mjs",
+    "public": "npx skills find"
+  },
+  "workflows": [
+    {
+      "id": "website-delivery",
+      "title": "Website delivery factory",
+      "summary": "Brand lock \u2192 composition (motionskin|scroll-world|custom) \u2192 motion/assets \u2192 frontend \u2192 swarm \u2192 README/SEO/QA \u2192 ship.",
+      "doc": "~/.agents/skill-clusters/docs/website-delivery-workflow.html",
+      "plan_template": "~/.agents/skill-clusters/workflows/templates/website-delivery.PLAN.md",
+      "triggers": {
+        "prompt_any": [
+          "landing page",
+          "landingpage",
+          "brand site",
+          "brand website",
+          "website",
+          "reskin",
+          "motionsites",
+          "motionskin",
+          "scroll-world",
+          "scroll world",
+          "diorama",
+          "fly through",
+          "fly-through",
+          "hero section",
+          "marketing site",
+          "awwwards",
+          "gsap scroll",
+          "cinematic scroll",
+          "brandmint",
+          "design system for"
+        ],
+        "cwd_any": [
+          "landing",
+          "website",
+          "web",
+          "site",
+          "wiki",
+          "brand",
+          "marketing",
+          "portfolio"
+        ],
+        "cwd_files_any": [
+          "astro.config.mjs",
+          "astro.config.ts",
+          "vercel.json",
+          "wrangler.toml",
+          "netlify.toml",
+          "index.html"
+        ],
+        "package_deps_any": [
+          "astro",
+          "next",
+          "vite",
+          "gatsby",
+          "nuxt",
+          "react",
+          "gsap",
+          "framer-motion",
+          "three"
+        ]
+      },
+      "stages": [
+        {
+          "id": "0-discover",
+          "label": "Discovery / brief",
+          "search_query": "plan swarm discovery architecture",
+          "skills": [
+            "swarm-architect",
+            "ai-agents-meta-orchestrator"
+          ],
+          "agents_skills": [
+            "interview"
+          ]
+        },
+        {
+          "id": "1-brand",
+          "label": "Brand & design cortex",
+          "search_query": "brand design refero openbrand brandmint",
+          "skills": [
+            "design-orchestrator",
+            "design-core",
+            "openbrand",
+            "brandmint",
+            "refero-design",
+            "taste-skill",
+            "grokfilm"
+          ]
+        },
+        {
+          "id": "2-composition",
+          "label": "Composition path",
+          "search_query": "motionskin scroll-world landing reskin",
+          "skills": [
+            "design-orchestrator",
+            "motionskin",
+            "scroll-world",
+            "refero-design",
+            "grokfilm"
+          ]
+        },
+        {
+          "id": "3-motion",
+          "label": "Live scroll narrative",
+          "search_query": "gsap scroll remotion awwwards motion",
+          "skills": [
+            "creative-frontend-orchestrator",
+            "creative-frontend-core",
+            "astro-gsap-scrolltrigger",
+            "awwwards-animations",
+            "gsap-awwwards-website",
+            "web-motion-library",
+            "motion-foundations",
+            "motion-patterns"
+          ],
+          "agents_skills": [
+            "gsap-scrolltrigger",
+            "gsap-framer-scroll-animation"
+          ]
+        },
+        {
+          "id": "4-assets",
+          "label": "Asset generation",
+          "search_query": "image video cinema lighting camera grokfilm cinematic",
+          "skills": [
+            "media-gen-orchestrator",
+            "scroll-world",
+            "gpt-image-2",
+            "ai-video-director",
+            "remotion",
+            "make-headshot-suite",
+            "seo-image-gen",
+            "grokfilm"
+          ],
+          "agents_skills": [
+            "higgsfield-generate",
+            "Meshy",
+            "runcomfy-cli"
+          ]
+        },
+        {
+          "id": "5-frontend",
+          "label": "Frontend craft",
+          "search_query": "frontend astro react taste web-perf",
+          "skills": [
+            "frontend-web-orchestrator",
+            "astro-orchestrator",
+            "taste-skill",
+            "web-perf",
+            "stitch-design-taste"
+          ]
+        },
+        {
+          "id": "6-control",
+          "label": "Control plane / waves",
+          "search_query": "conductor git-pr swarm github wave",
+          "skills": [
+            "conductor-orchestrator",
+            "swarm-architect",
+            "github-next-wave-orchestrator",
+            "git-pr-ops-orchestrator",
+            "ai-agents-meta-orchestrator"
+          ],
+          "agents_skills": [
+            "temperance-parallel-dispatch"
+          ]
+        },
+        {
+          "id": "7-ship",
+          "label": "Ship hygiene",
+          "search_query": "readme seo quality eval ship documentation",
+          "skills": [
+            "documents-orchestrator",
+            "readme",
+            "growth-seo-orchestrator",
+            "quality-eval-orchestrator",
+            "screenshots"
+          ]
+        },
+        {
+          "id": "8-close",
+          "label": "Close loop",
+          "search_query": "conductor ship feedback",
+          "skills": [
+            "conductor-orchestrator",
+            "conductor-core"
+          ]
+        }
+      ],
+      "first_action": "Read design-core (or design-orchestrator). Open workflow-doc. Lock brand before paid renders. Pick ONE composition: motionskin | scroll-world | custom creative-frontend.",
+      "intensity_note": "Short and long projects use the same stages; only depth and wave count change."
+    }
+  ]
+}

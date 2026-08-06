@@ -1,848 +1,983 @@
 ---
 name: readme
-description: "Generate an absurdly thorough README.md by deeply exploring a codebase first — tech stack, getting-started, architecture, env vars, scripts, testing, deployment, and troubleshooting. USE WHEN a user asks to write, create, or update a README or document a project's setup and architecture."
+description: "Auto-generate a modern, visually rich README.md by scanning the repo — with dynamic badges, architecture diagrams, ASCII art, visual storytelling, and optional NotebookLM intelligence. USE WHEN a user asks to write, create, or update a README or document a project's setup and architecture with landing-page polish."
 cluster: documents
-version: 1.0.0
-origin: "antigravity-awesome-skills (MIT)"
+version: 2.0.0
+origin: "Sheshiyer/readme-skill (local visual storytelling; supersedes antigravity thorough-docs variant in-cluster)"
 ---
 
-# README Generator
+# README Generator — Visual Storytelling for Codebases
 
-You are an expert technical writer creating comprehensive project documentation. Your goal is to write a README.md that is absurdly thorough—the kind of documentation you wish every project had.
+You are a **visual storytelling engine for codebases**. Your job is NOT to fill a template — it is to scan a repository deeply, understand its personality, and craft a README that makes someone **fall in love with the project in 10 seconds**.
 
-## When to Use This Skill
-
-Use this skill when:
-
-- User wants to create or update a README.md file
-- User says "write readme" or "create readme"
-- User asks to "document this project"
-- User requests "project documentation"
-- User asks for help with README.md
-
-## The Three Purposes of a README
-
-1. **Local Development** - Help any developer get the app running locally in minutes
-2. **Understanding the System** - Explain in great detail how the app works
-3. **Production Deployment** - Cover everything needed to deploy and maintain in production
+The mental model: you are building a **landing page** that lives in a git repo.
 
 ---
 
-## Before Writing
-
-### Step 1: Deep Codebase Exploration
-
-Before writing a single line of documentation, thoroughly explore the codebase. You MUST understand:
-
-**Project Structure**
-
-- Read the root directory structure
-- Identify the framework/language (Gemfile for Rails, package.json, go.mod, requirements.txt, etc.)
-- Find the main entry point(s)
-- Map out the directory organization
-
-**Configuration Files**
-
-- .env.example, .env.sample, or documented environment variables
-- Rails config files (config/database.yml, config/application.rb, config/environments/)
-- Credentials setup (config/credentials.yml.enc, config/master.key)
-- Docker files (Dockerfile, docker-compose.yml)
-- CI/CD configs (.github/workflows/, .gitlab-ci.yml, etc.)
-- Deployment configs (config/deploy.yml for Kamal, fly.toml, render.yaml, Procfile, etc.)
-
-**Database**
-
-- db/schema.rb or db/structure.sql
-- Migrations in db/migrate/
-- Seeds in db/seeds.rb
-- Database type from config/database.yml
-
-**Key Dependencies**
-
-- Gemfile and Gemfile.lock for Ruby gems
-- package.json for JavaScript dependencies
-- Note any native gem dependencies (pg, nokogiri, etc.)
-
-**Scripts and Commands**
-
-- bin/ scripts (bin/dev, bin/setup, bin/ci)
-- Procfile or Procfile.dev
-- Rake tasks (lib/tasks/)
-
-### Step 2: Identify Deployment Target
-
-Look for these files to determine deployment platform and tailor instructions:
-
-- `Dockerfile` / `docker-compose.yml` → Docker-based deployment
-- `vercel.json` / `.vercel/` → Vercel
-- `netlify.toml` → Netlify
-- `fly.toml` → Fly.io
-- `railway.json` / `railway.toml` → Railway
-- `render.yaml` → Render
-- `app.yaml` → Google App Engine
-- `Procfile` → Heroku or Heroku-like platforms
-- `.ebextensions/` → AWS Elastic Beanstalk
-- `serverless.yml` → Serverless Framework
-- `terraform/` / `*.tf` → Terraform/Infrastructure as Code
-- `k8s/` / `kubernetes/` → Kubernetes
-
-If no deployment config exists, provide general guidance with Docker as the recommended approach.
-
-### Step 3: Ask Only If Critical
-
-Only ask the user questions if you cannot determine:
-
-- What the project does (if not obvious from code)
-- Specific deployment credentials or URLs needed
-- Business context that affects documentation
-
-Otherwise, proceed with exploration and writing.
-
----
-
-## README Structure
-
-Write the README with these sections in order:
-
-### 1. Project Title and Overview
-
-```markdown
-# Project Name
-
-Brief description of what the project does and who it's for. 2-3 sentences max.
-
-## Key Features
-
-- Feature 1
-- Feature 2
-- Feature 3
-```
-
-### 2. Tech Stack
-
-List all major technologies:
-
-```markdown
-## Tech Stack
-
-- **Language**: Ruby 3.3+
-- **Framework**: Rails 7.2+
-- **Frontend**: Inertia.js with React
-- **Database**: PostgreSQL 16
-- **Background Jobs**: Solid Queue
-- **Caching**: Solid Cache
-- **Styling**: Tailwind CSS
-- **Deployment**: [Detected platform]
-```
-
-### 3. Prerequisites
-
-What must be installed before starting:
-
-```markdown
 ## Prerequisites
 
-- Node.js 20 or higher
-- PostgreSQL 15 or higher (or Docker)
-- pnpm (recommended) or npm
-- A Google Cloud project for OAuth (optional for development)
+This skill requires **GitHub** as the source platform. It uses the GitHub source to:
+- Resolve owner/repo for badge URLs, social proof badges (stars, forks, issues)
+- Check GitHub Actions workflow names for CI badges
+- Fetch release/tag information for version badges
+- Pull contributor data for the footer
+
+If the GitHub source is not authenticated, the skill will warn and proceed with reduced
+badge functionality (no live stats, no workflow badges — only static badges from local scan).
+
+---
+
+## Invocation
+
+```
+/readme [path-to-repo]
 ```
 
-### 4. Getting Started
+**Arguments (inferred or asked):**
+- `path` — the repo root (default: current working directory)
+- `--style` — `modern` (default), `terminal`, `minimal`
+- `--contributing` — also generate CONTRIBUTING.md
+- `--update` — smart merge into existing README (see Update Mode below)
+- `--badges` — user-configurable style (see below)
 
-The complete local development guide:
+**Badge style** — ask the user on first run which style they prefer, then remember:
+- `flat` — clean and minimal (shields.io default)
+- `flat-square` — sharper edges, modern feel
+- `for-the-badge` — large, bold, high-contrast
+- `plastic` — classic 3D look
 
-```markdown
-## Getting Started
+Store the preference in a `.readme-gen.json` config file in the repo root:
+```json
+{
+  "badgeStyle": "flat-square",
+  "lastGenerated": "2026-02-18T00:00:00Z",
+  "style": "modern"
+}
+```
+On subsequent runs, read this config instead of asking again. The user can always override with `--badges <style>`.
 
-### 1. Clone the Repository
+If the user provides no arguments, scan the current working directory and auto-detect everything.
 
-\`\`\`bash
-git clone https://github.com/user/repo.git
-cd repo
-\`\`\`
+---
 
-### 2. Install Ruby Dependencies
+## NotebookLM Preview Mode (Optional)
 
-Ensure you have Ruby 3.3+ installed (via rbenv, asdf, or mise):
+This skill can enrich README generation with **source-backed project intelligence assets** generated by the local NotebookLM pipeline.
 
-\`\`\`bash
-bundle install
-\`\`\`
+### CLI Arguments (append to `/readme`)
 
-### 3. Install JavaScript Dependencies
+- `--with-notebooklm` — run NotebookLM pass and include repository intelligence previews
+- `--notebooklm-assets report,mind-map,data-table,quiz,flashcards` — comma/space list of asset types to generate (default: `report,mind-map,data-table`)
+- `--notebooklm-output-dir .readme-notebooklm` — directory for generated assets
+- `--notebooklm-title "<title>"` — optional notebook title override
+- `--notebooklm-timeout 1200` — artifact wait timeout in seconds
+- `--skip-notebooklm` — explicit opt-out for restricted/air-gapped environments
 
-\`\`\`bash
-yarn install
-\`\`\`
+### Preferred pipeline (ECC-inspired)
 
-### 4. Environment Setup
+When `--with-notebooklm` is enabled:
 
-Copy the example environment file:
+1. **Discover source corpus** (highest-signal files first):
+   - `README.md`
+   - `tasks/README.md`
+   - root docs (`docs/*`, `rules/*`, `assets/*`, `agents/*`, `skills/*`, `commands/*`, `hooks/*`) if present
+   - 6 additional `.md/.mdx/.txt` files (excluding `.git`, `node_modules`, `dist`, `build`, `coverage`)
+2. **Generate assets** using local script:
 
-\`\`\`bash
-cp .env.example .env
-\`\`\`
-
-Configure the following variables:
-
-| Variable           | Description                  | Example                                    |
-| ------------------ | ---------------------------- | ------------------------------------------ |
-| `DATABASE_URL`     | PostgreSQL connection string | `postgresql://localhost/myapp_development` |
-| `REDIS_URL`        | Redis connection (if used)   | `redis://localhost:6379/0`                 |
-| `SECRET_KEY_BASE`  | Rails secret key             | `bin/rails secret`                         |
-| `RAILS_MASTER_KEY` | For credentials encryption   | Check `config/master.key`                  |
-
-### 5. Database Setup
-
-Start PostgreSQL (if using Docker):
-
-\`\`\`bash
-docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:16
-\`\`\`
-
-Create and set up the database:
-
-\`\`\`bash
-bin/rails db:setup
-\`\`\`
-
-This runs `db:create`, `db:schema:load`, and `db:seed`.
-
-For existing databases, run migrations:
-
-\`\`\`bash
-bin/rails db:migrate
-\`\`\`
-
-### 6. Start Development Server
-
-Using Foreman/Overmind (recommended, runs Rails + Vite):
-
-\`\`\`bash
-bin/dev
-\`\`\`
-
-Or manually:
-
-\`\`\`bash
-
-# Terminal 1: Rails server
-
-bin/rails server
-
-# Terminal 2: Vite dev server (for Inertia/React)
-
-bin/vite dev
-\`\`\`
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+```bash
+python3 /Users/sheshnarayaniyer/.craft-agent/workspaces/my-workspace/skills/mvp-roadmap-orchestrator/run_mvp_pipeline.py \
+  --project-dir <repo-root> \
+  --project-name "<repo-name>" \
+  --owner "<owner>" \
+  --asset report --asset mind-map --asset data-table \
+  --output-root .readme-notebooklm
 ```
 
-Include every step. Assume the reader is setting up on a fresh machine.
+3. **Load generated artifacts** from `manifest.json` (located at `./.readme-notebooklm/assets/`):
+   - `report` (`notebooklm-report.md`) → executive summary block under `## 🚀 Project Intelligence Snapshot`
+   - `mind-map` (`notebooklm-mind-map.json`) → Mermaid block under `## 🧠 Concept Map`
+   - `data-table` (`notebooklm-data-table.csv`) → compact table under `## 📊 Repository Signals Table`
+   - `manifest.json` → metadata provenance used in `## 🔍 Asset Trail`
 
-### 5. Architecture Overview
+4. **Convert large tables** (`>20` rows): use `transform_data` to create `notebooklm-data-table.json` and render as `datatable` with `src`.
 
-This is where you go absurdly deep:
+### Hard requirements
+
+- NotebookLM CLI must be authenticated (`notebooklm status` or `notebooklm list --json`).
+- If `notebooklm login` or `notebooklm list --json` fails, **warn but continue** with normal README generation.
+- If no sources are accepted, return a clear warning in `## 🔍 Asset Trail` and proceed without notebook assets.
+- Always persist generated manifest (`manifest.json`) plus source-count and source reference in the final generation metadata section (`## 🔍 Asset Trail`) (if you write a standalone source list file, include its path).
+
+### Asset provenance block (must be generated when NotebookLM is enabled)
+
+Wrap generated intelligence sections with markers so update mode can refresh safely:
+
+```html
+<!-- readme-gen:start:notebooklm-report -->
+...summary + calls-to-action...
+<!-- readme-gen:end:notebooklm-report -->
+
+<!-- readme-gen:start:notebooklm-mindmap -->
+graph LR
+    A[Concept] --> B[Evidence]
+<!-- readme-gen:end:notebooklm-mindmap -->
+
+<!-- readme-gen:start:notebooklm-table -->
+...preview table or datatable link...
+<!-- readme-gen:end:notebooklm-table -->
+
+<!-- readme-gen:start:notebooklm-metadata -->
+- assets-dir: ./.readme-notebooklm/assets
+- manifest-path: ./.readme-notebooklm/assets/manifest.json
+- source-reference: manifest.json
+- source-count: 0
+- generated-at: <ISO-8601>
+<!-- readme-gen:end:notebooklm-metadata -->
+```
+
+For very large tables (>20 rows), generate `notebooklm-data-table.json` via `transform_data` and reference it using a `datatable` block with `src`.
+
+## Phase 1: Deep Repo Scan
+
+Before writing a single line, **thoroughly scan the repo**. Use Glob, Grep, and Read tools extensively. Collect all of the following signals:
+
+### Identity Signals
+- `package.json` → name, description, version, keywords, license, homepage, repository URL
+- `Cargo.toml` → name, version, description, license
+- `go.mod` → module path
+- `pyproject.toml` / `setup.py` / `setup.cfg` → name, version, description
+- `*.gemspec` → name, version, summary
+- Release-facing docs → `.github/RELEASE_NOTES.md`, `CHANGELOG.md`, `docs/release-checklist.md`, any version-specific release draft/body files
+- Any existing README (to preserve user intent if `--update`)
+- `.github/FUNDING.yml` → sponsor links
+- `LICENSE` / `LICENSE.md` → license type (detect SPDX ID)
+
+### Tech Stack Signals
+- Languages: detect primary + secondary from file extensions (`.ts`, `.rs`, `.go`, `.py`, `.rb`, `.java`, `.swift`, etc.)
+- Frameworks: scan imports/dependencies for React, Next.js, Vue, Svelte, Express, FastAPI, Actix, Gin, Rails, etc.
+- Databases: look for Prisma, Drizzle, SQLAlchemy, Diesel, GORM configs; docker-compose services (postgres, redis, mongo)
+- Infrastructure: Dockerfile, docker-compose.yml, Terraform, Pulumi, Kubernetes manifests
+- Package managers: detect npm/yarn/pnpm/bun from lockfiles
+
+### Health Signals
+- CI/CD: `.github/workflows/`, `.gitlab-ci.yml`, `.circleci/`, `Jenkinsfile`, `.travis.yml`
+- Tests: detect test framework (jest, vitest, pytest, cargo test, go test) and test file count
+- Coverage config: `.nycrc`, `jest.config` coverage settings, `tarpaulin`, `coverage.py`
+- Linting: ESLint, Prettier, Rustfmt, Black, Ruff, golangci-lint configs
+- Type safety: TypeScript (`tsconfig.json`), mypy, type hints in Python
+- Security: `.github/SECURITY.md`, dependency scanning configs
+
+### Structure Signals
+- Directory structure depth and naming conventions
+- Source code entry point(s)
+- ECC-style agentic modules (`agents/`, `skills/`, `rules/`, `commands/`, `hooks/`, `assets/`, `scripts/`) if present
+- Documentation directory (`docs/`, `doc/`, `wiki/`)
+- Examples directory (`examples/`, `example/`)
+- Existing CONTRIBUTING.md, CODE_OF_CONDUCT.md, CHANGELOG.md
+- Domain pack directories (e.g., `api-design/`, `deployment-patterns/`, `e2e-testing/`, `database-migrations/`, `autonomous-loops/`) for project knowledge ecosystems
+- `.env.example` or config templates
+- Monorepo detection: `packages/`, `apps/`, `crates/`, workspace configs
+
+### Git Signals (if git repo)
+- Total commits, first commit date
+- Contributor count: `git shortlog -sn --all | wc -l`
+- Last commit date
+- Branch strategy: check for main/master/develop branches
+- Tags: `git tag --sort=-v:refname | head -5`
+- Remote URL: extract GitHub/GitLab owner/repo
+
+---
+
+## Phase 2: Determine Project Personality
+
+Based on scan results, classify the project:
+
+| Personality | Detection Signals | Visual Style |
+|-------------|------------------|--------------|
+| **CLI Tool** | Binary output, `clap`/`cobra`/`argparse`, no frontend | Terminal aesthetic: ASCII art hero, monospace, green accents |
+| **Web App** | React/Vue/Svelte, frontend routes, CSS | Modern gradient: capsule render hero, colorful badges, screenshots section |
+| **API/Backend** | Express/FastAPI/Gin, route definitions, no frontend | Clean professional: minimal hero, sequence diagrams, endpoint tables |
+| **Library/SDK** | Published to npm/crates/PyPI, mainly exports | Documentation-focused: clean hero, API reference section, install tabs |
+| **DevOps/Infra** | Terraform/Docker/K8s dominant | Infrastructure: architecture diagrams, deployment section first |
+| **Monorepo** | Multiple packages/apps with workspace config | Overview + per-package READMEs (see Monorepo Mode) |
+| **Data/ML** | Notebooks, model files, datasets | Research-style: results tables, model architecture diagrams |
+
+The personality drives EVERY visual decision downstream.
+
+---
+
+## Phase 2.5: Interactive Interview (3-4 Questions)
+
+**CRITICAL**: Do NOT skip this phase. After scanning and classifying, STOP and ask the
+user 3-4 context-aware questions. These are NOT generic template questions — they are
+derived from what the scan found (and what it couldn't find).
+
+Present findings first, then ask questions in a single message. Format:
+
+```
+Here's what I found in your repo:
+
+📊 **Scan Summary**
+- Project: {name} — {detected personality}
+- Tech: {primary lang} + {framework} + {database}
+- Health: {test count} tests, {CI status}, {license}
+- Structure: {dir count} directories, {file count} source files
+
+Now I have a few questions to make the README great:
+```
+
+### Question Selection Logic
+
+Pick 3-4 from this pool based on what's MISSING or AMBIGUOUS from the scan:
+
+**Always ask (pick 1-2):**
+
+| Condition | Question |
+|-----------|----------|
+| No description in package.json/Cargo.toml | "What's the one-line pitch for this project? (I'll use it as the hero tagline)" |
+| Description exists but is generic | "Your package description says '{desc}'. Want to sharpen it for the README, or is that good?" |
+| Multiple possible audiences | "Who's the primary audience — developers integrating this, end users, or both?" |
+| First generation (no .readme-gen.json) | "Which badge style do you prefer? `flat`, `flat-square`, `for-the-badge`, or `plastic`?" |
+
+**Ask if relevant (pick 1-2):**
+
+| Condition | Question |
+|-----------|----------|
+| Has screenshots dir or assets | "I found images in `{dir}`. Want me to include a screenshots section with these?" |
+| No examples directory | "Do you have a quick usage example in mind? (3-5 lines of code showing the core use case)" |
+| Multiple entry points / apps | "I see multiple apps: {list}. Should the README cover all of them, or focus on one?" |
+| Has deploy config but no docs | "I see you have {Docker/K8s/Terraform} setup. Want a deployment section in the README?" |
+| Monorepo detected | "This is a monorepo with {n} packages. Want a root README with overview + per-package READMEs, or just the root?" |
+| Has API routes but no docs | "I detected {n} API endpoints. Want me to include an API reference table?" |
+| Refactor detected (update mode) | "Major changes detected: {changes}. I'll regenerate from scratch — your current README will be backed up. Sound good?" |
+| Has CONTRIBUTING.md already | "You have a CONTRIBUTING.md. Want me to update it alongside the README, or leave it as-is?" |
+| No CONTRIBUTING.md | "Want me to generate a CONTRIBUTING.md as well? I can base it on your detected branch strategy and CI setup." |
+
+### Interview Rules
+
+1. **Ask in ONE message** — don't drip-feed questions one at a time
+2. **Number the questions** for easy answering ("1. yes, 2. developers, 3. flat-square")
+3. **Show your scan summary first** so the user knows you actually understand the repo
+4. **Provide smart defaults** in brackets — e.g., "Which badge style? [flat-square]"
+5. **If the user says "just do it"** or "defaults are fine" — proceed with sensible defaults
+6. **Max 4 questions** — respect the user's time. If the scan gave you enough, ask fewer
+
+Wait for the user's answers before proceeding to Phase 3.
+
+---
+
+## Phase 3: Compose the README
+
+### Section Order (include only what's relevant)
+
+```
+1. Hero Block (ALWAYS)
+2. Badge Bar (ALWAYS — but only relevant badges)
+3. Hook Paragraph (ALWAYS — 2-3 sentences max)
+4. Visual Divider
+5. Highlights / Features (if non-trivial project)
+6. Quick Start / Installation
+7. Visual Divider
+8. Project Intelligence Snapshot (if --with-notebooklm)
+9. Concept Map (if --with-notebooklm and mind-map generated)
+10. Repository Signals Table (if --with-notebooklm and data-table generated)
+11. Asset Trail (if --with-notebooklm)
+12. Architecture (if >3 source directories)
+13. Usage / Examples
+14. API Reference (if library/API)
+15. Configuration (if .env.example or config files exist)
+16. Visual Divider
+17. Repo Health Scorecard
+18. Contributing (link or inline)
+19. License
+20. Footer with acknowledgements/links
+```
+
+**CRITICAL RULE**: Only include sections that the repo scan justifies. An empty section is worse than no section. A CLI tool with 2 files does NOT need an architecture diagram.
+
+---
+
+## Component Specifications
+
+### HERO BLOCK — Primary: Capsule Render (Option A)
+
+Generate a capsule-render URL based on project personality:
 
 ```markdown
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList={PALETTE}&height=200&text={PROJECT_NAME}&fontSize=50&fontAlignY=35&desc={TAGLINE}&descAlignY=55&fontColor=ffffff" width="100%" />
+
+</div>
+```
+
+**Palette selection by personality:**
+- CLI Tool: `customColorList=0,1` (dark blues/greens — terminal feel)
+- Web App: `customColorList=6,11,20` (vibrant gradient)
+- Library: `customColorList=2,3` (calm blues)
+- API/Backend: `customColorList=12,13,14` (professional purples/blues)
+- DevOps: `customColorList=15,16` (orange/amber — infrastructure warmth)
+
+**Type selection:**
+- Default: `waving` — organic, modern
+- For minimal style: `rect` — clean edge
+- For terminal style: `transparent` with dark background
+
+**Tagline**: Extract from package.json description, Cargo.toml description, or pyproject.toml. If none found, ask the user.
+
+### HERO BLOCK — Fallback: ASCII Art (Option B)
+
+When the user doesn't have assets, prefers terminal aesthetic, or for CLI projects, generate ASCII art:
+
+Use Python's `pyfiglet` to generate the project name in a display font:
+
+```bash
+pip install pyfiglet 2>/dev/null; python3 -c "
+import pyfiglet
+art = pyfiglet.figlet_format('PROJECT', font='slant')
+print(art)
+"
+```
+
+**Preferred fonts by personality:**
+- CLI Tool: `slant`, `big`, `banner3-D`
+- Web App: `standard`, `doom`
+- Library: `small`, `mini`
+- Generic: `slant` (most readable)
+
+Wrap in a centered code block with a box:
+
+```markdown
+<div align="center">
+
+```
+    ____               _           __     _   __
+   / __ \_________    (_)__  _____/ /_   / | / /___ _____ ___  ___
+  / /_/ / ___/ __ \  / / _ \/ ___/ __/  /  |/ / __ `/ __ `__ \/ _ \
+ / ____/ /  / /_/ / / /  __/ /__/ /_   / /|  / /_/ / / / / / /  __/
+/_/   /_/   \____/_/ /\___/\___/\__/  /_/ |_/\__,_/_/ /_/ /_/\___/
+                /___/
+```
+
+> **Your tagline here — one compelling sentence**
+
+</div>
+```
+
+**IMPORTANT**: Always test that the pyfiglet output renders correctly. Some fonts produce characters that break markdown. If pyfiglet is not available, fall back to manually crafted ASCII using box-drawing characters:
+
+```
+╔══════════════════════════════════╗
+║         PROJECT NAME             ║
+║   Your tagline goes here         ║
+╚══════════════════════════════════╝
+```
+
+### BADGE BAR
+
+Organize badges into semantic rows. Use shields.io with the user's preferred style (default: `flat`).
+
+**Row 1 — Status (critical health indicators):**
+Only include badges that the repo actually supports:
+
+```markdown
+![Build](https://img.shields.io/github/actions/workflow/status/{owner}/{repo}/{workflow}?style=flat&logo=githubactions&logoColor=white)
+![Coverage](https://img.shields.io/codecov/c/github/{owner}/{repo}?style=flat&logo=codecov&logoColor=white)
+![License](https://img.shields.io/github/license/{owner}/{repo}?style=flat)
+![Version](https://img.shields.io/npm/v/{package}?style=flat&logo=npm)
+```
+
+**Row 2 — Tech Stack (visual icon pills):**
+Use skillicons.dev for beautiful tech icons:
+
+```markdown
+<p align="center">
+  <img src="https://skillicons.dev/icons?i={tech1},{tech2},{tech3},{tech4}&theme=dark" alt="Tech Stack" />
+</p>
+```
+
+Map detected technologies to skillicons slugs:
+- TypeScript → `ts`, JavaScript → `js`, Python → `py`, Rust → `rust`, Go → `go`
+- React → `react`, Vue → `vue`, Svelte → `svelte`, Next.js → `nextjs`
+- Node.js → `nodejs`, Deno → `deno`, Bun → `bun`
+- PostgreSQL → `postgres`, Redis → `redis`, MongoDB → `mongodb`
+- Docker → `docker`, Kubernetes → `kubernetes`, AWS → `aws`
+- Tailwind → `tailwind`, Prisma → `prisma`, GraphQL → `graphql`
+
+**Row 3 — Social Proof (only if GitHub repo):**
+
+```markdown
+![Stars](https://img.shields.io/github/stars/{owner}/{repo}?style=flat&logo=github)
+![Forks](https://img.shields.io/github/forks/{owner}/{repo}?style=flat)
+![Issues](https://img.shields.io/github/issues/{owner}/{repo}?style=flat)
+![Last Commit](https://img.shields.io/github/last-commit/{owner}/{repo}?style=flat)
+```
+
+### VISUAL DIVIDERS
+
+Use capsule-render thin separators between major sections:
+
+```markdown
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList={SAME_PALETTE_AS_HERO}&height=1" width="100%" />
+```
+
+This gives visual rhythm — like sections on a landing page.
+
+### HOOK PARAGRAPH
+
+2-3 sentences MAX. Not a feature list. Answer: **"Why should I care about this project?"**
+
+Write in a confident, concise voice. Lead with the problem, follow with the solution. Example:
+> Building APIs shouldn't require 500 lines of boilerplate. **ProjectName** gives you type-safe endpoints, auto-generated docs, and zero-config deployment — in under 50 lines of code.
+
+Derive from: package description, README intro (if exists), repo topics, and code analysis.
+
+### FEATURES / HIGHLIGHTS
+
+Use a visual grid, NOT a bullet list:
+
+```markdown
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### ⚡ Lightning Fast
+Built on Rust's async runtime, handles 100K+ requests/sec out of the box.
+
+</td>
+<td width="50%" valign="top">
+
+### 🔒 Type-Safe
+End-to-end TypeScript types — from database to frontend.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 📦 Zero Config
+Sensible defaults. Override only what you need.
+
+</td>
+<td width="50%" valign="top">
+
+### 🧩 Plugin System
+Extend with community plugins or build your own.
+
+</td>
+</tr>
+</table>
+```
+
+Derive features from actual code analysis — exports, README claims, package keywords. Do NOT invent features.
+
+### QUICK START — Tabbed Installation
+
+Detect available package managers and generate tabs:
+
+```markdown
+<details open>
+<summary><strong>npm</strong></summary>
+
+```bash
+npm install package-name
+```
+
+</details>
+
+<details>
+<summary><strong>yarn</strong></summary>
+
+```bash
+yarn add package-name
+```
+
+</details>
+
+<details>
+<summary><strong>pnpm</strong></summary>
+
+```bash
+pnpm add package-name
+```
+
+</details>
+```
+
+For non-package projects (e.g., apps), generate:
+```markdown
+```bash
+git clone https://github.com/{owner}/{repo}.git
+cd {repo}
+{detected_install_command}
+{detected_start_command}
+```
+```
+
+### ARCHITECTURE DIAGRAM
+
+Auto-generate a Mermaid diagram from directory structure scan. Only include if the project has sufficient complexity (>3 source directories or clear multi-service architecture).
+
+```markdown
+```mermaid
+graph LR
+    A[Client] --> B[API Gateway]
+    B --> C[Auth Service]
+    B --> D[Core Service]
+    D --> E[(Database)]
+    D --> F[(Cache)]
+```
+```
+
+Use emoji in node labels for visual richness. Map to detected components:
+- Frontend → `📱`
+- API/Router → `🔀`
+- Auth → `🔐`
+- Database → `🗄️`
+- Cache → `🔴`
+- Queue → `📨`
+- Storage → `📁`
+- External API → `🌐`
+
+### DIRECTORY TREE
+
+Use decorated tree with emoji and annotations:
+
+```markdown
+```
+📦 project-root
+├── 📂 src/
+│   ├── 📂 api/          # REST endpoints
+│   ├── 📂 core/         # Business logic
+│   ├── 📂 db/           # Database layer
+│   └── 📂 utils/        # Shared utilities
+├── 📂 tests/            # Test suites
+├── 📄 Dockerfile
+└── 📄 docker-compose.yml
+```
+```
+
+### REPO HEALTH SCORECARD
+
+Generate a unicode progress bar visualization:
+
+```markdown
+## Project Health
+
+| Category | Status | Score |
+|:---------|:------:|------:|
+| Tests | ████████████████████ | 100% |
+| CI/CD | ████████████████████ | 100% |
+| Type Safety | ████████████████░░░░ | 80% |
+| Documentation | ████████████░░░░░░░░ | 60% |
+| Coverage | ██████████████████░░ | 90% |
+
+> **Overall: 86%** — Healthy
+```
+
+Scoring rules:
+- **Tests**: Has test files? Has >10 test files? Has test in CI?
+- **CI/CD**: Has workflow files? Runs on push? Has deploy step?
+- **Type Safety**: TypeScript strict? mypy? Type annotations?
+- **Documentation**: Has README? Has API docs? Has inline docs?
+- **Coverage**: Has coverage config? Coverage reporting in CI?
+
+Score each 0/20/40/60/80/100, use `█` for filled and `░` for empty (20 chars total bar).
+
+### NOTEBOOKLM INTELLIGENCE SECTIONS
+
+#### `## 🚀 Project Intelligence Snapshot`
+- Insert the Markdown content from `notebooklm-report.md`.
+- Keep it concise, 4-10 bullets + 1 line CTA to deeper docs.
+- If file is missing/empty, emit a short fallback: `> Intelligence snapshot unavailable (NotebookLM assets not generated).`
+
+#### `## 🧠 Concept Map`
+- Parse `notebooklm-mind-map.json` into a `graph LR` Mermaid diagram.
+- Prefer readable root-first node labels and no more than 2 levels per branch unless the mind map is sparse.
+- Clamp nodes at about 35 to avoid render-heavy diagrams.
+
+#### `## 📊 Repository Signals Table`
+- If table rows <=20, render inline markdown table.
+- If rows >20, convert via `transform_data` into `notebooklm-data-table.json` and render a `datatable` block with `src`.
+- Keep top-level column types human-readable (`text`, `number`, `badge`, `boolean`, `percent`, `date`).
+
+#### `## 🔍 Asset Trail`
+- Add a compact provenance section with persisted values:
+  - `assets-dir`
+  - `manifest-path`
+  - `source-count`
+  - `source-reference` (`manifest.json` path or separate source list file)
+  - `generated-at`
+- Include explicit note when NotebookLM was skipped, failed, or partially accepted.
+
+### CONTRIBUTING SECTION
+
+If `--contributing` flag or user requests it, generate a separate `CONTRIBUTING.md` with:
+
+1. **Getting Started** — clone, install, run dev server (detected from scripts)
+2. **Branch Strategy** — detected from git branches
+3. **Code Style** — detected linters and formatters
+4. **Testing** — detected test framework and how to run tests
+5. **PR Process** — if `.github/PULL_REQUEST_TEMPLATE.md` exists, reference it
+6. **Code of Conduct** — link if exists
+
+In the README, add a contributing section that links to it:
+
+```markdown
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+```
+
+### FOOTER
+
+Close with a capsule-render footer wave (inverted):
+
+```markdown
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList={SAME_PALETTE}&height=100&section=footer" width="100%" />
+
+**Built with ❤️ by [Contributors](https://github.com/{owner}/{repo}/graphs/contributors)**
+
+</div>
+```
+
+---
+
+## Style Presets
+
+### `--style modern` (Default)
+- Capsule render waving hero with gradient
+- Colorful tech stack icons
+- SVG dividers between sections
+- Feature grid with emoji
+- Full health scorecard
+
+### `--style terminal`
+- ASCII art hero (pyfiglet)
+- Monochrome badges (`?color=0d1117&labelColor=161b22`)
+- No SVG dividers — use `---` only
+- Code-block heavy
+- No feature grid — use bullet list
+- Hacker aesthetic
+
+### `--style minimal`
+- Simple `# Project Name` with tagline
+- Single row of essential badges only
+- No dividers
+- No feature grid
+- No health scorecard
+- Just: what it is, how to install, how to use, license
+
+---
+
+## Monorepo Mode
+
+When a monorepo is detected (workspace configs like `pnpm-workspace.yaml`, `lerna.json`,
+Cargo workspaces, Go workspaces, or Nx/Turborepo configs), the skill generates a
+**multi-layer README structure**.
+
+### Detection Signals
+- `pnpm-workspace.yaml` / `lerna.json` / `nx.json` / `turbo.json` → JS/TS monorepo
+- `Cargo.toml` with `[workspace]` → Rust monorepo
+- `go.work` → Go workspace
+- Multiple `package.json` files in `packages/` or `apps/` directories
+
+### What Gets Generated
+
+**1. Root README** — the "landing page" for the entire monorepo:
+
+```
+[Hero — monorepo name + tagline]
+[Badges — overall CI, license, contributor count]
+[Hook paragraph — what this monorepo contains and why]
+
+## Packages
+
+| Package | Description | Version | Status |
+|---------|-------------|---------|--------|
+| [@scope/core](./packages/core) | Core engine | v2.1.0 | [![Build](badge)](link) |
+| [@scope/cli](./packages/cli) | CLI interface | v1.3.0 | [![Build](badge)](link) |
+| [@scope/ui](./apps/web) | Web dashboard | v0.9.0 | [![Build](badge)](link) |
+
+[Architecture diagram showing package relationships]
+[Health scorecard — aggregate across all packages]
+[Contributing + License + Footer]
+```
+
+Auto-generate the package table from workspace config — scan each package's
+`package.json`/`Cargo.toml` for name, version, and description.
+
+**2. Per-Package READMEs** (optional — ask in interview):
+
+Each package gets a focused, smaller README:
+- Scoped hero (simpler — just package name + description, no capsule render)
+- Package-specific badges (its own version, its own build status)
+- Install instructions specific to that package
+- API reference if it's a library
+- Link back to root README
+
+Per-package READMEs use `--style minimal` by default to avoid visual overload.
+
+### Mermaid Package Dependency Graph
+
+For the root README, generate a dependency graph showing how packages relate:
+
+```mermaid
+graph TD
+    A["@scope/core"] --> B["@scope/cli"]
+    A --> C["@scope/ui"]
+    A --> D["@scope/api"]
+    E["@scope/shared"] --> A
+    E --> C
+```
+
+Derive from dependency fields in each package's manifest.
+
+---
+
+## Update Mode (`--update`) — Smart Merge vs Regenerate
+
+The skill has two update strategies. It **auto-detects** which one to use.
+
+### Strategy A: Merge (Default)
+
+Used when the codebase evolved **incrementally** — new features, dependency updates,
+version bumps, added files. The README structure is still valid.
+
+**How to detect (all must be true):**
+- Existing README has `<!-- readme-gen:` markers from a previous generation
+- Directory structure is broadly the same (no renames of top-level dirs)
+- Primary language and framework haven't changed
+- No workspace config changes (didn't switch from single-package to monorepo)
+
+**Merge behavior:**
+1. Read the existing README fully
+2. Identify generated sections by `<!-- readme-gen:start:{section} -->` / `<!-- readme-gen:end:{section} -->` markers
+3. Re-scan the repo and regenerate ONLY the marked sections:
+   - Badges (versions, build status, coverage)
+   - Tech stack icons
+   - Architecture diagram
+   - Health scorecard
+   - Directory tree
+   - NotebookLM intelligence blocks (`notebooklm-report`, `notebooklm-mindmap`, `notebooklm-table`) if `--with-notebooklm`
+   - NotebookLM metadata trail (`notebooklm-metadata`) whenever NotebookLM has been attempted
+4. Preserve ALL user-written sections untouched
+5. Add any NEW sections that the scan now justifies (e.g., project gained Docker support → add Deployment section)
+6. Update `.readme-gen.json` timestamp
+
+**Release-aware merge rule:**
+- If release docs changed (`.github/RELEASE_NOTES.md`, `CHANGELOG.md`, release draft/body files, or release workflows), refresh any README release badges, release-highlight sections, and desktop-distribution notes even if the broader README structure still qualifies for merge mode.
+- If the repo has multiple version surfaces (for example codebase/package version vs desktop/Tauri release version), preserve that distinction explicitly instead of collapsing them into one "current version" claim.
+- If the latest prepared release is a bootstrap/manual-reinstall release rather than a normal OTA update, say so plainly in the README and avoid implying that it is a routine in-app update.
+
+### Strategy B: Regenerate
+
+Used when the codebase underwent a **major refactor** — language migration, monorepo
+conversion, framework swap, directory restructure.
+
+**How to detect (any one triggers regenerate):**
+- Primary language changed (e.g., JavaScript → TypeScript, Python → Rust)
+- Framework changed (e.g., Express → Fastify, CRA → Next.js)
+- Project structure fundamentally changed (flat → monorepo, or vice versa)
+- Top-level directories renamed or reorganized (>50% of src dirs changed)
+- No `<!-- readme-gen:` markers found (README was manually written or from another tool)
+
+**Regenerate behavior:**
+1. Back up existing README to `README.old.md`
+2. Run the full generation pipeline from scratch (Phase 1 → 2 → 3 → 4)
+3. In the interactive interview (Phase 2.5), show the user what changed:
+   > "Detected major changes: migrated from JavaScript to TypeScript, added monorepo
+   > structure. I'll regenerate the README from scratch. Your previous README is backed
+   > up at `README.old.md`."
+4. Write new README with full markers
+
+### Section Markers
+
+All generated sections are wrapped in HTML comments for future updates:
+
+```html
+<!-- readme-gen:start:badges -->
+![Build](https://img.shields.io/...)
+<!-- readme-gen:end:badges -->
+
+<!-- readme-gen:start:tech-stack -->
+<p align="center"><img src="https://skillicons.dev/..." /></p>
+<!-- readme-gen:end:tech-stack -->
+
+<!-- readme-gen:start:architecture -->
+```mermaid
+graph LR ...
+```
+<!-- readme-gen:end:architecture -->
+
+<!-- readme-gen:start:health -->
+| Category | Status | Score |
+...
+<!-- readme-gen:end:health -->
+
+<!-- readme-gen:start:tree -->
+```
+📦 project-root
+...
+```
+<!-- readme-gen:end:tree -->
+
+<!-- readme-gen:start:notebooklm-report -->
+...project intelligence executive summary...
+<!-- readme-gen:end:notebooklm-report -->
+
+<!-- readme-gen:start:notebooklm-mindmap -->
+```mermaid
+graph LR
+  A[Concept] --> B[Signals]
+```
+<!-- readme-gen:end:notebooklm-mindmap -->
+
+<!-- readme-gen:start:notebooklm-table -->
+...repository signals table or datatable block...
+<!-- readme-gen:end:notebooklm-table -->
+
+<!-- readme-gen:start:notebooklm-metadata -->
+assets-dir: .readme-notebooklm/assets
+manifest-path: .readme-notebooklm/assets/manifest.json
+source-reference: manifest.json
+source-count: 0
+generated-at: <ISO-8601>
+<!-- readme-gen:end:notebooklm-metadata -->
+
+<!-- readme-gen:start:footer -->
+...
+<!-- readme-gen:end:footer -->
+```
+
+Sections WITHOUT markers are considered user-written and are NEVER modified during merge.
+
+---
+
+## Critical Rules
+
+1. **NEVER invent features** — only describe what the code actually does
+2. **NEVER include empty sections** — if there's nothing to say, skip it
+3. **NEVER dump 20+ badges** — curate. Only meaningful status indicators
+4. **ALWAYS verify URLs** — test that badge URLs use correct owner/repo/workflow names
+5. **ALWAYS use the detected license** — don't guess
+6. **ALWAYS preserve existing user content** in update mode
+7. **ALWAYS distinguish codebase version from platform release version** when a repo ships more than one surface (for example Python package + Tauri desktop app)
+8. **ALWAYS scan release docs before writing release highlights** — don't infer release history from package manifests alone
+9. **ALWAYS call out bootstrap/manual-reinstall releases honestly** — never present a trust-rotation or reinstall-required desktop cut as a normal OTA update
+10. **ALWAYS center the hero block** — use `<div align="center">`
+11. **ALWAYS match capsule-render palette** between hero and footer
+12. **The tagline is the most important line** — spend time on it. It must be compelling, not generic
+13. **Write for humans, not search engines** — the hook paragraph should read like a great tweet, not a feature list
+
+---
+
+## Example Output Structure
+
+For a TypeScript + React + PostgreSQL web app called "Velox":
+
+```
+[Capsule Render Waving Hero — vibrant gradient, "Velox", tagline]
+
+[Build ✓] [Coverage 94%] [MIT License] [v2.1.0]
+
+[TS] [React] [Node.js] [PostgreSQL] [Docker]     ← skillicons.dev
+
+[★ 1.2k] [⑂ 340] [28 contributors]
+
+---
+
+> Build real-time dashboards without the boilerplate. Velox gives you
+> live data subscriptions, pre-built components, and one-click deploy —
+> so you ship in hours, not weeks.
+
+[thin gradient divider]
+
+| ⚡ Real-Time | 🔒 Type-Safe | 📦 Pre-Built | 🚀 One-Click |
+| Live subs     | E2E types    | 40+ components| Deploy to CF  |
+
+## Quick Start
+[tabbed npm/yarn/pnpm install]
+[3-line getting started code]
+
+[thin gradient divider]
+
 ## Architecture
+[Mermaid diagram: Client → API → Services → DB/Cache]
 
-### Directory Structure
+## Project Structure
+[Emoji-annotated tree]
 
-\`\`\`
-├── app/
-│ ├── controllers/ # Rails controllers
-│ │ ├── concerns/ # Shared controller modules
-│ │ └── api/ # API-specific controllers
-│ ├── models/ # ActiveRecord models
-│ │ └── concerns/ # Shared model modules
-│ ├── jobs/ # Background jobs (Solid Queue)
-│ ├── mailers/ # Email templates
-│ ├── views/ # Rails views (minimal with Inertia)
-│ └── frontend/ # Inertia.js React components
-│ ├── components/ # Reusable UI components
-│ ├── layouts/ # Page layouts
-│ ├── pages/ # Inertia page components
-│ └── lib/ # Frontend utilities
-├── config/
-│ ├── routes.rb # Route definitions
-│ ├── database.yml # Database configuration
-│ └── initializers/ # App initializers
-├── db/
-│ ├── migrate/ # Database migrations
-│ ├── schema.rb # Current schema
-│ └── seeds.rb # Seed data
-├── lib/
-│ └── tasks/ # Custom Rake tasks
-└── public/ # Static assets
-\`\`\`
+## Health
+[Unicode progress bar scorecard]
 
-### Request Lifecycle
+[thin gradient divider]
 
-1. Request hits Rails router (`config/routes.rb`)
-2. Middleware stack processes request (authentication, sessions, etc.)
-3. Controller action executes
-4. Models interact with PostgreSQL via ActiveRecord
-5. Inertia renders React component with props
-6. Response sent to browser
+## Contributing → CONTRIBUTING.md link
+## License → MIT
 
-### Data Flow
-
-\`\`\`
-User Action → React Component → Inertia Visit → Rails Controller → ActiveRecord → PostgreSQL
-↓
-React Props ← Inertia Response ←
-\`\`\`
-
-### Key Components
-
-**Authentication**
-
-- Devise/Rodauth for user authentication
-- Session-based auth with encrypted cookies
-- `authenticate_user!` before_action for protected routes
-
-**Inertia.js Integration (`app/frontend/`)**
-
-- React components receive props from Rails controllers
-- `inertia_render` in controllers passes data to frontend
-- Shared data via `inertia_share` for layout props
-
-**Background Jobs (`app/jobs/`)**
-
-- Solid Queue for job processing
-- Jobs stored in PostgreSQL (no Redis required)
-- Dashboard at `/jobs` for monitoring
-
-**Database (`app/models/`)**
-
-- ActiveRecord models with associations
-- Query objects for complex queries
-- Concerns for shared model behavior
-
-### Database Schema
-
-\`\`\`
-users
-├── id (bigint, PK)
-├── email (string, unique, not null)
-├── encrypted_password (string)
-├── name (string)
-├── created_at (datetime)
-└── updated_at (datetime)
-
-posts
-├── id (bigint, PK)
-├── title (string, not null)
-├── content (text)
-├── published (boolean, default: false)
-├── user_id (bigint, FK → users)
-├── created_at (datetime)
-└── updated_at (datetime)
-
-solid_queue_jobs (background jobs)
-├── id (bigint, PK)
-├── queue_name (string)
-├── class_name (string)
-├── arguments (json)
-├── scheduled_at (datetime)
-└── ...
-\`\`\`
+[Capsule Render Footer Wave]
+[Built with ❤️ by Contributors]
 ```
-
-### 6. Environment Variables
-
-Complete reference for all env vars:
-
-```markdown
-## Environment Variables
-
-### Required
-
-| Variable           | Description                       | How to Get                             |
-| ------------------ | --------------------------------- | -------------------------------------- |
-| `DATABASE_URL`     | PostgreSQL connection string      | Your database provider                 |
-| `SECRET_KEY_BASE`  | Rails secret for sessions/cookies | Run `bin/rails secret`                 |
-| `RAILS_MASTER_KEY` | Decrypts credentials file         | Check `config/master.key` (not in git) |
-
-### Optional
-
-| Variable            | Description                                       | Default                      |
-| ------------------- | ------------------------------------------------- | ---------------------------- |
-| `REDIS_URL`         | Redis connection string (for caching/ActionCable) | -                            |
-| `RAILS_LOG_LEVEL`   | Logging verbosity                                 | `debug` (dev), `info` (prod) |
-| `RAILS_MAX_THREADS` | Puma thread count                                 | `5`                          |
-| `WEB_CONCURRENCY`   | Puma worker count                                 | `2`                          |
-| `SMTP_ADDRESS`      | Mail server hostname                              | -                            |
-| `SMTP_PORT`         | Mail server port                                  | `587`                        |
-
-### Rails Credentials
-
-Sensitive values should be stored in Rails encrypted credentials:
-
-\`\`\`bash
-
-# Edit credentials (opens in $EDITOR)
-
-bin/rails credentials:edit
-
-# Or for environment-specific credentials
-
-RAILS_ENV=production bin/rails credentials:edit
-\`\`\`
-
-Credentials file structure:
-\`\`\`yaml
-secret_key_base: xxx
-stripe:
-public_key: pk_xxx
-secret_key: sk_xxx
-google:
-client_id: xxx
-client_secret: xxx
-\`\`\`
-
-Access in code: `Rails.application.credentials.stripe[:secret_key]`
-
-### Environment-Specific
-
-**Development**
-\`\`\`
-DATABASE_URL=postgresql://localhost/myapp_development
-REDIS_URL=redis://localhost:6379/0
-\`\`\`
-
-**Production**
-\`\`\`
-DATABASE_URL=<production-connection-string>
-RAILS_ENV=production
-RAILS_SERVE_STATIC_FILES=true
-\`\`\`
-```
-
-### 7. Available Scripts
-
-```markdown
-## Available Scripts
-
-| Command                       | Description                                         |
-| ----------------------------- | --------------------------------------------------- |
-| `bin/dev`                     | Start development server (Rails + Vite via Foreman) |
-| `bin/rails server`            | Start Rails server only                             |
-| `bin/vite dev`                | Start Vite dev server only                          |
-| `bin/rails console`           | Open Rails console (IRB with app loaded)            |
-| `bin/rails db:migrate`        | Run pending database migrations                     |
-| `bin/rails db:rollback`       | Rollback last migration                             |
-| `bin/rails db:seed`           | Run database seeds                                  |
-| `bin/rails db:reset`          | Drop, create, migrate, and seed database            |
-| `bin/rails routes`            | List all routes                                     |
-| `bin/rails test`              | Run test suite (Minitest)                           |
-| `bundle exec rspec`           | Run test suite (RSpec, if used)                     |
-| `bin/rails assets:precompile` | Compile assets for production                       |
-| `bin/rubocop`                 | Run Ruby linter                                     |
-| `yarn lint`                   | Run JavaScript/TypeScript linter                    |
-```
-
-### 8. Testing
-
-```markdown
-## Testing
-
-### Running Tests
-
-\`\`\`bash
-
-# Run all tests (Minitest)
-
-bin/rails test
-
-# Run all tests (RSpec, if used)
-
-bundle exec rspec
-
-# Run specific test file
-
-bin/rails test test/models/user_test.rb
-bundle exec rspec spec/models/user_spec.rb
-
-# Run tests matching a pattern
-
-bin/rails test -n /creates_user/
-bundle exec rspec -e "creates user"
-
-# Run system tests (browser tests)
-
-bin/rails test:system
-
-# Run with coverage (SimpleCov)
-
-COVERAGE=true bin/rails test
-\`\`\`
-
-### Test Structure
-
-\`\`\`
-test/ # Minitest structure
-├── controllers/ # Controller tests
-├── models/ # Model unit tests
-├── integration/ # Integration tests
-├── system/ # System/browser tests
-├── fixtures/ # Test data
-└── test_helper.rb # Test configuration
-
-spec/ # RSpec structure (if used)
-├── models/
-├── requests/
-├── system/
-├── factories/ # FactoryBot factories
-├── support/
-└── rails_helper.rb
-\`\`\`
-
-### Writing Tests
-
-**Minitest example:**
-\`\`\`ruby
-require "test_helper"
-
-class UserTest < ActiveSupport::TestCase
-test "creates user with valid attributes" do
-user = User.new(email: "test@example.com", name: "Test User")
-assert user.valid?
-end
-
-test "requires email" do
-user = User.new(name: "Test User")
-assert_not user.valid?
-assert_includes user.errors[:email], "can't be blank"
-end
-end
-\`\`\`
-
-**RSpec example:**
-\`\`\`ruby
-require "rails_helper"
-
-RSpec.describe User, type: :model do
-describe "validations" do
-it "is valid with valid attributes" do
-user = build(:user)
-expect(user).to be_valid
-end
-
-    it "requires an email" do
-      user = build(:user, email: nil)
-      expect(user).not_to be_valid
-      expect(user.errors[:email]).to include("can't be blank")
-    end
-
-end
-end
-\`\`\`
-
-### Frontend Testing
-
-For Inertia/React components:
-
-\`\`\`bash
-yarn test
-\`\`\`
-
-\`\`\`typescript
-import { render, screen } from '@testing-library/react'
-import { Dashboard } from './Dashboard'
-
-describe('Dashboard', () => {
-it('renders user name', () => {
-render(<Dashboard user={{ name: 'Josh' }} />)
-expect(screen.getByText('Josh')).toBeInTheDocument()
-})
-})
-\`\`\`
-```
-
-### 9. Deployment
-
-Tailor this to detected platform (look for Dockerfile, fly.toml, render.yaml, kamal/, etc.):
-
-```markdown
-## Deployment
-
-### Kamal (Recommended for Rails)
-
-If using Kamal for deployment:
-
-\`\`\`bash
-
-# Setup Kamal (first time)
-
-kamal setup
-
-# Deploy
-
-kamal deploy
-
-# Rollback to previous version
-
-kamal rollback
-
-# View logs
-
-kamal app logs
-
-# Run console on production
-
-kamal app exec --interactive 'bin/rails console'
-\`\`\`
-
-Configuration lives in `config/deploy.yml`.
-
-### Docker
-
-Build and run:
-
-\`\`\`bash
-
-# Build image
-
-docker build -t myapp .
-
-# Run with environment variables
-
-docker run -p 3000:3000 \
- -e DATABASE_URL=postgresql://... \
- -e SECRET_KEY_BASE=... \
- -e RAILS_ENV=production \
- myapp
-\`\`\`
-
-### Heroku
-
-\`\`\`bash
-
-# Create app
-
-heroku create myapp
-
-# Add PostgreSQL
-
-heroku addons:create heroku-postgresql:mini
-
-# Set environment variables
-
-heroku config:set SECRET_KEY_BASE=$(bin/rails secret)
-heroku config:set RAILS_MASTER_KEY=$(cat config/master.key)
-
-# Deploy
-
-git push heroku main
-
-# Run migrations
-
-heroku run bin/rails db:migrate
-\`\`\`
-
-### Fly.io
-
-\`\`\`bash
-
-# Launch (first time)
-
-fly launch
-
-# Deploy
-
-fly deploy
-
-# Run migrations
-
-fly ssh console -C "bin/rails db:migrate"
-
-# Open console
-
-fly ssh console -C "bin/rails console"
-\`\`\`
-
-### Render
-
-If `render.yaml` exists, connect your repo to Render and it will auto-deploy.
-
-Manual setup:
-
-1. Create new Web Service
-2. Connect GitHub repository
-3. Set build command: `bundle install && bin/rails assets:precompile`
-4. Set start command: `bin/rails server`
-5. Add environment variables in dashboard
-
-### Manual/VPS Deployment
-
-\`\`\`bash
-
-# On the server:
-
-# Pull latest code
-
-git pull origin main
-
-# Install dependencies
-
-bundle install --deployment
-
-# Compile assets
-
-RAILS_ENV=production bin/rails assets:precompile
-
-# Run migrations
-
-RAILS_ENV=production bin/rails db:migrate
-
-# Restart application server (e.g., Puma via systemd)
-
-sudo systemctl restart myapp
-\`\`\`
-```
-
-### 10. Troubleshooting
-
-```markdown
-## Troubleshooting
-
-### Database Connection Issues
-
-**Error:** `could not connect to server: Connection refused`
-
-**Solution:**
-
-1. Verify PostgreSQL is running: `pg_isready` or `docker ps`
-2. Check `DATABASE_URL` format: `postgresql://USER:PASSWORD@HOST:PORT/DATABASE`
-3. Ensure database exists: `bin/rails db:create`
-
-### Pending Migrations
-
-**Error:** `Migrations are pending`
-
-**Solution:**
-\`\`\`bash
-bin/rails db:migrate
-\`\`\`
-
-### Asset Compilation Issues
-
-**Error:** `The asset "application.css" is not present in the asset pipeline`
-
-**Solution:**
-\`\`\`bash
-
-# Clear and recompile assets
-
-bin/rails assets:clobber
-bin/rails assets:precompile
-\`\`\`
-
-### Bundle Install Failures
-
-**Error:** Native extension build failures
-
-**Solution:**
-
-1. Ensure system dependencies are installed:
-   \`\`\`bash
-
-   # macOS
-
-   brew install postgresql libpq
-
-   # Ubuntu
-
-   sudo apt-get install libpq-dev
-   \`\`\`
-
-2. Try again: `bundle install`
-
-### Credentials Issues
-
-**Error:** `ActiveSupport::MessageEncryptor::InvalidMessage`
-
-**Solution:**
-The master key doesn't match the credentials file. Either:
-
-1. Get the correct `config/master.key` from another team member
-2. Or regenerate credentials: `rm config/credentials.yml.enc && bin/rails credentials:edit`
-
-### Vite/Inertia Issues
-
-**Error:** `Vite Ruby - Build failed`
-
-**Solution:**
-\`\`\`bash
-
-# Clear Vite cache
-
-rm -rf node_modules/.vite
-
-# Reinstall JS dependencies
-
-rm -rf node_modules && yarn install
-\`\`\`
-
-### Solid Queue Issues
-
-**Error:** Jobs not processing
-
-**Solution:**
-Ensure the queue worker is running:
-\`\`\`bash
-bin/jobs
-
-# or
-
-bin/rails solid_queue:start
-\`\`\`
-```
-
-### 11. Contributing (Optional)
-
-Include if open source or team project.
-
-### 12. License (Optional)
 
 ---
 
-## Writing Principles
+## Automated Freshness Hooks
 
-1. **Be Absurdly Thorough** - When in doubt, include it. More detail is always better.
+This skill is backed by two workspace hooks that keep READMEs from going stale:
 
-2. **Use Code Blocks Liberally** - Every command should be copy-pasteable.
+### Hook 1: Push Counter (Activity-Based)
 
-3. **Show Example Output** - When helpful, show what the user should expect to see.
+A `PostToolUse` hook on `Bash` fires after every command. A script at
+`~/.craft-agent/workspaces/my-workspace/scripts/readme-push-counter.sh`
+detects `git push` commands and increments a per-repo counter.
 
-4. **Explain the Why** - Don't just say "run this command," explain what it does.
+**After 5 pushes** (configurable via `README_PUSH_THRESHOLD` env var), the agent
+receives a nudge message:
 
-5. **Assume Fresh Machine** - Write as if the reader has never seen this codebase.
+> README Update Reminder: You've pushed 5 times to "my-project" since the last
+> README check. Consider running `/readme --update` to keep it fresh.
 
-6. **Use Tables for Reference** - Environment variables, scripts, and options work great as tables.
+**When you see this nudge:**
+1. Mention the reminder to the user naturally (don't be annoying — one mention is enough)
+2. If the user says yes, run `/readme --update` on the repo
+3. If the user ignores it, don't bring it up again until the next threshold
 
-7. **Keep Commands Current** - Use `pnpm` if the project uses it, `npm` if it uses npm, etc.
+The counter resets after each nudge, so the next reminder fires after another 5 pushes.
 
-8. **Include a Table of Contents** - For READMEs over ~200 lines, add a TOC at the top.
+### Hook 2: Weekly Release Check (Scheduled)
 
----
+A `SchedulerTick` cron hook runs **every Monday at 10:00 AM IST**. It creates a new
+session labeled `Scheduled` + `readme-check` that scans for:
 
-## Output Format
+- New git tags or releases since the last README update
+- Tech stack changes (added/removed dependencies)
+- New directories or major structural changes
+- CI/CD config changes
 
-Generate a complete README.md file with:
+If changes are detected, the session suggests running `/readme --update`.
 
-- Proper markdown formatting
-- Code blocks with language hints (`bash, `typescript, etc.)
-- Tables where appropriate
-- Clear section hierarchy
-- Linked table of contents for long documents
+### Hook 3: Merge Continuity Template (CI)
 
-Write the README directly to `README.md` in the project root.
+For repositories that require strict continuity guarantees, pair this skill with two workflows:
 
-## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+- **Continuity check workflow**:
+  - validates marker presence and version-sensitive freshness before merge review
+  - fails PRs that touch release/version surfaces without refreshed README sections
+- **Auto-refresh workflow**:
+  - runs on merge to `main`
+  - re-runs NotebookLM-backed README generation
+  - opens/updates a follow-up PR (`readme-continuity-refresh`) when NotebookLM sections need refresh
+
+Keep the two workflows aligned so PR validation enforces freshness, while post-merge automation handles recovery.
+
+### Customizing the Hooks
+
+Users can adjust these in `~/.craft-agent/workspaces/my-workspace/hooks.json`:
+
+- **Push threshold**: Set `README_PUSH_THRESHOLD` environment variable (default: 5)
+- **Cron schedule**: Edit the cron expression (default: `0 10 * * 1` = Monday 10 AM)
+- **Timezone**: Edit the timezone (default: `Asia/Kolkata`)
+- **Disable**: Remove the relevant hook entry from hooks.json

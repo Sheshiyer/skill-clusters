@@ -24,6 +24,12 @@ this — it holds the cross-cutting decisions so nothing is duplicated or contra
 When both apply (interactive page that also ships a video), do both: build the page
 in-browser, render the video with Remotion, embed it.
 
+**Exception — scroll-scrubbed cinematic worlds:** when the ask is a continuous
+camera fly-through through AI-generated scenes (diorama / industry world / Emons-style),
+that is **not** live GSAP and **not** Remotion composition — hand off to the **design**
+cluster spoke `scroll-world` (pre-rendered video chain + portable scrub engine). Live
+scroll effects (pin/parallax/reveal on real DOM) stay here.
+
 ## 2. In-browser tool selection
 
 | Need | Use | Spoke |

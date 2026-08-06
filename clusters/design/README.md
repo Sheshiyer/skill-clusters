@@ -11,7 +11,7 @@
 
 </div>
 
-> The single entry point for design work: it locates a task on the **intent × deliverable** map — product UI, spec, themed artifact, static art, or brand data — and delegates to one of 9 specialist spokes. The cross-cutting model every design shares — **research and constraints before generation**, the decision ledger, and the anti-AI-slop quality gate — lives in `design-core` and is read before any pixels are generated.
+> The single entry point for design work: it locates a task on the **intent × deliverable** map — product UI, spec, themed artifact, static art, brand data, or MotionSites brand reskin — and delegates to specialist spokes. The cross-cutting model every design shares — **research and constraints before generation**, the decision ledger, and the anti-AI-slop quality gate — lives in `design-core` and is read before any pixels are generated.
 
 ## Hub-and-spoke
 
@@ -27,6 +27,9 @@ graph LR
   o --> s7([theme-factory])
   o --> s8([canvas-design])
   o --> s9([openbrand])
+  o --> s10([brandmint])
+  o --> s11([motionskin])
+  o --> s12([scroll-world])
   classDef hub fill:#8b5cf6,color:#fff;
 ```
 
@@ -35,7 +38,7 @@ graph LR
 | Skill | Role | Loaded at startup |
 |---|---|---|
 | `design-orchestrator` | 🧭 hub · router | ✅ enumerated |
-| `design-core` | 📐 hub · shared reference | ✅ enumerated |
+| `design-core` | 📐 hub · design cortex | ✅ enumerated |
 | `refero-design` | spoke | ⤵ on-demand |
 | `ui-ux-pro-max` | spoke | ⤵ on-demand |
 | `swiss-design` | spoke | ⤵ on-demand |
@@ -45,6 +48,11 @@ graph LR
 | `theme-factory` | spoke | ⤵ on-demand |
 | `canvas-design` | spoke | ⤵ on-demand |
 | `openbrand` | spoke | ⤵ on-demand |
+| `brandmint` | spoke | ⤵ on-demand |
+| `safvr-brand-design-guardrails` | spoke | ⤵ on-demand |
+| `motionskin` | spoke · MotionSites brand reskin | ⤵ on-demand |
+| `scroll-world` | spoke · scroll-scrubbed 3D world landing ([oso95/scroll-world](https://github.com/oso95/scroll-world)) | ⤵ on-demand |
+| `grokfilm` | spoke · GrokFilm cinema technique index → prompt language ([grokfilm.app](https://grokfilm.app/#index)) | ⤵ on-demand |
 
 ## Tier & loading
 

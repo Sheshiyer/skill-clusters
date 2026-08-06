@@ -5,7 +5,7 @@
 <div align="center">
 
 [![tier](https://img.shields.io/badge/tier-deferred-64748b?style=plastic)](../../profiles.json)
-[![spokes](https://img.shields.io/badge/spokes-15-22c55e?style=plastic)](#skills)
+[![spokes](https://img.shields.io/badge/spokes-16-22c55e?style=plastic)](#skills)
 [![source](https://img.shields.io/badge/source-authored-22c55e?style=plastic)](../../NOTICE)
 [![install](https://img.shields.io/badge/install-skills.sh-000?style=plastic)](https://skills.sh/)
 
@@ -28,11 +28,12 @@ graph LR
   o --> s8([ffmpeg])
   o --> s9([video-frames])
   o --> s10([gifgrep])
-  o --> s11([arcplume])
+  o --> s11([make-headshot-suite])
+  o --> s12([imagen])
   classDef hub fill:#8b5cf6,color:#fff;
 ```
 
-_…and 3 more in the table below._
+_…and more in the table below._
 
 ## Skills
 
@@ -45,12 +46,12 @@ _…and 3 more in the table below._
 | `gpt-image-2` | spoke | ⤵ on-demand |
 | `nano-banana-2` | spoke | ⤵ on-demand |
 | `openai-image-gen` | spoke | ⤵ on-demand |
+| `make-headshot-suite` | spoke · 9-look Codex headshots | ⤵ on-demand |
 | `hunyuan3d` | spoke | ⤵ on-demand |
 | `ffmpeg` | spoke | ⤵ on-demand |
 | `video-frames` | spoke | ⤵ on-demand |
 | `ai-video-director` | spoke | ⤵ on-demand |
 | `gifgrep` | spoke | ⤵ on-demand |
-| `arcplume` | spoke | ⤵ on-demand |
 | `slack-gif-creator` | spoke | ⤵ on-demand |
 | `imagen` | spoke | ⤵ on-demand |
 | `seo-image-gen` | spoke | ⤵ on-demand |

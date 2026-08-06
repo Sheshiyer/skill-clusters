@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Website Delivery — Operator Plan</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  :root {
+    --bg: #0b0f14;
+    --panel: #121820;
+    --border: #1e2a38;
+    --text: #e8eef6;
+    --muted: #8b9bb0;
+    --accent: #8b5cf6;
+    --cyan: #22d3ee;
+    --green: #22c55e;
+    --amber: #f59e0b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, sans-serif;
+    background: radial-gradient(1000px 500px at 8% -8%, #1a1030 0%, transparent 50%), var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 2rem 1.25rem 3.5rem; }
+  header {
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, #161226 0%, #101820 100%);
+    border-radius: 14px;
+    padding: 1.75rem 1.75rem 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+  h1 { font-size: 1.65rem; margin: 0 0 0.4rem; letter-spacing: -0.02em; }
+  .sub { color: var(--muted); font-size: 0.95rem; max-width: 72ch; margin: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .chip {
+    font-size: 0.72rem; font-weight: 600; padding: 0.28rem 0.6rem;
+    border-radius: 999px; border: 1px solid var(--border); background: #0d1218; color: var(--muted);
+  }
+  .chip.p { color: #ddd6fe; border-color: #4c1d95; background: #1e1035; }
+  .chip.g { color: #bbf7d0; border-color: #14532d; background: #0f1f14; }
+  nav.toc {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.4rem; margin-bottom: 1.25rem;
+  }
+  nav.toc a {
+    text-decoration: none; color: var(--text); font-size: 0.8rem;
+    border: 1px solid var(--border); background: var(--panel);
+    padding: 0.55rem 0.7rem; border-radius: 9px;
+  }
+  nav.toc a:hover { border-color: var(--accent); color: #ddd6fe; }
+  section {
+    border: 1px solid var(--border); background: var(--panel);
+    border-radius: 12px; padding: 1.25rem 1.35rem 1.1rem; margin-bottom: 1rem;
+  }
+  section h2 {
+    margin: 0 0 0.65rem; font-size: 1.1rem;
+    display: flex; align-items: center; gap: 0.45rem;
+  }
+  section h2 .n {
+    width: 1.45rem; height: 1.45rem; border-radius: 7px;
+    display: inline-grid; place-items: center;
+    font-size: 0.75rem; font-weight: 700;
+    background: #1e1035; color: #c4b5fd; border: 1px solid #4c1d95;
+  }
+  h3 { font-size: 0.9rem; margin: 0.9rem 0 0.35rem; color: #cbd5e1; }
+  p, li { color: #cbd5e1; font-size: 0.9rem; }
+  strong { color: #f1f5f9; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.8em; background: #0a0e13; border: 1px solid var(--border);
+    padding: 0.08rem 0.32rem; border-radius: 4px; color: #a5f3fc;
+  }
+  .mermaid {
+    background: #0a0e13; border: 1px solid var(--border);
+    border-radius: 10px; padding: 0.85rem; margin: 0.75rem 0; overflow-x: auto;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin: 0.6rem 0 0; }
+  th, td {
+    text-align: left; padding: 0.5rem 0.55rem;
+    border-bottom: 1px solid var(--border); vertical-align: top;
+  }
+  th {
+    color: var(--muted); font-weight: 600; font-size: 0.72rem;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  tr:hover td { background: #0f141b; }
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: #15101f; padding: 0.7rem 0.9rem; border-radius: 0 8px 8px 0;
+    margin: 0.7rem 0; color: #c7d2fe; font-size: 0.88rem;
+  }
+  .callout.warn { border-left-color: var(--amber); background: #1a1508; color: #fde68a; }
+  .callout.ok { border-left-color: var(--green); background: #0c1810; color: #bbf7d0; }
+  .stage-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.45rem 0 0.6rem; }
+  .stage {
+    font-size: 0.7rem; font-weight: 700; padding: 0.22rem 0.5rem;
+    border-radius: 6px; border: 1px solid var(--border); background: #0d1218; color: #cbd5e1;
+  }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+  @media (max-width: 720px) { .grid2 { grid-template-columns: 1fr; } }
+  .card {
+    border: 1px solid var(--border); border-radius: 9px; padding: 0.75rem; background: #0d1218;
+  }
+  .card h4 { margin: 0 0 0.3rem; font-size: 0.88rem; }
+  .card p { margin: 0; font-size: 0.8rem; color: var(--muted); }
+  footer {
+    margin-top: 1.25rem; color: var(--muted); font-size: 0.78rem; text-align: center;
+  }
+  footer a { color: #a5f3fc; }
+  ol.recipe { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+  ol.recipe li { margin: 0.3rem 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Website Delivery — Operator Plan</h1>
+  <p class="sub">
+    Canonical spine for brand sites, cinematic landings, and product web UIs.
+    Same stages for short and long projects; only depth and wave count change.
+  </p>
+  <div class="chips">
+    <span class="chip p">Stages 0–8</span>
+    <span class="chip g">Composition: motionskin · scroll-world · custom</span>
+    <span class="chip">Source: skill-clusters workflows/registry</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#spine">1. Spine</a>
+  <a href="#stages">2. Stages</a>
+  <a href="#composition">3. Composition</a>
+  <a href="#assets">4. Assets</a>
+  <a href="#control">5. Control</a>
+  <a href="#ship">6. Ship</a>
+  <a href="#intensity">7. Intensity</a>
+  <a href="#recipe">8. Recipe</a>
+</nav>
+
+<!-- 1 -->
+<section id="spine">
+  <h2><span class="n">1</span> Spine</h2>
+  <div class="stage-row">
+    <span class="stage">0 Discover</span>
+    <span class="stage">1 Brand</span>
+    <span class="stage">2 Composition</span>
+    <span class="stage">3 Motion</span>
+    <span class="stage">4 Assets</span>
+    <span class="stage">5 Frontend</span>
+    <span class="stage">6 Control</span>
+    <span class="stage">7 Ship</span>
+    <span class="stage">8 Close</span>
+  </div>
+  <div class="mermaid">
+flowchart LR
+  D0[0 Discover] --> D1[1 Brand]
+  D1 --> D2[2 Composition]
+  D2 --> D3[3 Motion]
+  D3 --> D4[4 Assets]
+  D4 --> D5[5 Frontend]
+  D5 --> D6[6 Control]
+  D6 --> D7[7 Ship]
+  D7 --> D8[8 Close]
+  </div>
+  <div class="callout ok">
+    Hard rules: lock brand before paid renders; pick <strong>one</strong> composition path;
+    confirm budget before Higgsfield / Monid / Meshy batches; run ship-battery before promote.
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="stages">
+  <h2><span class="n">2</span> Stages → skills</h2>
+  <table>
+    <thead>
+      <tr><th>Stage</th><th>Done when</th><th>Primary skills / tools</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>0 Discover</strong></td>
+        <td>Brief, audience, constraints, deploy target written</td>
+        <td>swarm-architect discovery · interview</td>
+      </tr>
+      <tr>
+        <td><strong>1 Brand</strong></td>
+        <td>Tokens + references locked; decision ledger exists</td>
+        <td><code>design-core</code> · <code>design-orchestrator</code> · <code>openbrand</code> · <code>brandmint</code> · <code>refero-design</code></td>
+      </tr>
+      <tr>
+        <td><strong>2 Composition</strong></td>
+        <td>One path chosen (not blended)</td>
+        <td><code>motionskin</code> · <code>scroll-world</code> · or custom via refero</td>
+      </tr>
+      <tr>
+        <td><strong>3 Motion</strong></td>
+        <td>Live scroll narrative on DOM <em>or</em> N/A for pure video-scrub worlds</td>
+        <td><code>creative-frontend-orchestrator</code> · <code>astro-gsap-scrolltrigger</code> · <code>awwwards-*</code> · <code>motion-foundations</code> · agents: gsap-scrolltrigger</td>
+      </tr>
+      <tr>
+        <td><strong>4 Assets</strong></td>
+        <td>Slots filled with receipts; style preamble shared (incl. 1–3 GrokFilm techniques)</td>
+        <td><code>grokfilm</code> · <code>media-gen-orchestrator</code> · <code>scroll-world</code> · <code>gpt-image-2</code> · <code>remotion</code> · agents: higgsfield-generate · Meshy · runcomfy-cli</td>
+      </tr>
+      <tr>
+        <td><strong>5 Frontend</strong></td>
+        <td>Integrated build meets taste + perf budget</td>
+        <td><code>taste-skill</code> · Astro/React hubs · <code>web-perf</code></td>
+      </tr>
+      <tr>
+        <td><strong>6 Control</strong></td>
+        <td>Phase→wave plan live; workers on frozen contracts</td>
+        <td>swarm-architect · github-next-wave · conductor · OmniRoute rails</td>
+      </tr>
+      <tr>
+        <td><strong>7 Ship</strong></td>
+        <td>README · SEO · PWA-if-app · QA green</td>
+        <td><code>readme</code> · growth-seo · quality-eval · ship-battery</td>
+      </tr>
+      <tr>
+        <td><strong>8 Close</strong></td>
+        <td>Deployed; learnings recorded; next milestone clear</td>
+        <td>ship-battery · loop-feedback · OpenViking memory</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 3 -->
+<section id="composition">
+  <h2><span class="n">3</span> Composition decision</h2>
+  <div class="mermaid">
+flowchart TB
+  B[Brand locked] --> Q{What are we building?}
+  Q -->|Reskin known MotionSites template| M[motionskin<br/>structure+motion fixed]
+  Q -->|Continuous fly-through world| S[scroll-world<br/>pre-rendered scrub chain]
+  Q -->|Bespoke product / marketing UI| C[custom<br/>refero + creative-frontend]
+  M --> F[Frontend craft]
+  S --> A[Assets then mount scrub-engine]
+  C --> N[Live GSAP / Framer narrative]
+  N --> F
+  A --> F
+  </div>
+  <table>
+    <thead><tr><th>Path</th><th>Fixed</th><th>Changes</th><th>Avoid</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>motionskin</code></td>
+        <td>Template structure + motion</td>
+        <td>Skin: type, palette, copy, assets</td>
+        <td>Cross-template section remix</td>
+      </tr>
+      <tr>
+        <td><code>scroll-world</code></td>
+        <td>Scroll→camera scrub mechanic</td>
+        <td>Scenes, art direction, camera arch A/B</td>
+        <td>Silent spend; seam endpoints from stills</td>
+      </tr>
+      <tr>
+        <td>custom</td>
+        <td>Nothing — full craft</td>
+        <td>Layout + live motion stack</td>
+        <td>Treating GSAP as scroll-world</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 4 -->
+<section id="assets">
+  <h2><span class="n">4</span> Asset layer</h2>
+  <div class="mermaid">
+flowchart LR
+  SLOT[Slot contract<br/>aspect · focal · style preamble] --> STILL[Stills<br/>Higgsfield / Codex image]
+  SLOT --> VID[Video chain<br/>Monid Seedance default]
+  SLOT --> MESH[3D<br/>Meshy]
+  SLOT --> ALT[Alt media<br/>RunComfy]
+  STILL --> ENC[ffmpeg · posters]
+  VID --> ENC
+  ENC --> PAGE[Page mount]
+  MESH --> PAGE
+  ALT --> PAGE
+  </div>
+  <div class="callout warn">
+    Budget gate before stage 4: state N stills + ~(2N−1) clips (×2 if native 9:16 mobile) and get go.
+  </div>
+  <table>
+    <thead><tr><th>Tool</th><th>Use for</th></tr></thead>
+    <tbody>
+      <tr><td><code>higgsfield</code></td><td>Stills, brand-kits, product shots, video fallbacks</td></tr>
+      <tr><td><code>monid</code></td><td>Default Seedance pay-per-clip chain (scroll-world)</td></tr>
+      <tr><td><code>runcomfy</code></td><td>Catalog router when not on Higgsfield</td></tr>
+      <tr><td>Meshy</td><td>glTF / rigged 3D for spatial heroes</td></tr>
+      <tr><td><code>ffmpeg</code></td><td>Seam frames, encode, mobile variants</td></tr>
+      <tr><td><code>vercel</code> / <code>wrangler</code> / <code>gh</code></td><td>Deploy + edge + repo ops</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 5 -->
+<section id="control">
+  <h2><span class="n">5</span> Control plane</h2>
+  <div class="mermaid">
+flowchart TB
+  SPEC[Brief / architecture / tasks] --> SA[Swarm Architect<br/>phase → wave → swarm]
+  SA --> GH[GitHub issues · lanes]
+  GH --> W[Wave N · parallel workers]
+  W --> G[Wave close · verification]
+  G --> NW[Next wave or ship]
+  </div>
+  <h3>Ordering constraints</h3>
+  <table>
+    <thead><tr><th>#</th><th>Must finish first</th><th>Unlocks</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Brand + art direction</td><td>Any generation</td></tr>
+      <tr><td>2</td><td>Composition path</td><td>Asset slot shapes</td></tr>
+      <tr><td>3</td><td>Frozen contracts (tokens, section IDs)</td><td>Parallel workers</td></tr>
+      <tr><td>4</td><td>Assets (or template bind)</td><td>Final motion polish</td></tr>
+      <tr><td>5</td><td>Frontend + perf</td><td>SEO / PWA / promote</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <strong>Modality:</strong> local = conductor + cluster orchestrators ·
+    github-delivery = swarm-architect plan + github-next-wave execute.
+    Cluster per task is the same; modality only changes who runs it.
+    OmniRoute routes coding compute (incl. promo lanes); creative CLIs bill separately.
+  </p>
+</section>
+
+<!-- 6 -->
+<section id="ship">
+  <h2><span class="n">6</span> Ship hygiene</h2>
+  <div class="mermaid">
+flowchart LR
+  B[Integrated build] --> R[readme]
+  B --> S[growth-seo]
+  B --> P[PWA if app]
+  B --> Q[quality-eval · ship-battery]
+  R --> D[Deploy]
+  S --> D
+  P --> D
+  Q --> D
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h4>Marketing landing</h4>
+      <p>README · CWV · SEO meta · OG · a11y · reduced-motion · no secrets</p>
+    </div>
+    <div class="card">
+      <h4>Web app</h4>
+      <p>Above + auth paths · PWA if installable · E2E · CI on PR · rollback</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="intensity">
+  <h2><span class="n">7</span> Short vs long — same spine</h2>
+  <div class="grid2">
+    <div class="card">
+      <h4>Short (days · pitch · landing)</h4>
+      <p>Compress depth, keep order. One wave. Brand lite → one composition → static deploy → README + basic SEO.</p>
+    </div>
+    <div class="card">
+      <h4>Long (weeks · product)</h4>
+      <p>Full phase→wave→swarm. Asset factory. Parallel OmniRoute workers. Continuous SEO/QA waves. Close with loop-feedback.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="recipe">
+  <h2><span class="n">8</span> Operator recipe</h2>
+  <ol class="recipe">
+    <li>Write brief + constraints (stage 0).</li>
+    <li>Lock brand via design-core / brandmint / refero (stage 1).</li>
+    <li>Choose <strong>one</strong> of motionskin · scroll-world · custom (stage 2).</li>
+    <li>Get budget go → generate assets with receipts (stage 4; motion as needed).</li>
+    <li>Build frontend to taste + web-perf budget (stage 5).</li>
+    <li>If multi-track: swarm waves with frozen contracts (stage 6).</li>
+    <li>readme · SEO · PWA-if-app · ship-battery · deploy (stages 7–8).</li>
+  </ol>
+  <div class="callout">
+    Project tracking: seed <code>PLAN.md</code> from
+    <code>~/.agents/skill-clusters/workflows/templates/website-delivery.PLAN.md</code>
+    so SessionEnd next-step stays on the spine.
+  </div>
+</section>
+
+<footer>
+  Operator plan only ·
+  registry <code>workflows/registry.json</code> ·
+  system wiring <a href="./website-delivery-system.md">website-delivery-system.md</a>
+</footer>
+
+</div>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'dark',
+    themeVariables: {
+      primaryColor: '#1e1035',
+      primaryTextColor: '#e8eef6',
+      primaryBorderColor: '#4c1d95',
+      lineColor: '#64748b',
+      secondaryColor: '#0c1e24',
+      tertiaryColor: '#121820',
+      fontFamily: 'ui-sans-serif, system-ui, sans-serif'
+    },
+    flowchart: { curve: 'basis', htmlLabels: true }
+  });
+</script>
+</body>
+</html>

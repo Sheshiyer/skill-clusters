@@ -1,16 +1,17 @@
 ---
 name: design-orchestrator
-description: "Route a UI/visual-design task to the right skill among 9 design specialists — research-first methodology, the design-intelligence database, concrete style systems, senior engineering rules, spec emitters, design-agent workflows, theming, static art, and brand extraction. USE WHEN a user is designing, styling, redesigning, or polishing an interface, artifact, or brand surface but hasn't named the specific skill or approach."
+description: "Route a UI/visual-design task to the right skill among design specialists — research-first methodology, design-intelligence database, style systems, senior engineering rules, spec emitters, design-agent workflows, theming, static art, brand extraction, MotionSites brand reskin, and scroll-scrubbed 3D world landings. USE WHEN a user is designing, styling, redesigning, or polishing an interface, artifact, or brand surface but hasn't named the specific skill or approach."
 cluster: design
-version: 1.0.0
+version: 1.2.0
 ---
 
 # Design Orchestrator
 
 The single entry skill for design work. It locates the task on the **intent × deliverable**
-map and delegates to one of 9 specialist spokes. The cross-cutting model every design task
+map and delegates to specialist spokes. The cross-cutting model every design task
 shares — **research and constraints before generation**, the decision ledger, and the
-anti-AI-slop quality gate — lives in `design-core`; read it before generating any pixels.
+anti-AI-slop quality gate — lives in `design-core` (the design cortex); read it before
+generating any pixels.
 
 ## Routing map (intent → spoke)
 
@@ -35,11 +36,20 @@ anti-AI-slop quality gate — lives in `design-core`; read it before generating 
 **Pull brand identity from the web**
 - Extract logos, colors, backdrops, brand name from a URL → `openbrand`
 
+**Reskin a MotionSites template to a brand (structure/motion 1:1)**
+- Compose a brand site from curated MotionSites templates — swap skin only (type, palette, copy, assets) → `motionskin` *(substrate + scripts: `~/motionsites-skills`; pairs with `brandmint` for brand tokens)*
+
+**Turn a brand into a scroll-scrubbed 3D world (cinematic flight)**
+- Immersive continuous camera fly-through landing — AI scene stills + seamless video chain scrubbed by scroll → `scroll-world` *(origin: [oso95/scroll-world](https://github.com/oso95/scroll-world); Monid/Higgsfield pipeline; not live GSAP — that is creative-frontend)*
+
+**Ground AI visuals in real cinema language**
+- Camera / lighting / composition / genre prompt craft from the GrokFilm technique index → `grokfilm` *([grokfilm.app/#index](https://grokfilm.app/#index); local 300-technique corpus; pair with brandmint tokens before generate)*
+
 ## Standard Operating Flow
 
-1. Locate the task on **intent × deliverable**: is the output a *product UI*, a *spec*, a *themed artifact*, *static art*, or *brand data*?
-2. If the output is a product UI or anything user-facing, pull the gate from `design-core` first — **research → lock references → ledger decisions → generate → check against the slop gate.** Skipping research is the failure mode.
-3. Delegate to the spoke(s). Multi-step asks fan out in deliverable order (e.g. "brand this landing page" → `openbrand` for tokens → `refero-design` for the layout → `taste-skill` for the build).
+1. Locate the task on **intent × deliverable**: is the output a *product UI*, a *spec*, a *themed artifact*, *static art*, *brand data*, a *MotionSites reskin*, or a *scroll-world cinematic*?
+2. If the output is a product UI or anything user-facing, pull the gate from `design-core` first — **research → lock references → ledger decisions → generate → check against the slop gate.** Skipping research is the failure mode. For `scroll-world`, also lock art direction + camera architecture before any paid render.
+3. Delegate to the spoke(s). Multi-step asks fan out in deliverable order (e.g. "brand this landing page" → `openbrand` for tokens → `refero-design` for the layout → `taste-skill` for the build; "make our company a scrollable 3D world" → `openbrand`/`brandmint` → `scroll-world`).
 4. Return: chosen spoke(s), the references/constraints that anchored the work, the deliverable type, and the next action.
 
 ## Guardrails

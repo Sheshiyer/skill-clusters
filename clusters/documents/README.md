@@ -45,7 +45,7 @@ graph LR
 | `notebooklm` | spoke | ⤵ on-demand |
 | `drawio-diagrams-enhanced` | spoke | ⤵ on-demand |
 | `mermaid-to-gif` | spoke | ⤵ on-demand |
-| `readme` | spoke | ⤵ on-demand |
+| `readme` | spoke · visual README storytelling | ⤵ on-demand |
 | `screenshots` | spoke | ⤵ on-demand |
 
 ## Tier & loading
@@ -60,7 +60,7 @@ npx skills add Sheshiyer/skill-clusters@documents-orchestrator -g -y
 
 ## Attribution
 
-Authored for skill-clusters (MIT) — see [NOTICE](../../NOTICE). + mixed: the `readme` and `screenshots` spokes originate from antigravity-awesome-skills (MIT).
+Authored for skill-clusters (MIT) — see [NOTICE](../../NOTICE). + mixed: `screenshots` originates from antigravity-awesome-skills (MIT); `readme` is the local visual storytelling skill (`Sheshiyer/readme-skill`, v2) superseding the earlier thorough-docs variant.
 
 ---
 <sub>Part of <a href="../../README.md">skill-clusters</a> — the conductor closed-loop system · <a href="../../docs/CONDUCTOR-INTEGRATION.md">how it's wired</a></sub>

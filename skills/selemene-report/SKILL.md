@@ -1,324 +1,248 @@
 ---
 name: selemene-report
-description: "Generate Selemene Engine reports from a slash-command. Routes deterministic birth/compatibility/transit reports through the existing @selemene/bridge CLI and narrative witness readings through the packages/witness-pipeline. USE WHEN the user says /selemene-report, selemene report, generate selemene report, birth chart report, compatibility report, transit report, or witness reading. NOT for building new engines, not for replacing the bridge CLI, not for human web UI intake."
+description: "Generate Selemene narrative witness readings (and route deterministic reports). Uses the current rich contract: language, relationship_context, subject roles, L0-L5, Folio header, and witness-pipeline. Guided Q&A flow for agents (Claude / OpenCode / Codex). USE WHEN user wants a Selemene witness reading, report, or /selemene-report."
 origin: project
 cluster: selemene
-version: 1.0.0
+version: 2.1.0
 ---
 
-# Selemene Report — `/selemene-report`
+# Selemene Report — Guided Flow (Agent Friendly)
 
-Generate Selemene Engine reports from a coding-agent context.
+This skill walks you through producing a **narrative witness reading** using the current engine surfaces (as of July 2026).
 
-This skill is a thin orchestrator over surfaces that already exist in the repo:
+It is deliberately written as a **sequence of questions → structured answers** so coding agents (Claude, OpenCode, Codex) can execute one step at a time without losing context.
 
-- **Deterministic reports** — birth chart, compatibility, transit — via the Rust `noesis-vedic-api` report generator, reached through the `@selemene/bridge` CLI.
-- **Narrative witness readings** — solo or dyadic — via `packages/witness-pipeline/src/orchestrator/integrated.ts`.
-
-The skill does not reimplement report logic. It asks for missing inputs, invokes the right existing path, writes a manifest + artifact, and returns the artifact path plus a non-prescriptive witness prompt.
+**Primary surface today:** `packages/witness-pipeline` → `IntegratedReadingOrchestrator`
 
 ---
 
-## Triggers
+## Overall Flow (do these in order)
 
-Invoke this skill when the user says any of the following, or asks for a Selemene report without specifying a surface:
-
-- `/selemene-report`
-- `selemene report`
-- `generate selemene report`
-- `birth chart report`
-- `compatibility report`
-- `transit report`
-- `witness reading`
-- `selemene reading`
-
-## Non-triggers (route elsewhere)
-
-- Building or modifying a Selemene engine → `rust-orchestrator` or `backend-architecture-orchestrator`
-- Changing the bridge CLI itself → `createcli` or work directly in `bridges/cli/src/`
-- Human-facing web intake → the existing `apps/noesis-web` app; this skill is for agent/terminal use
-- PDF/DOCX layout/rendering → `documents` cluster (`docx`, `pdf`, `notebooklm`)
+1. Choose report surface
+2. Collect subjects (one by one)
+3. Collect relationship context (if multi-subject)
+4. Choose language + consciousness level
+5. Choose mode + report_level
+6. Assemble the `ReportGenerationRequest` (or OrchestratorInput)
+7. Run / invoke
+8. Post-process (Folio header, source-pack, NotebookLM if needed)
 
 ---
 
-## Inputs
+## Step 1: Choose Surface
 
-The skill accepts a command string and resolves the report type from the first positional argument.
+**Question for agent:**
 
-### Deterministic reports
+Is this a **narrative witness reading** (rich, multi-subject, relationship-aware, language-aware) or a **deterministic Rust report**?
 
-```bash
-/selemene-report birth "Name" "1990-01-15T10:30:00+05:30" "Bangalore" \
-  [--output-dir ./selemene-reports] [--format text|html|json|pdf]
+**Your answer (copy this box and fill):**
 
-/selemene-report compatibility \
-  --person1 "Name A" "1990-01-15T10:30:00+05:30" "Bangalore" \
-  --person2 "Name B" "1992-03-20T14:00:00+05:30" "Mumbai" \
-  [--output-dir ./selemene-reports]
-
-/selemene-report transit "Name" "1990-01-15T10:30:00+05:30" "Bangalore" \
-  --from 2026-01-01 --to 2026-12-31 \
-  [--output-dir ./selemene-reports]
+```
+SURFACE: witness | deterministic
 ```
 
-### Narrative witness reading
-
-```bash
-/selemene-report witness --mode solo --subjects subjects.json \
-  [--level L1|L2|L3|L4|L5] [--output-dir ./selemene-reports]
-```
-
-`subjects.json` matches the rich `ReportSubjectInput` shape from `packages/witness-pipeline/src/intake/types.ts`. The live Rust endpoint requires every subject to carry a `normalized_location`:
-
-```json
-[
-  {
-    "role": "primary",
-    "name": "Name",
-    "birth_date": "1990-01-15",
-    "birth_time": "10:30",
-    "birth_time_confidence": "exact",
-    "birth_location_query": "Bangalore",
-    "normalized_location": {
-      "display_name": "Bengaluru, Karnataka, India",
-      "latitude": 12.9716,
-      "longitude": 77.5946,
-      "timezone": "Asia/Kolkata",
-      "provider": "manual",
-      "confidence": "manual"
-    }
-  }
-]
-```
-
-### Environment
-
-The skill reads the same environment the bridge CLI uses:
-
-- `SELEMENE_RUST_URL` (default: `http://localhost:8080`)
-- `SELEMENE_TS_URL` (default: `http://localhost:3001`)
-- `SELEMENE_API_KEY` (optional)
-- `CF_DEV_BYPASS_TOKEN` (optional, sent as `x-noesis-dev-auth` for local development bypass)
-- `SELEMENE_OUTPUT_DIR` (default: `./selemene-reports`)
-
-It also respects a local `.selemenerc.json` if present, reusing the bridge config file format.
+- `witness` → continue with this skill (current engine)
+- `deterministic` → route to `@selemene/bridge` or `selemene-core` deterministic path
 
 ---
 
-## Execution flow
+## Step 2: Collect Subjects (Repeat for each)
 
-1. **Parse intent** — first positional argument chooses one of `birth`, `compatibility`, `transit`, `witness`.
-2. **Validate inputs** — require birth datetime + location for deterministic reports; require `--subjects` JSON for witness.
-3. **Resolve backend**
-   - Deterministic: `POST {rustUrl}/api/v1/workflows/{workflow_id}/execute` with an `EngineInput` body. There are no dedicated `/api/reports/*` routes. The skill maps the CLI report type to an existing workflow ID:
-     - `birth` → `birth-blueprint`
-     - `compatibility` → `full-spectrum` (carries a second subject in `options.partner_birth_data` + `relationship_context`)
-     - `transit` → `daily-practice` (sets `current_time` to `--from` and `options.transit_window_end` to `--to`)
-   - Witness: the `packages/witness-pipeline` package is a TypeScript library (not an HTTP server). The running `ts-engines` server exposes generic engine endpoints (`/engines/:id/calculate`), not a dedicated witness endpoint. The live equivalent for assembled witness readings is the Rust `POST /api/v1/assets/generate` endpoint. The CLI maps `--mode solo` to mode `"integrated-reading"` and `--mode dyadic` to mode `"composite-dyad"`.
-4. **Write artifacts** — always emit:
-   - `{output_dir}/manifest.json`
-   - `{output_dir}/{report_type}-{slug}-{timestamp}.{ext}`
-5. **Return result** — absolute artifact path + a one-line witness prompt.
+**Question:**
 
----
+Provide one subject at a time.
 
-## Output contract
-
-Every run produces a manifest next to the artifact:
+**INPUT BOX — Subject (repeat this block):**
 
 ```json
 {
-  "report_type": "birth|compatibility|transit|witness",
-  "created_at": "2026-07-06T13:45:00Z",
-  "subject_count": 1,
-  "engines_used": ["vedic"],
-  "artifact_path": "/abs/path/to/selemene-reports/birth-name-20260706-134500.md",
-  "witness_prompt": "What is the one thing from this report that feels most alive right now?"
+  "role": "___",                    // e.g. "mother", "son", "business-partner", "primary"
+  "name": "___",
+  "birth_date": "YYYY-MM-DD",
+  "birth_time": "HH:MM",            // optional but recommended
+  "birth_time_confidence": "exact" | "approximate" | "unknown",
+  "birth_location_query": "___",
+  "normalized_location": {
+    "display_name": "___",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "timezone": "___",
+    "provider": "manual" | "nominatim" | ...,
+    "confidence": "exact" | "selected" | ...
+  },
+  "relationship_label": "___"       // optional free-text qualifier
 }
 ```
 
-For deterministic reports the artifact format is set by `--format`. For witness readings the artifact is markdown by default, matching the source-pack factory output in `packages/witness-pipeline/src/assets/factory.ts`.
+**Agent instruction:** Output one filled block per subject. Do not combine yet.
 
 ---
 
-## Tool reference
+## Step 3: Relationship Context (only if 2+ subjects)
 
-The skill ships a thin wrapper in `Tools/` that performs the parse → validate → invoke → write flow.
+**Question:**
 
-- `Tools/Report.ts` — main entry, called as `bun run Tools/Report.ts <subcommand> <args>`
-- `Tools/lib/resolve-config.ts` — reads `.selemenerc.json` and env vars
-- `Tools/lib/write-manifest.ts` — writes the manifest.json contract
-- `Tools/lib/prompts.ts` — returns a witness prompt per report type
+Is there an explicit relationship between the subjects?
 
-Do not edit `Tools/` to add new report math. If a report type is missing, extend the backend (Rust or witness-pipeline) first, then add a sub-command mapping here.
+**INPUT BOX — Relationship Context:**
+
+```json
+{
+  "type": "family" | "friends" | "business-partners" | "unmarried-partners" | "married-partners" | "custom",
+  "mapping_goal": "___",                    // e.g. "understand lineage transmission patterns without outcome prediction"
+  "sensitivity_level": "low" | "medium" | "high"
+}
+```
+
+**Agent instruction:** If solo, output exactly:
+
+```json
+{ "relationship_context": null }
+```
 
 ---
 
-## Verification checklist
+## Step 4: Language + Consciousness Level
 
-Before claiming a report was generated:
+**INPUT BOX:**
 
-- [ ] The manifest file exists next to the artifact and is valid JSON.
-- [ ] The artifact file exists and is non-empty.
-- [ ] The backend endpoint or witness-pipeline script returned a success status.
-- [ ] The returned path is absolute and readable.
+```json
+{
+  "language": "en" | "hi" | "es" | "...",     // default "en"
+  "consciousness_level": 0-5
+}
+```
+
+**Note:** Language is injected into prompts, metadata, and NotebookLM shapers.
 
 ---
 
-### Running the backend
+## Step 5: Report Level + Mode
 
-Start the Rust API server from the Selemene Engine repo:
+**INPUT BOX:**
 
-```bash
-cd /Volumes/madara/2026/twc-vault/01-Projects/tryambakam-noesis/Selemene-engine
-export RUST_ENV=development
-export CF_DEV_BYPASS_TOKEN=selemene-local-test
-export ENABLE_SWAGGER_UI=true
-cargo run -p noesis-api --bin noesis-server
+```json
+{
+  "report_level": "L0" | "L1" | "L2" | "L3" | "L4" | "L5",
+  "report_mode": "integrated-reading" | "mother-son-lineage" | "business-partners" | "family-penta" | "unmarried-partners" | "married-partners" | "birth-blueprint" | "..."
+}
 ```
 
-Notes:
-- The crate is `noesis-api` and the binary name is `noesis-server` (`cargo run -p noesis-api` alone is ambiguous because the crate also ships helper binaries).
-- Default bind address is `0.0.0.0:8080`.
-- `CF_DEV_BYPASS_TOKEN` + `x-noesis-dev-auth` header bypasses auth in development only; production requires a valid JWT or `X-API-Key`.
-- `ENABLE_SWAGGER_UI=true` exposes `/api/openapi.json` and `/api/docs`.
-- Without `DATABASE_URL`, auth endpoints are unavailable but health checks and workflow execution via dev bypass still work.
+**Current known good modes** (see `packages/witness-pipeline/modes/`):
+- `birth-blueprint`
+- `integrated-reading` / `integrated-reading-l4`
+- `mother-son-lineage`
+- `business-partners`
+- `family-penta`
+- `unmarried-partners`
+- `married-partners`
 
-Verify health:
+---
 
-```bash
-curl -i http://localhost:8080/health/live
-```
+## Step 6: Assemble the Ready Object
 
-Expected: `HTTP/1.1 200 OK` with JSON body containing `status`, `version`, `uptime_seconds`, `engines_loaded`, and `workflows_loaded`.
+After collecting the above, the agent must output **exactly one** of the following two objects.
 
-### TypeScript engines server
+### Option A — Full ReportGenerationRequest (preferred for most callers)
 
-Start the TypeScript engine server from the Selemene Engine repo:
-
-```bash
-cd /Volumes/madara/2026/twc-vault/01-Projects/tryambakam-noesis/Selemene-engine/ts-engines
-bun run dev
-```
-
-Notes:
-- Default bind address is `0.0.0.0:3001`.
-- This is a generic Elysia API for the TS consciousness engines (`tarot`, `i-ching`, `enneagram`, `sacred-geometry`, `sigil-forge`, `raaga`).
-- It does **not** expose `/witness/generate`; witness-pipeline is a local library.
-
-Verify health:
-
-```bash
-curl -i http://localhost:3001/health
-```
-
-Expected: `HTTP/1.1 200 OK` with JSON body containing `status`, `engines`, `uptime_ms`, and `version`.
-
-## Endpoint assumptions
-
-- Rust deterministic reports: `POST {rustUrl}/api/v1/workflows/{workflow_id}/execute` with an `EngineInput` body.
-  - The actual running server exposes these workflow IDs: `birth-blueprint`, `daily-practice`, `decision-support`, `self-inquiry`, `creative-expression`, `full-spectrum`.
-  - There is **no** `birth-report`, `compatibility-report`, or `transit-report` workflow; the repo also does not expose dedicated `/api/reports/*` routes.
-  - The CLI maps report types to workflows:
-    - `birth` → `birth-blueprint`
-    - `compatibility` → `full-spectrum`
-    - `transit` → `daily-practice`
-  - Request body shape is `EngineInput`:
-    ```json
-    {
-      "birth_data": {
-        "name": "Ada",
-        "date": "1815-12-10",
-        "time": "15:00",
-        "latitude": 51.5074,
-        "longitude": -0.1278,
-        "timezone": "Europe/London"
-      },
-      "options": {}
-    }
-    ```
-    - `current_time` and `precision` are optional (defaults apply).
-    - `location` may be used for geo-only engines but chart workflows primarily read `birth_data`.
-    - For `compatibility`, `options.partner_birth_data` carries the second person and `options.relationship_context.type` is `"compatibility"`.
-    - For `transit`, `current_time` is set to `--from` and `options.transit_window_end` is set to `--to`.
-- Generic workflow execution: `POST {rustUrl}/api/v1/workflows/{workflow_id}/execute` with the same `EngineInput` body.
-- TS witness pipeline: there is no `POST {tsUrl}/witness/generate` on the running `ts-engines` server. The only TS HTTP surface is `ts-engines`, which exposes `GET /health`, `/engines`, `/engines/:id/info`, and `POST /engines/:id/calculate`. The witness-pipeline package is a library (`IntegratedReadingOrchestrator`).
-- Live witness / premium-asset endpoint: `POST {rustUrl}/api/v1/assets/generate` returns an `AssetGenerateResponse` with `assembled` text. Request body:
-  ```json
-  {
-    "mode": "integrated-reading",
-    "report_level": "L3",
-    "subjects": [
-      {
-        "role": "primary",
-        "name": "Name",
-        "birth_date": "1990-01-15",
-        "birth_time": "10:30",
-        "birth_time_confidence": "exact",
-        "birth_location_query": "Bangalore",
-        "normalized_location": {
-          "display_name": "Bengaluru, Karnataka, India",
-          "latitude": 12.9716,
-          "longitude": 77.5946,
-          "timezone": "Asia/Kolkata",
-          "provider": "manual",
-          "confidence": "manual"
-        }
-      }
-    ]
+```json
+{
+  "report_level": "L2",
+  "report_mode": "synastry",
+  "subjects": [ /* from Step 2 */ ],
+  "relationship_context": { /* from Step 3 or null */ },
+  "language": "en",
+  "output": {
+    "format": "markdown",
+    "include_rubric": true,
+    "include_pattern_extraction": true
   }
-  ```
-- Dev auth: when `CF_DEV_BYPASS_TOKEN` is set, the CLI sends it as the `x-noesis-dev-auth` header. In production, use `SELEMENE_API_KEY` (sent as `Authorization: Bearer ...`) or an `X-API-Key` header configured in your deployment.
-
-If your Selemene deployment uses different routes, update `Tools/Report.ts` before using.
-
-## Testing
-
-Run the unit-test suite from the skill directory:
-
-```bash
-cd ~/.agents/skill-clusters/skills/selemene-report
-bun test
+}
 ```
 
-Run a live smoke test against the Rust server after starting it:
+### Option B — Direct OrchestratorInput (for internal / test use)
 
-```bash
-SELEMENE_RUST_URL=http://localhost:8080 \
-  CF_DEV_BYPASS_TOKEN=selemene-local-test \
-  bun run report birth "Ada" "1815-12-10T15:00:00+00:00" "London" \
-  --output-dir ./tmp-reports
+```json
+{
+  "subjectNames": ["Aarav", "Vikram"],
+  "subjectRoles": [
+    { "role": "mother", "name": "Aarav" },
+    { "role": "son", "name": "Vikram" }
+  ],
+  "relationshipContext": { /* ... */ },
+  "language": "en",
+  "consciousnessLevel": 2,
+  "engineResultsBySubject": [ /* ... */ ]
+}
 ```
 
-Run a dry-run to validate CLI parsing without contacting any backend:
+**Agent must output the filled JSON inside a code block labeled:**
 
-```bash
-bun run report birth "Ada" "1990-01-15T10:30:00+05:30" "Bangalore" --dry-run
+```
+### FINAL ASSEMBLED REQUEST
+```json
+...
+```
 ```
 
-### Endpoint assumptions
+---
 
-Final wired paths after Tasks 8-13:
+## Step 7: Run the Reading
 
-- Rust deterministic workflows: `POST {rustUrl}/api/v1/workflows/{workflow_id}/execute`
-  - `birth` → `birth-blueprint`
-  - `compatibility` → `full-spectrum`
-  - `transit` → `daily-practice`
-- Rust witness / premium-asset endpoint: `POST {rustUrl}/api/v1/assets/generate`
+**For witness-pipeline (current recommended path):**
 
-No dedicated `/api/reports/*` routes or `POST {tsUrl}/witness/generate` HTTP route exist in the running Selemene Engine; the witness-pipeline package is a local TypeScript library and the live assembled reading is produced by the Rust assets endpoint.
+Use the local orchestrator (or call the Rust `/api/v1/assets/generate` endpoint with the above shape).
 
-### Authentication
+After execution, you will receive an `OrchestratorOutput` containing at minimum:
 
-The CLI supports two authentication paths:
+- `relationship_header` (when relationship_context was supplied)
+- `assembled` (full reading — header is prepended)
+- `passes[]`
+- `patterns[]`
 
-- `CF_DEV_BYPASS_TOKEN` environment variable → sent as `x-noesis-dev-auth` header. Use this for local development only; it is enabled by the Rust server in development mode when `CF_DEV_BYPASS_TOKEN` is set.
-- `SELEMENE_API_KEY` environment variable → sent as `Authorization: Bearer {SELEMENE_API_KEY}`. Use this for production or any deployment that expects API-key auth.
+**Verification checklist (agent must confirm):**
+- [ ] `relationship_header` appears at the very top of `assembled` when relationship was provided
+- [ ] No romantic/predictive language when type is family or business-partners
+- [ ] `language` is visible in system prompt / metadata if it was supplied
 
-`Tools/lib/resolve-config.ts` reads `SELEMENE_API_KEY` from env or `.selemenerc.json`. `Tools/Report.ts` reads `CF_DEV_BYPASS_TOKEN` directly from the environment because it is a dev-mode bypass, not a persistent config value.
+---
 
-## Design notes
+## Step 8: Post-Processing Options (choose one or more)
 
-- **Hub-and-spoke citizenship.** This skill is an `active-spoke` under the `selemene` cluster. It is enumerated only if the cluster is active; otherwise it resolves on demand via `~/.agents/skill-clusters/skills/selemene-report/SKILL.md`.
-- **No duplicate logic.** The skill invokes `@selemene/bridge` and `packages/witness-pipeline`; it does not contain copies of `mergeSpecs`, `generateClaudeTools`, `IntegratedReadingOrchestrator`, or `ReportSection` logic.
-- **Non-prescriptive framing.** All returned prompts are mirrors, not advice. This matches the existing witness-pipeline tone.
+**A. Folio B-surface header** (already in `assembled` for witness readings)
+
+**B. Source pack**
+- Use `createSourcePack(...)` from `packages/witness-pipeline/src/assets/factory.ts`
+
+**C. NotebookLM slides prompt**
+- Route to `selemene-notebooklm` skill with the `OrchestratorOutput`
+
+---
+
+## Non-Prescriptive Guardrails (never skip)
+
+- Always include: "Facts only. No prediction. No diagnosis."
+- Respect `relationship_context.type` in guardrails
+- `relationship_header` must be used verbatim when present
+- Never promise outcomes
+
+---
+
+## Quick Solo Path Example (agent can copy-paste)
+
+```json
+{
+  "report_level": "L1",
+  "report_mode": "birth-blueprint",
+  "subjects": [{ "role": "primary", "name": "Test", "birth_date": "1990-01-01", "birth_time_confidence": "exact", "birth_location_query": "Bengaluru" }],
+  "relationship_context": null,
+  "language": "en",
+  "output": { "format": "markdown", "include_rubric": true, "include_pattern_extraction": false }
+}
+```
+
+---
+
+This flow is designed so a coding agent can ask the user (or another agent) one section at a time, collect the boxes, then emit the final assembled object.
+
+Use `selemene-core` for the taxonomy and tone rules before starting this flow.

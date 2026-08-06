@@ -44,6 +44,7 @@ above and are routable the same way — load on demand by reading their `SKILL.m
 
 - Responds to user input (scroll / hover / click / drag) in real time, lives on a page → **in-browser**.
 - Final artifact is a file (`.mp4` / `.webm` / `.gif`) to upload or embed, needs deterministic frame timing, audio sync, or N data-driven variants → **render-time → Remotion**.
+- Continuous **scroll-scrubbed 3D world / diorama fly-through** (AI scene stills + seamless camera chain) → **hand off to design cluster → `scroll-world`** (not GSAP, not Remotion).
 
 **In-browser →**
 - Scroll-linked (pin, scrub, parallax, reveal, horizontal scroll) → `astro-gsap-scrolltrigger`.

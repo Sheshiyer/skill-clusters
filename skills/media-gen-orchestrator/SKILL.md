@@ -1,15 +1,15 @@
 ---
 name: media-gen-orchestrator
-description: "Route a media-generation task to the right tool among 11 specialists — image generation (GPT Image 2, Nano Banana 2, OpenAI Images), image enhancement, image-to-3D, AI video direction, FFmpeg processing, frame extraction, and GIF search/authoring. USE WHEN a user wants to generate, edit, upscale, convert, or assemble an image, 3D model, video, or GIF but hasn't named the specific tool or backend."
+description: "Route a media-generation task to the right tool among media specialists — image generation (GPT Image 2, Nano Banana 2, OpenAI Images), professional headshot suites, image enhancement, image-to-3D, AI video direction, FFmpeg processing, frame extraction, and GIF search/authoring. USE WHEN a user wants to generate, edit, upscale, convert, or assemble an image, 3D model, video, or GIF but hasn't named the specific tool or backend."
 cluster: media-gen
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Media-Gen Orchestrator
 
 The single entry skill for generative + transformational media work. It locates the task on the
 **modality × stage** map — *what asset* (image / 3D / video / GIF) and *what stage* (generate →
-transform → assemble) — and delegates to one of 11 specialist spokes. The cross-cutting decision
+transform → assemble) — and delegates to specialist spokes. The cross-cutting decision
 every request shares — **which backend to route to, given its access/billing model and the
 modality** — lives in `media-gen-core`; read it before picking an image or video generator.
 
@@ -20,6 +20,8 @@ modality** — lives in `media-gen-core`; read it before picking an image or vid
 - Via Google Gemini 3.1 Flash Image (multi-image input, Search grounding) → `nano-banana-2`
 - Batch generation against the OpenAI Images API (+ gallery) → `openai-image-gen`
 - Headers, icons, diagrams, mermaid, infographics (a full visual-content system) → `art`
+- Nine-look professional headshot suite from 2–3 identity refs via Codex OAuth → `make-headshot-suite` *(depends on local `codex-gpt-image`)*
+- Need **named cinema language** (Dutch angle, Rembrandt, film noir, …) before prompting → design spoke `grokfilm` first, then return here to render
 
 **Transform / clean up an image**
 - Upscale, sharpen, de-noise screenshots & assets → `image-enhancer`

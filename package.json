@@ -19,6 +19,10 @@
     "prune:archive:apply": "node scripts/prune-archive.mjs --apply",
     "footer": "node scripts/add-spoke-footer.mjs",
     "index": "node scripts/gen-index.mjs",
+    "search": "node scripts/search-skills.mjs",
+    "workflow:validate": "node scripts/search-skills.mjs --validate-workflow website-delivery",
+    "grokfilm": "node skills/grokfilm/scripts/grokfilm.mjs",
+    "grokfilm:refresh": "node skills/grokfilm/scripts/grokfilm.mjs refresh",
     "audit-refs": "node scripts/audit-refs.mjs"
   },
   "engines": {
